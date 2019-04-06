@@ -2,113 +2,89 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5270658-40f6-4372-87a6-be147d34c2b2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/e2e/app.e2e-spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/e2e/app.po.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/e2e/tsconfig.e2e.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/karma.conf.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/protractor.conf.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/admin.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/admin.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/admin.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/admin.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/comfirm-company/comfirm-company.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/comfirm-company/comfirm-company.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/comfirm-company/comfirm-company.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/comfirm-company/comfirm-company.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/customer-care-admin/customer-care-admin.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/customer-care-admin/customer-care-admin.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/customer-care-admin/customer-care-admin.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/customer-care-admin/customer-care-admin.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/feedback-admin/feedback-admin.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/feedback-admin/feedback-admin.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/feedback-admin/feedback-admin.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/feedback-admin/feedback-admin.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/lock-reviewer/lock-reviewer.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/lock-reviewer/lock-reviewer.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/lock-reviewer/lock-reviewer.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/lock-reviewer/lock-reviewer.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/report-admin/report-admin.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/report-admin/report-admin.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/report-admin/report-admin.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/report-admin/report-admin.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/company.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/company.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/company.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/company.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/detail-company/detail-company.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/detail-company/detail-company.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/detail-company/detail-company.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/detail-company/detail-company.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/stats/stats.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/stats/stats.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/stats/stats.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/stats/stats.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/view-history-company/view-history-company.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/view-history-company/view-history-company.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/view-history-company/view-history-company.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/company/view-history-company/view-history-company.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/home.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/home.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/home.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/home.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/login/login.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/login/login.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/login/login.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/login/login.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/menu/menu.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/menu/menu.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/menu/menu.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/menu/menu.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/register/register.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/register/register.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/register/register.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/register/register.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/detail/detail.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/detail/detail.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/detail/detail.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/detail/detail.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/feedback-reviewer/feedback-reviewer.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/feedback-reviewer/feedback-reviewer.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/feedback-reviewer/feedback-reviewer.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/feedback-reviewer/feedback-reviewer.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/register-company/register-company.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/register-company/register-company.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/register-company/register-company.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/register-company/register-company.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/reviewer.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/reviewer.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/reviewer.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/reviewer.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/update-info-reviewer/update-info-reviewer.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/update-info-reviewer/update-info-reviewer.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/update-info-reviewer/update-info-reviewer.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/update-info-reviewer/update-info-reviewer.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/view-history-reviewer/view-history-reviewer.component.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/view-history-reviewer/view-history-reviewer.component.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/view-history-reviewer/view-history-reviewer.component.spec.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/app/reviewer/view-history-reviewer/view-history-reviewer.component.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/assets/.gitkeep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/environments/environment.prod.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/favicon.ico" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/polyfills.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/styles.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/test.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/tsconfig.app.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/tsconfig.spec.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/typings.d.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/tslint.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/package.json" afterPath="$PROJECT_DIR$/fe-reviewer/package.json" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/admin.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/admin.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/admin.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/admin.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/admin.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/admin.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/admin.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/admin.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/comfirm-company/comfirm-company.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/comfirm-company/comfirm-company.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/comfirm-company/comfirm-company.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/comfirm-company/comfirm-company.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/customer-care-admin/customer-care-admin.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/customer-care-admin/customer-care-admin.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/customer-care-admin/customer-care-admin.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/customer-care-admin/customer-care-admin.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/customer-care-admin/customer-care-admin.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/customer-care-admin/customer-care-admin.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/customer-care-admin/customer-care-admin.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/customer-care-admin/customer-care-admin.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/feedback-admin/feedback-admin.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/feedback-admin/feedback-admin.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/feedback-admin/feedback-admin.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/feedback-admin/feedback-admin.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/feedback-admin/feedback-admin.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/feedback-admin/feedback-admin.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/feedback-admin/feedback-admin.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/feedback-admin/feedback-admin.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/lock-reviewer/lock-reviewer.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/lock-reviewer/lock-reviewer.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/lock-reviewer/lock-reviewer.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/lock-reviewer/lock-reviewer.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/lock-reviewer/lock-reviewer.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/lock-reviewer/lock-reviewer.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/lock-reviewer/lock-reviewer.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/lock-reviewer/lock-reviewer.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/report-admin/report-admin.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/report-admin/report-admin.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/report-admin/report-admin.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/report-admin/report-admin.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/report-admin/report-admin.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/report-admin/report-admin.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/admin/report-admin/report-admin.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/report-admin/report-admin.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/app.module.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/app.module.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/company.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/company.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/company.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/company.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/detail-company/detail-company.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/detail-company/detail-company.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/detail-company/detail-company.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/detail-company/detail-company.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/detail-company/detail-company.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/detail-company/detail-company.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/detail-company/detail-company.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/detail-company/detail-company.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/stats/stats.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/stats/stats.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/stats/stats.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/stats/stats.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/stats/stats.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/stats/stats.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/stats/stats.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/stats/stats.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/view-history-company/view-history-company.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/view-history-company/view-history-company.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/view-history-company/view-history-company.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/view-history-company/view-history-company.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/view-history-company/view-history-company.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/view-history-company/view-history-company.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/company/view-history-company/view-history-company.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/view-history-company/view-history-company.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/home/home.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/home/home.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/home/home.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/home/home.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/home/home.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/home/home.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/home/home.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/home/home.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/login/login.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/login/login.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/login/login.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/login/login.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/login/login.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/login/login.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/login/login.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/login/login.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/menu/menu.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/menu/menu.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/menu/menu.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/menu/menu.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/menu/menu.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/menu/menu.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/menu/menu.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/menu/menu.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/register/register.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/register/register.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/register/register.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/register/register.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/register/register.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/register/register.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/register/register.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/register/register.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/detail/detail.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/detail/detail.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/detail/detail.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/detail/detail.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/detail/detail.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/detail/detail.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/detail/detail.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/detail/detail.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/feedback-reviewer/feedback-reviewer.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/feedback-reviewer/feedback-reviewer.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/feedback-reviewer/feedback-reviewer.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/feedback-reviewer/feedback-reviewer.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/feedback-reviewer/feedback-reviewer.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/feedback-reviewer/feedback-reviewer.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/feedback-reviewer/feedback-reviewer.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/feedback-reviewer/feedback-reviewer.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/register-company/register-company.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/register-company/register-company.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/register-company/register-company.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/register-company/register-company.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/register-company/register-company.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/register-company/register-company.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/register-company/register-company.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/register-company/register-company.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/reviewer.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/reviewer.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/reviewer.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/reviewer.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/reviewer.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/reviewer.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/reviewer.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/reviewer.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/update-info-reviewer/update-info-reviewer.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/update-info-reviewer/update-info-reviewer.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/update-info-reviewer/update-info-reviewer.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/update-info-reviewer/update-info-reviewer.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/update-info-reviewer/update-info-reviewer.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/update-info-reviewer/update-info-reviewer.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/update-info-reviewer/update-info-reviewer.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/update-info-reviewer/update-info-reviewer.component.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/view-history-reviewer/view-history-reviewer.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/view-history-reviewer/view-history-reviewer.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/view-history-reviewer/view-history-reviewer.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/view-history-reviewer/view-history-reviewer.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/view-history-reviewer/view-history-reviewer.component.spec.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/view-history-reviewer/view-history-reviewer.component.spec.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/reviewer/view-history-reviewer/view-history-reviewer.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/reviewer/view-history-reviewer/view-history-reviewer.component.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -141,6 +117,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/fe-reviewer/.angular-cli.json" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/app.module.ts" />
       </list>
     </option>
   </component>
@@ -196,6 +173,19 @@
               <item name="reviewer" type="462c0819:PsiDirectoryNode" />
               <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="reviewer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reviewer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -214,6 +204,11 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/node_modules/tslint" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/fe-reviewer/src/app/component" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -241,12 +236,12 @@
       <option name="presentableId" value="Default" />
       <updated>1554543260075</updated>
       <workItem from="1554543261434" duration="257000" />
-      <workItem from="1554543914809" duration="156000" />
+      <workItem from="1554543914809" duration="472000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="413000" />
+    <option name="totallyTimeSpent" value="729000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="821" extended-state="0" />
@@ -259,7 +254,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957748" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957748" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32957748" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -291,6 +286,25 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/tslint.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="2" lean-forward="true" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+            <element signature="e#172#219#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
