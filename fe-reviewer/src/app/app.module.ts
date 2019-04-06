@@ -23,6 +23,9 @@ import { FeedbackAdminComponent } from './component/admin/feedback-admin/feedbac
 import { CustomerCareAdminComponent } from './component/admin/customer-care-admin/customer-care-admin.component';
 import { LockReviewerComponent } from './component/admin/lock-reviewer/lock-reviewer.component';
 import { ComfirmCompanyComponent } from './component/admin/comfirm-company/comfirm-company.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import {Broadcaster} from './services/broadcaster/broadcaster.service';
+import {EventMessage} from './services/event_message/event-message.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -91,9 +94,13 @@ const customNotifierOptions: NotifierOptions = {
   ],
   imports: [
     BrowserModule,
-    NotifierModule.withConfig(customNotifierOptions)
+    NotifierModule.withConfig(customNotifierOptions),
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    Broadcaster,
+    EventMessage
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

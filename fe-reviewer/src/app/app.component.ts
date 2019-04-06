@@ -1,61 +1,37 @@
 import { Component } from '@angular/core';
-import { NotifierService } from 'angular-notifier';
+import { EventMessage} from './services/event_message/event-message.service';
+import { Broadcaster } from './services/broadcaster/broadcaster.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-  private notifier: NotifierService;
 
-  public constructor( notifier: NotifierService ) {
-    this.notifier = notifier;
+  message: any ;
+
+  constructor(private broadcaster: Broadcaster, private eventMessage: EventMessage) {}
+
+  ngOnInit() {
+    this.registerTypeBroadcast();
   }
 
-  public showNotification( type: string, message: string ): void {
-    this.notifier.notify( type, message );
+  registerTypeBroadcast() {
+    let setTimeInterval;
+    this.eventMessage.on()
+      .subscribe(checkLoading => {
+        // this.message = message;
+        if (checkLoading) {
+          this.message = 'Loading ';
+          setTimeInterval = setInterval(() => {
+            this.message = this.message.concat('.');
+          }, 500);
+        } else {
+          this.message = '';
+          clearInterval(setTimeInterval);
+        }
+      });
   }
 
-  public hideOldestNotification(): void {
-    this.notifier.hideOldest();
-  }
-
-  /**
-   * Hide newest notification
-   */
-  public hideNewestNotification(): void {
-    this.notifier.hideNewest();
-  }
-
-  /**
-   * Hide all notifications at once
-   */
-  public hideAllNotifications(): void {
-    this.notifier.hideAll();
-  }
-
-  /**
-   * Show a specific notification (with a custom notification ID)
-   *
-   * @param {string} type    Notification type
-   * @param {string} message Notification message
-   * @param {string} id      Notification ID
-   */
-  public showSpecificNotification( type: string, message: string, id: string ): void {
-    this.notifier.show( {
-      id,
-      message,
-      type
-    } );
-  }
-
-  /**
-   * Hide a specific notification (by a given notification ID)
-   *
-   * @param {string} id Notification ID
-   */
-  public hideSpecificNotification( id: string ): void {
-    this.notifier.hide( id );
-  }
 }
