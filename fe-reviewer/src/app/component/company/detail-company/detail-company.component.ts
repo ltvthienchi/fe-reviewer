@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-detail-company',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailCompanyComponent implements OnInit {
 
-  constructor() { }
+  idCompany;
+
+  constructor(private activatedRoute: ActivatedRoute, private location: Location) { }
 
   ngOnInit() {
+    this.idCompany = this.activatedRoute.snapshot.paramMap.get('id');
+  }
+
+  historyBack() {
+    this.location.back();
   }
 
 }
