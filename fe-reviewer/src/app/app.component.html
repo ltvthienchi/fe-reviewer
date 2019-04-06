@@ -1,10 +1,21 @@
-<div style="margin: 20px">
-  <router-outlet></router-outlet>
-  <h2>{{message}}</h2>
-  <!--<h2 *ngIf="message">Hello the World</h2>-->
+<div style="width: 100%; height: 100%">
+  <div style="margin: 20px; position: relative">
+    <router-outlet></router-outlet>
+
+    <!--<h2 *ngIf="message">Hello the World</h2>-->
+  </div>
+  <div style="margin: 20px">
+    <button routerLink="">Go to home</button>
+    <button routerLink="/company">Go to company</button>
+  </div>
+
+  <div *ngIf="message.length !== 0"
+  style="background: #26353573; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  position: absolute; top: 0; left: 0">
+    <h2 style="color: white">{{message}}</h2>
+  </div>
 </div>
-<div style="margin: 20px">
-  <button routerLink="">Go to home</button>
-  <button routerLink="/company">Go to company</button>
-</div>
+
+
 <notifier-container></notifier-container>

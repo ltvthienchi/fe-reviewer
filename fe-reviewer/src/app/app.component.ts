@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { EventMessage} from './services/event_message/event-message.service';
 import { Broadcaster } from './services/broadcaster/broadcaster.service';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,12 +9,18 @@ import { Broadcaster } from './services/broadcaster/broadcaster.service';
 })
 export class AppComponent {
 
-  message: any ;
+  message: any = '';
 
   constructor(private broadcaster: Broadcaster, private eventMessage: EventMessage) {}
 
   ngOnInit() {
     this.registerTypeBroadcast();
+    $('button').click(() => {
+      this.eventMessage.fire(true);
+      setTimeout(() => {
+        this.eventMessage.fire(false);
+      }, 2000);
+    })
   }
 
   registerTypeBroadcast() {
