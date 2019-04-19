@@ -26,6 +26,9 @@ import { ComfirmCompanyComponent } from './component/admin/comfirm-company/comfi
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import {Broadcaster} from './services/broadcaster/broadcaster.service';
 import {EventMessage} from './services/event_message/event-message.service';
+import {AuthGuardService} from './services/auth/auth-guard.service';
+import {AuthService} from './services/auth/auth.service';
+import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -68,6 +71,17 @@ const customNotifierOptions: NotifierOptions = {
   }
 };
 
+const JWT_Module_Options: JwtModuleOptions = {
+  config: {
+    tokenGetter: tokenGetter,
+    whitelistedDomains: ['localhost:4000']
+  }
+};
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,11 +109,14 @@ const customNotifierOptions: NotifierOptions = {
   imports: [
     BrowserModule,
     NotifierModule.withConfig(customNotifierOptions),
-    AppRoutingModule
+    AppRoutingModule,
+    JwtModule.forRoot(JWT_Module_Options)
   ],
   providers: [
     Broadcaster,
-    EventMessage
+    EventMessage,
+    AuthGuardService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
