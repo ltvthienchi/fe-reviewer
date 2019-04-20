@@ -1,60 +1,14 @@
-<app-menu></app-menu>
-<div class="container-fuild main">
-  <div class="row">
-    <div class="col-3">
-      <div class="container-rank">
-        <div class="top-company">
-          <p class="title">Top company</p>
-          <p class="content">
-            <span class="stt">1st</span>
-            <span class="name">Apple</span>
-          </p>
-          <p class="content">
-            <span class="stt">2nd</span>
-            <span class="name">Samsung</span>
-          </p>
-          <p class="content">
-            <span class="stt">3rd</span>
-            <span class="name">Microsoft</span>
-          </p>
-        </div>
-        <div class="hot-tag">
-          <p class="title">Hot tag</p>
-          <p class="content">
-            <span class="badge badge-primary">Iphone</span>
-            <span class="badge badge-secondary">viet nam vo dich</span>
-            <span class="badge badge-success">suzuki</span>
-            <span class="badge badge-danger">luu dan note 7</span>
-            <span class="badge badge-warning">vinfast</span>
-            <span class="badge badge-info">honda</span>
-            <span class="badge badge-dark">google</span>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-6">
-      <router-outlet></router-outlet>
-
-      <div style="margin: 20px">
-
-        <button (click)="setToken()">Set token</button>
-        <button (click)="removeToken()">Remove token</button>
-        <button routerLink="">Go to home</button>
-        <button routerLink="/company">Go to company</button>
-      </div>
-    </div>
-
-    <div class="col-3">
-      <div class="container-rank">
-        <div class="top-company">
-          <p class="title">Quang cao</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div>
+  <router-outlet></router-outlet>
   <div *ngIf="message.length !== 0" class="loading">
     <h2 style="color: white">{{message}}</h2>
   </div>
 </div>
 <notifier-container></notifier-container>
+
+<!--<div style="margin: 20px">-->
+<!--<button (click)="setToken()">Set token</button>-->
+<!--<button (click)="removeToken()">Remove token</button>-->
+<!--<button routerLink="">Go to home</button>-->
+<!--<button routerLink="/company">Go to company</button>-->
+<!--</div>-->

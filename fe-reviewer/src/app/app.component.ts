@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { EventMessage} from './services/event_message/event-message.service';
 import { Broadcaster } from './services/broadcaster/broadcaster.service';
 import * as $ from 'jquery';
@@ -8,13 +8,16 @@ import {Router} from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   message: any = '';
+  linkRouter;
 
   constructor(private broadcaster: Broadcaster, private eventMessage: EventMessage, private router: Router) {}
 
   ngOnInit() {
+    console.log(this.router.url);
+    console.log(window.location.toString());
     this.registerTypeBroadcast();
     // $('button').click(() => {
     //   this.eventMessage.fire(true);

@@ -9,15 +9,41 @@ import {DetailCompanyComponent} from '../component/company/detail-company/detail
 import {StatsComponent} from '../component/company/stats/stats.component';
 import {ViewHistoryCompanyComponent} from '../component/company/view-history-company/view-history-company.component';
 import {LoginComponent} from '../component/login/login.component';
+import {MenuComponent} from '../component/menu/menu.component';
+import {UserSideComponent} from '../component/side/user-side/user-side.component';
+import {AdminComponent} from '../component/admin/admin.component';
+import {AdminSideComponent} from '../component/side/admin-side/admin-side.component';
+import {LoginSideComponent} from '../component/side/login-side/login-side.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  // {path: 'company', component: CompanyComponent, canActivate: [AuthGuard]},
-  // {path: 'company/detail/:id', component: DetailCompanyComponent, canActivate: [AuthGuard]},
-  // {path: 'company/stats', component: StatsComponent, canActivate: [AuthGuard]},
-  // {path: 'company/view-history', component: ViewHistoryCompanyComponent, canActivate: [AuthGuard]}
+  {
+    path: '',
+    component: UserSideComponent,
+    children: [
+      { path: '', redirectTo: '/home', pathMatch: 'full'},
+      { path: 'home', component: HomeComponent },
+      { path: 'company', component: CompanyComponent },
+      { path: 'company/detail/:id', component: DetailCompanyComponent },
+      { path: 'company/view-history', component: ViewHistoryCompanyComponent }
+    ]
+  },
+  {
+    path: '',
+    component: LoginSideComponent,
+    children: [
+      { path: '', redirectTo: '/login', pathMatch: 'full'},
+      { path: 'login', component: LoginComponent }
+    ]
+  },
+  {
+    path: '',
+    component: AdminSideComponent,
+    children: [
+      { path: '', redirectTo: '/admin', pathMatch: 'full'},
+      { path: 'admin', component: AdminComponent }
+    ]
+  },
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({

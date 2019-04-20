@@ -19,3 +19,12 @@ body {
   top: 0;
   left: 0
 }
+
+.w-80 {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.p-main {
+  padding: 0 20px;
+}

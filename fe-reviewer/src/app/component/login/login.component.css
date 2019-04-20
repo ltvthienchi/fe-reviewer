@@ -1,0 +1,50 @@
+.bg-main {
+  background-color: darkgreen;
+}
+
+
+.menu {
+  width: 80%;
+  margin: 0 auto 15px auto;
+}
+
+.menu .form-control {
+  width: 100%;
+}
+
+.nav-link, .navbar-brand {
+  color: white !important;
+}
+
+.menu-avar {
+  width: 50px;
+  height: 50px;
+  border-radius: 90px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.menu .nav-link:hover {
+  background: green;
+  border-radius: 5px;
+}
+
+.menu .nav-link.dropdown-toggle {
+  background: none;
+}
+
+.menu .nav-link.dropdown-toggle img {
+  margin-right: 10px;
+}
+
+.menu .br-l {
+  margin: 0 15px;
+}
+
+.br-l {
+  border-left: 1px solid silver;
+}

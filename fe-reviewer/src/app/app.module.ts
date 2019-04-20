@@ -29,6 +29,9 @@ import {EventMessage} from './services/event_message/event-message.service';
 import {AuthGuardService} from './services/auth/auth-guard.service';
 import {AuthService} from './services/auth/auth.service';
 import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
+import { UserSideComponent } from './component/side/user-side/user-side.component';
+import { AdminSideComponent } from './component/side/admin-side/admin-side.component';
+import { LoginSideComponent } from './component/side/login-side/login-side.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -104,7 +107,10 @@ export function tokenGetter() {
     FeedbackAdminComponent,
     CustomerCareAdminComponent,
     LockReviewerComponent,
-    ComfirmCompanyComponent
+    ComfirmCompanyComponent,
+    UserSideComponent,
+    AdminSideComponent,
+    LoginSideComponent,
   ],
   imports: [
     BrowserModule,
