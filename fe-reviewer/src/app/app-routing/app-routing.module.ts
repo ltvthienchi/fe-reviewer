@@ -14,6 +14,7 @@ import {UserSideComponent} from '../component/side/user-side/user-side.component
 import {AdminComponent} from '../component/admin/admin.component';
 import {AdminSideComponent} from '../component/side/admin-side/admin-side.component';
 import {LoginSideComponent} from '../component/side/login-side/login-side.component';
+import {SignUpComponent} from '../component/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,8 @@ const routes: Routes = [
     component: LoginSideComponent,
     children: [
       { path: '', redirectTo: '/login', pathMatch: 'full'},
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignUpComponent }
     ]
   },
   {

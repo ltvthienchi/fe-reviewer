@@ -32,6 +32,7 @@ import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
 import { UserSideComponent } from './component/side/user-side/user-side.component';
 import { AdminSideComponent } from './component/side/admin-side/admin-side.component';
 import { LoginSideComponent } from './component/side/login-side/login-side.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -111,6 +112,8 @@ export function tokenGetter() {
     UserSideComponent,
     AdminSideComponent,
     LoginSideComponent,
+    ComfirmCompanyComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
