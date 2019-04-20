@@ -26,5 +26,29 @@ body {
 }
 
 .p-main {
-  padding: 0 20px;
+  margin: 15px 20px 0 20px;
+}
+
+.txt-blue {
+  color: #365899;
+}
+
+.bg-blue {
+  background: #365899;
+}
+
+.txt-green {
+  color: #25a225;
+}
+
+.bg-green {
+  background: #25a225;
+}
+
+.bg-main {
+  background: #17a2b8;
+}
+
+.txt-main {
+  color: #17a2b8;
 }
