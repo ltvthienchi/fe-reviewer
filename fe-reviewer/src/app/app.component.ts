@@ -50,7 +50,7 @@ export class AppComponent {
 
   removeToken() {
     localStorage.removeItem('token');
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
 }

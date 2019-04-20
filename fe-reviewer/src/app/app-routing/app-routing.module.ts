@@ -11,7 +11,7 @@ import {ViewHistoryCompanyComponent} from '../component/company/view-history-com
 import {LoginComponent} from '../component/login/login.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   // {path: 'company', component: CompanyComponent, canActivate: [AuthGuard]},
