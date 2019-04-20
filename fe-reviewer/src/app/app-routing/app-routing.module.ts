@@ -15,6 +15,7 @@ import {AdminComponent} from '../component/admin/admin.component';
 import {AdminSideComponent} from '../component/side/admin-side/admin-side.component';
 import {LoginSideComponent} from '../component/side/login-side/login-side.component';
 import {SignUpComponent} from '../component/sign-up/sign-up.component';
+import { UserUpdatePageComponent } from '../component/home/user-update-page/user-update-page.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'company', component: CompanyComponent },
       { path: 'company/detail/:id', component: DetailCompanyComponent },
-      { path: 'company/view-history', component: ViewHistoryCompanyComponent }
+      { path: 'company/view-history', component: ViewHistoryCompanyComponent},
+      { path: 'user-update-page', component: UserUpdatePageComponent}
     ]
   },
   {
