@@ -3,31 +3,56 @@
   margin: 0 auto;
 }
 
-.container-post, .container-rank {
-  border: 1px solid silver;
-  border-radius: 5px;
-  background: white;
-}
+/*Header Post*/
 
 .header {
   padding: 10px;
 }
 
-.header .title {
+.header .avatar {
+  float: left;
+  width: 8%;
+}
+
+.header .avatar img {
+  width: 100%;
+  border-radius: 90px;
+  border: 1px solid silver;
+}
+
+.header .info {
+  margin-left: 10px ;
+  float: left;
+  width: 90%;
+}
+
+.header .info .title {
   font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 5px;
+  margin: 0;
 }
 
-.header .content {
-  margin: 10px 0 0 0;
+.header .info .title-des {
+  font-size: 14px;
+  color: silver;
+  margin: 0;
+  line-height: 1;
 }
+
+/*Body Post*/
 
 .body {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  padding: 10px;
+  /*border-top: 1px solid black;*/
+  /*border-bottom: 1px solid black;*/
+  /*padding: 10px;*/
+}
+
+
+.body .content {
+  /*width: 100%;*/
+  margin: 0 10px 10px 10px;
+  text-align: justify;
 }
 
 .image {
