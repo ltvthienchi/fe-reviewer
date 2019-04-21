@@ -33,6 +33,7 @@ import { UserSideComponent } from './component/side/user-side/user-side.componen
 import { AdminSideComponent } from './component/side/admin-side/admin-side.component';
 import { LoginSideComponent } from './component/side/login-side/login-side.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { MenuLoginComponent } from './component/menu-login/menu-login.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -113,7 +114,8 @@ export function tokenGetter() {
     AdminSideComponent,
     LoginSideComponent,
     ComfirmCompanyComponent,
-    SignUpComponent
+    SignUpComponent,
+    MenuLoginComponent
   ],
   imports: [
     BrowserModule,
