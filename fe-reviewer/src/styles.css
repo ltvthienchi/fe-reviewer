@@ -46,7 +46,7 @@ body {
 }
 
 .bg-main {
-  background: #17a2b8;
+  background: #17a2b8 !important;
 }
 
 .txt-main {

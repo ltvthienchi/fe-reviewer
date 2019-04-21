@@ -1,0 +1,258 @@
+body{margin-top:20px;}
+
+.profile {
+  width: 100%;
+  position: relative;
+  background: #FFF;
+  border: 1px solid #D5D5D5;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.profile .image {
+  display: block;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  text-align: center;
+  border: 5px solid #FFF;
+}
+
+.profile .user {
+  position: relative;
+  padding: 0px 5px 5px;
+}
+
+.profile .user .avatar {
+  position: absolute;
+  left: 20px;
+  top: -85px;
+  z-index: 2;
+}
+
+.profile .user h2 {
+  font-size: 16px;
+  line-height: 20px;
+  display: block;
+  float: left;
+  margin: 4px 0px 0px 135px;
+  font-weight: bold;
+}
+
+.profile .user .actions {
+  float: right;
+}
+
+.profile .user .actions .btn {
+  margin-bottom: 0px;
+}
+
+.profile .info {
+  float: left;
+  margin-left: 20px;
+}
+
+.img-profile{
+    height:100px;
+    width:100px;
+}
+
+.img-cover{
+    width:800px;
+    height:300px;
+}
+
+@media (max-width: 768px) {
+  .btn-responsive {
+    padding:2px 4px;
+    font-size:80%;
+    line-height: 1;
+    border-radius:3px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .btn-responsive {
+    padding:4px 9px;
+    font-size:90%;
+    line-height: 1.2;
+  }
+}
+.container-account100 {
+    width: 100%;  
+    min-height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+  }
+
+  .w-80 {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  /*Header Post*/
+  
+  .header {
+    padding: 10px;
+  }
+  
+  .header .avatar {
+    float: left;
+    width: 8%;
+  }
+  
+  .header .avatar img {
+    width: 100%;
+    border-radius: 90px;
+    border: 1px solid silver;
+  }
+  
+  .header .info {
+    margin-left: 10px ;
+    float: left;
+    width: 90%;
+  }
+  
+  .header .info .title {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  
+  .header .info .title-des {
+    font-size: 14px;
+    color: silver;
+    margin: 0;
+    line-height: 1;
+  }
+  
+  /*Body Post*/
+  
+  .body {
+    /*border-top: 1px solid black;*/
+    /*border-bottom: 1px solid black;*/
+    /*padding: 10px;*/
+  }
+  
+  
+  .body .content {
+    /*width: 100%;*/
+    margin: 0 10px 10px 10px;
+    text-align: justify;
+  }
+  
+  .image {
+    width: 100%;
+  }
+  
+  .image img {
+    width: 100%;
+  }
+  
+  .star {
+    padding-bottom: 10px;
+    border-bottom: 1px solid silver;
+  }
+  
+  .rating {
+    padding: 10px 10px 0 10px;
+  }
+  
+  .rating .content {
+    text-align: center;
+    font-size: 20px;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .footer {
+    padding: 10px;
+  }
+  
+  .content-like {
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+  }
+  
+  .content-like p {
+    margin: 10px 0;
+  }
+  
+  .content-like .title {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .footer .input {
+  
+  }
+  
+  .footer .input textarea {
+    border: none;
+    width: 100%;
+    padding: 5px;
+  }
+  
+  /**/
+  
+  .container-fuild.main{
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .container-post, .container-rank {
+    border: 1px solid silver;
+    border-radius: 5px;
+    background: white;
+  }
+  
+  .top-company {
+    height: 100%;
+    padding: 10px;
+  }
+  
+  .top-company .title, .hot-tag .title {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    border-bottom: 1px solid silver;
+    margin-bottom: 10px;
+  }
+  
+  .top-company .content {
+  
+  }
+  
+  .top-company .content .stt {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  
+  .hot-tag {
+    border-top: 1px solid black;
+    padding: 10px;
+  }
+  
+  .hot-tag span {
+    margin: 5px;
+  }
+  
+  .badge {
+    font-size: 14px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  

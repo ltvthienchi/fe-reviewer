@@ -323,6 +323,7 @@ textarea.input100 {
   color: #17a2b8;
 }
 
+
 .account100-form-btn {
   display: -webkit-box;
   display: -webkit-flex;
@@ -334,7 +335,6 @@ textarea.input100 {
   padding: 0 20px;
   min-width: 160px;
   height: 50px;
-  background-color: #57b846;
   border-radius: 25px;
 
   font-family: Poppins-Regular;
