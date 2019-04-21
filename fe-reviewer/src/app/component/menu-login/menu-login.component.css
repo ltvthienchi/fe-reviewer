@@ -1,0 +1,130 @@
+.container-fuild.main{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.container-post, .container-rank {
+  border: 1px solid silver;
+  border-radius: 5px;
+  background: white;
+}
+
+.header {
+  padding: 10px;
+}
+
+.header .title {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.header .content {
+  margin: 10px 0 0 0;
+}
+
+.body {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+.image {
+  width: 100%;
+}
+
+.image img {
+  width: 100%;
+}
+
+.star {
+  padding-bottom: 10px;
+  border-bottom: 1px solid silver;
+}
+
+.rating {
+  padding: 10px 10px 0 10px;
+}
+
+.rating .content {
+  text-align: center;
+  font-size: 20px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.footer {
+  padding: 10px;
+}
+
+.content-like {
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+}
+
+.content-like p {
+  margin: 10px 0;
+}
+
+.content-like .title {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.footer .input {
+
+}
+
+.footer .input textarea {
+  border: none;
+  width: 100%;
+  padding: 5px;
+}
+
+.menu {
+  width: 80%;
+  margin: 0 auto 0px auto;
+}
+
+.menu .form-control {
+  width: 100%;
+}
+
+.nav-link, .navbar-brand {
+  color: white !important;
+}
+
+.menu-avar {
+  width: 50px;
+  height: 50px;
+  border-radius: 90px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.menu .nav-link:hover {
+  background: green;
+  border-radius: 5px;
+}
+
+.menu .nav-link.dropdown-toggle {
+  background: none;
+}
+
+.menu .nav-link.dropdown-toggle img {
+  margin-right: 10px;
+}
+
+.menu .br-l {
+  margin: 0 15px;
+}
+
+.br-l {
+  border-left: 1px solid silver;
+}
