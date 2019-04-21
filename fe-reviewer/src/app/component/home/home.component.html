@@ -39,7 +39,7 @@
           <img src="../../../assets/image/avar-pay.png" alt="avatar"/>
         </div>
         <div class="info">
-          <p class="title blue">Google</p>
+          <p class="title txt-main">Google</p>
           <p class="title-des">Top company</p>
           <!--<span class="badge badge-primary">Iphone</span> <span class="badge badge-secondary">viet nam vo dich</span>-->
         </div>
@@ -53,53 +53,84 @@
           </p>
         </div>
         <div class="image">
-          <img src="../../../assets/wallpaper/loginWall.jpg" alt="image">
+          <img src="../../../assets/wallpaper/loginWall.jpg" alt="image" id="content-image-1">
         </div>
-
-        <!--<div class="star">-->
-          <!--<i class="far fa-star"></i>-->
-          <!--<i class="far fa-star"></i>-->
-          <!--<i class="far fa-star"></i>-->
-          <!--<i class="far fa-star"></i>-->
-          <!--<i class="far fa-star"></i>-->
-        <!--</div>-->
-
         <div class="rating">
           <div class="row">
-            <div class="col-4">
-              <p class="content" (click)="showNotification( 'default', 'Cam on da danh gia' )">
-                <i class="far fa-star"></i> Danh gia
-              </p>
+
+            <div class="col-2">
+              <div class="number-rating-total">
+                <span>10.0</span>
+              </div>
             </div>
-            <div class="col-4">
-              <p class="content"><i class="fas fa-comments"></i> Binh luan</p>
+
+            <div class="col-2">
+              <div class="number-rating">
+                <p class="point">10.0</p>
+                <p class="description">Display</p>
+              </div>
             </div>
-            <div class="col-4">
-              <p class="content"><i class="fas fa-share"></i> Chia se</p>
+
+            <div class="col-2">
+              <div class="number-rating">
+                <p class="point">10.0</p>
+                <p class="description">Performance</p>
+              </div>
+            </div>
+
+            <div class="col-2">
+              <div class="number-rating">
+                <p class="point">10.0</p>
+                <p class="description">Camera</p>
+              </div>
+            </div>
+
+            <div class="col-2">
+              <div class="number-rating">
+                <p class="point">10.0</p>
+                <p class="description">Battery</p>
+              </div>
+            </div>
+
+            <div class="col-2">
+              <div class="number-rating comment">
+                <p class="point">10</p>
+                <p class="description">Comment</p>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
 
-
       <div class="footer">
-        <div class="content-like">
-          <p>
-            <span class="title">Nguyen Van A</span>
-            <span class="context">Lorem ipsum dolor sit amet</span>
-          </p>
+        <div class="group-button">
+          <div class="row">
+
+            <div class="col-4">
+              <p class="btn-post">Ratings</p>
+            </div>
+            <div class="col-4">
+              <p class="btn-post">Comments</p>
+            </div>
+            <div class="col-4">
+              <p class="btn-post">Compare</p>
+            </div>
+          </div>
+          <!--<p>-->
+            <!--<span class="title">Nguyen Van A</span>-->
+            <!--<span class="context">Lorem ipsum dolor sit amet</span>-->
+          <!--</p>-->
         </div>
-        <div class="input">
-          <textarea placeholder="Them binh luan"></textarea>
-        </div>
+        <!--<div class="input">-->
+          <!--<textarea placeholder="Them binh luan"></textarea>-->
+        <!--</div>-->
       </div>
     </div>
 
   </div>
 
   <div class="col-3">
-    <div class="container-rank">
+    <div class="container-rank" id="quang-cao">
       <div class="top-company">
         <p class="title">Quang cao</p>
       </div>
@@ -107,4 +138,32 @@
   </div>
 </div>
 
+<div class="container-ratting">
+  <div class="row">
+    <div class="col-3">
+      Battery
+    </div>
+    <div class="col-9">
+      <mat-card class="result">
+        <mat-card-content>
+          <h2 class="example-h2">Result</h2>
 
+          <!--<mat-slider-->
+            <!--class="example-margin"-->
+            <!--[disabled]="disabled"-->
+            <!--[invert]="invert"-->
+            <!--[max]="max"-->
+            <!--[min]="min"-->
+            <!--[step]="step"-->
+            <!--[thumb-label]="thumbLabel"-->
+            <!--[tick-interval]="tickInterval"-->
+            <!--[(ngModel)]="value"-->
+            <!--[vertical]="vertical">-->
+          <!--</mat-slider>-->
+        </mat-card-content>
+      </mat-card>
+      <!--<mat-slider min="1" max="5" step="0.5"  style="width: 100%" [(ngModel)]="myValue"></mat-slider>-->
+      <!--<ng5-slider [(value)]="value" [options]="options"></ng5-slider>-->
+    </div>
+  </div>
+</div>

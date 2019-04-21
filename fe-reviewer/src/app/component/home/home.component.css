@@ -3,6 +3,12 @@
   margin: 0 auto;
 }
 
+.container-post, .container-rank {
+  border: 1px solid silver;
+  border-radius: 5px;
+  background: white;
+}
+
 /*Header Post*/
 
 .header {
@@ -50,9 +56,12 @@
 
 
 .body .content {
-  /*width: 100%;*/
   margin: 0 10px 10px 10px;
   text-align: justify;
+}
+
+.content p {
+  margin: 0;
 }
 
 .image {
@@ -60,7 +69,10 @@
 }
 
 .image img {
-  width: 100%;
+  /*width: 100%;*/
+  width: 640px;
+  height: 360px;
+
 }
 
 .star {
@@ -69,57 +81,82 @@
 }
 
 .rating {
-  padding: 10px 10px 0 10px;
+  padding: 10px 10px 0px 10px;
 }
 
-.rating .content {
-  text-align: center;
-  font-size: 20px;
+.rating .number-rating {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.rating .number-rating p {
   margin: 0;
-  cursor: pointer;
 }
 
-.footer {
-  padding: 10px;
-}
-
-.content-like {
-  border-top: 1px solid silver;
-  border-bottom: 1px solid silver;
-}
-
-.content-like p {
-  margin: 10px 0;
-}
-
-.content-like .title {
-  font-size: 14px;
+.rating .number-rating .point {
+  font-size: 20px;
+  color: #17a2b8;
   font-weight: bold;
-  text-transform: uppercase;
 }
 
-.footer .input {
-
+.rating .number-rating .description {
+  font-size: 12px;
+  color: #777;
+  line-height: 0.8;
 }
 
-.footer .input textarea {
-  border: none;
-  width: 100%;
-  padding: 5px;
+.rating .number-rating.comment {
+  display: inline-block;
 }
 
-/**/
 
-.container-fuild.main{
-  width: 80%;
+.rating .number-rating.comment .point {
+  font-size: 20px;
+  color: black;
+  font-weight: normal;
+  text-align: center;
+}
+
+.rating .number-rating.comment .description {
+  text-align: center;
+}
+
+.rating .number-rating-total {
+  background: #17a2b8;
+  color: white;
+  height: 100%;
+  width: 46px;
+  border-radius: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
 }
 
-.container-post, .container-rank {
-  border: 1px solid silver;
-  border-radius: 5px;
-  background: white;
+/*Footer Post*/
+
+.footer {
+  padding: 10px 10px 0 10px;
 }
+
+.group-button {
+  border-top: 1px solid silver;
+  /*border-bottom: 1px solid silver;*/
+}
+
+.group-button .btn-post {
+  text-align: center;
+  margin: 5px auto;
+  padding: 7px 0;
+}
+
+.group-button .btn-post:hover {
+  background: #f8f8f8;
+  cursor: pointer;
+}
+
+/* Top company */
 
 .top-company {
   height: 100%;
@@ -157,4 +194,15 @@
   font-size: 14px;
   padding: 10px;
   cursor: pointer;
+}
+
+/* Ratting */
+
+.container-ratting {
+  padding: 10px;
+  height: 429px;
+  position: absolute;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid silver;
+  background: white;
 }

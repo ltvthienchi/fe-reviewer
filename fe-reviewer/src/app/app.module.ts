@@ -35,6 +35,11 @@ import { LoginSideComponent } from './component/side/login-side/login-side.compo
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UserUpdatePageComponent } from './component/home/user-update-page/user-update-page.component';
 import { MenuLoginComponent } from './component/menu-login/menu-login.component';
+import {Ng5SliderModule} from 'ng5-slider';
+import {MatSliderModule, MatFormFieldModule, MatCardModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule} from '@angular/forms';
+
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -123,7 +128,16 @@ export function tokenGetter() {
     BrowserModule,
     NotifierModule.withConfig(customNotifierOptions),
     AppRoutingModule,
-    JwtModule.forRoot(JWT_Module_Options)
+    JwtModule.forRoot(JWT_Module_Options),
+    Ng5SliderModule,
+    MatSliderModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatCardModule
+  ],
+  exports: [
+    MatSliderModule
   ],
   providers: [
     Broadcaster,
