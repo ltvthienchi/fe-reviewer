@@ -35,6 +35,8 @@ import { LoginSideComponent } from './component/side/login-side/login-side.compo
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UserUpdatePageComponent } from './component/home/user-update-page/user-update-page.component';
 import { MenuLoginComponent } from './component/menu-login/menu-login.component';
+import { CompareComponent } from './component/compare/compare.component';
+import { TopCompanyComponent } from './component/top-company/top-company.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -117,7 +119,9 @@ export function tokenGetter() {
     ComfirmCompanyComponent,
     SignUpComponent,
     UserUpdatePageComponent,
-    MenuLoginComponent
+    MenuLoginComponent,
+    CompareComponent,
+    TopCompanyComponent
   ],
   imports: [
     BrowserModule,
