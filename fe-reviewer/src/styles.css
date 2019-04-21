@@ -2,8 +2,9 @@
   font-size: 14px;
 }
 
-body {
+html, body {
   background: #e9ebee;
+  height: 100%;
 }
 
 /*CSS Loading*/
