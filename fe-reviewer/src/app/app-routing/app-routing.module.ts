@@ -15,9 +15,9 @@ import {AdminComponent} from '../component/admin/admin.component';
 import {AdminSideComponent} from '../component/side/admin-side/admin-side.component';
 import {LoginSideComponent} from '../component/side/login-side/login-side.component';
 import {SignUpComponent} from '../component/sign-up/sign-up.component';
-import { UserUpdatePageComponent } from '../component/home/user-update-page/user-update-page.component';
 import { UserPageComponent } from '../component/reviewer/user-page/user-page.component';
 import { ReviewerComponent } from '../component/reviewer/reviewer.component';
+import { ViewHistoryReviewerComponent } from '../component/reviewer/view-history-reviewer/view-history-reviewer.component';
 
 const routes: Routes = [
   {
@@ -31,7 +31,7 @@ const routes: Routes = [
       { path: 'company', component: CompanyComponent },
       { path: 'company/detail/:id', component: DetailCompanyComponent },
       { path: 'company/view-history', component: ViewHistoryCompanyComponent},
-      { path: 'user-update-page', component: UserUpdatePageComponent},
+      { path: 'view-history-reviewer', component: ViewHistoryReviewerComponent},
     ]
   },
  
