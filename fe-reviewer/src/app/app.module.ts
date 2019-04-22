@@ -35,11 +35,10 @@ import { LoginSideComponent } from './component/side/login-side/login-side.compo
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UserUpdatePageComponent } from './component/home/user-update-page/user-update-page.component';
 import { MenuLoginComponent } from './component/menu-login/menu-login.component';
-import {Ng5SliderModule} from 'ng5-slider';
-import {MatSliderModule, MatFormFieldModule, MatCardModule} from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
-
+import { MatSliderModule, MatFormFieldModule, MatCardModule, MatCheckboxModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { ManageAdminComponent } from './component/admin/manage-admin/manage-admin.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -122,19 +121,20 @@ export function tokenGetter() {
     ComfirmCompanyComponent,
     SignUpComponent,
     UserUpdatePageComponent,
-    MenuLoginComponent
+    MenuLoginComponent,
+    ManageAdminComponent
   ],
   imports: [
     BrowserModule,
     NotifierModule.withConfig(customNotifierOptions),
     AppRoutingModule,
     JwtModule.forRoot(JWT_Module_Options),
-    Ng5SliderModule,
     MatSliderModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
   ],
   exports: [
     MatSliderModule

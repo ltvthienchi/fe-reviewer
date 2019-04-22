@@ -3,7 +3,9 @@ import { NotifierService } from 'angular-notifier';
 import { Broadcaster } from '../../services/broadcaster/broadcaster.service';
 import { EventMessage } from '../../services/event_message/event-message.service';
 import * as $ from 'jquery';
-import { Options } from 'ng5-slider';
+
+import { arrPostProduct } from '../../services/local_database/post-product';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,29 +17,39 @@ export class HomeComponent implements OnInit {
 
   private notifier: NotifierService;
   toggleButton: boolean = false;
+  toggleRating = true;
 
-  myValue: 1;
-  value: number = 5;
-  options: Options = {
-    floor: 0,
-    ceil: 10,
-    step: 1,
-    showTicks: true,
-    showTicksValues: true
-  };
+  invert = false;
+  max = 10;
+  min = 1;
+  step = 1;
+  thumbLabel = true;
+  value = 1;
+
+  myData = arrPostProduct;
 
   public constructor(notifier: NotifierService, private broad: Broadcaster, private eventMessage: EventMessage) {
     this.notifier = notifier;
   }
 
   ngOnInit() {
-    // let witdhQC = $('#quang-cao').width();
-    let offsetLeft = $('#quang-cao').offset()['left'] - 31;
-    let offsetTop = $('#content-image-1').offset()['top'] + 7;
-    let width = $('#quang-cao').width();
-    $('.container-ratting').offset({top: offsetTop, left: offsetLeft}).width(width + 30);
-    console.log(offsetLeft, offsetTop);
-    // $('.container-ratting').width(witdhQC);
+
+  }
+
+  toggleRatings(id) {
+    console.log(id);
+    if (this.toggleRating) {
+      let idItem = '#' + id;
+      $('.container-ratting').css('display', 'inline');
+      let offsetLeft = $('#quang-cao').offset()['left'] - 30;
+      let offsetTop = $(idItem).offset()['top'] ;
+      let width = $('#quang-cao').width();
+      $('.container-ratting').offset({top: offsetTop, left: offsetLeft}).width(width + 30);
+      console.log(offsetLeft, offsetTop);
+    } else {
+      $('.container-ratting').css('display', 'none');
+    }
+    this.toggleRating = !this.toggleRating
   }
 
   sendMess() {

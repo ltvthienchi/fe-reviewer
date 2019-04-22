@@ -1,3 +1,4 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 * {
   /*font-size: 14px;*/
 }
@@ -57,4 +58,10 @@ span:active {
 
 .txt-main {
   color: #17a2b8;
+}
+
+@media all and (max-width: 576px) {
+  .p-main {
+    margin: 15px 5px 0 5px;
+  }
 }

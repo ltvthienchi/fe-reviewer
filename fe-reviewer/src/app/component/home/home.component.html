@@ -1,5 +1,5 @@
 <div class="row p-main">
-  <div class="col-3">
+  <div class="col-sm-3">
     <div class="container-rank">
       <div class="top-company">
         <p class="title">Top company</p>
@@ -31,15 +31,15 @@
     </div>
   </div>
 
-  <div class="col-6">
+  <div class="col-sm-6">
 
-    <div class="container-post">
+    <div class="container-post" *ngFor="let item of myData">
       <div class="header clearfix">
         <div class="avatar">
-          <img src="../../../assets/image/avar-pay.png" alt="avatar"/>
+          <img [src]="item.avatar" alt="avatar"/>
         </div>
         <div class="info">
-          <p class="title txt-main">Google</p>
+          <p class="title txt-main">{{item.nameCompany}}</p>
           <p class="title-des">Top company</p>
           <!--<span class="badge badge-primary">Iphone</span> <span class="badge badge-secondary">viet nam vo dich</span>-->
         </div>
@@ -48,12 +48,10 @@
 
       <div class="body">
         <div class="content">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non excepturi eum ab commodi eius accusantium modi ullam, nisi sint, iusto quis inventore quae eos molestias. Iure eaque, mollitia molestias maxime!
-          </p>
+          <p>{{item.content}}</p>
         </div>
         <div class="image">
-          <img src="../../../assets/wallpaper/loginWall.jpg" alt="image" id="content-image-1">
+          <img [src]="item.image" alt="image" [id]="'contentImage' + item.idPostProduct">
         </div>
         <div class="rating">
           <div class="row">
@@ -66,35 +64,35 @@
 
             <div class="col-2">
               <div class="number-rating">
-                <p class="point">10.0</p>
+                <p class="point">{{item.avgDisplay}}</p>
                 <p class="description">Display</p>
               </div>
             </div>
 
             <div class="col-2">
               <div class="number-rating">
-                <p class="point">10.0</p>
+                <p class="point">{{item.avgPerformance}}</p>
                 <p class="description">Performance</p>
               </div>
             </div>
 
             <div class="col-2">
               <div class="number-rating">
-                <p class="point">10.0</p>
+                <p class="point">{{item.avgCamera}}</p>
                 <p class="description">Camera</p>
               </div>
             </div>
 
             <div class="col-2">
               <div class="number-rating">
-                <p class="point">10.0</p>
+                <p class="point">{{item.avgBattery}}</p>
                 <p class="description">Battery</p>
               </div>
             </div>
 
             <div class="col-2">
               <div class="number-rating comment">
-                <p class="point">10</p>
+                <p class="point">{{item.totalComment}}</p>
                 <p class="description">Comment</p>
               </div>
             </div>
@@ -107,7 +105,7 @@
           <div class="row">
 
             <div class="col-4">
-              <p class="btn-post">Ratings</p>
+              <p class="btn-post" (click)="toggleRatings('contentImage' + item.idPostProduct)">Ratings</p>
             </div>
             <div class="col-4">
               <p class="btn-post">Comments</p>
@@ -126,10 +124,9 @@
         <!--</div>-->
       </div>
     </div>
-
   </div>
 
-  <div class="col-3">
+  <div class="col-sm-3">
     <div class="container-rank" id="quang-cao">
       <div class="top-company">
         <p class="title">Quang cao</p>
@@ -139,31 +136,50 @@
 </div>
 
 <div class="container-ratting">
-  <div class="row">
-    <div class="col-3">
-      Battery
-    </div>
-    <div class="col-9">
-      <mat-card class="result">
-        <mat-card-content>
-          <h2 class="example-h2">Result</h2>
 
-          <!--<mat-slider-->
-            <!--class="example-margin"-->
-            <!--[disabled]="disabled"-->
-            <!--[invert]="invert"-->
-            <!--[max]="max"-->
-            <!--[min]="min"-->
-            <!--[step]="step"-->
-            <!--[thumb-label]="thumbLabel"-->
-            <!--[tick-interval]="tickInterval"-->
-            <!--[(ngModel)]="value"-->
-            <!--[vertical]="vertical">-->
-          <!--</mat-slider>-->
-        </mat-card-content>
-      </mat-card>
-      <!--<mat-slider min="1" max="5" step="0.5"  style="width: 100%" [(ngModel)]="myValue"></mat-slider>-->
-      <!--<ng5-slider [(value)]="value" [options]="options"></ng5-slider>-->
+  <div class="item-ratting">
+    <div class="w-30 title">
+      <span>Performance</span>
+    </div>
+    <div class="w-70">
+      <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel" [tick-interval]="1"
+                  [(ngModel)]="value" style="width: 85%"></mat-slider>
+      <span style="margin-left: 10px">{{value}}</span>
     </div>
   </div>
+
+  <div class="item-ratting">
+    <div class="w-30 title">
+      <span>Performance</span>
+    </div>
+    <div class="w-70">
+      <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel" [tick-interval]="1"
+                  [(ngModel)]="value" style="width: 85%"></mat-slider>
+      <span style="margin-left: 10px">{{value}}</span>
+    </div>
+  </div>
+
+  <div class="item-ratting">
+    <div class="w-30 title">
+      <span>Performance</span>
+    </div>
+    <div class="w-70">
+      <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel" [tick-interval]="1"
+                  [(ngModel)]="value" style="width: 85%"></mat-slider>
+      <span style="margin-left: 10px">{{value}}</span>
+    </div>
+  </div>
+
+  <div class="item-ratting">
+    <div class="w-30 title">
+      <span>Performance</span>
+    </div>
+    <div class="w-70">
+      <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel" [tick-interval]="1"
+                  [(ngModel)]="value" style="width: 85%"></mat-slider>
+      <span style="margin-left: 10px">{{value}}</span>
+    </div>
+  </div>
+
+
 </div>

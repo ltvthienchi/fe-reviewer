@@ -16,6 +16,7 @@ import {AdminSideComponent} from '../component/side/admin-side/admin-side.compon
 import {LoginSideComponent} from '../component/side/login-side/login-side.component';
 import {SignUpComponent} from '../component/sign-up/sign-up.component';
 import { UserUpdatePageComponent } from '../component/home/user-update-page/user-update-page.component';
+import {ManageAdminComponent} from '../component/admin/manage-admin/manage-admin.component';
 
 const routes: Routes = [
   {
@@ -44,7 +45,8 @@ const routes: Routes = [
     component: AdminSideComponent,
     children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
-      { path: 'admin', component: AdminComponent }
+      { path: 'admin', component: AdminComponent },
+      { path: 'manage-admin/create', component: ManageAdminComponent },
     ]
   },
   {path: '**', redirectTo: ''}
