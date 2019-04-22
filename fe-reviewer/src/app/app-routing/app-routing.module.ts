@@ -15,9 +15,10 @@ import {AdminComponent} from '../component/admin/admin.component';
 import {AdminSideComponent} from '../component/side/admin-side/admin-side.component';
 import {LoginSideComponent} from '../component/side/login-side/login-side.component';
 import {SignUpComponent} from '../component/sign-up/sign-up.component';
-import { UserPageComponent } from '../component/reviewer/user-page/user-page.component';
-import { ReviewerComponent } from '../component/reviewer/reviewer.component';
-import { ViewHistoryReviewerComponent } from '../component/reviewer/view-history-reviewer/view-history-reviewer.component';
+import { UserUpdatePageComponent } from '../component/home/user-update-page/user-update-page.component';
+import {ManageAdminComponent} from '../component/admin/manage-admin/manage-admin.component';
+import {CompareComponent} from '../component/compare/compare.component';
+import { UserPageComponent } from '../user-page/user-page.component';
 
 const routes: Routes = [
   {
@@ -26,15 +27,14 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/home', pathMatch: 'full'},
       { path: 'home', component: HomeComponent },
-      { path: 'reviewer', component: ReviewerComponent},
-      { path: 'user-page', component: UserPageComponent},
       { path: 'company', component: CompanyComponent },
       { path: 'company/detail/:id', component: DetailCompanyComponent },
       { path: 'company/view-history', component: ViewHistoryCompanyComponent},
-      { path: 'view-history-reviewer', component: ViewHistoryReviewerComponent},
+      { path: 'user-update-page', component: UserUpdatePageComponent},
+      { path: 'user-page', component: UserPageComponent},
+      { path: 'compare', component: CompareComponent}
     ]
   },
- 
   {
     path: '',
     component: LoginSideComponent,
@@ -49,7 +49,8 @@ const routes: Routes = [
     component: AdminSideComponent,
     children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
-      { path: 'admin', component: AdminComponent }
+      { path: 'admin', component: AdminComponent },
+      { path: 'manage-admin/create', component: ManageAdminComponent },
     ]
   },
   {path: '**', redirectTo: ''}

@@ -33,8 +33,15 @@ import { UserSideComponent } from './component/side/user-side/user-side.componen
 import { AdminSideComponent } from './component/side/admin-side/admin-side.component';
 import { LoginSideComponent } from './component/side/login-side/login-side.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { UserUpdatePageComponent } from './component/home/user-update-page/user-update-page.component';
 import { MenuLoginComponent } from './component/menu-login/menu-login.component';
-import { UserPageComponent } from './component/reviewer/user-page/user-page.component';
+import { MatSliderModule, MatFormFieldModule, MatCardModule, MatCheckboxModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { ManageAdminComponent } from './component/admin/manage-admin/manage-admin.component';
+import { CompareComponent } from './component/compare/compare.component';
+import { TopCompanyComponent } from './component/top-company/top-company.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -116,14 +123,27 @@ export function tokenGetter() {
     LoginSideComponent,
     ComfirmCompanyComponent,
     SignUpComponent,
+    UserUpdatePageComponent,
     MenuLoginComponent,
+    ManageAdminComponent,
+    CompareComponent,
+    TopCompanyComponent,
     UserPageComponent
   ],
   imports: [
     BrowserModule,
     NotifierModule.withConfig(customNotifierOptions),
     AppRoutingModule,
-    JwtModule.forRoot(JWT_Module_Options)
+    JwtModule.forRoot(JWT_Module_Options),
+    MatSliderModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+  ],
+  exports: [
+    MatSliderModule
   ],
   providers: [
     Broadcaster,
