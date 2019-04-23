@@ -19,6 +19,7 @@ import { UserUpdatePageComponent } from '../component/home/user-update-page/user
 import {ManageAdminComponent} from '../component/admin/manage-admin/manage-admin.component';
 import {CompareComponent} from '../component/compare/compare.component';
 import { UserPageComponent } from '../user-page/user-page.component';
+import { LoginAdminComponent } from '../component/admin/login-admin/login-admin.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/login', pathMatch: 'full'},
       { path: 'login', component: LoginComponent },
-      { path: 'signup', component: SignUpComponent }
+      { path: 'signup', component: SignUpComponent },
     ]
   },
   {
@@ -50,7 +51,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
       { path: 'admin', component: AdminComponent },
-      { path: 'manage-admin/create', component: ManageAdminComponent },
+      { path: 'manage-admin/manageadmin', component: ManageAdminComponent },
+      { path: 'admin/loginadmin', component: LoginAdminComponent },
     ]
   },
   {path: '**', redirectTo: ''}

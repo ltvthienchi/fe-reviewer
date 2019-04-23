@@ -444,11 +444,12 @@ body{
   .profile .user {
     position: relative;
     padding: 0px 5px 5px;
+    height: 42px;
   }
   
   .profile .user .avatar {
     position: absolute;
-    left: 20px;
+    left: 10px;
     top: -85px;
     z-index: 2;
   }
@@ -458,7 +459,7 @@ body{
     line-height: 20px;
     display: block;
     float: left;
-    margin: 4px 0px 0px 135px;
+    margin: 7px 0px 0px 125px;
     font-weight: bold;
   }
   
@@ -476,6 +477,7 @@ body{
   }
   
   .img-profile{
+    margin: 10px;
       height:100px;
       width:100px;
   }
