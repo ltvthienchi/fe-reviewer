@@ -19,6 +19,8 @@ import { UserUpdatePageComponent } from '../component/home/user-update-page/user
 import { FeedbackReviewerComponent } from '../component/reviewer/feedback-reviewer/feedback-reviewer.component';
 import {ManageAdminComponent} from '../component/admin/manage-admin/manage-admin.component';
 import {CompareComponent} from '../component/compare/compare.component';
+import { UserPageComponent } from '../user-page/user-page.component';
+import { LoginAdminComponent } from '../component/admin/login-admin/login-admin.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,7 @@ const routes: Routes = [
       { path: 'company/view-history', component: ViewHistoryCompanyComponent},
       { path: 'user-update-page', component: UserUpdatePageComponent},
       { path: 'feedback', component: FeedbackReviewerComponent},
+      { path: 'user-page', component: UserPageComponent},
       { path: 'compare', component: CompareComponent}
     ]
   },
@@ -41,7 +44,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/login', pathMatch: 'full'},
       { path: 'login', component: LoginComponent },
-      { path: 'signup', component: SignUpComponent }
+      { path: 'signup', component: SignUpComponent },
     ]
   },
   {
@@ -51,6 +54,8 @@ const routes: Routes = [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
       { path: 'admin', component: AdminComponent },
       { path: 'manage-admin/create', component: ManageAdminComponent },
+      { path: 'manage-admin/manageadmin', component: ManageAdminComponent },
+      { path: 'admin/loginadmin', component: LoginAdminComponent },
     ]
   },
   {path: '**', redirectTo: ''}

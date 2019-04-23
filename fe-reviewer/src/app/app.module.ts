@@ -43,7 +43,8 @@ import { CompareComponent } from './component/compare/compare.component';
 import { TopCompanyComponent } from './component/top-company/top-company.component';
 import { DdmmyyyyPipe } from './services/pipe/ddmmyyyy.pipe';
 import { ContentPostComponent } from './component/home/content-post/content-post.component';
-
+import { UserPageComponent } from './user-page/user-page.component';
+import { LoginAdminComponent } from './component/admin/login-admin/login-admin.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -131,7 +132,9 @@ export function tokenGetter() {
     CompareComponent,
     TopCompanyComponent,
     DdmmyyyyPipe,
-    ContentPostComponent
+    ContentPostComponent,
+    UserPageComponent,
+    LoginAdminComponent,
   ],
   imports: [
     BrowserModule,
