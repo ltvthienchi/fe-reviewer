@@ -41,6 +41,8 @@ import { FormsModule } from '@angular/forms';
 import { ManageAdminComponent } from './component/admin/manage-admin/manage-admin.component';
 import { CompareComponent } from './component/compare/compare.component';
 import { TopCompanyComponent } from './component/top-company/top-company.component';
+import { DdmmyyyyPipe } from './services/pipe/ddmmyyyy.pipe';
+import { ContentPostComponent } from './component/home/content-post/content-post.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -127,7 +129,9 @@ export function tokenGetter() {
     MenuLoginComponent,
     ManageAdminComponent,
     CompareComponent,
-    TopCompanyComponent
+    TopCompanyComponent,
+    DdmmyyyyPipe,
+    ContentPostComponent
   ],
   imports: [
     BrowserModule,

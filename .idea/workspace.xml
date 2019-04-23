@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5ca4a1a-97c0-41b7-aada-cc6bcd18a2c0" name="Default Changelist" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/compare/compare.component.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/compare/compare.component.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/compare/compare.component.spec.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/compare/compare.component.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/top-company/top-company.component.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/top-company/top-company.component.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/top-company/top-company.component.spec.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/top-company/top-company.component.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/fe-reviewer/src/assets/image/review.jpg" />
-      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/app-routing/app-routing.module.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/app-routing/app-routing.module.ts" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/app.module.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/app.module.ts" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.css" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.html" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.ts" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.ts" />
       <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/component/home/home.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/home/home.component.html" />
-      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/component/menu-login/menu-login.component.css" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/menu-login/menu-login.component.css" />
-      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/component/menu-login/menu-login.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/menu-login/menu-login.component.html" />
-      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/component/menu/menu.component.html" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/menu/menu.component.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,36 +22,40 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="home.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/home/home.component.html">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="company.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1409">
-              <caret line="57" column="14" lean-forward="false" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/app.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="126" column="25" lean-forward="false" selection-start-line="126" selection-start-column="25" selection-end-line="126" selection-end-column="25" />
+            <state relative-caret-position="585">
+              <caret line="180" column="6" lean-forward="true" selection-start-line="180" selection-start-column="6" selection-end-line="180" selection-end-column="6" />
               <folding>
-                <element signature="e#0#58#0" expanded="true" />
-                <element signature="e#172#219#0" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#img#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#button#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#button#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#i#0;n#button#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#p#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#iframe#0;n#div#1;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#5834#5841#1" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app-routing.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/app-routing/app-routing.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -72,13 +67,25 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Entity.</find>
+      <find>w-1</find>
+      <find>7</find>
+      <find>&gt;</find>
+      <find>table</find>
+      <find>border: 1px</find>
+      <find>TP. Hồ Chí</find>
     </findStrings>
+    <replaceStrings>
+      <replace>&gt;</replace>
+      <replace>8</replace>
+      <replace>TP. Hồ Chí Minh</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -86,10 +93,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/prj4/reviewer/entity/Product.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/prj4/reviewer/entity/TopRate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/prj4/reviewer/entity/SpecificationsRate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/prj4/reviewer/TomcatController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/prj4/reviewer/ReviewerApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/prj4/reviewer/entity/Admin.java" />
@@ -128,8 +131,18 @@
         <option value="$PROJECT_DIR$/src/main/java/com/prj4/reviewer/response/FeedbackCompanyResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/prj4/reviewer/response/FollowCompanyResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/prj4/reviewer/request/FollowCompanyRequest.java" />
-        <option value="$PROJECT_DIR$/fe-reviewer/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/fe-reviewer/src/app/app-routing/app-routing.module.ts" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/side/admin-side/admin-side.component.css" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.ts" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.html" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/services/pipe/ddmmyyyy.pipe.ts" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/services/local_database/company.ts" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.css" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.html" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/home/content-post/content-post.component.html" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/home/content-post/content-post.component.css" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/home/content-post/content-post.component.ts" />
         <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/home/home.component.html" />
       </list>
     </option>
@@ -143,11 +156,10 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/fe-reviewer/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="y" value="21" />
-    <option name="width" value="1553" />
-    <option name="height" value="1000" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
+    <option name="width" value="1440" />
+    <option name="height" value="822" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -165,7 +177,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -214,13 +226,90 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="component" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reviewer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
+              <item name="company" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reviewer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
+              <item name="side" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reviewer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
+              <item name="side" type="462c0819:PsiDirectoryNode" />
+              <item name="admin-side" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reviewer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reviewer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="local_database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reviewer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="pipe" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reviewer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reviewer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="image" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reviewer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="wallpaper" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -266,7 +355,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Unknown.ReviewerApplication399751621">
+  <component name="RunManager" selected="Unknown.ReviewerApplication1009781940">
     <configuration name="Post" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.prj4.reviewer.entity.Post" />
       <module name="Reviewer" />
@@ -312,25 +401,27 @@
       <workItem from="1554991860210" duration="636000" />
       <workItem from="1555405054071" duration="108000" />
       <workItem from="1555939480440" duration="104000" />
+      <workItem from="1556020449219" duration="1033000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27834000" />
+    <option name="totallyTimeSpent" value="31334000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="822" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27484143" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.82231855" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -345,7 +436,6 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -369,19 +459,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/reporsitory/FollowReviewerRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/reporsitory/ImagesRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/reporsitory/MessageRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/reporsitory/PostRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/reporsitory/RatingPostRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/reporsitory/ReportRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/reporsitory/ReviewerRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/controller/CompanyRestController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/controller/AdminRestController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/service/CompanyService.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/service/AdminService.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/reporsitory/AdminRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/reporsitory/CSKHRepository.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/entity/Admin.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/entity/FollowReviewer.java" />
@@ -419,28 +496,153 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/prj4/reviewer/request/FollowCompanyRequest.java" />
     <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="126" column="25" lean-forward="false" selection-start-line="126" selection-start-column="25" selection-end-line="126" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-            <element signature="e#172#219#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="15">
+          <caret line="130" column="4" lean-forward="true" selection-start-line="130" selection-start-column="4" selection-end-line="130" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/app-routing/app-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        <state relative-caret-position="227">
+          <caret line="39" column="3" lean-forward="true" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-266">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/services/local_database/post-product.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/services/pipe/ddmmyyyy.pipe.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/services/local_database/company.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="75" column="71" lean-forward="false" selection-start-line="75" selection-start-column="71" selection-end-line="75" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/admin/comfirm-company/comfirm-company.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#50#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/side/admin-side/admin-side.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="172" column="1" lean-forward="false" selection-start-line="172" selection-start-column="1" selection-end-line="172" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/home/home.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/home/content-post/content-post.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="72" column="72" lean-forward="false" selection-start-line="72" selection-start-column="72" selection-end-line="72" selection-end-column="72" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/home/home.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1409">
-          <caret line="57" column="14" lean-forward="false" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
+        <state relative-caret-position="90">
+          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="8" selection-end-column="10" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/home/content-post/content-post.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="289" column="0" lean-forward="false" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/home/content-post/content-post.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="180" column="6" lean-forward="true" selection-start-line="180" selection-start-column="6" selection-end-line="180" selection-end-column="6" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#img#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#button#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#button#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#i#0;n#button#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#p#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#iframe#0;n#div#1;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#5834#5841#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
