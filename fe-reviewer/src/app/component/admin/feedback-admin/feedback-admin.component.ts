@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {arrFeedback} from '../../../services/local_database/feedback';
 
 @Component({
   selector: 'app-feedback-admin',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./feedback-admin.component.css']
 })
 export class FeedbackAdminComponent implements OnInit {
+
+  data = arrFeedback;
 
   constructor() { }
 
