@@ -21,6 +21,9 @@ import {ManageAdminComponent} from '../component/admin/manage-admin/manage-admin
 import {CompareComponent} from '../component/compare/compare.component';
 import { UserPageComponent } from '../user-page/user-page.component';
 import { LoginAdminComponent } from '../component/admin/login-admin/login-admin.component';
+import {ComfirmCompanyComponent} from '../component/admin/comfirm-company/comfirm-company.component';
+import {FeedbackAdminComponent} from '../component/admin/feedback-admin/feedback-admin.component';
+import {LockReviewerComponent} from '../component/admin/lock-reviewer/lock-reviewer.component';
 
 const routes: Routes = [
   {
@@ -52,12 +55,14 @@ const routes: Routes = [
     component: AdminSideComponent,
     children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
-      { path: 'admin', component: AdminComponent },
-      { path: 'manage-admin/create', component: ManageAdminComponent },
-      { path: 'manage-admin/manageadmin', component: ManageAdminComponent },
-      { path: 'admin/loginadmin', component: LoginAdminComponent },
+      { path: 'admin', component: ManageAdminComponent },
+      { path: 'admin/manage-admin', component: ManageAdminComponent },
+      { path: 'admin/verify', component: ComfirmCompanyComponent },
+      { path: 'admin/manage-user/:userType', component: LockReviewerComponent },
+      { path: 'admin/feedback', component: FeedbackAdminComponent }
     ]
   },
+  { path: 'admin/login', component: LoginAdminComponent },
   {path: '**', redirectTo: ''}
 ];
 
