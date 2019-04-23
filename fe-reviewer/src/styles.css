@@ -1,11 +1,18 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 * {
-  font-size: 14px;
+  /*font-size: 14px;*/
 }
 
-body {
+html, body {
   background: #e9ebee;
+  height: 100%;
 }
 
+span:focus {outline:0;}
+span:active {
+  outline: none;
+  border: none;
+}
 /*CSS Loading*/
 
 .loading {
@@ -26,7 +33,7 @@ body {
 }
 
 .p-main {
-  margin: 15px 20px 0 20px;
+  margin: 15px 50px 0 50px;
 }
 
 .txt-blue {
@@ -51,4 +58,10 @@ body {
 
 .txt-main {
   color: #17a2b8;
+}
+
+@media all and (max-width: 576px) {
+  .p-main {
+    margin: 15px 5px 0 5px;
+  }
 }

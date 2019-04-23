@@ -34,6 +34,13 @@ import { AdminSideComponent } from './component/side/admin-side/admin-side.compo
 import { LoginSideComponent } from './component/side/login-side/login-side.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UserUpdatePageComponent } from './component/home/user-update-page/user-update-page.component';
+import { MenuLoginComponent } from './component/menu-login/menu-login.component';
+import { MatSliderModule, MatFormFieldModule, MatCardModule, MatCheckboxModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { ManageAdminComponent } from './component/admin/manage-admin/manage-admin.component';
+import { CompareComponent } from './component/compare/compare.component';
+import { TopCompanyComponent } from './component/top-company/top-company.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -117,13 +124,29 @@ export function tokenGetter() {
     ComfirmCompanyComponent,
     SignUpComponent,
     UserUpdatePageComponent,
+<<<<<<< HEAD
     
+=======
+    MenuLoginComponent,
+    ManageAdminComponent,
+    CompareComponent,
+    TopCompanyComponent
+>>>>>>> master
   ],
   imports: [
     BrowserModule,
     NotifierModule.withConfig(customNotifierOptions),
     AppRoutingModule,
-    JwtModule.forRoot(JWT_Module_Options)
+    JwtModule.forRoot(JWT_Module_Options),
+    MatSliderModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+  ],
+  exports: [
+    MatSliderModule
   ],
   providers: [
     Broadcaster,
