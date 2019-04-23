@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyComponent implements OnInit {
 
+  value=5;
+  max=5;
+  min=0.5;
+  step=0.5;
   constructor() { }
 
   ngOnInit() {
   }
+  
 
 }
