@@ -41,6 +41,7 @@ import { FormsModule } from '@angular/forms';
 import { ManageAdminComponent } from './component/admin/manage-admin/manage-admin.component';
 import { CompareComponent } from './component/compare/compare.component';
 import { TopCompanyComponent } from './component/top-company/top-company.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -126,7 +127,8 @@ export function tokenGetter() {
     MenuLoginComponent,
     ManageAdminComponent,
     CompareComponent,
-    TopCompanyComponent
+    TopCompanyComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,

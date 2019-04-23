@@ -18,6 +18,7 @@ import {SignUpComponent} from '../component/sign-up/sign-up.component';
 import { UserUpdatePageComponent } from '../component/home/user-update-page/user-update-page.component';
 import {ManageAdminComponent} from '../component/admin/manage-admin/manage-admin.component';
 import {CompareComponent} from '../component/compare/compare.component';
+import { UserPageComponent } from '../user-page/user-page.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: 'company/detail/:id', component: DetailCompanyComponent },
       { path: 'company/view-history', component: ViewHistoryCompanyComponent},
       { path: 'user-update-page', component: UserUpdatePageComponent},
+      { path: 'user-page', component: UserPageComponent},
       { path: 'compare', component: CompareComponent}
     ]
   },
