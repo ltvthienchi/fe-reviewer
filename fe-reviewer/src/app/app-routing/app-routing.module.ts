@@ -18,6 +18,8 @@ import {SignUpComponent} from '../component/sign-up/sign-up.component';
 import { UserUpdatePageComponent } from '../component/home/user-update-page/user-update-page.component';
 import {ManageAdminComponent} from '../component/admin/manage-admin/manage-admin.component';
 import {CompareComponent} from '../component/compare/compare.component';
+import {ComfirmCompanyComponent} from '../component/admin/comfirm-company/comfirm-company.component';
+import {LockReviewerComponent} from '../component/admin/lock-reviewer/lock-reviewer.component';
 
 const routes: Routes = [
   {
@@ -48,6 +50,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
       { path: 'admin', component: AdminComponent },
+      { path: 'account/verify', component: ComfirmCompanyComponent },
+      { path: 'account/block', component: LockReviewerComponent },
       { path: 'manage-admin/create', component: ManageAdminComponent },
     ]
   },
