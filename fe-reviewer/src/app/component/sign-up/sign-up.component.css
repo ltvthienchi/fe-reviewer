@@ -1,6 +1,9 @@
 /* Made with love by Mutiullah Samim*/
 
 @import url('https://fonts.googleapis.com/css?family=Numans');
+* {
+  font-size: 14px;
+}
 
 .container-test {
   background-image: url('../../../assets/wallpaper/loginWall.jpg');
