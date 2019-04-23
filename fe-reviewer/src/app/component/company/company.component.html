@@ -1,191 +1,181 @@
 <div class="w-80 margintop">
-    <div class="row">
-      <div class="col-3">
-        <div class="boderavt">
-            <img src="https://cdn.fptshop.com.vn/Uploads/Originals/2018/10/11/636748771945393060_iPhone-Xs-Max-gold.png" class="" alt="">
-        </div>
+  <div class="row">
+    <div class="col-3">
+      <!-- avatar -->
+      <div class="boderavt">
+        <img src="https://cdn.fptshop.com.vn/Uploads/Originals/2018/10/11/636748771945393060_iPhone-Xs-Max-gold.png"
+          class="" alt="">
+      </div>
+      <!-- menu left -->
+      <div class="boderbody-left text-left">
+
+        <h4 class="">Company A</h4>
+        <br>
+        <i class="fas fa-home"></i>
+        <a class="marginleft">Home</a>
+        <hr>
+        <i class="far fa-images"></i>
+        <a class="marginleft">Image</a>
+        <hr>
+        <i class="fab fa-facebook-messenger"></i>
+        <a class="marginleft">Messenger</a>
+        <hr>
+
       </div>
 
-      <div class="col-9 ">
-        <div class="boderbg rounded">
-          <img src="https://images-na.ssl-images-amazon.com/images/G/01/img15/brawner/iPhoneXS_OVERVIEW-PAGE-L_US3_4._CB479284099_.jpg" class="" alt="">
+    </div>
+
+    <div class="col-9 ">
+      <!-- backgroud -->
+      <div class="boderbg rounded">
+        <img
+          src="https://images-na.ssl-images-amazon.com/images/G/01/img15/brawner/iPhoneXS_OVERVIEW-PAGE-L_US3_4._CB479284099_.jpg"
+          class="" alt="">
+      </div>
+      <!-- menu company -->
+      <div class="menucpn">
+        <div class="btn-group">
+          <button class="btn btn-outline-info btnmargin margin-left">
+            <i class="fas fa-plus-circle" *ngIf="true"> Subscribe</i>
+            <i class="fas fa-minus-circle" *ngIf="flase"> Subscribe</i>
+          </button>
+          <button class="btn btn-outline-info btnmargin"><i class="fas fa-edit"> Post Product</i></button>
+        </div>
+        <button class="btn btn-info btnmargin float-right margin-right"><i class="fab fa-facebook-messenger">
+            Messenger</i></button>
+      </div>
+
+      <div class="row">
+
+        <div class="col-8">
+          <div class="boderbody-mid scroll-bar-hidden">
+            <div class="container-post">
+              <div class="header clearfix">
+                <div class="avatar">
+                  <img src="../../../assets/image/avar-pay.png" alt="avatar" />
+                </div>
+                <div class="info">
+                  <p class="title blue">Google</p>
+                  <p class="title-des">Top company</p>
+                  <!--<span class="badge badge-primary">Iphone</span> <span class="badge badge-secondary">viet nam vo dich</span>-->
+                </div>
+              </div>
+
+
+              <div class="body">
+                <div class="content">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non excepturi eum ab commodi eius
+                    accusantium modi ullam, nisi sint, iusto quis inventore quae eos molestias. Iure eaque, mollitia
+                    molestias maxime!
+                  </p>
+                </div>
+                <div class="image">
+                  <img src="../../../assets/wallpaper/login.jpg" alt="image">
+                </div>
+
+                <!--<div class="star">-->
+                <!--<i class="far fa-star"></i>-->
+                <!--<i class="far fa-star"></i>-->
+                <!--<i class="far fa-star"></i>-->
+                <!--<i class="far fa-star"></i>-->
+                <!--<i class="far fa-star"></i>-->
+                <!--</div>-->
+
+                <div class="rating">
+                  <div class="row">
+                    <div class="col-4">
+                      <p class="content" (click)="showNotification( 'default', 'Cam on da danh gia' )">
+                        <i class="far fa-star"></i> Danh gia
+                      </p>
+                    </div>
+                    <div class="col-4">
+                      <p class="content"><i class="fas fa-comments"></i> Binh luan</p>
+                    </div>
+                    <div class="col-4">
+                      <p class="content"><i class="fas fa-share"></i> Chia se</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="footer">
+                <div class="content-like">
+                  <p>
+                    <span class="title">Nguyen Van A</span>
+                    <span class="context">Lorem ipsum dolor sit amet</span>
+                  </p>
+                </div>
+                <div class="input">
+                  <textarea placeholder="Them binh luan"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 sticky-top">
+          <div class="bodercpn text-center">
+            <br>
+            <h3 class=" margintop">Rating</h3>
+            <p class="text-info"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span
+                class="badge badge-light">(4.5/5)</span>
+            </p>
+
+            <button class="btn btn-outline-info" data-toggle="modal" data-target="#review">Review this Company</button>
+
+
+          </div>
+
+
+
+          <div class="bodercpn margintop">
+            <h4 class="text-center">Address</h4>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3257176556144!2d106.66413881462262!3d10.786346192314788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed23ca5d8db%3A0x24d414f45e5a523!2zNTkwIEPDoWNoIE3huqFuZyBUaMOhbmcgOCwgUGjGsOG7nW5nIDExLCBRdeG6rW4gMywgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1555667078797!5m2!1svi!2s"
+              frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-3">
-
-      </div>
-      <div class="col-9 ">
-        <div class="menucpn">
-          <div class="btn-group">
-          <button class="btn btn-outline-secondary btnmargin"><i class="fas fa-plus-circle"> Subscribe</i></button>
-          <button class="btn btn-outline-secondary btnmargin"><i class="fas fa-edit"> Post Product</i></button>
-        </div>
-          <button class="btn btn-primary btnmargin float-right "><i class="fab fa-facebook-messenger">
-              Messenger</i></button>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-3 sticky-top">
-        <div class="boderbody-left text-left">
-          <br>
-          <i class="fas fa-home"></i>
-          <a  class="">Home</a>
-          <hr>
-          <i class="far fa-images"></i>
-          <a>Image</a>
-          <hr>
-          <a>Messenger</a>
-          <hr>
-
-        </div>
-
-      </div>
-      <div class="col-6">
-        <div class="boderbody-mid scroll-bar-hidden">
-            <p>asdasd</p>
-            <p>asdasd</p>
-            <p>asdasd</p>
-            <p>asdasd</p>
-            <p>asdasd</p>
-            <p>asdasd</p>
-            <p>asdasd</p>
-            <p>asdasd</p>
-            <p>asdasd</p>
-            <p>asdasd</p>
-            <p>asdasd</p>
-            <p>asdasd</p>
-            <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-          <p>asdasd</p>
-        </div>
-      </div>
-      <div class="col-3 sticky-top">
-        <div class="bodercpn text-center">
-          <br>
-          <h3 class=" margintop">Rating</h3>
-          <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-              class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span class="badge badge-light">(4.5/5)</span>
-          </p>
-          
-            <a href="#" class="btn btn-outline-info">Review this Company</a>
-        
-        </div>
-        <div class="bodercpn margintop">
-          <h4 class="text-center">Address</h4>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3257176556144!2d106.66413881462262!3d10.786346192314788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed23ca5d8db%3A0x24d414f45e5a523!2zNTkwIEPDoWNoIE3huqFuZyBUaMOhbmcgOCwgUGjGsOG7nW5nIDExLCBRdeG6rW4gMywgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1555667078797!5m2!1svi!2s"
-            frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  
   </div>
+
+
+  <!-- modal-review -->
+  <div class="modal fade" id="review">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title text-info text-h4">Reivew company A</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="rating" class="col-sm-2"><strong>Content:</strong></label>
+            <div>sao</div>
+
+          </div>
+          <div class="form-group row">
+            <label for="content" class="col-sm-2"><strong>Content:</strong></label>
+            <textarea class="form-control col-sm-10" id="content" placeholder="Enter Content" name="content" rows="5"
+              required></textarea>
+          </div>
+
+
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

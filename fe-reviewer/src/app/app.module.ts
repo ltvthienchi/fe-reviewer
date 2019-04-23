@@ -35,6 +35,7 @@ import { LoginSideComponent } from './component/side/login-side/login-side.compo
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UserUpdatePageComponent } from './component/home/user-update-page/user-update-page.component';
 
+
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
@@ -115,7 +116,8 @@ export function tokenGetter() {
     LoginSideComponent,
     ComfirmCompanyComponent,
     SignUpComponent,
-    UserUpdatePageComponent
+    UserUpdatePageComponent,
+    
   ],
   imports: [
     BrowserModule,
