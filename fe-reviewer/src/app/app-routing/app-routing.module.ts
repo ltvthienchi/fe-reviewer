@@ -16,12 +16,9 @@ import {AdminSideComponent} from '../component/side/admin-side/admin-side.compon
 import {LoginSideComponent} from '../component/side/login-side/login-side.component';
 import {SignUpComponent} from '../component/sign-up/sign-up.component';
 import { UserUpdatePageComponent } from '../component/home/user-update-page/user-update-page.component';
-<<<<<<< HEAD
 import { FeedbackReviewerComponent } from '../component/reviewer/feedback-reviewer/feedback-reviewer.component';
-=======
 import {ManageAdminComponent} from '../component/admin/manage-admin/manage-admin.component';
 import {CompareComponent} from '../component/compare/compare.component';
->>>>>>> master
 
 const routes: Routes = [
   {
@@ -34,11 +31,8 @@ const routes: Routes = [
       { path: 'company/detail/:id', component: DetailCompanyComponent },
       { path: 'company/view-history', component: ViewHistoryCompanyComponent},
       { path: 'user-update-page', component: UserUpdatePageComponent},
-<<<<<<< HEAD
-      { path: 'feedback', component: FeedbackReviewerComponent}
-=======
+      { path: 'feedback', component: FeedbackReviewerComponent},
       { path: 'compare', component: CompareComponent}
->>>>>>> master
     ]
   },
   {

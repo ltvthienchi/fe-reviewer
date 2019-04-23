@@ -124,14 +124,10 @@ export function tokenGetter() {
     ComfirmCompanyComponent,
     SignUpComponent,
     UserUpdatePageComponent,
-<<<<<<< HEAD
-    
-=======
     MenuLoginComponent,
     ManageAdminComponent,
     CompareComponent,
     TopCompanyComponent
->>>>>>> master
   ],
   imports: [
     BrowserModule,
