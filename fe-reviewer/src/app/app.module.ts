@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 //
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { CompanyComponent } from './component/company/company.component';
@@ -45,6 +46,7 @@ import { DdmmyyyyPipe } from './services/pipe/ddmmyyyy.pipe';
 import { ContentPostComponent } from './component/home/content-post/content-post.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { LoginAdminComponent } from './component/admin/login-admin/login-admin.component';
+import {UserService} from './services/user-service/user.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -137,6 +139,7 @@ export function tokenGetter() {
     LoginAdminComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     NotifierModule.withConfig(customNotifierOptions),
     AppRoutingModule,
@@ -155,7 +158,8 @@ export function tokenGetter() {
     Broadcaster,
     EventMessage,
     AuthGuardService,
-    AuthService
+    AuthService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

@@ -5,7 +5,7 @@ export class AuthService {
   constructor(public jwtHelper: JwtHelperService) {}
   // ...
   public isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('userToken');
     // Check whether the token is expired and return
     // true or false
     console.log('===>', !this.jwtHelper.isTokenExpired(token));
