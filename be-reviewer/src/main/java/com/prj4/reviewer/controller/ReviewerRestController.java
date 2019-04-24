@@ -44,8 +44,8 @@ public class ReviewerRestController {
         return feedbackCompanyResponse;
     }
 
-//    @GetMapping(BASE_POST_LINK + "reviewers")
-//    List<Reviewer> getReviewers() {
-//        return (List<Reviewer>) reviewerRepository.findAll();
-//    }
+    @GetMapping(BASE_POST_LINK + "reviewers")
+    List<Reviewer> getReviewers() {
+        return (List<Reviewer>) reviewerRepository.findAll();
+    }
 }

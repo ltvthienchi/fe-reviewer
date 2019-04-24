@@ -12,13 +12,13 @@ import javax.persistence.Table;
 public class FollowReviewer {
 
 	@Id
-	@Column(name = "ID_FL_REVIWER")
+	@Column(name = "ID_FL_REVIEWER")
     private String idFollowReviewer;
 
 	@Column(name = "ID_REVIEWER")
 	private String idReviewer;
 
-	@Column(name = "ID_FL_REVIWER")
+	@Column(name = "ID_FOLLOWED")
     private String idfollowed;
 
 	@Column(name = "DT_FOLLOW")

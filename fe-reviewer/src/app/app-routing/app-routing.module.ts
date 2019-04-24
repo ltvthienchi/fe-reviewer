@@ -31,7 +31,7 @@ const routes: Routes = [
     component: UserSideComponent,
     children: [
       { path: '', redirectTo: '/home', pathMatch: 'full'},
-      { path: 'home', component: HomeComponent },
+      { path: 'home', component: HomeComponent},
       { path: 'company', component: CompanyComponent },
       { path: 'company/detail/:id', component: DetailCompanyComponent },
       { path: 'company/view-history', component: ViewHistoryCompanyComponent},
