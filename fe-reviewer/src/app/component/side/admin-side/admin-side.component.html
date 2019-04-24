@@ -73,41 +73,38 @@
     <ul class="sidebar-menu list-unstyled">
 
       <li class="sidebar-list-item my-padding">
-        <a href="#" data-toggle="collapse" data-target="#pages"  class="sidebar-link text-muted">
-          <i class="fa fa-user mr-3 text-gray"></i>
+        <a routerLink="/admin/manage-admin" class="sidebar-link text-muted">
+          <i class="fa fa-user-tie mr-3 text-gray"></i>
           <span>Admin</span>
         </a>
-        <div id="pages" class="collapse">
-          <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
-            <li class="sidebar-list-item">
-              <a routerLink="/manage-admin/create" class="sidebar-link text-muted pl-lg-5">Create</a>
-            </li>
-
-          </ul>
-        </div>
       </li>
 
       <li class="sidebar-list-item my-padding">
         <a data-toggle="collapse" data-target="#business" class="sidebar-link text-muted" href="#">
-          <i class="fa fa-user-tie mr-3 text-gray"></i>
-          <span>Account</span>
+          <i class="fa fa-user mr-3 text-gray"></i>
+          <span>User</span>
         </a>
         <div id="business" class="collapse">
           <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
             <li class="sidebar-list-item">
-              <a routerLink="/account/verify" class="sidebar-link text-muted pl-lg-5">Verify Business</a>
-              <a routerLink="/account/block" class="sidebar-link text-muted pl-lg-5">Block Account</a>
+              <a routerLink="/admin/verify" class="sidebar-link text-muted pl-lg-5">Verify Business</a>
+              <a routerLink="/admin/manage-user/business" class="sidebar-link text-muted pl-lg-5">Manage Business</a>
+              <a routerLink="/admin/manage-user/reviewer" class="sidebar-link text-muted pl-lg-5">Manage Reviewer</a>
             </li>
           </ul>
         </div>
       </li>
 
+
       <li class="sidebar-list-item my-padding">
-        <a routerLink="/feedback" class="sidebar-link text-muted">
+        <a routerLink="/admin/feedback" class="sidebar-link text-muted">
           <i class="fa fa-book mr-3 text-gray"></i>
           <span>Feedback</span>
         </a>
       </li>
+
+
+
     </ul>
   </div>
   <div class="page-holder w-100 d-flex flex-wrap">

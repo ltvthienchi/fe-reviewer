@@ -16,8 +16,14 @@ import {AdminSideComponent} from '../component/side/admin-side/admin-side.compon
 import {LoginSideComponent} from '../component/side/login-side/login-side.component';
 import {SignUpComponent} from '../component/sign-up/sign-up.component';
 import { UserUpdatePageComponent } from '../component/home/user-update-page/user-update-page.component';
+import { FeedbackReviewerComponent } from '../component/reviewer/feedback-reviewer/feedback-reviewer.component';
 import {ManageAdminComponent} from '../component/admin/manage-admin/manage-admin.component';
 import {CompareComponent} from '../component/compare/compare.component';
+import { UserPageComponent } from '../user-page/user-page.component';
+import { LoginAdminComponent } from '../component/admin/login-admin/login-admin.component';
+import {ComfirmCompanyComponent} from '../component/admin/comfirm-company/comfirm-company.component';
+import {FeedbackAdminComponent} from '../component/admin/feedback-admin/feedback-admin.component';
+import {LockReviewerComponent} from '../component/admin/lock-reviewer/lock-reviewer.component';
 
 const routes: Routes = [
   {
@@ -30,6 +36,8 @@ const routes: Routes = [
       { path: 'company/detail/:id', component: DetailCompanyComponent },
       { path: 'company/view-history', component: ViewHistoryCompanyComponent},
       { path: 'user-update-page', component: UserUpdatePageComponent},
+      { path: 'feedback', component: FeedbackReviewerComponent},
+      { path: 'user-page', component: UserPageComponent},
       { path: 'compare', component: CompareComponent}
     ]
   },
@@ -39,7 +47,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/login', pathMatch: 'full'},
       { path: 'login', component: LoginComponent },
-      { path: 'signup', component: SignUpComponent }
+      { path: 'signup', component: SignUpComponent },
     ]
   },
   {
@@ -47,10 +55,14 @@ const routes: Routes = [
     component: AdminSideComponent,
     children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
-      { path: 'admin', component: AdminComponent },
-      { path: 'manage-admin/create', component: ManageAdminComponent },
+      { path: 'admin', component: ManageAdminComponent },
+      { path: 'admin/manage-admin', component: ManageAdminComponent },
+      { path: 'admin/verify', component: ComfirmCompanyComponent },
+      { path: 'admin/manage-user/:userType', component: LockReviewerComponent },
+      { path: 'admin/feedback', component: FeedbackAdminComponent }
     ]
   },
+  { path: 'admin/login', component: LoginAdminComponent },
   {path: '**', redirectTo: ''}
 ];
 
