@@ -1,62 +1,33 @@
 package com.prj4.reviewer.entity;
 
 import java.sql.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
+@Table(name = "ADMINISTRATOR")// This tells Hibernate to make a table out of this class
 public class Admin {
 
 	@Id
+	@Column(name = "ID_ADMIN")
     private String idAdmin;
 
-    private String userName;
+	@Column(name = "NAME_ADMIN")
+    private String fullNameAdmin;
 
-    private String password;
-    
-    private Date datePost;
-    
-    private Date dateUpdate;
+	@Column(name = "EMAIL_ADMIN")
+    private String emailAdmin;
 
-	public String getIdAdmin() {
-		return idAdmin;
-	}
+	@Column(name = "PASS_ADMIN")
+    private String passAdmin;
 
-	public void setIdAdmin(String idAdmin) {
-		this.idAdmin = idAdmin;
-	}
+	@Column(name = "DOB_ADMIN")
+	private Date dobAdmin;
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Date getDatePost() {
-		return datePost;
-	}
-
-	public void setDatePost(Date datePost) {
-		this.datePost = datePost;
-	}
-
-	public Date getDateUpdate() {
-		return dateUpdate;
-	}
-
-	public void setDateUpdate(Date dateUpdate) {
-		this.dateUpdate = dateUpdate;
-	}
+	@Column(name = "DT_CREATED")
+    private Date dtCreated;
 
 	
     

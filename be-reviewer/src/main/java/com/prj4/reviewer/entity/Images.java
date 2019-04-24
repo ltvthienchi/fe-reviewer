@@ -1,63 +1,23 @@
 package com.prj4.reviewer.entity;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
+@Table(name = "IMAGE_PRO")// This tells Hibernate to make a table out of this class
 public class Images {
 
 	@Id
+	@Column(name = "ID_IMAGE")
     private String idImage;
 
-	private String idCompany;
+	@Column(name = "IMAGE_PATH")
+	private String imgPath;
 
-	private String type;
-    
-    private String idPost;
-    
-    private String link;
-
-	public String getIdImage() {
-		return idImage;
-	}
-
-	public void setIdImage(String idImage) {
-		this.idImage = idImage;
-	}
-
-	public String getIdCompany() {
-		return idCompany;
-	}
-
-	public void setIdCompany(String idCompany) {
-		this.idCompany = idCompany;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getIdPost() {
-		return idPost;
-	}
-
-	public void setIdPost(String idPost) {
-		this.idPost = idPost;
-	}
-
-	public String getLink() {
-		return link;
-	}
-
-	public void setLink(String link) {
-		this.link = link;
-	}
-
-	
+	@Column(name = "TYPE_IMG")
+	private String typeImg;
     
 }

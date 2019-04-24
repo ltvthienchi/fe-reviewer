@@ -1,101 +1,43 @@
 package com.prj4.reviewer.entity;
 
-import java.sql.Date;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-@Entity // This tells Hibernate to make a table out of this class
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table (name = "REVIEWER")// This tells Hibernate to make a table out of this class
 public class Reviewer {
 
 	@Id
+    @Column(name = "ID_REVIEWER")
     private String idReviewer;
 
-    private String name;
+    @Column(name = "NAME_REVIEWER")
+    private String fullName;
 
+    @Column(name = "EMAIL_REVIEWER")
     private String email;
-    
-    private String password;
-    
-    private Boolean gender;
-    
+
+    @Column(name = "DOB_REVIWER")
     private Date dateOfBirth;
-    
+
+    @Column(name = "DT_CREATED")
     private Date dateCreated;
-    
-    private Date dateLastUpdate;
-    
-    private String avartar;
 
-	public String getIdReviewer() {
-		return idReviewer;
-	}
+    @Column(name = "ID_ACCOUNT")
+    private String idAccount;
 
-	public void setIdReviewer(String idReviewer) {
-		this.idReviewer = idReviewer;
-	}
 
-	public String getName() {
-		return name;
-	}
+    @Column(name = "IMAGE_AVA")
+    private String imgAvatar;
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
-	public String getEmail() {
-		return email;
-	}
+    @Column(name = "IMAGE_PANEL")
+    private String imgPanel;
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
-	public String getPassword() {
-		return password;
-	}
+    @Column(name = "GENDER")
+    private int gender;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Boolean getGender() {
-		return gender;
-	}
-
-	public void setGender(Boolean gender) {
-		this.gender = gender;
-	}
-
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	public Date getDateLastUpdate() {
-		return dateLastUpdate;
-	}
-
-	public void setDateLastUpdate(Date dateLastUpdate) {
-		this.dateLastUpdate = dateLastUpdate;
-	}
-
-	public String getAvartar() {
-		return avartar;
-	}
-
-	public void setAvartar(String avartar) {
-		this.avartar = avartar;
-	}
 
 }

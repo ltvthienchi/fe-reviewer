@@ -1,42 +1,33 @@
 package com.prj4.reviewer.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.List;
+import javax.persistence.Table;
+import java.util.Date;
+
 
 @Entity
+@Table(name = "POST_PRODUCT")
 public class Post {
 
     @Id
-    private String idPost;
+    @Column(name = "ID_POST_PRODUCT")
+    private String idPostProduct;
 
+    @Column(name = "ID_PRODUCT")
+    private String idProduct;
 
-    private String nameCompany;
+    @Column(name = "ID_COMPANY")
+    private String idCompany;
 
-    private String tagPost;
-
-    private int typePost; // 1-Post New Product; 2-Ads
-
-
-    private String lstSpecifications;
+    @Column(name = "CONTENT_POST")
     private String contentPost;
-    private String imageSource;
-    private String scoreSpecifications;
 
-    //private Map<String,SpecificationsRate> listTopRate;
+    @Column(name = "DT_CREATED")
+    private Date dtCreated;
 
-    //private Map<String, SpecificationsRate> specificationsRateList;
-
-    public Post(String idPost, String nameCompany, String tagPost, int typePost,
-                String lstSpecifications, String contentPost, String imageSource,String scoreSpecifications) {
-        this.idPost = idPost;
-        this.nameCompany = nameCompany;
-        this.tagPost = tagPost;
-        this.typePost = typePost;
-        this.lstSpecifications = lstSpecifications;
-        this.contentPost = contentPost;
-        this.imageSource = imageSource;
-        this.scoreSpecifications = scoreSpecifications;
-    }
+    @Column(name = "ID_IMAGE")
+    private String idImage;
 
 }

@@ -1,105 +1,51 @@
 package com.prj4.reviewer.entity;
 
 import java.sql.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
+@Table(name="COMPANY")// This tells Hibernate to make a table out of this class
 public class Company {
 
 	@Id
+	@Column(name = "ID_COMPANY")
     private String idCompany;
 
-    private String name;
+	@Column(name = "NAME_COMPANY")
+    private String nameCompany;
 
-    private String address;
-    
-    private String phone;
-    
-    private String zipCode;
-    
-    private String website;
-    
-    private Date dateCreated;
-    
-    private Date dateLastUpdate;
-    
-    private String avatarImage;
+	@Column(name = "ADDR_COMPANY")
+    private String addrCompany;
 
-	
-	
+	@Column(name = "WEB_COMPANY")
+    private String webCompany;
 
-	public String getIdCompany() {
-		return idCompany;
-	}
+	@Column(name = "ZIP_COMPANY")
+    private String zipCompany;
 
-	public void setIdCompany(String idCompany) {
-		this.idCompany = idCompany;
-	}
+	@Column(name = "TEL_COMPANY")
+    private String telCompany;
 
-	public String getName() {
-		return name;
-	}
+	@Column(name = "DT_CREATED")
+    private Date dtCreated;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	@Column(name = "ID_ACCOUNT")
+    private String idAccount;
 
-	public String getAddress() {
-		return address;
-	}
+	@Column(name = "IMAGE_AVA")
+	private String imgAvatarCompany;
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	@Column(name = "IMAGE_PANEL")
+	private String imgPanelCompany;
 
-	public String getPhone() {
-		return phone;
-	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
 
-	public String getZipCode() {
-		return zipCode;
-	}
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
 
-	public String getWebsite() {
-		return website;
-	}
 
-	public void setWebsite(String website) {
-		this.website = website;
-	}
 
-	public Date getDateCreated() {
-		return dateCreated;
-	}
 
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	public Date getDateLastUpdate() {
-		return dateLastUpdate;
-	}
-
-	public void setDateLastUpdate(Date dateLastUpdate) {
-		this.dateLastUpdate = dateLastUpdate;
-	}
-
-	public String getAvatarImage() {
-		return avatarImage;
-	}
-
-	public void setAvatarImage(String avatarImage) {
-		this.avatarImage = avatarImage;
-	}
-    
-    
 }

@@ -2,64 +2,42 @@ package com.prj4.reviewer.entity;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
+@Table(name="RATING_PRODUCT")// This tells Hibernate to make a table out of this class
 public class RatingPost {
 	
 	@Id
-	private String idRating;
-	
-    private String idPost;
+	@Column(name = "ID_RATING_PRODUCT")
+	private String idRatingProduct;
 
+	@Column(name = "ID_PRODUCT")
+    private String idProduct;
+
+	@Column(name = "ID_REVIEWER")
 	private String idReviewer;
 
-    private int rating;
-    
-    private Date dateUpdate;
+	@Column(name = "DT_CREATED")
+    private Date dtCreated;
 
-	public String getIdRating() {
-		return idRating;
-	}
+	@Column(name = "RT_BATTERY")
+    private int rtBattery;
 
-	public void setIdRating(String idRating) {
-		this.idRating = idRating;
-	}
+	@Column(name = "RT_DISPLAY")
+	private int rtDisplay;
 
-	public String getIdPost() {
-		return idPost;
-	}
+	@Column(name = "RT_PERFORMANCE")
+	private int rtPerformance;
 
-	public void setIdPost(String idPost) {
-		this.idPost = idPost;
-	}
+	@Column(name = "RT_DESIGN")
+	private int rtDesign;
 
-	public String getIdReviewer() {
-		return idReviewer;
-	}
+	@Column(name = "RT_CAMERA")
+	private int rtCamera;
 
-	public void setIdReviewer(String idReviewer) {
-		this.idReviewer = idReviewer;
-	}
-
-	public int getRating() {
-		return rating;
-	}
-
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
-
-	public Date getDateUpdate() {
-		return dateUpdate;
-	}
-
-	public void setDateUpdate(Date dateUpdate) {
-		this.dateUpdate = dateUpdate;
-	}
-
-	
-    
 
 }
