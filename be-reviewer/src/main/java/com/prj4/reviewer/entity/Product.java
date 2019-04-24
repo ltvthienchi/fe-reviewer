@@ -38,4 +38,84 @@ public class Product {
 
     @Column(name = "NUMB_RATINNG")
     private String numRating;
+
+    public String getIdProduct() {
+        return idProduct;
+    }
+
+    public void setIdProduct(String idProduct) {
+        this.idProduct = idProduct;
+    }
+
+    public String getNameProduct() {
+        return nameProduct;
+    }
+
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
+    }
+
+    public String getTagProduct() {
+        return tagProduct;
+    }
+
+    public void setTagProduct(String tagProduct) {
+        this.tagProduct = tagProduct;
+    }
+
+    public String getDtCreated() {
+        return dtCreated;
+    }
+
+    public void setDtCreated(String dtCreated) {
+        this.dtCreated = dtCreated;
+    }
+
+    public String getAvgBattery() {
+        return avgBattery;
+    }
+
+    public void setAvgBattery(String avgBattery) {
+        this.avgBattery = avgBattery;
+    }
+
+    public String getAvgDisplay() {
+        return avgDisplay;
+    }
+
+    public void setAvgDisplay(String avgDisplay) {
+        this.avgDisplay = avgDisplay;
+    }
+
+    public String getAvgPerformance() {
+        return avgPerformance;
+    }
+
+    public void setAvgPerformance(String avgPerformance) {
+        this.avgPerformance = avgPerformance;
+    }
+
+    public String getAvgDesign() {
+        return avgDesign;
+    }
+
+    public void setAvgDesign(String avgDesign) {
+        this.avgDesign = avgDesign;
+    }
+
+    public String getAvgCamera() {
+        return avgCamera;
+    }
+
+    public void setAvgCamera(String avgCamera) {
+        this.avgCamera = avgCamera;
+    }
+
+    public String getNumRating() {
+        return numRating;
+    }
+
+    public void setNumRating(String numRating) {
+        this.numRating = numRating;
+    }
 }

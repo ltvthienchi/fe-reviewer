@@ -22,4 +22,35 @@ public class FollowCompany {
 	@Column(name = "IS_FOLLOW")
     private boolean isFollow;
 
+	public String getIdFollowCompany() {
+		return idFollowCompany;
+	}
+
+	public void setIdFollowCompany(String idFollowCompany) {
+		this.idFollowCompany = idFollowCompany;
+	}
+
+	public String getIdReviewer() {
+		return idReviewer;
+	}
+
+	public void setIdReviewer(String idReviewer) {
+		this.idReviewer = idReviewer;
+	}
+
+	public String getIdCompany() {
+		return idCompany;
+	}
+
+	public void setIdCompany(String idCompany) {
+		this.idCompany = idCompany;
+	}
+
+	public boolean isFollow() {
+		return isFollow;
+	}
+
+	public void setFollow(boolean follow) {
+		isFollow = follow;
+	}
 }

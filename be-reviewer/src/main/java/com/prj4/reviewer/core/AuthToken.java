@@ -3,15 +3,19 @@ package com.prj4.reviewer.core;
 public class AuthToken {
 
     private String token;
-    private String userName;
+    private int typeRev;
+    private String fullName;
+    private boolean isActive;
 
     public AuthToken(){
 
     }
 
-    public AuthToken(String token, String userName){
+    public AuthToken(String token, int typeRev, String fullName, boolean isActive){
         this.token = token;
-        this.userName = userName;
+        this.isActive = isActive;
+        this.typeRev = typeRev;
+        this.fullName = fullName;
     }
 
     public AuthToken(String token){
@@ -26,11 +30,27 @@ public class AuthToken {
         this.token = token;
     }
 
-    public String getUserName() {
-        return userName;
+    public int getTypeRev() {
+        return typeRev;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setTypeRev(int typeRev) {
+        this.typeRev = typeRev;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

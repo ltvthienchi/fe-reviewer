@@ -45,14 +45,18 @@ public class JwtTokenUtil implements Serializable {
         return expiration.before(new Date());
     }
 
-    public String generateToken(User user) {
-        return doGenerateToken(user.getUserName());
+    public String generateToken(User user, int typeAccount) {
+        return doGenerateToken(user.getUserName(), typeAccount);
     }
 
-    private String doGenerateToken(String subject) {
+    private String doGenerateToken(String subject, int typeAccount) {
 
         Claims claims = Jwts.claims().setSubject(subject);
-        claims.put("scopes", Arrays.asList(new SimpleGrantedAuthority("ROLE_NORMAL")));
+        if (typeAccount == 1) {
+            claims.put("scopes", Arrays.asList(new SimpleGrantedAuthority("ROLE_COMPANY")));
+        } else {
+            claims.put("scopes", Arrays.asList(new SimpleGrantedAuthority("ROLE_NORMAL")));
+        }
 
         return Jwts.builder()
                 .setClaims(claims)

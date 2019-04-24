@@ -19,7 +19,7 @@ public class User {
     private String passAccount;
 
     @Column(name = "TYPE_ACCOUNT")
-    private String typeAccount;
+    private int typeAccount;
 
     @Column(name = "ISACTIVE")
     private boolean isActive;
@@ -37,7 +37,7 @@ public class User {
         return passAccount;
     }
 
-    public String getTypeAccount() {
+    public int getTypeAccount() {
         return typeAccount;
     }
 
@@ -57,11 +57,12 @@ public class User {
         this.passAccount = passAccount;
     }
 
-    public void setTypeAccount(String typeAccount) {
+    public void setTypeAccount(int typeAccount) {
         this.typeAccount = typeAccount;
     }
 
     public void setActive(boolean active) {
         isActive = active;
     }
+
 }

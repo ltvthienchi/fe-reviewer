@@ -39,5 +39,75 @@ public class RatingPost {
 	@Column(name = "RT_CAMERA")
 	private int rtCamera;
 
+	public String getIdRatingProduct() {
+		return idRatingProduct;
+	}
 
+	public void setIdRatingProduct(String idRatingProduct) {
+		this.idRatingProduct = idRatingProduct;
+	}
+
+	public String getIdProduct() {
+		return idProduct;
+	}
+
+	public void setIdProduct(String idProduct) {
+		this.idProduct = idProduct;
+	}
+
+	public String getIdReviewer() {
+		return idReviewer;
+	}
+
+	public void setIdReviewer(String idReviewer) {
+		this.idReviewer = idReviewer;
+	}
+
+	public Date getDtCreated() {
+		return dtCreated;
+	}
+
+	public void setDtCreated(Date dtCreated) {
+		this.dtCreated = dtCreated;
+	}
+
+	public int getRtBattery() {
+		return rtBattery;
+	}
+
+	public void setRtBattery(int rtBattery) {
+		this.rtBattery = rtBattery;
+	}
+
+	public int getRtDisplay() {
+		return rtDisplay;
+	}
+
+	public void setRtDisplay(int rtDisplay) {
+		this.rtDisplay = rtDisplay;
+	}
+
+	public int getRtPerformance() {
+		return rtPerformance;
+	}
+
+	public void setRtPerformance(int rtPerformance) {
+		this.rtPerformance = rtPerformance;
+	}
+
+	public int getRtDesign() {
+		return rtDesign;
+	}
+
+	public void setRtDesign(int rtDesign) {
+		this.rtDesign = rtDesign;
+	}
+
+	public int getRtCamera() {
+		return rtCamera;
+	}
+
+	public void setRtCamera(int rtCamera) {
+		this.rtCamera = rtCamera;
+	}
 }

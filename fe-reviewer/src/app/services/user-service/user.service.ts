@@ -26,13 +26,13 @@ export class UserService {
   }
 
   userAuthentication(userName, password) {
-    var reqHeader = new HttpHeaders({'No-Auth': 'True',
+    const reqHeader = new HttpHeaders({'No-Auth': 'True',
       'Content-Type': 'application/json'});
-    let account = {
+    const account = {
       userName: userName,
       password: password
     };
-    var data = JSON.stringify(account);
+    const data = JSON.stringify(account);
     return this.http.post(this.rootUrl + '/token/generate-token', data, {headers : reqHeader});
   }
 

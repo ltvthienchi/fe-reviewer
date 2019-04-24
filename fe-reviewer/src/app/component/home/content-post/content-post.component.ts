@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {AuthGuardService} from '../../../services/auth/auth-guard.service';
 
 @Component({
   selector: 'app-content-post',
@@ -8,9 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ContentPostComponent implements OnInit {
 
   @Input() item;
-  constructor() { }
+  constructor(private authGuard: AuthGuardService) { }
 
   ngOnInit() {
+  }
+
+  checkAuthGuard() {
+    return this.authGuard.canActivate();
   }
 
 }

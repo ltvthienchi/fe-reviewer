@@ -64,28 +64,29 @@
       </div>
     </div>
   </div>
+  <div *ngIf="checkAuthGuard()">
+    <div class="footer">
+      <div class="group-button">
+        <div class="row">
 
-  <div class="footer">
-    <div class="group-button">
-      <div class="row">
-
-        <div class="col-4">
-          <p class="btn-post" (click)="toggleRatings('contentImage' + item.idPostProduct)">Ratings</p>
+          <div class="col-4">
+            <p class="btn-post" (click)="toggleRatings('contentImage' + item.idPostProduct)">Ratings</p>
+          </div>
+          <div class="col-4">
+            <p class="btn-post">Comments</p>
+          </div>
+          <div class="col-4">
+            <p class="btn-post">Compare</p>
+          </div>
         </div>
-        <div class="col-4">
-          <p class="btn-post">Comments</p>
-        </div>
-        <div class="col-4">
-          <p class="btn-post">Compare</p>
-        </div>
+        <!--<p>-->
+        <!--<span class="title">Nguyen Van A</span>-->
+        <!--<span class="context">Lorem ipsum dolor sit amet</span>-->
+        <!--</p>-->
       </div>
-      <!--<p>-->
-      <!--<span class="title">Nguyen Van A</span>-->
-      <!--<span class="context">Lorem ipsum dolor sit amet</span>-->
-      <!--</p>-->
+      <!--<div class="input">-->
+      <!--<textarea placeholder="Them binh luan"></textarea>-->
+      <!--</div>-->
     </div>
-    <!--<div class="input">-->
-    <!--<textarea placeholder="Them binh luan"></textarea>-->
-    <!--</div>-->
   </div>
 </div>

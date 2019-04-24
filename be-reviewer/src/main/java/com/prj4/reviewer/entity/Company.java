@@ -42,10 +42,83 @@ public class Company {
 	private String imgPanelCompany;
 
 
+	public String getIdCompany() {
+		return idCompany;
+	}
 
+	public void setIdCompany(String idCompany) {
+		this.idCompany = idCompany;
+	}
 
+	public String getNameCompany() {
+		return nameCompany;
+	}
 
+	public void setNameCompany(String nameCompany) {
+		this.nameCompany = nameCompany;
+	}
 
+	public String getAddrCompany() {
+		return addrCompany;
+	}
 
+	public void setAddrCompany(String addrCompany) {
+		this.addrCompany = addrCompany;
+	}
 
+	public String getWebCompany() {
+		return webCompany;
+	}
+
+	public void setWebCompany(String webCompany) {
+		this.webCompany = webCompany;
+	}
+
+	public String getZipCompany() {
+		return zipCompany;
+	}
+
+	public void setZipCompany(String zipCompany) {
+		this.zipCompany = zipCompany;
+	}
+
+	public String getTelCompany() {
+		return telCompany;
+	}
+
+	public void setTelCompany(String telCompany) {
+		this.telCompany = telCompany;
+	}
+
+	public Date getDtCreated() {
+		return dtCreated;
+	}
+
+	public void setDtCreated(Date dtCreated) {
+		this.dtCreated = dtCreated;
+	}
+
+	public String getIdAccount() {
+		return idAccount;
+	}
+
+	public void setIdAccount(String idAccount) {
+		this.idAccount = idAccount;
+	}
+
+	public String getImgAvatarCompany() {
+		return imgAvatarCompany;
+	}
+
+	public void setImgAvatarCompany(String imgAvatarCompany) {
+		this.imgAvatarCompany = imgAvatarCompany;
+	}
+
+	public String getImgPanelCompany() {
+		return imgPanelCompany;
+	}
+
+	public void setImgPanelCompany(String imgPanelCompany) {
+		this.imgPanelCompany = imgPanelCompany;
+	}
 }

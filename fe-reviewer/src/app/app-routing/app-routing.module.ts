@@ -24,6 +24,7 @@ import { LoginAdminComponent } from '../component/admin/login-admin/login-admin.
 import {ComfirmCompanyComponent} from '../component/admin/comfirm-company/comfirm-company.component';
 import {FeedbackAdminComponent} from '../component/admin/feedback-admin/feedback-admin.component';
 import {LockReviewerComponent} from '../component/admin/lock-reviewer/lock-reviewer.component';
+import {AuthGuardAdminService} from '../services/auth/auth-guard-admin.service';
 
 const routes: Routes = [
   {
@@ -31,14 +32,14 @@ const routes: Routes = [
     component: UserSideComponent,
     children: [
       { path: '', redirectTo: '/home', pathMatch: 'full'},
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-      { path: 'company', component: CompanyComponent, canActivate: [AuthGuard] },
-      { path: 'company/detail/:id', component: DetailCompanyComponent, canActivate: [AuthGuard]},
-      { path: 'company/view-history', component: ViewHistoryCompanyComponent, canActivate: [AuthGuard]},
-      { path: 'user-update-page', component: UserUpdatePageComponent, canActivate: [AuthGuard]},
-      { path: 'feedback', component: FeedbackReviewerComponent, canActivate: [AuthGuard]},
-      { path: 'user-page', component: UserPageComponent, canActivate: [AuthGuard]},
-      { path: 'compare', component: CompareComponent, canActivate: [AuthGuard]}
+      { path: 'home', component: HomeComponent},
+      { path: 'company', component: CompanyComponent},
+      { path: 'company/detail/:id', component: DetailCompanyComponent},
+      { path: 'company/view-history', component: ViewHistoryCompanyComponent},
+      { path: 'user-update-page', component: UserUpdatePageComponent},
+      { path: 'feedback', component: FeedbackReviewerComponent},
+      { path: 'user-page', component: UserPageComponent},
+      { path: 'compare', component: CompareComponent}
     ]
   },
   {
@@ -55,11 +56,11 @@ const routes: Routes = [
     component: AdminSideComponent,
     children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
-      { path: 'admin', component: ManageAdminComponent },
-      { path: 'admin/manage-admin', component: ManageAdminComponent },
-      { path: 'admin/verify', component: ComfirmCompanyComponent },
-      { path: 'admin/manage-user/:userType', component: LockReviewerComponent },
-      { path: 'admin/feedback', component: FeedbackAdminComponent }
+      { path: 'admin', component: ManageAdminComponent, canActivate: [AuthGuardAdminService] },
+      { path: 'admin/manage-admin', component: ManageAdminComponent, canActivate: [AuthGuardAdminService] },
+      { path: 'admin/verify', component: ComfirmCompanyComponent, canActivate: [AuthGuardAdminService] },
+      { path: 'admin/manage-user/:userType', component: LockReviewerComponent, canActivate: [AuthGuardAdminService] },
+      { path: 'admin/feedback', component: FeedbackAdminComponent, canActivate: [AuthGuardAdminService]}
     ]
   },
   { path: 'admin/login', component: LoginAdminComponent },

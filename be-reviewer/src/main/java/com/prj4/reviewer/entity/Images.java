@@ -19,5 +19,28 @@ public class Images {
 
 	@Column(name = "TYPE_IMG")
 	private String typeImg;
-    
+
+	public String getIdImage() {
+		return idImage;
+	}
+
+	public void setIdImage(String idImage) {
+		this.idImage = idImage;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+
+	public String getTypeImg() {
+		return typeImg;
+	}
+
+	public void setTypeImg(String typeImg) {
+		this.typeImg = typeImg;
+	}
 }

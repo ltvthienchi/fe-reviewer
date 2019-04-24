@@ -29,6 +29,51 @@ public class Admin {
 	@Column(name = "DT_CREATED")
     private Date dtCreated;
 
-	
-    
+	public String getIdAdmin() {
+		return idAdmin;
+	}
+
+	public String getFullNameAdmin() {
+		return fullNameAdmin;
+	}
+
+	public String getEmailAdmin() {
+		return emailAdmin;
+	}
+
+	public String getPassAdmin() {
+		return passAdmin;
+	}
+
+	public Date getDobAdmin() {
+		return dobAdmin;
+	}
+
+	public Date getDtCreated() {
+		return dtCreated;
+	}
+
+	public void setIdAdmin(String idAdmin) {
+		this.idAdmin = idAdmin;
+	}
+
+	public void setFullNameAdmin(String fullNameAdmin) {
+		this.fullNameAdmin = fullNameAdmin;
+	}
+
+	public void setEmailAdmin(String emailAdmin) {
+		this.emailAdmin = emailAdmin;
+	}
+
+	public void setPassAdmin(String passAdmin) {
+		this.passAdmin = passAdmin;
+	}
+
+	public void setDobAdmin(Date dobAdmin) {
+		this.dobAdmin = dobAdmin;
+	}
+
+	public void setDtCreated(Date dtCreated) {
+		this.dtCreated = dtCreated;
+	}
 }
