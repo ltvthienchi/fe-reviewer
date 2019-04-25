@@ -1,0 +1,8 @@
+<div *ngIf="form.controls[field].errors">
+  <p class="txt-alert" *ngIf="form.controls[field].errors.required && (!invalidForm || form.controls[field].touched)">
+    {{form.controls[field].errors.required}}
+  </p>
+  <p class="txt-alert" *ngIf="!form.controls[field].errors.required && form.controls[field].errors[invalidField] && (!invalidForm || form.controls[field].touched)">
+    {{form.controls[field].errors[invalidField]}}
+  </p>
+</div>
