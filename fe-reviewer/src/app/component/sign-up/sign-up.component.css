@@ -1,8 +1,13 @@
 /* Made with love by Mutiullah Samim*/
 
 @import url('https://fonts.googleapis.com/css?family=Numans');
+
 * {
   font-size: 14px;
+}
+
+*[disable] {
+  cursor: no-drop;
 }
 
 .container-test {

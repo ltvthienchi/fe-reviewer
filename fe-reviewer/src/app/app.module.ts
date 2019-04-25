@@ -38,7 +38,7 @@ import { UserUpdatePageComponent } from './component/home/user-update-page/user-
 import { MenuLoginComponent } from './component/menu-login/menu-login.component';
 import { MatSliderModule, MatFormFieldModule, MatCardModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ManageAdminComponent } from './component/admin/manage-admin/manage-admin.component';
 import { CompareComponent } from './component/compare/compare.component';
 import { TopCompanyComponent } from './component/top-company/top-company.component';
@@ -47,6 +47,7 @@ import { ContentPostComponent } from './component/home/content-post/content-post
 import { UserPageComponent } from './user-page/user-page.component';
 import { LoginAdminComponent } from './component/admin/login-admin/login-admin.component';
 import {UserService} from './services/user-service/user.service';
+import { TextAlertComponent } from './services/validator/text-alert/text-alert.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -137,6 +138,7 @@ export function tokenGetter() {
     ContentPostComponent,
     UserPageComponent,
     LoginAdminComponent,
+    TextAlertComponent,
   ],
   imports: [
     HttpClientModule,

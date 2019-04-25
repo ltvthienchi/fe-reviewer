@@ -23,44 +23,65 @@
               <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                   <!-- Normal User -->
-                  <form>
+                  <form [formGroup]="normalForm" (submit)="submitNormalForm()">
                     <input type="hidden" name="typeCompany" value="normal" />
+
                     <div class="input-group form-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-at"></i></span>
                       </div>
-                      <input type="text" class="form-control" placeholder="Email">
+                      <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                      <app-text-alert [field]="'email'" [invalidField]="'email'" style="width: 100%"
+                                      [form]="normalForm" [invalidForm]="validatorForm.normalForm"></app-text-alert>
+                    </div>
 
-                    </div>
                     <div class="input-group form-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-key"></i></span>
                       </div>
-                      <input type="password" class="form-control" placeholder="password">
+                      <input type="password" class="form-control" placeholder="password" formControlName="password">
+                      <app-text-alert [field]="'password'" [invalidField]="'password'" style="width: 100%"
+                                      [form]="normalForm" [invalidForm]="validatorForm.normalForm"></app-text-alert>
                     </div>
+
                     <div class="input-group form-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-key"></i></span>
                       </div>
-                      <input type="password" class="form-control" placeholder="Confirm password">
+                      <input type="password" class="form-control" placeholder="Confirm password" formControlName="confirmPassword">
+                      <app-text-alert [field]="'confirmPassword'" [invalidField]="'confirmPassword'" style="width: 100%"
+                                      [form]="normalForm" [invalidForm]="validatorForm.normalForm"></app-text-alert>
                     </div>
+
                     <div class="input-group form-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                       </div>
-                      <input type="text" class="form-control" placeholder="First Name">
+                      <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
+                      <app-text-alert [field]="'firstName'" [invalidField]="'name'" style="width: 100%"
+                                      [form]="normalForm" [invalidForm]="validatorForm.normalForm"></app-text-alert>
                     </div>
+
                     <div class="input-group form-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                       </div>
-                      <input type="text" class="form-control" placeholder="Last Name">
+                      <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+                      <app-text-alert [field]="'lastName'" [invalidField]="'name'" style="width: 100%"
+                                      [form]="normalForm" [invalidForm]="validatorForm.normalForm"></app-text-alert>
                     </div>
+
                     <div class="form-group">
                       <input type="submit" value="Register" class="btn float-right login_btn">
                     </div>
+
                   </form>
                 </div>
+
+
+
+
+
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                   <!-- Business  Account-->
                   <form>
@@ -120,3 +141,5 @@
       </div>
     </div>
   </div>
+
+</div>
