@@ -15,10 +15,10 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
   }
 
-  createCompany() {
-      this.companys.createUser(this.user)
-        .subscribe( data => {
-          alert("User created successfully.");
-        });
-  }
+  // createCompany() {
+  //     this.companys.createUser(this.user)
+  //       .subscribe( data => {
+  //         alert("User created successfully.");
+  //       });
+  // }
 }
