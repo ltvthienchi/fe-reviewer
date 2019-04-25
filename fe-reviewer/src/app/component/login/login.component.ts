@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userToken', data.token);
         localStorage.setItem('typeRev', data.typeRev);
         localStorage.setItem('fullName', data.fullName);
-        localStorage.setItem('isActive', data.isActive);
+        localStorage.setItem('isActive', data.active);
         this.router.navigate(['/home']);
       },
       (err: HttpErrorResponse) => {

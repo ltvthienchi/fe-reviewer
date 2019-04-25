@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Company} from '../../model/company.model';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
+  company: Company = new Company();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  createCompany() {
+      this.companys.createUser(this.user)
+        .subscribe( data => {
+          alert("User created successfully.");
+        });
+  }
 }

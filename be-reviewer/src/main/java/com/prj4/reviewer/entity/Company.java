@@ -41,6 +41,9 @@ public class Company {
 	@Column(name = "IMAGE_PANEL")
 	private String imgPanelCompany;
 
+	@Column(name = "EMAIL_COMPANY")
+	private String emailCompany;
+
 
 	public String getIdCompany() {
 		return idCompany;
@@ -120,5 +123,13 @@ public class Company {
 
 	public void setImgPanelCompany(String imgPanelCompany) {
 		this.imgPanelCompany = imgPanelCompany;
+	}
+
+	public String getEmailCompany() {
+		return emailCompany;
+	}
+
+	public void setEmailCompany(String emailCompany) {
+		this.emailCompany = emailCompany;
 	}
 }

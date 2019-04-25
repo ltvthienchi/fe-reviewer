@@ -18,5 +18,9 @@ export class MenuComponent implements OnInit {
   checkAuthGuard() {
     return this.authGuard.canActivate();
   }
+  removeToken() {
+    localStorage.removeItem('userToken');
+    // this.router.navigate(['/']);
+  }
 
 }

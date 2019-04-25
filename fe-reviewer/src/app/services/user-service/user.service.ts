@@ -35,9 +35,4 @@ export class UserService {
     const data = JSON.stringify(account);
     return this.http.post(this.rootUrl + '/token/generate-token', data, {headers : reqHeader});
   }
-
-  getUserClaims() {
-    return  this.http.get(this.rootUrl+'/api/GetUserClaims');
-  }
-
 }
