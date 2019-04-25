@@ -38,7 +38,7 @@ import { UserUpdatePageComponent } from './component/home/user-update-page/user-
 import { MenuLoginComponent } from './component/menu-login/menu-login.component';
 import { MatSliderModule, MatFormFieldModule, MatCardModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ManageAdminComponent } from './component/admin/manage-admin/manage-admin.component';
 import { CompareComponent } from './component/compare/compare.component';
 import { TopCompanyComponent } from './component/top-company/top-company.component';
@@ -152,6 +152,7 @@ export function tokenGetter() {
     MatCardModule,
     MatCheckboxModule,
     MatFormFieldModule,
+    ReactiveFormsModule
   ],
   exports: [
     MatSliderModule
