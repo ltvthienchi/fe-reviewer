@@ -56,11 +56,11 @@ const routes: Routes = [
     component: AdminSideComponent,
     children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
-      { path: 'admin', component: ManageAdminComponent },
-      { path: 'admin/manage-admin', component: ManageAdminComponent },
-      { path: 'admin/verify', component: ComfirmCompanyComponent },
-      { path: 'admin/manage-user/:userType', component: LockReviewerComponent },
-      { path: 'admin/feedback', component: FeedbackAdminComponent }
+      { path: 'admin', component: ManageAdminComponent, canActivate: [AuthGuardAdminService] },
+      { path: 'admin/manage-admin', component: ManageAdminComponent, canActivate: [AuthGuardAdminService] },
+      { path: 'admin/verify', component: ComfirmCompanyComponent, canActivate: [AuthGuardAdminService] },
+      { path: 'admin/manage-user/:userType', component: LockReviewerComponent, canActivate: [AuthGuardAdminService] },
+      { path: 'admin/feedback', component: FeedbackAdminComponent, canActivate: [AuthGuardAdminService]}
     ]
   },
   { path: 'admin/login', component: LoginAdminComponent },
