@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Company} from '../../model/company.model';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {
+  validatorConfirmPassword,
+  validatorEmail,
+  validatorRequired,
+  validatorPassword,
+  validatorName
+} from '../../services/validator/validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,9 +16,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  company: Company = new Company();
+  normalForm: FormGroup;
+  validatorForm = {
+    normalForm: true
+  };
 
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder) {
   }
 
+  ngOnInit() {
+    this.normalForm = this.formBuilder.group({
+      email: ['abc@gmail.com', [validatorRequired, validatorEmail]],
+      password: ['123456', [validatorPassword]],
+      confirmPassword: ['123456', [validatorConfirmPassword]],
+      firstName: ['', [validatorRequired, validatorName]],
+      lastName: ['', [validatorRequired, validatorName]],
+    });
+  }
+
+  submitNormalForm() {
+    if (this.normalForm.status === 'INVALID') {
+      this.validatorForm.normalForm = false;
+      console.log(this.normalForm);
+    } else {
+      this.validatorForm.normalForm = true;
+    }
+  }
+
+  // createCompany() {
+  //     this.companys.createUser(this.user)
+  //       .subscribe( data => {
+  //         alert("User created successfully.");
+  //       });
+  // }
 }
