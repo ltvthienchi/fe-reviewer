@@ -33,17 +33,26 @@
           class="" alt="">
       </div>
       <!-- menu company -->
+
       <div class="menucpn">
-        <div class="btn-group">
-          <button class="btn btn-outline-info btnmargin margin-left">
-            <i class="fas fa-plus-circle" *ngIf="true"> Subscribe</i>
-            <i class="fas fa-minus-circle" *ngIf="flase"> Subscribe</i>
-          </button>
-          <button class="btn btn-outline-info btnmargin"  data-toggle="modal" data-target="#post" ><i class="fas fa-edit"> Post Product</i></button>
+        <div class="btn-group" style="padding-left: 5px">
+          <div *ngIf="checkAuthGuard() && !isCommpanyAccount()">
+            <button class="btn btn-outline-info btnmargin margin-left">
+              <i class="fas fa-plus-circle" *ngIf="true"> Subscribe</i>
+              <i class="fas fa-minus-circle" *ngIf="false"> Subscribe</i>
+            </button>
+          </div>
+          <div *ngIf="checkAuthGuard() && isCommpanyAccount()">
+            <button class="btn btn-outline-info btnmargin" data-toggle="modal" data-target="#post"><i
+              class="fas fa-edit"> Post Product</i></button>
+          </div>
+          <div *ngIf="checkAuthGuard() && !isCommpanyAccount()">
+            <button class="btn btn-info btnmargin float-right margin-right"><i class="fab fa-facebook-messenger">
+              Messenger</i></button>
+          </div>
         </div>
-        <button class="btn btn-info btnmargin float-right margin-right"><i class="fab fa-facebook-messenger">
-            Messenger</i></button>
       </div>
+
 
       <div class="row">
 
@@ -63,8 +72,9 @@
                 class="badge badge-light">(4.5/5)</span>
             </p>
 
-            <button class="btn btn-outline-info" data-toggle="modal" data-target="#review">Review this Company</button>
-
+            <div *ngIf="checkAuthGuard() && !isCommpanyAccount()">
+              <button class="btn btn-outline-info" data-toggle="modal" data-target="#review">Review this Company</button>
+            </div>
 
           </div>
 

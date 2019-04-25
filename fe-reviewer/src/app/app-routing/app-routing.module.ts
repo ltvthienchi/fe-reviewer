@@ -26,7 +26,11 @@ import { LoginAdminComponent } from '../component/admin/login-admin/login-admin.
 import {ComfirmCompanyComponent} from '../component/admin/comfirm-company/comfirm-company.component';
 import {FeedbackAdminComponent} from '../component/admin/feedback-admin/feedback-admin.component';
 import {LockReviewerComponent} from '../component/admin/lock-reviewer/lock-reviewer.component';
+<<<<<<< HEAD
 >>>>>>> master
+=======
+import {AuthGuardAdminService} from '../services/auth/auth-guard-admin.service';
+>>>>>>> 5ce04e3340ed1589c74e2880295532da54991486
 
 const routes: Routes = [
   {
@@ -34,9 +38,9 @@ const routes: Routes = [
     component: UserSideComponent,
     children: [
       { path: '', redirectTo: '/home', pathMatch: 'full'},
-      { path: 'home', component: HomeComponent },
-      { path: 'company', component: CompanyComponent },
-      { path: 'company/detail/:id', component: DetailCompanyComponent },
+      { path: 'home', component: HomeComponent},
+      { path: 'company', component: CompanyComponent},
+      { path: 'company/detail/:id', component: DetailCompanyComponent},
       { path: 'company/view-history', component: ViewHistoryCompanyComponent},
       { path: 'user-update-page', component: UserUpdatePageComponent},
 <<<<<<< HEAD

@@ -1,23 +1,26 @@
 package com.prj4.reviewer.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
+@Table(name="FOLLOW_COMPANY")// This tells Hibernate to make a table out of this class
 public class FollowCompany {
 	
 	@Id
+	@Column(name = "ID_FL_COMPANY")
     private String idFollowCompany;
 
+	@Column(name = "ID_REVIEWER")
 	private String idReviewer;
 
+	@Column(name = "ID_COMPANY")
     private String idCompany;
-    
-    private String rating;
-    
-    private Boolean isFollow;
-    
-    private Boolean isActive;
+
+	@Column(name = "IS_FOLLOW")
+    private boolean isFollow;
 
 	public String getIdFollowCompany() {
 		return idFollowCompany;
@@ -43,31 +46,11 @@ public class FollowCompany {
 		this.idCompany = idCompany;
 	}
 
-	public String getRating() {
-		return rating;
-	}
-
-	public void setRating(String rating) {
-		this.rating = rating;
-	}
-
-	public Boolean getIsFollow() {
+	public boolean isFollow() {
 		return isFollow;
 	}
 
-	public void setIsFollow(Boolean isFollow) {
-		this.isFollow = isFollow;
+	public void setFollow(boolean follow) {
+		isFollow = follow;
 	}
-
-	public Boolean getIsActive() {
-		return isActive;
-	}
-
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	
-    
-
 }

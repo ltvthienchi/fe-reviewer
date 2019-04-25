@@ -1,33 +1,49 @@
 package com.prj4.reviewer.entity;
 
 import java.sql.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
+@Table(name="COMPANY")// This tells Hibernate to make a table out of this class
 public class Company {
 
 	@Id
+	@Column(name = "ID_COMPANY")
     private String idCompany;
 
-    private String name;
+	@Column(name = "NAME_COMPANY")
+    private String nameCompany;
 
-    private String address;
-    
-    private String phone;
-    
-    private String zipCode;
-    
-    private String website;
-    
-    private Date dateCreated;
-    
-    private Date dateLastUpdate;
-    
-    private String avatarImage;
+	@Column(name = "ADDR_COMPANY")
+    private String addrCompany;
 
-	
-	
+	@Column(name = "WEB_COMPANY")
+    private String webCompany;
+
+	@Column(name = "ZIP_COMPANY")
+    private String zipCompany;
+
+	@Column(name = "TEL_COMPANY")
+    private String telCompany;
+
+	@Column(name = "DT_CREATED")
+    private Date dtCreated;
+
+	@Column(name = "ID_ACCOUNT")
+    private String idAccount;
+
+	@Column(name = "IMAGE_AVA")
+	private String imgAvatarCompany;
+
+	@Column(name = "IMAGE_PANEL")
+	private String imgPanelCompany;
+
+	@Column(name = "EMAIL_COMPANY")
+	private String emailCompany;
+
 
 	public String getIdCompany() {
 		return idCompany;
@@ -37,69 +53,83 @@ public class Company {
 		this.idCompany = idCompany;
 	}
 
-	public String getName() {
-		return name;
+	public String getNameCompany() {
+		return nameCompany;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNameCompany(String nameCompany) {
+		this.nameCompany = nameCompany;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getAddrCompany() {
+		return addrCompany;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddrCompany(String addrCompany) {
+		this.addrCompany = addrCompany;
 	}
 
-	public String getPhone() {
-		return phone;
+	public String getWebCompany() {
+		return webCompany;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setWebCompany(String webCompany) {
+		this.webCompany = webCompany;
 	}
 
-	public String getZipCode() {
-		return zipCode;
+	public String getZipCompany() {
+		return zipCompany;
 	}
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+	public void setZipCompany(String zipCompany) {
+		this.zipCompany = zipCompany;
 	}
 
-	public String getWebsite() {
-		return website;
+	public String getTelCompany() {
+		return telCompany;
 	}
 
-	public void setWebsite(String website) {
-		this.website = website;
+	public void setTelCompany(String telCompany) {
+		this.telCompany = telCompany;
 	}
 
-	public Date getDateCreated() {
-		return dateCreated;
+	public Date getDtCreated() {
+		return dtCreated;
 	}
 
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
+	public void setDtCreated(Date dtCreated) {
+		this.dtCreated = dtCreated;
 	}
 
-	public Date getDateLastUpdate() {
-		return dateLastUpdate;
+	public String getIdAccount() {
+		return idAccount;
 	}
 
-	public void setDateLastUpdate(Date dateLastUpdate) {
-		this.dateLastUpdate = dateLastUpdate;
+	public void setIdAccount(String idAccount) {
+		this.idAccount = idAccount;
 	}
 
-	public String getAvatarImage() {
-		return avatarImage;
+	public String getImgAvatarCompany() {
+		return imgAvatarCompany;
 	}
 
-	public void setAvatarImage(String avatarImage) {
-		this.avatarImage = avatarImage;
+	public void setImgAvatarCompany(String imgAvatarCompany) {
+		this.imgAvatarCompany = imgAvatarCompany;
 	}
-    
-    
+
+	public String getImgPanelCompany() {
+		return imgPanelCompany;
+	}
+
+	public void setImgPanelCompany(String imgPanelCompany) {
+		this.imgPanelCompany = imgPanelCompany;
+	}
+
+	public String getEmailCompany() {
+		return emailCompany;
+	}
+
+	public void setEmailCompany(String emailCompany) {
+		this.emailCompany = emailCompany;
+	}
 }

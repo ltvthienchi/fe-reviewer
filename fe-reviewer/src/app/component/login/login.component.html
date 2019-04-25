@@ -14,19 +14,19 @@
               </div>
             </div>
             <div class="card-body">
-              <form>
+              <form #loginForm="ngForm" (ngSubmit)="OnSubmit(UserName.value, Password.value)">
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Email">
+                  <input type="text" #UserName name="UserName" class="form-control" placeholder="Email">
 
                 </div>
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-key"></i></span>
                   </div>
-                  <input type="password" class="form-control" placeholder="Password">
+                  <input type="password" #Password name="Password" class="form-control" placeholder="Password">
                 </div>
                 <div class="row align-items-center remember">
                   <input type="checkbox">Remember Me
