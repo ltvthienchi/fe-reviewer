@@ -1,0 +1,290 @@
+.w-80 {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.container-post {
+  margin-bottom: 15px;
+}
+
+.container-post, .container-rank {
+  border: 1px solid silver;
+  border-radius: 5px;
+  background: white;
+}
+
+/*Header Post*/
+
+.header {
+  padding: 10px;
+}
+
+.header .avatar {
+  float: left;
+  width: 8%;
+}
+
+.header .avatar img {
+  width: 100%;
+  border-radius: 90px;
+  border: 1px solid silver;
+}
+
+.header .info {
+  margin-left: 10px ;
+  float: left;
+  width: 90%;
+}
+
+.header .info .title {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.header .info .title-des {
+  font-size: 14px;
+  color: silver;
+  margin: 0;
+  line-height: 1;
+}
+
+/*Body Post*/
+
+.body {
+  /*border-top: 1px solid black;*/
+  /*border-bottom: 1px solid black;*/
+  /*padding: 10px;*/
+  /**/
+}
+
+
+.body .content {
+  margin: 0 10px 10px 10px;
+  text-align: justify;
+}
+
+.content p {
+  margin: 0;
+}
+
+.image {
+  width: 100%;
+}
+
+.image img {
+  width: 100%;
+  max-width: 640px;
+  max-height: 360px;
+}
+
+.star {
+  padding-bottom: 10px;
+  border-bottom: 1px solid silver;
+}
+
+.rating {
+  padding: 10px 10px 0px 10px;
+}
+
+.rating .number-rating {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.rating .number-rating p {
+  margin: 0;
+}
+
+.rating .number-rating .point {
+  font-size: 20px;
+  color: #17a2b8;
+  font-weight: bold;
+}
+
+.rating .number-rating .description {
+  font-size: 12px;
+  color: #777;
+  line-height: 0.8;
+}
+
+.rating .number-rating.comment {
+  display: inline-block;
+}
+
+
+.rating .number-rating.comment .point {
+  font-size: 20px;
+  color: black;
+  font-weight: normal;
+  text-align: center;
+}
+
+.rating .number-rating.comment .description {
+  text-align: center;
+}
+
+.rating .number-rating-total {
+  background: #17a2b8;
+  color: white;
+  height: 100%;
+  width: 46px;
+  border-radius: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/*Footer Post*/
+
+.footer {
+  padding: 10px 10px 0 10px;
+}
+
+.group-button {
+  border-top: 1px solid silver;
+  /*border-bottom: 1px solid silver;*/
+}
+
+.group-button .btn-post {
+  text-align: center;
+  margin: 5px auto;
+  padding: 7px 0;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
+}
+
+.group-button .btn-post:hover {
+  background: #f8f8f8;
+  cursor: pointer;
+}
+
+/* Top company */
+
+.top-company {
+  height: 100%;
+  padding: 10px;
+}
+
+.top-company .title, .hot-tag .title {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  border-bottom: 1px solid silver;
+  margin-bottom: 10px;
+}
+
+.top-company .content {
+
+}
+
+.top-company .content .stt {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.hot-tag {
+  border-top: 1px solid black;
+  padding: 10px;
+}
+
+.hot-tag span {
+  margin: 5px;
+}
+
+.badge {
+  font-size: 14px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Ratting */
+
+.container-ratting {
+  padding: 10px;
+  height: 429px;
+  position: absolute;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid silver;
+  background: white;
+  display: none;
+}
+
+.container-ratting .item-ratting span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/*.container-ratting .item-ratting .title {*/
+  /*display: flex;*/
+  /*align-items: center;*/
+/*}*/
+
+.w-30 {
+  display: inline-block;
+  width: 30%;
+}
+
+.w-70 {
+  display: inline-block;
+  width: 70%;
+}
+
+/*Mobile device*/
+
+@media all and (max-width: 576px) {
+
+  /*Header*/
+
+  .header .avatar {
+    width: 15%;
+  }
+
+  .header .info {
+    width: 60%;
+  }
+
+  /*Body*/
+
+  .body .content {
+    font-size: 14px;
+  }
+
+  /*Rating*/
+
+  .rating {
+    padding: 10px 8px 0 8px;
+  }
+
+  .rating .col-2 {
+    padding: 0;
+  }
+
+  .rating .number-rating .point {
+    font-size: 14px;
+  }
+
+  .rating .number-rating .description {
+    font-size: 10px;
+  }
+
+  .rating .number-rating.comment .point {
+    font-size: 14px;
+  }
+
+  .rating .number-rating-total {
+    width: 34px;
+  }
+
+  .rating .number-rating-total span {
+    font-size: 14px;
+  }
+
+
+}

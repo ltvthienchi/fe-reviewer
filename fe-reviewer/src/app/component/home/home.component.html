@@ -1,0 +1,68 @@
+<div class="row p-main">
+  <div class="col-sm-3">
+    <app-top-company></app-top-company>
+  </div>
+
+  <div class="col-sm-6">
+    <div *ngFor="let item of myData">
+      <app-content-post [item]="item"></app-content-post>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="container-rank" id="quang-cao">
+      <div class="top-company">
+        <p class="title">Quang cao</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-ratting">
+
+  <div class="item-ratting">
+    <div class="w-30 title">
+      <span>Performance</span>
+    </div>
+    <div class="w-70">
+      <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel" [tick-interval]="1"
+                  [(ngModel)]="value" style="width: 85%"></mat-slider>
+      <span style="margin-left: 10px">{{value}}</span>
+    </div>
+  </div>
+
+  <div class="item-ratting">
+    <div class="w-30 title">
+      <span>Performance</span>
+    </div>
+    <div class="w-70">
+      <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel" [tick-interval]="1"
+                  [(ngModel)]="value" style="width: 85%"></mat-slider>
+      <span style="margin-left: 10px">{{value}}</span>
+    </div>
+  </div>
+
+  <div class="item-ratting">
+    <div class="w-30 title">
+      <span>Performance</span>
+    </div>
+    <div class="w-70">
+      <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel" [tick-interval]="1"
+                  [(ngModel)]="value" style="width: 85%"></mat-slider>
+      <span style="margin-left: 10px">{{value}}</span>
+    </div>
+  </div>
+
+  <div class="item-ratting">
+    <div class="w-30 title">
+      <span>Performance</span>
+    </div>
+    <div class="w-70">
+      <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel" [tick-interval]="1"
+                  [(ngModel)]="value" style="width: 85%"></mat-slider>
+      <span style="margin-left: 10px">{{value}}</span>
+    </div>
+  </div>
+
+
+</div>

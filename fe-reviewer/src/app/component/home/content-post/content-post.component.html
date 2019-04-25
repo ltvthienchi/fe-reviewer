@@ -1,0 +1,92 @@
+<div class="container-post" >
+  <div class="header clearfix">
+    <div class="avatar">
+      <img [src]="item.avatar" alt="avatar"/>
+    </div>
+    <div class="info">
+      <p class="title txt-main">{{item.nameCompany}}</p>
+      <p class="title-des">Top company</p>
+      <!--<span class="badge badge-primary">Iphone</span> <span class="badge badge-secondary">viet nam vo dich</span>-->
+    </div>
+  </div>
+
+
+  <div class="body">
+    <div class="content">
+      <p>{{item.content}}</p>
+    </div>
+    <div class="image">
+      <img [src]="item.image" alt="image" [id]="'contentImage' + item.idPostProduct">
+    </div>
+    <div class="rating">
+      <div class="row">
+
+        <div class="col-2">
+          <div class="number-rating-total">
+            <span>10.0</span>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <div class="number-rating">
+            <p class="point">{{item.avgDisplay}}</p>
+            <p class="description">Display</p>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <div class="number-rating">
+            <p class="point">{{item.avgPerformance}}</p>
+            <p class="description">Performance</p>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <div class="number-rating">
+            <p class="point">{{item.avgCamera}}</p>
+            <p class="description">Camera</p>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <div class="number-rating">
+            <p class="point">{{item.avgBattery}}</p>
+            <p class="description">Battery</p>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <div class="number-rating comment">
+            <p class="point">{{item.totalComment}}</p>
+            <p class="description">Comment</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="checkAuthGuard()">
+    <div class="footer">
+      <div class="group-button">
+        <div class="row">
+
+          <div class="col-4">
+            <p class="btn-post" (click)="toggleRatings('contentImage' + item.idPostProduct)">Ratings</p>
+          </div>
+          <div class="col-4">
+            <p class="btn-post">Comments</p>
+          </div>
+          <div class="col-4">
+            <p class="btn-post">Compare</p>
+          </div>
+        </div>
+        <!--<p>-->
+        <!--<span class="title">Nguyen Van A</span>-->
+        <!--<span class="context">Lorem ipsum dolor sit amet</span>-->
+        <!--</p>-->
+      </div>
+      <!--<div class="input">-->
+      <!--<textarea placeholder="Them binh luan"></textarea>-->
+      <!--</div>-->
+    </div>
+  </div>
+</div>
