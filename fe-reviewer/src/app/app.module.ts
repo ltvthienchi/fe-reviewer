@@ -41,7 +41,14 @@ import { FormsModule } from '@angular/forms';
 import { ManageAdminComponent } from './component/admin/manage-admin/manage-admin.component';
 import { CompareComponent } from './component/compare/compare.component';
 import { TopCompanyComponent } from './component/top-company/top-company.component';
+<<<<<<< HEAD
 import { UserPageComponent } from './user-page/user-page.component';
+=======
+import { DdmmyyyyPipe } from './services/pipe/ddmmyyyy.pipe';
+import { ContentPostComponent } from './component/home/content-post/content-post.component';
+import { UserPageComponent } from './user-page/user-page.component';
+import { LoginAdminComponent } from './component/admin/login-admin/login-admin.component';
+>>>>>>> master
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -128,7 +135,14 @@ export function tokenGetter() {
     ManageAdminComponent,
     CompareComponent,
     TopCompanyComponent,
+<<<<<<< HEAD
     UserPageComponent
+=======
+    DdmmyyyyPipe,
+    ContentPostComponent,
+    UserPageComponent,
+    LoginAdminComponent,
+>>>>>>> master
   ],
   imports: [
     BrowserModule,

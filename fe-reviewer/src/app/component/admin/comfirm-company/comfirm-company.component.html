@@ -1,3 +1,108 @@
-<p>
-  comfirm-company works!
-</p>
+<!--<div class="container-confirm">-->
+  <!--<table class="table table-striped table-hover my-table">-->
+    <!--<thead>-->
+    <!--<tr>-->
+      <!--<th class="w-0-5">#</th>-->
+      <!--<th class="w-2">Name</th>-->
+      <!--<th class="w-2">Address</th>-->
+      <!--<th class="w-1-5">Website</th>-->
+      <!--<th class="w-1">Zip Code</th>-->
+      <!--<th class="w-1">Date Create</th>-->
+      <!--<th class="w-1">Tel Phone</th>-->
+      <!--<th class="w-1">Actions</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+
+    <!--<tbody>-->
+    <!--<tr *ngFor="let item of data; let idx = index">-->
+      <!--<td class="font-weight-bold">{{idx + 1}}</td>-->
+      <!--<td>{{item.name}}</td>-->
+      <!--<td>{{item.address}}</td>-->
+      <!--<td>{{item.website}}</td>-->
+      <!--<td>{{item.zipCode}}</td>-->
+      <!--<td>{{item.dateCreate | ddmmyyyy}}</td>-->
+      <!--<td>{{item.telPhone}}</td>-->
+      <!--<td>Actions</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+
+
+  <!--</table>-->
+<!--</div>-->
+
+<!--<a href="#editAdminModal" class="edit" data-toggle="modal">-->
+  <!--<i class="fas fa-pen" data-toggle="tooltip"-->
+     <!--title="Edit"></i></a>-->
+<!--<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt"-->
+                                                                     <!--data-toggle="tooltip"-->
+                                                                     <!--title="Delete"></i></a>-->
+
+<div class="d-flex align-items-stretch">
+  <div class="container">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Manage Verify Business Account</h2>
+          </div>
+          <div class="col-sm-6">
+            <!--<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-user-plus"></i>-->
+              <!--<span> Add New Employee</span></a>-->
+            <!--<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-user-minus"></i>-->
+              <!--<span> Delete</span></a>-->
+          </div>
+        </div>
+      </div>
+      <div class="container-confirm">
+        <table class="table table-striped table-hover my-table">
+          <thead>
+          <tr>
+            <th class="w-0-5">#</th>
+            <th class="w-2">Name</th>
+            <th class="w-2">Address</th>
+            <th class="w-1-5">Website</th>
+            <th class="w-1">Zip Code</th>
+            <th class="w-1">Date Create</th>
+            <th class="w-1">Tel Phone</th>
+            <th class="w-1">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of data; let idx = index">
+            <td class="font-weight-bold">{{idx + 1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.website}}</td>
+            <td>{{item.zipCode}}</td>
+            <td>{{item.dateCreate | ddmmyyyy}}</td>
+            <td>{{item.telPhone}}</td>
+            <td>
+              <a class="accept"><i class="fas fa-user-check"></i></a>
+              <a class="delete"><i class="fas fa-user-slash"></i></a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+
+      <div class="clearfix">
+        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+        <ul class="pagination">
+          <li class="page-item disabled"><a href="#">Previous</a></li>
+          <li class="page-item active"><a href="#" class="page-link">1</a></li>
+          <li class="page-item"><a href="#" class="page-link">2</a></li>
+          <li class="page-item"><a href="#" class="page-link">3</a></li>
+          <li class="page-item"><a href="#" class="page-link">4</a></li>
+          <li class="page-item"><a href="#" class="page-link">5</a></li>
+          <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

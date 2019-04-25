@@ -444,11 +444,19 @@ body{
   .profile .user {
     position: relative;
     padding: 0px 5px 5px;
+<<<<<<< HEAD
+=======
+    height: 42px;
+>>>>>>> master
   }
   
   .profile .user .avatar {
     position: absolute;
+<<<<<<< HEAD
     left: 20px;
+=======
+    left: 10px;
+>>>>>>> master
     top: -85px;
     z-index: 2;
   }
@@ -458,7 +466,11 @@ body{
     line-height: 20px;
     display: block;
     float: left;
+<<<<<<< HEAD
     margin: 4px 0px 0px 135px;
+=======
+    margin: 7px 0px 0px 125px;
+>>>>>>> master
     font-weight: bold;
   }
   
@@ -476,6 +488,10 @@ body{
   }
   
   .img-profile{
+<<<<<<< HEAD
+=======
+    margin: 10px;
+>>>>>>> master
       height:100px;
       width:100px;
   }
