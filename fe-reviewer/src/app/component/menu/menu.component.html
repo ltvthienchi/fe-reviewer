@@ -16,61 +16,43 @@
         </form>
 
         <ul class="col-1"></ul>
-        <div *ngIf="checkAuthGuard(); else elseBlock">
-          <ul class="navbar-nav mr-auto col-5">
-            <li class="nav-item active">
-              <a class="nav-link my-border" routerLink="/home">News
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link my-border" routerLink="/company">Subscriptions</a>
-            </li>
-            <!--<li class="br-l"></li>-->
 
+        <ul class="navbar-nav mr-auto col-5">
+          <li class="nav-item active">
+            <a class="nav-link my-border" routerLink="/home" >News <span class="sr-only">(current)</span></a>
+          </li>
 
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/compare" tabindex="-1" aria-disabled="true">Compare</a>
-            </li>
+          <!--<li class="br-l"></li>-->
 
-            <!--<li class="br-l"></li>-->
+          <li class="nav-item">
+            <a class="nav-link my-border" routerLink="/company">Subscriptions</a>
+          </li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">
-                <img class="menu-avar" src="../../../assets/image/avar-pay.png"/>
-                Nguyen Van A
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Sign</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" (click)="removeToken()">Sign Out</a>
-                <!--<a class="dropdown-item" href="user-update-page">Change Your Account</a>-->
-                <a class="dropdown-item" href="user-page">Your Page</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <ng-template #elseBlock>
-          <ul class="navbar-nav mr-auto col-5">
-            <li class="nav-item active">
-              <a class="nav-link my-border" routerLink="/home">News
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link my-border" routerLink="/signup">Sign up
-                <span class="sr-only"></span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/login">Sign In
-                <span class="sr-only"></span>
-              </a>
-            </li>
-          </ul>
-        </ng-template>
+          <!--<li class="br-l"></li>-->
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/compare" tabindex="-1" aria-disabled="true">Compare</a>
+          </li>
+
+          <!--<li class="br-l"></li>-->
+
+          <li class="nav-item">
+
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="menu-avar" src="../../../assets/image/avar-pay.png" />
+              Nguyen Van A
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="user-update-page">Change Your Account</a>
+            </div>
+          </li>
+        </ul>
       </div>
     </nav>
   <!--</div>-->

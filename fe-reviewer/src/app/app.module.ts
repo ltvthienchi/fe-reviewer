@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 //
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { CompanyComponent } from './component/company/company.component';
@@ -38,16 +37,10 @@ import { UserUpdatePageComponent } from './component/home/user-update-page/user-
 import { MenuLoginComponent } from './component/menu-login/menu-login.component';
 import { MatSliderModule, MatFormFieldModule, MatCardModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ManageAdminComponent } from './component/admin/manage-admin/manage-admin.component';
 import { CompareComponent } from './component/compare/compare.component';
 import { TopCompanyComponent } from './component/top-company/top-company.component';
-import { DdmmyyyyPipe } from './services/pipe/ddmmyyyy.pipe';
-import { ContentPostComponent } from './component/home/content-post/content-post.component';
-import { UserPageComponent } from './user-page/user-page.component';
-import { LoginAdminComponent } from './component/admin/login-admin/login-admin.component';
-import {UserService} from './services/user-service/user.service';
-import { TextAlertComponent } from './services/validator/text-alert/text-alert.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -133,15 +126,9 @@ export function tokenGetter() {
     MenuLoginComponent,
     ManageAdminComponent,
     CompareComponent,
-    TopCompanyComponent,
-    DdmmyyyyPipe,
-    ContentPostComponent,
-    UserPageComponent,
-    LoginAdminComponent,
-    TextAlertComponent,
+    TopCompanyComponent
   ],
   imports: [
-    HttpClientModule,
     BrowserModule,
     NotifierModule.withConfig(customNotifierOptions),
     AppRoutingModule,
@@ -160,8 +147,7 @@ export function tokenGetter() {
     Broadcaster,
     EventMessage,
     AuthGuardService,
-    AuthService,
-    UserService
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

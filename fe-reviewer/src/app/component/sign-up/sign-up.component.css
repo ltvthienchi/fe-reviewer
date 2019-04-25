@@ -2,14 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
-* {
-  font-size: 14px;
-}
-
-*[disable] {
-  cursor: no-drop;
-}
-
 .container-test {
   background-image: url('../../../assets/wallpaper/loginWall.jpg');
   background-size: cover;

@@ -2,57 +2,37 @@ package com.prj4.reviewer.entity;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="RATING_PRODUCT")// This tells Hibernate to make a table out of this class
+@Entity // This tells Hibernate to make a table out of this class
 public class RatingPost {
 	
 	@Id
-	@Column(name = "ID_RATING_PRODUCT")
-	private String idRatingProduct;
+	private String idRating;
+	
+    private String idPost;
 
-	@Column(name = "ID_PRODUCT")
-    private String idProduct;
-
-	@Column(name = "ID_REVIEWER")
 	private String idReviewer;
 
-	@Column(name = "DT_CREATED")
-    private Date dtCreated;
+    private int rating;
+    
+    private Date dateUpdate;
 
-	@Column(name = "RT_BATTERY")
-    private int rtBattery;
-
-	@Column(name = "RT_DISPLAY")
-	private int rtDisplay;
-
-	@Column(name = "RT_PERFORMANCE")
-	private int rtPerformance;
-
-	@Column(name = "RT_DESIGN")
-	private int rtDesign;
-
-	@Column(name = "RT_CAMERA")
-	private int rtCamera;
-
-	public String getIdRatingProduct() {
-		return idRatingProduct;
+	public String getIdRating() {
+		return idRating;
 	}
 
-	public void setIdRatingProduct(String idRatingProduct) {
-		this.idRatingProduct = idRatingProduct;
+	public void setIdRating(String idRating) {
+		this.idRating = idRating;
 	}
 
-	public String getIdProduct() {
-		return idProduct;
+	public String getIdPost() {
+		return idPost;
 	}
 
-	public void setIdProduct(String idProduct) {
-		this.idProduct = idProduct;
+	public void setIdPost(String idPost) {
+		this.idPost = idPost;
 	}
 
 	public String getIdReviewer() {
@@ -63,51 +43,23 @@ public class RatingPost {
 		this.idReviewer = idReviewer;
 	}
 
-	public Date getDtCreated() {
-		return dtCreated;
+	public int getRating() {
+		return rating;
 	}
 
-	public void setDtCreated(Date dtCreated) {
-		this.dtCreated = dtCreated;
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 
-	public int getRtBattery() {
-		return rtBattery;
+	public Date getDateUpdate() {
+		return dateUpdate;
 	}
 
-	public void setRtBattery(int rtBattery) {
-		this.rtBattery = rtBattery;
+	public void setDateUpdate(Date dateUpdate) {
+		this.dateUpdate = dateUpdate;
 	}
 
-	public int getRtDisplay() {
-		return rtDisplay;
-	}
+	
+    
 
-	public void setRtDisplay(int rtDisplay) {
-		this.rtDisplay = rtDisplay;
-	}
-
-	public int getRtPerformance() {
-		return rtPerformance;
-	}
-
-	public void setRtPerformance(int rtPerformance) {
-		this.rtPerformance = rtPerformance;
-	}
-
-	public int getRtDesign() {
-		return rtDesign;
-	}
-
-	public void setRtDesign(int rtDesign) {
-		this.rtDesign = rtDesign;
-	}
-
-	public int getRtCamera() {
-		return rtCamera;
-	}
-
-	public void setRtCamera(int rtCamera) {
-		this.rtCamera = rtCamera;
-	}
 }
