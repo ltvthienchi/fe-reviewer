@@ -43,4 +43,17 @@ export class AppComponent implements OnInit {
         }
       });
   }
+
+  setToken() {
+    localStorage.setItem('token',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTU1NzY3OTM1LCJleHAiOjE1NTU3Njc5MzV9.GGQF-wQ6QYCyZHDZC_qRoCGkV_sNOUCsZFtj74Gva8w'
+    );
+    this.router.navigate(['home']);
+  }
+
+  removeToken() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { arrCompany } from '../../../services/local_database/company';
 
 @Component({
   selector: 'app-comfirm-company',
@@ -7,8 +6,6 @@ import { arrCompany } from '../../../services/local_database/company';
   styleUrls: ['./comfirm-company.component.css']
 })
 export class ComfirmCompanyComponent implements OnInit {
-
-  data = arrCompany;
 
   constructor() { }
 

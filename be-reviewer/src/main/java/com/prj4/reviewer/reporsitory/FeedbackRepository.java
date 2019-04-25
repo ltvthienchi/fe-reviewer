@@ -1,11 +1,11 @@
 package com.prj4.reviewer.reporsitory;
 
-import com.prj4.reviewer.entity.User;
+import com.prj4.reviewer.entity.FeedbackWebsite;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserRepository extends CrudRepository<User, String> {
 
-    User findByUserName(String userName);
+@Repository
+public interface FeedbackRepository extends CrudRepository<FeedbackWebsite, String> {
+
 }
