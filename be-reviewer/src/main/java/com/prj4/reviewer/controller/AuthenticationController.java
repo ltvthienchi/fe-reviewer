@@ -4,6 +4,8 @@ import com.prj4.reviewer.config.JwtTokenUtil;
 import com.prj4.reviewer.core.AuthToken;
 import com.prj4.reviewer.response.LoginUser;
 import com.prj4.reviewer.entity.User;
+import com.prj4.reviewer.service.CompanyService;
+import com.prj4.reviewer.service.ReviewerService;
 import com.prj4.reviewer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +34,12 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ReviewerService reviewerService;
+
+    @Autowired
+    private CompanyService companyService;
+
     @RequestMapping(value = "/generate-token", method = RequestMethod.POST)
     public ResponseEntity register(@RequestBody LoginUser loginUser) throws AuthenticationException {
 
@@ -43,8 +51,14 @@ public class AuthenticationController {
 //        );
 //        SecurityContextHolder.getContext().setAuthentication(authentication);
         final User user = userService.findOne(loginUser.getUserName());
-        final String token = jwtTokenUtil.generateToken(user);
-        return ResponseEntity.ok(new AuthToken(token, user.getUserName()));
+        String fullName = null;
+        if (user.getTypeAccount() == 1) {
+            fullName = companyService.getFullName(user.getIdAccount());
+        } else {
+            fullName = reviewerService.getFullName(user.getIdAccount());
+        }
+        final String token = jwtTokenUtil.generateToken(user, user.getTypeAccount());
+        return ResponseEntity.ok(new AuthToken(token, user.getTypeAccount(), fullName, user.isActive()));
 
         //return (List<User>) userService.findAll();
     }
