@@ -1,38 +1,29 @@
 package com.prj4.reviewer.entity;
 
 import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class RatingPost {
-	
+public class FeedbackWebsite {
+
 	@Id
-	private String idRating;
+    private String idFeedback;
 	
-    private String idPost;
-
 	private String idReviewer;
-
-    private int rating;
+	
+    private String content;
+    
+    private Date dateCreate;
     
     private Date dateUpdate;
 
-	public String getIdRating() {
-		return idRating;
+	public String getIdFeedback() {
+		return idFeedback;
 	}
 
-	public void setIdRating(String idRating) {
-		this.idRating = idRating;
-	}
-
-	public String getIdPost() {
-		return idPost;
-	}
-
-	public void setIdPost(String idPost) {
-		this.idPost = idPost;
+	public void setIdFeedback(String idFeedback) {
+		this.idFeedback = idFeedback;
 	}
 
 	public String getIdReviewer() {
@@ -43,12 +34,20 @@ public class RatingPost {
 		this.idReviewer = idReviewer;
 	}
 
-	public int getRating() {
-		return rating;
+	public String getContent() {
+		return content;
 	}
 
-	public void setRating(int rating) {
-		this.rating = rating;
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Date getDateCreate() {
+		return dateCreate;
+	}
+
+	public void setDateCreate(Date dateCreate) {
+		this.dateCreate = dateCreate;
 	}
 
 	public Date getDateUpdate() {
@@ -61,5 +60,5 @@ public class RatingPost {
 
 	
     
-
+    
 }

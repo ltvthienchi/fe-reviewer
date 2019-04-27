@@ -1,113 +1,101 @@
 package com.prj4.reviewer.entity;
 
+import java.sql.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-import javax.persistence.*;
-import java.util.Date;
-
-@Entity
-@Table (name = "REVIEWER")// This tells Hibernate to make a table out of this class
+@Entity // This tells Hibernate to make a table out of this class
 public class Reviewer {
 
 	@Id
-    @Column(name = "ID_REVIEWER")
     private String idReviewer;
 
-    @Column(name = "NAME_REVIEWER")
-    private String fullName;
+    private String name;
 
-    @Column(name = "EMAIL_REVIEWER")
     private String email;
-
-    @Column(name = "DOB_REVIWER")
+    
+    private String password;
+    
+    private Boolean gender;
+    
     private Date dateOfBirth;
-
-    @Column(name = "DT_CREATED")
+    
     private Date dateCreated;
+    
+    private Date dateLastUpdate;
+    
+    private String avartar;
 
-    @Column(name = "ID_ACCOUNT")
-    private String idAccount;
+	public String getIdReviewer() {
+		return idReviewer;
+	}
 
+	public void setIdReviewer(String idReviewer) {
+		this.idReviewer = idReviewer;
+	}
 
-    @Column(name = "IMAGE_AVA")
-    private String imgAvatar;
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    @Column(name = "IMAGE_PANEL")
-    private String imgPanel;
+	public String getEmail() {
+		return email;
+	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    @Column(name = "GENDER")
-    private int gender;
+	public String getPassword() {
+		return password;
+	}
 
-    public String getIdReviewer() {
-        return idReviewer;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public String getFullName() {
-        return fullName;
-    }
+	public Boolean getGender() {
+		return gender;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setGender(Boolean gender) {
+		this.gender = gender;
+	}
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
 
-    public Date getDateCreated() {
-        return dateCreated;
-    }
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 
-    public String getIdAccount() {
-        return idAccount;
-    }
+	public Date getDateCreated() {
+		return dateCreated;
+	}
 
-    public String getImgAvatar() {
-        return imgAvatar;
-    }
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
 
-    public String getImgPanel() {
-        return imgPanel;
-    }
+	public Date getDateLastUpdate() {
+		return dateLastUpdate;
+	}
 
-    public int getGender() {
-        return gender;
-    }
+	public void setDateLastUpdate(Date dateLastUpdate) {
+		this.dateLastUpdate = dateLastUpdate;
+	}
 
-    public void setIdReviewer(String idReviewer) {
-        this.idReviewer = idReviewer;
-    }
+	public String getAvartar() {
+		return avartar;
+	}
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
+	public void setAvartar(String avartar) {
+		this.avartar = avartar;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public void setIdAccount(String idAccount) {
-        this.idAccount = idAccount;
-    }
-
-    public void setImgAvatar(String imgAvatar) {
-        this.imgAvatar = imgAvatar;
-    }
-
-    public void setImgPanel(String imgPanel) {
-        this.imgPanel = imgPanel;
-    }
-
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
 }

@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { validatorConfirmPassword, validatorEmail,
-  validatorRequired, validatorPassword, validatorName } from '../../services/validator/validator';
+import {
+  validatorConfirmPassword,
+  validatorEmail,
+  validatorRequired,
+  validatorPassword,
+  validatorName
+} from '../../services/validator/validator';
 import {Company} from '../../model/company.model';
 
 @Component({

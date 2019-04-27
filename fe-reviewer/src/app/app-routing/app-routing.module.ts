@@ -56,7 +56,7 @@ const routes: Routes = [
     component: AdminSideComponent,
     children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
-      { path: 'admin', component: ManageAdminComponent },
+      { path: 'admin', component: ManageAdminComponent  },
       { path: 'admin/manage-admin', component: ManageAdminComponent },
       { path: 'admin/verify', component: ComfirmCompanyComponent },
       { path: 'admin/manage-user/:userType', component: LockReviewerComponent },
