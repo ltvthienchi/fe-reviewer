@@ -9,7 +9,7 @@ export function validatorEmail(c: AbstractControl) {
 
 export function validatorRequired(c: AbstractControl) {
   const check = c.value.split()[0] === ' ';
-  if (!c.value) return { required: 'field is required' };
+  if (!c.value) return { required: 'Field is required' };
   if (check) return { required: 'Please do not press white space in first!' };
   return null;
 }
@@ -17,18 +17,18 @@ export function validatorRequired(c: AbstractControl) {
 export function validatorPassword(c: AbstractControl) {
   const regex = /^$|\s+/;
   const myRe = regex.exec(c.value);
-  if (!c.value) return { password: 'field is required' };
-  if (myRe) return { password: 'please no enter white space' };
-  if (c.value.length < 6 || c.value.label > 20) return { password: 'password has be length from 6 to 20' };
+  if (!c.value) return { password: 'Field is required' };
+  if (myRe) return { password: 'Please no enter white space' };
+  if (c.value.length < 6 || c.value.label > 20) return { password: 'Password has be length from 6 to 20' };
   return null;
 }
 
 export function validatorConfirmPassword(c: AbstractControl) {
-  if (!c.value) return { confirmPassword: 'field is required' };
+  if (!c.value) return { confirmPassword: 'Field is required' };
   if (c.parent) {
     const password = c.parent.controls['password'].value;
     const confirmPassword = c.value;
-    if (password !== confirmPassword) return { confirmPassword: 'password must be equal confirm password' };
+    if (password !== confirmPassword) return { confirmPassword: 'Password must be equal confirm password' };
   }
   return null;
 }
@@ -36,8 +36,8 @@ export function validatorConfirmPassword(c: AbstractControl) {
 export function validatorName(c: AbstractControl) {
   const regex = /^[a-zA-Z0-9]{1,50}$/;
   const myRe = regex.exec(c.value);
-  if (c.value.length > 50) return { name: 'field must be greater 50' };
-  if (!myRe) return { name: 'please no enter special character' };
+  if (c.value.length > 50) return { name: 'Field must be greater 50' };
+  if (!myRe) return { name: 'Please no enter special character' };
   return null;
 }
 

@@ -13,16 +13,14 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   registerUser(user: User) {
-    const body: User = {
-      idAccount: user.idAccount,
-      userName: user.userName,
-      passAccount: user.passAccount,
-      typeAccount: user.typeAccount,
-      isActive: user.isActive,
-    }
-    const reqHeader = new HttpHeaders({'No-Auth': 'True',
-      'Content-Type': 'application/json'});
-    return this.http.post(this.rootUrl + '/token/User/Register', body,{headers : reqHeader});
+
+    const  auth_token = localStorage.getItem('userToken');
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': auth_token
+    });
+    const data = JSON.stringify(user);
+    return this.http.post(this.rootUrl + '/token/User/Register', data,{headers : reqHeader});
   }
 
   userAuthentication(userName, password) {

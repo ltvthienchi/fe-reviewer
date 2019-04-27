@@ -5,9 +5,12 @@ import {
   validatorEmail,
   validatorRequired,
   validatorPassword,
-  validatorName
+  validatorName, validatorPhone, validatorWebsite
 } from '../../services/validator/validator';
 import {Company} from '../../model/company.model';
+import {UserService} from '../../services/user-service/user.service';
+import {User} from '../../model/user.model';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,36 +19,69 @@ import {Company} from '../../model/company.model';
 })
 export class SignUpComponent implements OnInit {
 
-  normalForm: FormGroup;
+  private notifier: NotifierService;
+  normalUserForm: FormGroup;
+  businessUserForm: FormGroup;
   validatorForm = {
-    normalForm: true
+    normalUserForm: true,
+    businessUserForm: true
   };
   company: Company = new Company();
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, notifier: NotifierService) {
+    this.notifier = notifier;
+  }
 
   ngOnInit() {
-    this.normalForm = this.formBuilder.group({
-      email: ['abc@gmail.com', [validatorRequired, validatorEmail]],
-      password: ['123456', [validatorPassword]],
-      confirmPassword: ['123456', [validatorConfirmPassword]],
+    this.normalUserForm = this.formBuilder.group({
+      email: ['', [validatorRequired, validatorEmail]],
+      password: ['', [validatorPassword]],
+      confirmPassword: ['', [validatorConfirmPassword]],
       firstName: ['', [validatorRequired, validatorName]],
       lastName: ['', [validatorRequired, validatorName]],
+    });
+    this.businessUserForm = this.formBuilder.group({
+      emailCompany: ['', [validatorRequired, validatorEmail]],
+      passwordCompany: ['', [validatorPassword]],
+      confirmPasswordCompany: ['', [validatorConfirmPassword]],
+      nameCompany: ['', [validatorRequired, validatorName]],
+      addrCompany: ['', [validatorRequired, validatorName]],
+      telCompany: ['', [validatorRequired, validatorPhone]],
+      webCompany: ['', [validatorRequired, validatorWebsite]],
     });
   }
 
   submitNormalForm() {
-    if (this.normalForm.status === 'INVALID') {
-      this.validatorForm.normalForm = false;
-      console.log(this.normalForm);
+    if (this.normalUserForm.status === 'INVALID') {
+      this.validatorForm.normalUserForm = false;
+      // console.log(this.normalUserForm);
     } else {
-      this.validatorForm.normalForm = true;
+      this.validatorForm.normalUserForm = true;
+      // this.userService.registerUser(this.validatorForm.value)
+      const user: User = {
+        userName: this.normalUserForm.value.email,
+        passAccount: this.normalUserForm.value.password,
+        typeAccount: 1,
+        isActive: true,
+        nameAccount: this.normalUserForm.value.firstName + this.normalUserForm.value.lastName
+      };
+      this.userService.registerUser(user).subscribe(data => {
+        if (data === 'Success') {
+          this.showNotification( 'success', 'Create Successfully!!' );
+        }
+      });
     }
   }
 
-  // createCompany() {
-  //     this.companyService.createUser(this.user)
-  //       .subscribe( data => {
-  //         data. == tre
-  //       });
-  // }
+  submitBusinessForm() {
+    if (this.businessUserForm.status === 'INVALID') {
+      this.validatorForm.businessUserForm = false;
+      // console.log(this.normalUserForm);
+    } else {
+      this.validatorForm.businessUserForm = true;
+    }
+  }
+
+  public showNotification(type: string, message: string): void {
+    this.notifier.notify(type, message);
+  }
 }

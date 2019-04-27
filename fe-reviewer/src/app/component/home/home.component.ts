@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   myData = arrPostProduct;
 
   public constructor(notifier: NotifierService, private broad: Broadcaster, private eventMessage: EventMessage) {
-    this.notifier = notifier;
+      this.notifier = notifier;
   }
 
   ngOnInit() {
