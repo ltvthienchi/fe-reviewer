@@ -24,10 +24,10 @@ public class PostService {
         // Function Generate ID
         String idCommment = "Generate Code";
 
-        Comment comment= new Comment(idCommment,commentRequest.getIdPost(), commentRequest.getIdReviewer(),
-                commentRequest.getIdReply(), commentRequest.getReply(), commentRequest.getContent(),
-                commentRequest.getDateCreate(), commentRequest.getDateUpdate());
-        commentRepository.save(comment);
+//        Comment comment= new Comment(idCommment,commentRequest.getIdPost(), commentRequest.getIdReviewer(),
+//                commentRequest.getIdReply(), commentRequest.getReply(), commentRequest.getContent(),
+//                commentRequest.getDateCreate(), commentRequest.getDateUpdate());
+//        commentRepository.save(comment);
 
         // Return Comment Response
         // Need map with UI

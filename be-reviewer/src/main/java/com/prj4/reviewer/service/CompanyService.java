@@ -1,5 +1,6 @@
 package com.prj4.reviewer.service;
 
+
 import com.prj4.reviewer.entity.Company;
 import com.prj4.reviewer.reporsitory.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ public class CompanyService {
     public String getFullName(String idAccount) {
         return companyRepository.findByIdAccount(idAccount).getNameCompany();
     }
-
     public void saveCompany(Company company) {
         companyRepository.save(company);
     }

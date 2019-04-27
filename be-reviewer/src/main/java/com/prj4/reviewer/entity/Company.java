@@ -1,15 +1,15 @@
 package com.prj4.reviewer.entity;
 
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-
 @Entity
-@Table(name = "COMPANY")// This tells Hibernate to make a table out of this class
+@Table(name="COMPANY")// This tells Hibernate to make a table out of this class
 public class Company {
 
 	@Id

@@ -1,39 +1,37 @@
 package com.prj4.reviewer.entity;
 
 import java.sql.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
+@Table(name = "COMMENT_PRODUCT")// This tells Hibernate to make a table out of this class
 public class Comment {
 
 	@Id
+	@Column(name = "ID_COMMENT_PRODUCT")
     private String idComment;
-	
+
+	@Column(name = "ID_PRODUCT")
 	private String idPost;
-	
+
+	@Column(name = "ID_REVIEWER")
 	private String idReviewer;
 
+	@Column(name = "ID_REPLY")
+	// ID_ACCOUNT
 	private String idReply;
-	
-	private Boolean isReply;
-	
-    private String content;
-    
-    private Date dateCreate;
-    
-    private Date dateUpdate;
 
-	public Comment(String idComment, String idPost, String idReviewer, String idReply, Boolean isReply, String content, Date dateCreate, Date dateUpdate) {
-		this.idComment = idComment;
-		this.idPost = idPost;
-		this.idReviewer = idReviewer;
-		this.idReply = idReply;
-		this.isReply = isReply;
-		this.content = content;
-		this.dateCreate = dateCreate;
-		this.dateUpdate = dateUpdate;
-	}
+	@Column(name = "IS_REPLY")
+	private Boolean isReply;
+
+	@Column(name = "CONTENT_COMMENT")
+    private String content;
+
+	@Column(name = "DT_CREATED")
+    private Date dateCreate;
 
 	public String getIdComment() {
 		return idComment;
@@ -67,12 +65,12 @@ public class Comment {
 		this.idReply = idReply;
 	}
 
-	public Boolean getIsReply() {
+	public Boolean getReply() {
 		return isReply;
 	}
 
-	public void setIsReply(Boolean isReply) {
-		this.isReply = isReply;
+	public void setReply(Boolean reply) {
+		isReply = reply;
 	}
 
 	public String getContent() {
@@ -90,13 +88,4 @@ public class Comment {
 	public void setDateCreate(Date dateCreate) {
 		this.dateCreate = dateCreate;
 	}
-
-	public Date getDateUpdate() {
-		return dateUpdate;
-	}
-
-	public void setDateUpdate(Date dateUpdate) {
-		this.dateUpdate = dateUpdate;
-	}
-    
 }
