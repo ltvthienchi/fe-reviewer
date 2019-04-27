@@ -1,10 +1,11 @@
 package com.prj4.reviewer.entity;
 
-import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table(name="COMPANY")// This tells Hibernate to make a table out of this class
@@ -44,6 +45,24 @@ public class Company {
 	@Column(name = "EMAIL_COMPANY")
 	private String emailCompany;
 
+	public Company() {}
+
+	public Company(String idCompany, String nameCompany, String addrCompany,
+				   String webCompany, String zipCompany, String telCompany,
+				   Date dtCreated, String idAccount, String imgAvatarCompany,
+				   String imgPanelCompany, String emailCompany) {
+		this.idCompany = idCompany;
+		this.nameCompany = nameCompany;
+		this.addrCompany = addrCompany;
+		this.webCompany = webCompany;
+		this.zipCompany = zipCompany;
+		this.telCompany = telCompany;
+		this.dtCreated = dtCreated;
+		this.idAccount = idAccount;
+		this.imgAvatarCompany = imgAvatarCompany;
+		this.imgPanelCompany = imgPanelCompany;
+		this.emailCompany = emailCompany;
+	}
 
 	public String getIdCompany() {
 		return idCompany;

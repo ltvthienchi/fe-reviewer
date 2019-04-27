@@ -24,6 +24,15 @@ public class User {
     @Column(name = "ISACTIVE")
     private boolean isActive;
 
+    public User() {}
+
+    public User(String idAccount, String userName, String passAccount, int typeAccount, boolean isActive) {
+        this.idAccount = idAccount;
+        this.userName = userName;
+        this.passAccount = passAccount;
+        this.typeAccount = typeAccount;
+        this.isActive = isActive;
+    }
 
     public String getIdAccount() {
         return idAccount;

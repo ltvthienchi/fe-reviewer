@@ -63,15 +63,22 @@ public class UserServiceImp implements UserDetailsService, UserService {
     }
 
     @Override
+    public boolean isExistingAccount(String userName) {
+        User existingUser = userRepository.findByUserName(userName);
+        if (existingUser == null) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return null;
     }
 
 
-//    public User findById(int id) {
-//        Optional<User> optionalUser = userRepository.findById(id);
-//        return optionalUser.isPresent() ? optionalUser.get() : null;
-//    }
-
-
+    @Override
+    public void save(User newUser) {
+        userRepository.save(newUser);
+    }
 }

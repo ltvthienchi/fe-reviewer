@@ -21,7 +21,6 @@ export class CompanyService {
       addrCompany: company.addrCompany,
       webCompany: company.webCompany,
       telCompany: company.telCompany,
-      dtCreated: Date.now(),
       emailCompany: company.emailCompany,
       password: company.password,
       confirmPassword: company.confirmPassword

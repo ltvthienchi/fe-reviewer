@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { validatorConfirmPassword, validatorEmail, validatorRequired, validatorPassword, validatorName } from '../../services/validator/validator';
+import { validatorConfirmPassword, validatorEmail,
+  validatorRequired, validatorPassword, validatorName } from '../../services/validator/validator';
 import {Company} from '../../model/company.model';
 
 @Component({
@@ -24,7 +25,7 @@ export class SignUpComponent implements OnInit {
       confirmPassword: ['123456', [validatorConfirmPassword]],
       firstName: ['', [validatorRequired, validatorName]],
       lastName: ['', [validatorRequired, validatorName]],
-    })
+    });
   }
 
   submitNormalForm() {
@@ -37,9 +38,9 @@ export class SignUpComponent implements OnInit {
   }
 
   // createCompany() {
-  //     this.companys.createUser(this.user)
+  //     this.companyService.createUser(this.user)
   //       .subscribe( data => {
-  //         alert("User created successfully.");
+  //         data. == tre
   //       });
   // }
 }

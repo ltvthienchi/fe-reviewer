@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserService {
 
-    //User save(UserDto user);
+    void save(User user);
     List<User> findAll();
     void delete(int id);
 
@@ -15,4 +15,6 @@ public interface UserService {
     User findById(int id);
 
     //UserDto update(UserDto userDto);
+
+    boolean isExistingAccount(String userName);
 }
