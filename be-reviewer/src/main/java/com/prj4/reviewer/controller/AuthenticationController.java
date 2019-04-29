@@ -2,6 +2,7 @@ package com.prj4.reviewer.controller;
 
 import com.prj4.reviewer.config.JwtTokenUtil;
 import com.prj4.reviewer.core.AuthToken;
+import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.response.LoginUser;
 import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.service.CompanyService;
@@ -14,14 +15,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/token")
 public class AuthenticationController {
 
@@ -41,7 +41,7 @@ public class AuthenticationController {
     private CompanyService companyService;
 
     @RequestMapping(value = "/generate-token", method = RequestMethod.POST)
-    public ResponseEntity register(@RequestBody LoginUser loginUser) throws AuthenticationException {
+    public JsonResponse<String> register(@RequestBody LoginUser loginUser) throws AuthenticationException {
 
 //        final Authentication authentication = authenticationManager.authenticate(
 //                new UsernamePasswordAuthenticationToken(
@@ -50,17 +50,33 @@ public class AuthenticationController {
 //                )
 //        );
 //        SecurityContextHolder.getContext().setAuthentication(authentication);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         final User user = userService.findOne(loginUser.getUserName());
-        String fullName = null;
-        if (user.getTypeAccount() == 1) {
-            fullName = companyService.getFullName(user.getIdAccount());
+        if (user != null) {
+            if (encoder.matches(loginUser.getPassword(), user.getPassAccount())) {
+                String fullName = null;
+                if (user.getTypeAccount() == 1) {
+                    fullName = companyService.getFullName(user.getIdAccount());
+                } else {
+                    fullName = reviewerService.getFullName(user.getIdAccount());
+                }
+                final String token = jwtTokenUtil.generateToken(user, user.getTypeAccount(), user.isActive(), fullName);
+                return JsonResponse.accept(token);
+            } else {
+                return JsonResponse.reject("Password is not correct!!!");
+            }
         } else {
-            fullName = reviewerService.getFullName(user.getIdAccount());
+            return JsonResponse.reject("User is not existing!!!");
         }
-        final String token = jwtTokenUtil.generateToken(user, user.getTypeAccount());
-        return ResponseEntity.ok(new AuthToken(token, user.getTypeAccount(), fullName, user.isActive()));
+
+
+
 
         //return (List<User>) userService.findAll();
     }
+//    public static void main (String[] args) {
+//        String encodedPassword = new BCryptPasswordEncoder().encode("123456");
+//        System.out.println("Encode: " + encodedPassword);
+//    }
 
 }

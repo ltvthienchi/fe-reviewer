@@ -39,6 +39,21 @@ public class Reviewer {
     @Column(name = "GENDER")
     private int gender;
 
+    public Reviewer(){}
+
+    public Reviewer(String idReviewer, String fullName, String email, Date dateOfBirth, Date dateCreated,
+                    String idAccount, String imgAvatar, String imgPanel, int gender) {
+        this.idReviewer = idReviewer;
+        this.fullName = fullName;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.dateCreated = dateCreated;
+        this.idAccount = idAccount;
+        this.imgAvatar = imgAvatar;
+        this.imgPanel = imgPanel;
+        this.gender = gender;
+    }
+
     public String getIdReviewer() {
         return idReviewer;
     }

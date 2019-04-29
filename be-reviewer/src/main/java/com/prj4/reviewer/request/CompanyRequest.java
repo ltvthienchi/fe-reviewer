@@ -1,17 +1,14 @@
 package com.prj4.reviewer.request;
 
-import java.util.Date;
-
 public class CompanyRequest {
 
     private String nameCompany;
     private String addrCompany;
     private String webCompany;
     private String telCompany;
-    private long dtCreated;
     private String emailCompany;
     private String password;
-    private String confirmPassword;
+    private int typeAccount;
 
     public String getNameCompany() {
         return nameCompany;
@@ -45,14 +42,6 @@ public class CompanyRequest {
         this.telCompany = telCompany;
     }
 
-    public long getDtCreated() {
-        return dtCreated;
-    }
-
-    public void setDtCreated(long dtCreated) {
-        this.dtCreated = dtCreated;
-    }
-
     public String getEmailCompany() {
         return emailCompany;
     }
@@ -69,11 +58,11 @@ public class CompanyRequest {
         this.password = password;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
+    public int getTypeAccount() {
+        return typeAccount;
     }
 
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
+    public void setTypeAccount(int typeAccount) {
+        this.typeAccount = typeAccount;
     }
 }

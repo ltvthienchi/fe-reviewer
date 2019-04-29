@@ -11,6 +11,7 @@ import {Company} from '../../model/company.model';
 import {UserService} from '../../services/user-service/user.service';
 import {User} from '../../model/user.model';
 import {NotifierService} from 'angular-notifier';
+import {CompanyService} from '../../services/company-service/company.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -26,8 +27,8 @@ export class SignUpComponent implements OnInit {
     normalUserForm: true,
     businessUserForm: true
   };
-  company: Company = new Company();
-  constructor(private formBuilder: FormBuilder, private userService: UserService, notifier: NotifierService) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, notifier: NotifierService,
+              private companyService: CompanyService) {
     this.notifier = notifier;
   }
 
@@ -40,11 +41,11 @@ export class SignUpComponent implements OnInit {
       lastName: ['', [validatorRequired, validatorName]],
     });
     this.businessUserForm = this.formBuilder.group({
-      emailCompany: ['', [validatorRequired, validatorEmail]],
-      passwordCompany: ['', [validatorPassword]],
-      confirmPasswordCompany: ['', [validatorConfirmPassword]],
-      nameCompany: ['', [validatorRequired, validatorName]],
-      addrCompany: ['', [validatorRequired, validatorName]],
+      email: ['', [validatorRequired, validatorEmail]],
+      password: ['', [validatorPassword]],
+      confirmPassword: ['', [validatorConfirmPassword]],
+      nameCompany: ['', [validatorRequired]],
+      addrCompany: ['', [validatorRequired]],
       telCompany: ['', [validatorRequired, validatorPhone]],
       webCompany: ['', [validatorRequired, validatorWebsite]],
     });
@@ -60,13 +61,15 @@ export class SignUpComponent implements OnInit {
       const user: User = {
         userName: this.normalUserForm.value.email,
         passAccount: this.normalUserForm.value.password,
-        typeAccount: 1,
+        typeAccount: 2,
         isActive: true,
-        nameAccount: this.normalUserForm.value.firstName + this.normalUserForm.value.lastName
+        nameAccount: this.normalUserForm.value.firstName + ' ' + this.normalUserForm.value.lastName
       };
-      this.userService.registerUser(user).subscribe(data => {
-        if (data === 'Success') {
+      this.userService.registerUser(user).subscribe((data: any) => {
+        if (data.status === 'SUCCESS') {
           this.showNotification( 'success', 'Create Successfully!!' );
+        } else {
+          this.showNotification( 'error', data.result );
         }
       });
     }
@@ -78,6 +81,22 @@ export class SignUpComponent implements OnInit {
       // console.log(this.normalUserForm);
     } else {
       this.validatorForm.businessUserForm = true;
+      const company: Company = {
+        nameCompany: this.businessUserForm.value.nameCompany,
+        addrCompany: this.businessUserForm.value.addrCompany,
+        webCompany: this.businessUserForm.value.webCompany,
+        telCompany: this.businessUserForm.value.telCompany,
+        emailCompany: this.businessUserForm.value.email,
+        password: this.businessUserForm.value.password,
+        typeAccount: 1
+      };
+      this.companyService.createCompany(company).subscribe((data: any) => {
+        if (data.status === 'SUCCESS') {
+          this.showNotification('success', 'Create Company Successfully!!');
+        } else {
+          this.showNotification( 'error', data.result );
+        }
+      });
     }
   }
 

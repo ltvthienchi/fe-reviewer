@@ -45,11 +45,11 @@ public class JwtTokenUtil implements Serializable {
         return expiration.before(new Date());
     }
 
-    public String generateToken(User user, int typeAccount) {
-        return doGenerateToken(user.getUserName(), typeAccount);
+    public String generateToken(User user, int typeAccount, boolean isActive, String fullName) {
+        return doGenerateToken(user.getUserName(), typeAccount, isActive, fullName);
     }
 
-    private String doGenerateToken(String subject, int typeAccount) {
+    private String doGenerateToken(String subject, int typeAccount, boolean isActive, String fullName) {
 
         Claims claims = Jwts.claims().setSubject(subject);
         if (typeAccount == 1) {
@@ -57,6 +57,8 @@ public class JwtTokenUtil implements Serializable {
         } else {
             claims.put("scopes", Arrays.asList(new SimpleGrantedAuthority("ROLE_NORMAL")));
         }
+        claims.put("isActive", Boolean.valueOf(isActive));
+        claims.put("fullName", fullName);
 
         return Jwts.builder()
                 .setClaims(claims)

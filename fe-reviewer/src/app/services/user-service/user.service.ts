@@ -17,10 +17,10 @@ export class UserService {
     const  auth_token = localStorage.getItem('userToken');
     const reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': auth_token
+      'No-Auth': 'True'
     });
     const data = JSON.stringify(user);
-    return this.http.post(this.rootUrl + '/token/User/Register', data,{headers : reqHeader});
+    return this.http.post(this.rootUrl + '/signup/createUser', data, {headers : reqHeader});
   }
 
   userAuthentication(userName, password) {

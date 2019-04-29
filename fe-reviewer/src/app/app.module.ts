@@ -48,6 +48,7 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { LoginAdminComponent } from './component/admin/login-admin/login-admin.component';
 import {UserService} from './services/user-service/user.service';
 import { TextAlertComponent } from './services/validator/text-alert/text-alert.component';
+import {CompanyService} from './services/company-service/company.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -138,7 +139,7 @@ export function tokenGetter() {
     ContentPostComponent,
     UserPageComponent,
     LoginAdminComponent,
-    TextAlertComponent,
+    TextAlertComponent
   ],
   imports: [
     HttpClientModule,
@@ -162,7 +163,8 @@ export function tokenGetter() {
     EventMessage,
     AuthGuardService,
     AuthService,
-    UserService
+    UserService,
+    CompanyService
   ],
   bootstrap: [AppComponent]
 })

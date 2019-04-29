@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable()
 export class CompanyService {
 
-  readonly rootUrl = 'http://localhost:8080/data/company/';
+  readonly rootUrl = 'http://localhost:8080';
   constructor(private http: HttpClient) { }
 
 
@@ -14,19 +14,10 @@ export class CompanyService {
     const  auth_token = localStorage.getItem('userToken');
     const reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': auth_token
+      'No-Auth': 'True'
     });
-    const companyObj = {
-      nameCompany: company.nameCompany,
-      addrCompany: company.addrCompany,
-      webCompany: company.webCompany,
-      telCompany: company.telCompany,
-      emailCompany: company.emailCompany,
-      password: company.password,
-      confirmPassword: company.confirmPassword
-    };
-    const data = JSON.stringify(companyObj);
-    return this.http.post(this.rootUrl + 'createComp', data, {headers: reqHeader});
+    const data = JSON.stringify(company);
+    return this.http.post(this.rootUrl + '/signup/createComp', data, {headers: reqHeader});
   }
 
 }
