@@ -1,0 +1,48 @@
+.mat-dialog-content {
+  overflow: inherit;
+}
+
+.title-slider {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.item-ratting .center {
+  display: flex !important;
+  align-items: flex-end !important;
+  padding-bottom: 15px !important;
+}
+
+.point-slider {
+  margin: 25px 10px 0 0;
+  padding: 0;
+  float: right;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.my-btn-group {
+  width: 100%;
+}
+
+.my-btn-group .btn {
+  margin-left: 15px;
+  color: white;
+  font-weight: 500;
+}
+
+@media all and (max-width: 576px) {
+
+  .title-slider {
+    margin-top: 15px;
+  }
+
+  .point-slider {
+    margin-right: 0;
+  }
+
+  .item-ratting .center {
+    padding-bottom: 0 !important;
+  }
+
+}

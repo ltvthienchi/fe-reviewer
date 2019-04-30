@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import {AuthGuardService} from '../../../services/auth/auth-guard.service';
 import {NotifierService} from 'angular-notifier';
 import * as $ from 'jquery';
+import {MatDialog} from '@angular/material';
+import {ModalRatingComponent} from '../modal-rating/modal-rating.component';
 
 @Component({
   selector: 'app-content-post',
@@ -21,7 +23,8 @@ export class ContentPostComponent implements OnInit {
   step = 1;
   thumbLabel = true;
   value = 1;
-  constructor(private authGuard: AuthGuardService) { }
+
+  constructor(private authGuard: AuthGuardService, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -31,19 +34,23 @@ export class ContentPostComponent implements OnInit {
   }
 
   toggleRatings(id) {
-    console.log(id);
-    if (this.toggleRating) {
-      let idItem = '#' + id;
-      $('.container-ratting').css('display', 'inline');
-      let offsetLeft = $('#quang-cao').offset()['left'] - 30;
-      let offsetTop = $(idItem).offset()['top'] ;
-      let width = $('#quang-cao').width();
-      $('.container-ratting').offset({top: offsetTop, left: offsetLeft}).width(width + 30);
-      console.log(offsetLeft, offsetTop);
-    } else {
-      $('.container-ratting').css('display', 'none');
-    }
-    this.toggleRating = !this.toggleRating
+    const dataRating = {
+      display: 0,
+      performance: 0,
+      camera: 0,
+      battery: 0
+    };
+    const dialogRef = this.dialog.open(ModalRatingComponent, {
+      width: '450px',
+      data: dataRating
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result) {
+        console.log(result);
+      }
+    });
   }
 
 }

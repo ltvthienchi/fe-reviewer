@@ -1,0 +1,54 @@
+<h1 mat-dialog-title style="margin: 0; font-weight: bold">Rating Product</h1>
+<div mat-dialog-content>
+
+  <div class="item-ratting row">
+    <div class="col-sm-3 center">
+      <span class="title-slider">Performance</span>
+    </div>
+    <div class="col-sm-9">
+        <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
+                    [(ngModel)]="dataRating.performance" style="width: 85%"></mat-slider>
+        <p class="point-slider">{{dataRating.performance}}</p>
+    </div>
+  </div>
+
+  <div class="item-ratting row">
+    <div class="col-sm-3 center">
+      <span class="title-slider">Display</span>
+    </div>
+    <div class="col-sm-9">
+      <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
+                  [(ngModel)]="dataRating.display" style="width: 85%"></mat-slider>
+      <p class="point-slider">{{dataRating.display}}</p>
+    </div>
+  </div>
+
+  <div class="item-ratting row">
+    <div class="col-sm-3 center">
+      <span class="title-slider">Camera</span>
+    </div>
+    <div class="col-sm-9">
+      <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
+                  [(ngModel)]="dataRating.camera" style="width: 85%"></mat-slider>
+      <p class="point-slider">{{dataRating.camera}}</p>
+    </div>
+  </div>
+
+  <div class="item-ratting row">
+    <div class="col-sm-3 center">
+      <span class="title-slider">Battery</span>
+    </div>
+    <div class="col-sm-9">
+      <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
+                  [(ngModel)]="dataRating.battery" style="width: 85%"></mat-slider>
+      <p class="point-slider">{{dataRating.battery}}</p>
+    </div>
+  </div>
+
+</div>
+<div mat-dialog-actions>
+  <div class="my-btn-group">
+    <button class="btn btn-warning float-right" (click)="closeModal()">Cancel</button>
+    <button class="btn btn-info float-right" (click)="saveModal()">Accpet</button>
+  </div>
+</div>

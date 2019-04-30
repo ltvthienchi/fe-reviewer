@@ -36,7 +36,7 @@ import { LoginSideComponent } from './component/side/login-side/login-side.compo
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UserUpdatePageComponent } from './component/home/user-update-page/user-update-page.component';
 import { MenuLoginComponent } from './component/menu-login/menu-login.component';
-import { MatSliderModule, MatFormFieldModule, MatCardModule, MatCheckboxModule } from '@angular/material';
+import {MatSliderModule, MatFormFieldModule, MatCardModule, MatCheckboxModule, MatDialogModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ManageAdminComponent } from './component/admin/manage-admin/manage-admin.component';
@@ -50,6 +50,7 @@ import {UserService} from './services/user-service/user.service';
 import { TextAlertComponent } from './services/validator/text-alert/text-alert.component';
 import {CompanyService} from './services/company-service/company.service';
 import { RegisterConfirmationComponent } from './component/register-confirmation/register-confirmation.component';
+import { ModalRatingComponent } from './component/home/modal-rating/modal-rating.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -141,7 +142,8 @@ export function tokenGetter() {
     UserPageComponent,
     LoginAdminComponent,
     TextAlertComponent,
-    RegisterConfirmationComponent
+    RegisterConfirmationComponent,
+    ModalRatingComponent
   ],
   imports: [
     HttpClientModule,
@@ -155,11 +157,13 @@ export function tokenGetter() {
     MatCardModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   exports: [
-    MatSliderModule
+    MatSliderModule,
   ],
+  entryComponents: [ModalRatingComponent],
   providers: [
     Broadcaster,
     EventMessage,
