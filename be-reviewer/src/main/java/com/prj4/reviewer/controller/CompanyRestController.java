@@ -1,5 +1,6 @@
 package com.prj4.reviewer.controller;
 
+import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Company;
 import com.prj4.reviewer.entity.User;
@@ -49,7 +50,8 @@ public class CompanyRestController {
                 new Date(), idAccount, null,
                 null, companyRequest.getEmailCompany());
 
-        User userAccount = new User(idAccount, companyRequest.getEmailCompany(), encodedPass, companyRequest.getTypeAccount(), false );
+        User userAccount = new User(idAccount, companyRequest.getEmailCompany(), encodedPass,
+                companyRequest.getTypeAccount(), Constants.IS_TEST_MODE ? true : false);
 
         if (!userService.isExistingAccount(companyRequest.getEmailCompany()) &&
                 !companyService.isExistingCompany(companyRequest.getEmailCompany())) {

@@ -9,6 +9,7 @@ import com.prj4.reviewer.request.UseRequest;
 import com.prj4.reviewer.service.GenerateId;
 import com.prj4.reviewer.service.ReviewerService;
 import com.prj4.reviewer.service.UserService;
+import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.SpringVersion;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -52,7 +53,7 @@ public class UserRestController {
 
         String encodedPass = new BCryptPasswordEncoder().encode(userRequest.getPassAccount());
         User userAccount = new User(idAccount, userRequest.getUserName(), encodedPass,
-                userRequest.getTypeAccount(), userRequest.isActive());
+                userRequest.getTypeAccount(), Constants.IS_TEST_MODE ? true : userRequest.isActive());
 
         Reviewer reviewer = new Reviewer(idReviewer, userRequest.getNameAccount(), userRequest.getUserName(), null, new Date(),
                 idAccount, null, null, 1);
@@ -62,7 +63,10 @@ public class UserRestController {
             try {
                 userService.save(userAccount);
                 reviewerService.saveReviewer(reviewer);
-                sendHtmlEmail(idAccount);
+                if (!Constants.IS_TEST_MODE) {
+                    sendHtmlEmail(idAccount);
+                }
+
                 return JsonResponse.accept("Success");
             } catch (Exception ex) {
                 return JsonResponse.reject(ex.getMessage());

@@ -9,7 +9,10 @@ import {AuthGuardService} from '../../services/auth/auth-guard.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private authGuard: AuthGuardService, private router: Router) { }
+  private fullName: string;
+  constructor(private authGuard: AuthGuardService, private router: Router) {
+    this.fullName = localStorage.getItem('fullName');
+  }
 
   ngOnInit() {
     console.log(window.location.toString());
@@ -21,6 +24,9 @@ export class MenuComponent implements OnInit {
   removeToken() {
     localStorage.removeItem('userToken');
     // this.router.navigate(['/']);
+    localStorage.removeItem('typeRev');
+    localStorage.removeItem('fullName');
+    localStorage.removeItem('isActive');
   }
 
 }
