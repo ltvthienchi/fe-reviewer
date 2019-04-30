@@ -31,12 +31,13 @@ const routes: Routes = [
   {
     path: '',
     component: UserSideComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: '/home', pathMatch: 'full'},
-      { path: 'home', component: HomeComponent},
-      { path: 'company', component: CompanyComponent},
-      { path: 'company/detail/:id', component: DetailCompanyComponent},
-      { path: 'company/view-history', component: ViewHistoryCompanyComponent},
+      { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+      { path: 'company', component: CompanyComponent, canActivate: [AuthGuard]},
+      { path: 'company/detail/:id', component: DetailCompanyComponent, canActivate: [AuthGuard]},
+      { path: 'company/view-history', component: ViewHistoryCompanyComponent, canActivate: [AuthGuard]},
       { path: 'user-update-page', component: UserUpdatePageComponent},
       { path: 'feedback', component: FeedbackReviewerComponent},
       { path: 'user-page', component: UserPageComponent},
