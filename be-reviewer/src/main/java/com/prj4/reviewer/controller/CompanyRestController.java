@@ -49,7 +49,7 @@ public class CompanyRestController {
                 new Date(), idAccount, null,
                 null, companyRequest.getEmailCompany());
 
-        User userAccount = new User(idAccount, companyRequest.getEmailCompany(), encodedPass, companyRequest.getTypeAccount(), true);
+        User userAccount = new User(idAccount, companyRequest.getEmailCompany(), encodedPass, companyRequest.getTypeAccount(), false );
 
         if (!userService.isExistingAccount(companyRequest.getEmailCompany()) &&
                 !companyService.isExistingCompany(companyRequest.getEmailCompany())) {

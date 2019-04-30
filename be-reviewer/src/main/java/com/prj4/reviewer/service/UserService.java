@@ -17,4 +17,6 @@ public interface UserService {
     //UserDto update(UserDto userDto);
 
     boolean isExistingAccount(String userName);
+
+    void updateActiveAcc(String idAccount);
 }

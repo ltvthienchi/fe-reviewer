@@ -25,6 +25,7 @@ import {ComfirmCompanyComponent} from '../component/admin/comfirm-company/comfir
 import {FeedbackAdminComponent} from '../component/admin/feedback-admin/feedback-admin.component';
 import {LockReviewerComponent} from '../component/admin/lock-reviewer/lock-reviewer.component';
 import {AuthGuardAdminService} from '../services/auth/auth-guard-admin.service';
+import {RegisterConfirmationComponent} from '../component/register-confirmation/register-confirmation.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,8 @@ const routes: Routes = [
       { path: 'user-update-page', component: UserUpdatePageComponent},
       { path: 'feedback', component: FeedbackReviewerComponent},
       { path: 'user-page', component: UserPageComponent},
-      { path: 'compare', component: CompareComponent}
+      { path: 'compare', component: CompareComponent},
+      { path: 'register-confirmation', component: RegisterConfirmationComponent}
     ]
   },
   {

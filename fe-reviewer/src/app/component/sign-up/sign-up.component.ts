@@ -62,12 +62,12 @@ export class SignUpComponent implements OnInit {
         userName: this.normalUserForm.value.email,
         passAccount: this.normalUserForm.value.password,
         typeAccount: 2,
-        isActive: true,
+        isActive: false,
         nameAccount: this.normalUserForm.value.firstName + ' ' + this.normalUserForm.value.lastName
       };
       this.userService.registerUser(user).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
-          this.showNotification( 'success', 'Create Successfully!!' );
+          this.showNotification( 'success', 'Create Successfully!! Please check your mail box to Active Account!' );
         } else {
           this.showNotification( 'error', data.result );
         }
@@ -92,7 +92,7 @@ export class SignUpComponent implements OnInit {
       };
       this.companyService.createCompany(company).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
-          this.showNotification('success', 'Create Company Successfully!!');
+          this.showNotification('success', 'Create Company Successfully!! Please wait admin approve to Active Account');
         } else {
           this.showNotification( 'error', data.result );
         }

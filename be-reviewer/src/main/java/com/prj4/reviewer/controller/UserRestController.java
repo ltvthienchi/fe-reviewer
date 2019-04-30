@@ -1,5 +1,6 @@
 package com.prj4.reviewer.controller;
 
+import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Company;
 import com.prj4.reviewer.entity.Reviewer;
@@ -10,13 +11,14 @@ import com.prj4.reviewer.service.ReviewerService;
 import com.prj4.reviewer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.SpringVersion;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.validation.Valid;
 import java.util.Date;
 
@@ -34,6 +36,9 @@ public class UserRestController {
 
     @Autowired
     GenerateId generateId;
+
+    @Autowired
+    public JavaMailSender emailSender;
 
 //    @Autowired
 //    private Md5PasswordEncoder md5PasswordEncoder;
@@ -57,6 +62,7 @@ public class UserRestController {
             try {
                 userService.save(userAccount);
                 reviewerService.saveReviewer(reviewer);
+                sendHtmlEmail(idAccount);
                 return JsonResponse.accept("Success");
             } catch (Exception ex) {
                 return JsonResponse.reject(ex.getMessage());
@@ -64,6 +70,40 @@ public class UserRestController {
 
         }
         return JsonResponse.reject("Account is created!");
+    }
+
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @PutMapping(SIGN_UP_LINK + "confirmEmail")
+    public JsonResponse<String> confirmAccount(@RequestBody String idAccount) {
+        try {
+            userService.updateActiveAcc(idAccount);
+            return JsonResponse.accept("Success");
+        } catch (Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+
+    }
+
+    public void sendHtmlEmail(String idAccount) throws MessagingException {
+
+        MimeMessage message = emailSender.createMimeMessage();
+
+        boolean multipart = true;
+
+        MimeMessageHelper helper = new MimeMessageHelper(message, multipart, "utf-8");
+
+        String htmlMsg = "<h3>Your Register is successfully !!!</h3>"
+                +"<a src='http://localhost:4200/register-confirmation?idAccount="+ idAccount +"></a>";
+
+        message.setContent(htmlMsg, "text/html");
+
+        helper.setTo(Constants.FRIEND_EMAIL);
+
+        helper.setSubject("Test send HTML email");
+
+        this.emailSender.send(message);
+
+        //return "Email Sent!";
     }
 }
 

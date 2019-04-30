@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {UserService} from '../../services/user-service/user.service';
 import {NotifierService} from 'angular-notifier';
@@ -35,7 +34,12 @@ export class LoginComponent implements OnInit {
         }
         localStorage.setItem('fullName', tokenDecoded.fullName);
         localStorage.setItem('isActive', tokenDecoded.isActive);
-        this.router.navigate(['/home']);
+        if (tokenDecoded.isActive !== true) {
+          this.showNotification('error', 'Account is not active!!');
+        } else {
+          this.router.navigate(['/home']);
+        }
+
       }
     });
   }

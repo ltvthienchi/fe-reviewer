@@ -14,7 +14,7 @@ export class UserService {
 
   registerUser(user: User) {
 
-    const  auth_token = localStorage.getItem('userToken');
+    // const  auth_token = localStorage.getItem('userToken');
     const reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'No-Auth': 'True'
@@ -32,5 +32,16 @@ export class UserService {
     };
     const data = JSON.stringify(account);
     return this.http.post(this.rootUrl + '/token/generate-token', data, {headers : reqHeader});
+  }
+  confirmationAccount(idAccount) {
+    // const  auth_token = localStorage.getItem('userToken');
+    const reqHeader = new HttpHeaders({
+      'No-Auth': 'True',
+      'Content-Type': 'application/json'});
+    // const idAccountObject = {
+    //   idAccount : idAccount
+    // };
+    // const data = JSON.stringify(idAccountObject);
+    return this.http.put(this.rootUrl + '/signup/confirmEmail', idAccount, {headers : reqHeader});
   }
 }

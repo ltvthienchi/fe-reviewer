@@ -6,8 +6,12 @@ export class AuthService {
   // ...
   public isAuthenticated(): boolean {
     const token = localStorage.getItem('userToken');
+    const isActive = localStorage.getItem('isActive');
+    if (!this.jwtHelper.isTokenExpired(token) && isActive === 'true') {
+      return true;
+    }
     // Check whether the token is expired and return
     // true or false
-    return !this.jwtHelper.isTokenExpired(token);
+    return false;
   }
 }
