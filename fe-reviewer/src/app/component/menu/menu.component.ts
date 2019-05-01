@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
   removeToken() {
     localStorage.removeItem('userToken');
     // this.router.navigate(['/']);
-    localStorage.removeItem('typeRev');
+    localStorage.removeItem('role');
     localStorage.removeItem('fullName');
     localStorage.removeItem('isActive');
   }

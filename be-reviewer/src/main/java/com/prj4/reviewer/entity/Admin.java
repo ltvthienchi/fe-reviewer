@@ -29,6 +29,9 @@ public class Admin {
 	@Column(name = "DT_CREATED")
     private Date dtCreated;
 
+	@Column(name = "ISACTIVE")
+	private boolean isActive;
+
 	public String getIdAdmin() {
 		return idAdmin;
 	}
@@ -75,5 +78,13 @@ public class Admin {
 
 	public void setDtCreated(Date dtCreated) {
 		this.dtCreated = dtCreated;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean active) {
+		isActive = active;
 	}
 }

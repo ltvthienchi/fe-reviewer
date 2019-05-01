@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminSideComponent implements OnInit {
 
-  constructor() { }
+  private fullName: string;
+  constructor() {
+    this.fullName = localStorage.getItem('fullName');
+  }
 
   ngOnInit() {
+  }
+
+  logOut() {
+    localStorage.removeItem('userToken');
+    // this.router.navigate(['/']);
+    localStorage.removeItem('role');
+    localStorage.removeItem('fullName');
+    localStorage.removeItem('isActive');
   }
 
 }

@@ -1,4 +1,4 @@
-package com.prj4.reviewer.response;
+package com.prj4.reviewer.request;
 
 public class LoginUser {
 

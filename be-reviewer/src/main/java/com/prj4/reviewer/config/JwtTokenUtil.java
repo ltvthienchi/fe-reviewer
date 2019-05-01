@@ -1,6 +1,7 @@
 package com.prj4.reviewer.config;
 
 
+import com.prj4.reviewer.entity.Admin;
 import com.prj4.reviewer.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -45,18 +46,22 @@ public class JwtTokenUtil implements Serializable {
         return expiration.before(new Date());
     }
 
-    public String generateToken(User user, int typeAccount, boolean isActive, String fullName) {
-        return doGenerateToken(user.getUserName(), typeAccount, isActive, fullName);
+    public String generateToken(Object object, int typeAccount, boolean isActive, String fullName) {
+        String typeAccountRole = null;
+        if (typeAccount == 1 || typeAccount == 2) {
+            typeAccountRole = typeAccount == 1 ? "ROLE_COMPANY" : "ROLE_NORMAL";
+            User user = (User) object;
+            return doGenerateToken(user.getUserName(), typeAccountRole, isActive, fullName);
+        } else {
+            typeAccountRole = "ROLE_ADMIN";
+            Admin admin = (Admin) object;
+            return doGenerateToken(admin.getEmailAdmin(), typeAccountRole, isActive, fullName);
+        }
     }
 
-    private String doGenerateToken(String subject, int typeAccount, boolean isActive, String fullName) {
-
+    private String doGenerateToken(String subject, String typeAccountName, boolean isActive, String fullName) {
         Claims claims = Jwts.claims().setSubject(subject);
-        if (typeAccount == 1) {
-            claims.put("scopes", Arrays.asList(new SimpleGrantedAuthority("ROLE_COMPANY")));
-        } else {
-            claims.put("scopes", Arrays.asList(new SimpleGrantedAuthority("ROLE_NORMAL")));
-        }
+        claims.put("scopes", Arrays.asList(new SimpleGrantedAuthority(typeAccountName)));
         claims.put("isActive", Boolean.valueOf(isActive));
         claims.put("fullName", fullName);
 

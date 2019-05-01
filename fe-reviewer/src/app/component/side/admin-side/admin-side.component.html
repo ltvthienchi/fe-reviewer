@@ -54,14 +54,14 @@
         </a>
         <div aria-labelledby="userInfo" class="dropdown-menu">
           <a href="#" class="dropdown-item">
-            <strong class="d-block text-uppercase headings-font-family">Mark Stephen</strong>
+            <strong class="d-block text-uppercase headings-font-family">{{fullName}}</strong>
             <small>Web Developer</small>
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">Settings</a>
           <a href="#" class="dropdown-item">Activity log </a>
           <div class="dropdown-divider"></div>
-          <a href="login.html" class="dropdown-item">Logout</a>
+          <a class="dropdown-item" (click)="logOut()">Logout</a>
         </div>
       </li>
     </ul>

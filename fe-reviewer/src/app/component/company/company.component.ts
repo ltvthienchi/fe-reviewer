@@ -23,7 +23,7 @@ export class CompanyComponent implements OnInit {
     return this.authGuard.canActivate();
   }
   isCommpanyAccount() {
-    const type_reviewer = localStorage.getItem('typeRev');
+    const type_reviewer = localStorage.getItem('role');
     // Company Account
     if (type_reviewer === '1') {
       return true;

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AuthGuardService as AuthGuard} from '../services/auth/auth-guard.service';
+import { AuthGuardAdminService as AuthGuardAdmin } from '../services/auth/auth-guard-admin.service';
+import { AuthAfterLoginService as AuthAfterLogin } from '../services/auth/auth-after-login.service';
 
 
 import {HomeComponent} from '../component/home/home.component';
@@ -24,20 +26,18 @@ import { LoginAdminComponent } from '../component/admin/login-admin/login-admin.
 import {ComfirmCompanyComponent} from '../component/admin/comfirm-company/comfirm-company.component';
 import {FeedbackAdminComponent} from '../component/admin/feedback-admin/feedback-admin.component';
 import {LockReviewerComponent} from '../component/admin/lock-reviewer/lock-reviewer.component';
-import {AuthGuardAdminService} from '../services/auth/auth-guard-admin.service';
 import {RegisterConfirmationComponent} from '../component/register-confirmation/register-confirmation.component';
 
 const routes: Routes = [
   {
     path: '',
     component: UserSideComponent,
-    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: '/home', pathMatch: 'full'},
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-      { path: 'company', component: CompanyComponent, canActivate: [AuthGuard]},
-      { path: 'company/detail/:id', component: DetailCompanyComponent, canActivate: [AuthGuard]},
-      { path: 'company/view-history', component: ViewHistoryCompanyComponent, canActivate: [AuthGuard]},
+      { path: 'home', component: HomeComponent},
+      { path: 'company', component: CompanyComponent},
+      { path: 'company/detail/:id', component: DetailCompanyComponent},
+      { path: 'company/view-history', component: ViewHistoryCompanyComponent},
       { path: 'user-update-page', component: UserUpdatePageComponent},
       { path: 'feedback', component: FeedbackReviewerComponent},
       { path: 'user-page', component: UserPageComponent},
@@ -50,23 +50,24 @@ const routes: Routes = [
     component: LoginSideComponent,
     children: [
       { path: '', redirectTo: '/login', pathMatch: 'full'},
-      { path: 'login', component: LoginComponent },
-      { path: 'signup', component: SignUpComponent },
+      { path: 'login', component: LoginComponent, canActivate: [AuthAfterLogin] },
+      { path: 'signup', component: SignUpComponent, canActivate: [AuthAfterLogin] },
     ]
   },
   {
     path: '',
     component: AdminSideComponent,
+    canActivate: [AuthGuardAdmin],
     children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
-      { path: 'admin', component: ManageAdminComponent  },
-      { path: 'admin/manage-admin', component: ManageAdminComponent },
-      { path: 'admin/verify', component: ComfirmCompanyComponent },
-      { path: 'admin/manage-user/:userType', component: LockReviewerComponent },
-      { path: 'admin/feedback', component: FeedbackAdminComponent }
+      { path: 'admin', component: ManageAdminComponent, canActivate: [AuthGuardAdmin]  },
+      { path: 'admin/manage-admin', component: ManageAdminComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'admin/verify', component: ComfirmCompanyComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'admin/manage-user/:userType', component: LockReviewerComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'admin/feedback', component: FeedbackAdminComponent, canActivate: [AuthGuardAdmin] }
     ]
   },
-  { path: 'admin/login', component: LoginAdminComponent },
+  { path: 'admin/login', component: LoginAdminComponent, canActivate: [AuthAfterLogin] },
   {path: '**', redirectTo: ''}
 ];
 

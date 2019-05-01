@@ -46,10 +46,10 @@ export class LoginComponent implements OnInit {
         } else {
           const tokenDecoded = this.jwtHelper.decodeToken(data.result);
           localStorage.setItem('userToken', data.result);
-          if (tokenDecoded.scopes.authority === 'ROLE_COMPANY') {
-            localStorage.setItem('typeRev', '1');
-          } else {
-            localStorage.setItem('typeRev', '2');
+          if (tokenDecoded.scopes[0].authority === 'ROLE_COMPANY') {
+            localStorage.setItem('role', 'ROLE_COMPANY');
+          } else if (tokenDecoded.scopes[0].authority === 'ROLE_NORMAL') {
+            localStorage.setItem('role', 'ROLE_NORMAL');
           }
           localStorage.setItem('fullName', tokenDecoded.fullName);
           localStorage.setItem('isActive', tokenDecoded.isActive);

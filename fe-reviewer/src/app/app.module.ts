@@ -28,6 +28,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import {Broadcaster} from './services/broadcaster/broadcaster.service';
 import {EventMessage} from './services/event_message/event-message.service';
 import {AuthGuardService} from './services/auth/auth-guard.service';
+import {AuthGuardAdminService} from './services/auth/auth-guard-admin.service';
 import {AuthService} from './services/auth/auth.service';
 import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
 import { UserSideComponent } from './component/side/user-side/user-side.component';
@@ -51,6 +52,8 @@ import { TextAlertComponent } from './services/validator/text-alert/text-alert.c
 import {CompanyService} from './services/company-service/company.service';
 import { RegisterConfirmationComponent } from './component/register-confirmation/register-confirmation.component';
 import { ModalRatingComponent } from './component/home/modal-rating/modal-rating.component';
+import {AdminService} from './services/admin-service/admin.service';
+import {AuthAfterLoginService} from './services/auth/auth-after-login.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -168,9 +171,12 @@ export function tokenGetter() {
     Broadcaster,
     EventMessage,
     AuthGuardService,
+    AuthGuardAdminService,
     AuthService,
     UserService,
-    CompanyService
+    CompanyService,
+    AdminService,
+    AuthAfterLoginService
   ],
   bootstrap: [AppComponent]
 })
