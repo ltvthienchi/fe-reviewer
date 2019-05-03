@@ -25,7 +25,7 @@ export class CompanyComponent implements OnInit {
   isCommpanyAccount() {
     const type_reviewer = localStorage.getItem('role');
     // Company Account
-    if (type_reviewer === '1') {
+    if (type_reviewer === 'ROLE_COMPANY') {
       return true;
     } else {
       // Reviewer Account

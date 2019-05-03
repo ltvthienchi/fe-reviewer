@@ -35,7 +35,7 @@
       <!-- menu company -->
 
       <div class="menucpn">
-        <div class="btn-group" style="padding-left: 5px">
+        <div class="row" style="padding-left: 5px">
           <div *ngIf="checkAuthGuard() && !isCommpanyAccount()">
             <button class="btn btn-outline-info btnmargin margin-left">
               <i class="fas fa-plus-circle" *ngIf="true"> Subscribe</i>
@@ -46,8 +46,8 @@
             <button class="btn btn-outline-info btnmargin" data-toggle="modal" data-target="#post"><i
               class="fas fa-edit"> Post Product</i></button>
           </div>
-          <div *ngIf="checkAuthGuard() && !isCommpanyAccount()">
-            <button class="btn btn-info btnmargin float-right margin-right"><i class="fab fa-facebook-messenger">
+          <div style="padding-left: 5px"  *ngIf="checkAuthGuard() && !isCommpanyAccount()">
+            <button class="btn btn-outline-success btnmargin  margin-right"><i class="fab fa-facebook-messenger">
               Messenger</i></button>
           </div>
         </div>
