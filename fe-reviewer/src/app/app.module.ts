@@ -54,6 +54,7 @@ import { RegisterConfirmationComponent } from './component/register-confirmation
 import { ModalRatingComponent } from './component/home/modal-rating/modal-rating.component';
 import {AdminService} from './services/admin-service/admin.service';
 import {AuthAfterLoginService} from './services/auth/auth-after-login.service';
+import {HttpService} from './services/http/http.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -146,7 +147,7 @@ export function tokenGetter() {
     LoginAdminComponent,
     TextAlertComponent,
     RegisterConfirmationComponent,
-    ModalRatingComponent
+    ModalRatingComponent,
   ],
   imports: [
     HttpClientModule,
@@ -176,7 +177,8 @@ export function tokenGetter() {
     UserService,
     CompanyService,
     AdminService,
-    AuthAfterLoginService
+    AuthAfterLoginService,
+    HttpService
   ],
   bootstrap: [AppComponent]
 })

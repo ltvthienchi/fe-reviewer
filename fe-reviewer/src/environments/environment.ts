@@ -6,3 +6,9 @@
 export const environment = {
   production: false
 };
+
+export const rootUrl = 'http://localhost:8080';
+
+export const URL_SERVER = {
+  postProduct: rootUrl + '/data/posts/'
+};
