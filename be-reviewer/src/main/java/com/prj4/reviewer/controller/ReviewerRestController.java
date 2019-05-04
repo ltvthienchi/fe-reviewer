@@ -39,8 +39,8 @@ public class ReviewerRestController {
 
 
     @PostMapping(BASE_POST_LINK + "feedbackCompany")
-    public FeedbackCompanyResponse feedbackCompany(@RequestBody @Valid FeedbackCompanyRequest feebackCompanyRequest) {
-        FeedbackCompanyResponse feedbackCompanyResponse = reviewerService.feedbackCompany(feebackCompanyRequest);
+    public FeedbackCompanyResponse feedbackCompany(@RequestBody @Valid FeedbackCompanyRequest feedbackCompanyRequest) {
+        FeedbackCompanyResponse feedbackCompanyResponse = reviewerService.feedbackCompany(feedbackCompanyRequest);
         return feedbackCompanyResponse;
     }
 

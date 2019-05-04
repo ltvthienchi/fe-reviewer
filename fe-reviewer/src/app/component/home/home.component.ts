@@ -5,6 +5,8 @@ import { EventMessage } from '../../services/event_message/event-message.service
 import * as $ from 'jquery';
 
 import { arrPostProduct } from '../../services/local_database/post-product';
+import {CompanyService} from '../../services/company-service/company.service';
+import {HttpService} from '../../services/http/http.service';
 
 @Component({
   selector: 'app-home',
@@ -28,12 +30,15 @@ export class HomeComponent implements OnInit {
 
   myData = arrPostProduct;
 
-  public constructor(notifier: NotifierService, private broad: Broadcaster, private eventMessage: EventMessage) {
+  public constructor(notifier: NotifierService, private broad: Broadcaster,
+                     private eventMessage: EventMessage, private httpService: HttpService) {
       this.notifier = notifier;
   }
 
   ngOnInit() {
-
+    this.httpService.getAllPost().subscribe(res => {
+      console.log(res);
+    })
   }
 
   toggleRatings(id) {

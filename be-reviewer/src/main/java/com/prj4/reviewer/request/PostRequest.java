@@ -1,45 +1,14 @@
-package com.prj4.reviewer.entity;
+package com.prj4.reviewer.request;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 
-
-@Entity
-@Table(name = "POST_PRODUCT")
-public class Post {
-
-    @Id
-    @Column(name = "ID_POST_PRODUCT")
+public class PostRequest {
     private String idPostProduct;
-
-    @Column(name = "ID_PRODUCT")
     private String idProduct;
-
-    @Column(name = "ID_COMPANY")
     private String idCompany;
-
-    @Column(name = "CONTENT_POST")
     private String contentPost;
-
-    @Column(name = "DT_CREATED")
     private Date dtCreated;
-
-    @Column(name = "ID_IMAGE")
     private String idImage;
-
-    public Post() {}
-
-    public Post(String idPostProduct, String idProduct, String idCompany, String contentPost, Date dtCreated, String idImage) {
-        this.idPostProduct = idPostProduct;
-        this.idProduct = idProduct;
-        this.idCompany = idCompany;
-        this.contentPost = contentPost;
-        this.dtCreated = dtCreated;
-        this.idImage = idImage;
-    }
 
     public String getIdPostProduct() {
         return idPostProduct;
