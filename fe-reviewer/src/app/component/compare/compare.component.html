@@ -21,70 +21,78 @@
           <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
         </div>
       </form>
-      <div class="compare-product">
-        <img class="img-fluid img-content" src="{{pro.imageProduct}}">
-      </div>
       <div>
-        <table class="table">
-          <thead>
-          <tr>
-          </tr>
-          <tr>
-            <td style="width: 60px"></td>
-          </tr>
-          <tbody>
-          <tr class="table-active">
-            <th scope="row">Battery</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%' : pro.avgBattery}" >
+        <button type="button" class="close" aria-label="Close" title="Remove Product" (click) ="removeProduct(pro.idPostProduct)">
+          <span aria-hidden="true" class="btn-close-comp">&times;</span>
+        </button>
+        <div class="compare-product">
+          <img class="img-fluid img-content" src="{{pro.imageProduct}}">
+        </div>
+        <div>
+          <table class="table">
+            <thead>
+            <tr>
+            </tr>
+            <tr>
+              <td style="width: 60px"></td>
+            </tr>
+            <tbody>
+            <tr class="table-active">
+              <th scope="row">Battery</th>
+              <td>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar"
+                       aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                       [ngStyle]="{'width.%' : pro.avgBattery}">
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">Display</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%' : pro.avgDisplay}">
+              </td>
+            </tr>
+            <tr class="table-active">
+              <th scope="row">Display</th>
+              <td>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar"
+                       aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+                       [ngStyle]="{'width.%' : pro.avgDisplay}">
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">Performance</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%' : pro.avgPerformance}">
+              </td>
+            </tr>
+            <tr class="table-active">
+              <th scope="row">Performance</th>
+              <td>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar"
+                       aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                       [ngStyle]="{'width.%' : pro.avgPerformance}">
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">Camera</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%' : pro.avgCamera}">
+              </td>
+            </tr>
+            <tr class="table-active">
+              <th scope="row">Camera</th>
+              <td>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar"
+                       aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%' : pro.avgCamera}">
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">Design</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%' : pro.avgDesign}">
+              </td>
+            </tr>
+            <tr class="table-active">
+              <th scope="row">Design</th>
+              <td>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar"
+                       aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%' : pro.avgDesign}">
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

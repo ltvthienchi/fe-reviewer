@@ -44,4 +44,10 @@ public class PostService {
     public List<Post> getAllPost() {
         return (List<Post>) postRepository.findAll();
     }
+
+
+    public void createPost(Post post) {
+        postRepository.save(post);
+
+    }
 }

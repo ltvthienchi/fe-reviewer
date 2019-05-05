@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table(name = "PRODUCT")
@@ -19,25 +20,39 @@ public class Product {
     private String tagProduct;
 
     @Column(name = "DT_CREATED")
-    private String dtCreated;
+    private Date dtCreated;
 
     @Column(name = "AVG_BATTERY")
-    private String avgBattery;
+    private int avgBattery;
 
     @Column(name = "AVG_DISPLAY")
-    private String avgDisplay;
+    private int avgDisplay;
 
     @Column(name = "AVG_PERFORMANCE")
-    private String avgPerformance;
+    private int avgPerformance;
 
     @Column(name = "AVG_DESIGN")
-    private String avgDesign;
+    private int avgDesign;
 
     @Column(name = "AVG_CAMERA")
-    private String avgCamera;
+    private int avgCamera;
 
     @Column(name = "NUMB_RATINNG")
-    private String numRating;
+    private int numRating;
+
+    public Product(String idProduct, String nameProduct, String tagProduct, Date dtCreated, int avgBattery,
+                   int avgDisplay, int avgPerformance, int avgDesign, int avgCamera, int numRating) {
+        this.idProduct = idProduct;
+        this.nameProduct = nameProduct;
+        this.tagProduct = tagProduct;
+        this.dtCreated = dtCreated;
+        this.avgBattery = avgBattery;
+        this.avgDisplay = avgDisplay;
+        this.avgPerformance = avgPerformance;
+        this.avgDesign = avgDesign;
+        this.avgCamera = avgCamera;
+        this.numRating = numRating;
+    }
 
     public String getIdProduct() {
         return idProduct;
@@ -63,59 +78,59 @@ public class Product {
         this.tagProduct = tagProduct;
     }
 
-    public String getDtCreated() {
+    public Date getDtCreated() {
         return dtCreated;
     }
 
-    public void setDtCreated(String dtCreated) {
+    public void setDtCreated(Date dtCreated) {
         this.dtCreated = dtCreated;
     }
 
-    public String getAvgBattery() {
+    public int getAvgBattery() {
         return avgBattery;
     }
 
-    public void setAvgBattery(String avgBattery) {
+    public void setAvgBattery(int avgBattery) {
         this.avgBattery = avgBattery;
     }
 
-    public String getAvgDisplay() {
+    public int getAvgDisplay() {
         return avgDisplay;
     }
 
-    public void setAvgDisplay(String avgDisplay) {
+    public void setAvgDisplay(int avgDisplay) {
         this.avgDisplay = avgDisplay;
     }
 
-    public String getAvgPerformance() {
+    public int getAvgPerformance() {
         return avgPerformance;
     }
 
-    public void setAvgPerformance(String avgPerformance) {
+    public void setAvgPerformance(int avgPerformance) {
         this.avgPerformance = avgPerformance;
     }
 
-    public String getAvgDesign() {
+    public int getAvgDesign() {
         return avgDesign;
     }
 
-    public void setAvgDesign(String avgDesign) {
+    public void setAvgDesign(int avgDesign) {
         this.avgDesign = avgDesign;
     }
 
-    public String getAvgCamera() {
+    public int getAvgCamera() {
         return avgCamera;
     }
 
-    public void setAvgCamera(String avgCamera) {
+    public void setAvgCamera(int avgCamera) {
         this.avgCamera = avgCamera;
     }
 
-    public String getNumRating() {
+    public int getNumRating() {
         return numRating;
     }
 
-    public void setNumRating(String numRating) {
+    public void setNumRating(int numRating) {
         this.numRating = numRating;
     }
 }

@@ -5,7 +5,8 @@ import { AuthService } from './auth.service';
 export class AuthGuardAdminService implements CanActivate {
   constructor(public auth: AuthService, public router: Router) {}
   canActivate(): boolean {
-    if (!this.auth.isAuthenticated()) {
+    const role = localStorage.getItem('role');
+    if (!this.auth.isAuthenticated() && role !== 'ROLE_ADMIN') {
       this.router.navigate(['admin/login']);
       return false;
     }

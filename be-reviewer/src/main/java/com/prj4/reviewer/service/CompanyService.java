@@ -32,6 +32,9 @@ public class CompanyService {
     public Company getCompanyByEmail(String email){
         Company company = companyRepository.findByEmailCompany(email);
         return company;
+
+    public String getCompanyId(String email) {
+        return companyRepository.findByEmailCompany(email).getIdCompany();
     }
 }
 

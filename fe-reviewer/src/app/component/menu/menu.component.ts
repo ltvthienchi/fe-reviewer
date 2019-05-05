@@ -34,4 +34,8 @@ export class MenuComponent implements OnInit {
     localStorage.removeItem('isActive');
   }
 
+  isCompany() {
+    return this.authGuard.isCompany();
+  }
+
 }
