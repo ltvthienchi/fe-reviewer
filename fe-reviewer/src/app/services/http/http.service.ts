@@ -12,5 +12,8 @@ export class HttpService {
   public getAllPost(): Observable<any> {
     return this.http.get(URL_SERVER.postProduct + 'getAll', getHeader());
   }
+  public feedbackWebsite(): Observable<any> {
+    return this.http.post(URL_SERVER.feedbackWebsite + 'getAll', getHeader());
+  }
 
 }

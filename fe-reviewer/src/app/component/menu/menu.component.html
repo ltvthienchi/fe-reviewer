@@ -34,7 +34,6 @@
 
             <li class="nav-item">
               <a class="nav-link" routerLink="/compare" tabindex="-1" aria-disabled="true">Compare</a>
-              <span *ngIf="count >= 0" class="numb-badge">{{count}}</span>
             </li>
 
             <!--<li class="br-l"></li>-->
@@ -51,8 +50,9 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 <!--                <a class="dropdown-item" href="#">Action</a>-->
 <!--                <a class="dropdown-item" href="#">Another action</a>-->
-                <a class="dropdown-item" href="user-update-page">Change Your Account</a>
+                
                 <a class="dropdown-item" href="user-page">Your Page</a>
+                <a class="dropdown-item" href="feedback">Feedback Website</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" (click)="removeToken()">Sign Out</a>
 
