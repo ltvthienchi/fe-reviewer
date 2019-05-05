@@ -63,7 +63,9 @@ export class SignUpComponent implements OnInit {
         passAccount: this.normalUserForm.value.password,
         typeAccount: 2,
         isActive: false,
-        nameAccount: this.normalUserForm.value.firstName + ' ' + this.normalUserForm.value.lastName
+        nameAccount: this.normalUserForm.value.firstName + ' ' + this.normalUserForm.value.lastName,
+        firstName: this.normalUserForm.value.firstName,
+        lastName: this.normalUserForm.value.lastName,
       };
       this.userService.registerUser(user).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {

@@ -6,6 +6,8 @@ public class UseRequest {
     private String passAccount;
     private int typeAccount;
     private String nameAccount;
+    private String firstName;
+    private String lastName;
     private boolean isActive;
 
     public String getUserName() {
@@ -46,5 +48,21 @@ public class UseRequest {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

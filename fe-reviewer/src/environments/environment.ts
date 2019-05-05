@@ -11,5 +11,7 @@ export const rootUrl = 'http://localhost:8080';
 
 export const URL_SERVER = {
   postProduct: rootUrl + '/data/posts/',
-  feedbackWebsite: rootUrl +'/data/feedback/'
+  feedbackWebsite: rootUrl +'/data/feedback/',
+  infoReviewer: rootUrl + '/data/reviewer/'
+
 };

@@ -7,15 +7,14 @@
       <div class="avatar">
         <img src="../../../../assets/wallpaper/avatar2.png" class="img-thumbnail img-profile">
       </div>
-      <h2>DOAN KHANH NHI</h2>
+      <h2>{{fullName}}</h2>
       <br>
       <div class="list-details">
       </div>
       <div class="actions">
-
       </div>
-
     </div>
+
   </div>
 </div>
 
@@ -34,11 +33,12 @@
             <ul class="list-group shadow-none">
               <li class="list-group-item">
                 <div class="list-icon">
-                  <i class="fa fa-phone-square"></i>
+                  <i class="fas fa-venus-mars"></i>
                 </div>
                 <div class="list-details">
-                  <span>9910XXXXXX</span>
-                  <small>Mobile Number</small>
+                  <div *ngIf="checkGender(); else elseBlock"><span>Male</span></div>
+                  <ng-template #elseBlock><span>Female</span></ng-template>
+                  <small>Gender</small>
                 </div>
               </li>
               <li class="list-group-item">
@@ -46,17 +46,17 @@
                   <i class="fa fa-envelope"></i>
                 </div>
                 <div class="list-details">
-                  <span>info@example.com</span>
+                  <span>{{emailReviewer}}</span>
                   <small>Email Address</small>
                 </div>
               </li>
               <li class="list-group-item">
                 <div class="list-icon">
-                  <i class="fa fa-globe"></i>
+                  <i class="fas fa-calendar-alt"></i>
                 </div>
                 <div class="list-details">
-                  <span>www.example.com</span>
-                  <small>Website Address</small>
+                  <span>{{dobReviewer}}</span>
+                  <small>Day of Birth</small>
                 </div>
               </li>
             </ul>
@@ -94,12 +94,16 @@
           <ul class="nav nav-pills nav-pills-primary nav-justified">
             <li class="nav-item">
               <a href="javascript:void();" data-target="#profile" data-toggle="pill" class="nav-link active show"><i
-                class="icon-user"></i> <span class="hidden-xs">Profile</span></a>
+                class="icon-user"></i> <span class="hidden-xs">Activity History</span></a>
             </li>
 
             <li class="nav-item">
               <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i
-                class="icon-note"></i> <span class="hidden-xs">Edit</span></a>
+                class="icon-note"></i> <span class="hidden-xs">Edit Profile</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="javascript:void();" data-target="#changepassword" data-toggle="pill" class="nav-link"><i
+                class="icon-note"></i> <span class="hidden-xs">Change Password</span></a>
             </li>
           </ul>
           <div class="tab-content p-3">
@@ -227,401 +231,48 @@
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">First name</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="text" value="Mark">
+                    <input class="form-control" type="text" value="{{firstName}}">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Last name</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="text" value="Jhonsan">
+                    <input class="form-control" type="text" value="{{lastName}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Day of Birth</label>
+                  <div class="col-lg-9">
+                    <input type="date" name="bday" value="{{dobReviewer}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Gender</label>
+                  <div class="col-lg-9">
+                  <label class="radio-inline">
+                    <input type="radio" name="gender" checked> Male
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="gender"> Female
+                  </label>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Email</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="email" value="mark@example.com">
+                    <input class="form-control" type="email" value="{{emailReviewer}}" disabled>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Change profile</label>
+                  <label class="col-lg-3 col-form-label form-control-label">Change Avatar</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="file">
+                    <input type="file">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Website</label>
+                  <label class="col-lg-3 col-form-label form-control-label">Change Backgroud</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="url" value="">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Address</label>
-                  <div class="col-lg-9">
-                    <input class="form-control" type="text" value="" placeholder="Street">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label"></label>
-                  <div class="col-lg-5">
-                    <input class="form-control" type="text" value="" placeholder="City">
-                  </div>
-                  <div class="col-lg-4">
-                    <select class="form-control" type="text" value="" placeholder="Country">
-                      <option value="">Select Nationality</option>
-
-                      <option value="ALB">ALBANIA</option>
-
-                      <option value="AND">ANDORRA</option>
-
-                      <option value="AGO">ANGOLA</option>
-
-                      <option value="AIA">ANGUILLA</option>
-
-                      <option value="ATG">ANTIGUA AND BARBUDA</option>
-
-                      <option value="ARG">ARGENTINA</option>
-
-                      <option value="ARM">ARMENIA</option>
-
-                      <option value="ABW">ARUBA</option>
-
-                      <option value="AUS">AUSTRALIA</option>
-
-                      <option value="AUT">AUSTRIA</option>
-
-                      <option value="AZE">AZERBAIJAN</option>
-
-                      <option value="BHS">BAHAMAS</option>
-
-                      <option value="BRB">BARBADOS</option>
-
-                      <option value="BEL">BELGIUM</option>
-
-                      <option value="BLZ">BELIZE</option>
-
-                      <option value="BOL">BOLIVIA</option>
-
-                      <option value="BIH">BOSNIA AND HERZEGOVINA</option>
-
-                      <option value="BWA">BOTSWANA</option>
-
-                      <option value="BRA">BRAZIL</option>
-
-                      <option value="BRN">BRUNEI</option>
-
-                      <option value="BGR">BULGARIA</option>
-
-                      <option value="BDI">BURUNDI</option>
-
-                      <option value="KHM">CAMBODIA</option>
-
-                      <option value="CMR">CAMEROON</option>
-
-                      <option value="CAN">CANADA</option>
-
-                      <option value="CPV">CAPE VERDE</option>
-
-                      <option value="CYM">CAYMAN ISLANDS</option>
-
-                      <option value="CHL">CHILE</option>
-
-                      <option value="CHN">CHINA-CHINA</option>
-
-                      <option value="HKG">CHINA- SAR HONGKONG</option>
-
-                      <option value="MAC">CHINA- SAR MACAU</option>
-
-                      <option value="COL">COLOMBIA</option>
-
-                      <option value="COM">COMOROS</option>
-
-                      <option value="COK">COOK ISLANDS</option>
-
-                      <option value="CRI">COSTA RICA</option>
-
-                      <option value="CIV">COTE D\'IVOIRE</option>
-
-                      <option value="HRV">CROATIA</option>
-
-                      <option value="CUB">CUBA</option>
-
-                      <option value="CYP">CYPRUS</option>
-
-                      <option value="CZE">CZECH REPUBLIC</option>
-
-                      <option value="DNK">DENMARK</option>
-
-                      <option value="DJI">DJIBOUTI</option>
-
-                      <option value="DMA">DOMINICA</option>
-
-                      <option value="DOM">DOMINICAN REPUBLIC</option>
-
-                      <option value="TLS">EAST TIMOR (DEMOCRATIC REPUBLIC OF)</option>
-
-                      <option value="ECU">ECUADOR</option>
-
-                      <option value="SLV">EL SALVADOR</option>
-
-                      <option value="ERI">ERITREA</option>
-
-                      <option value="EST">ESTONIA</option>
-
-                      <option value="FJI">FIJI</option>
-
-                      <option value="FIN">FINLAND</option>
-
-                      <option value="FRA">FRANCE</option>
-
-                      <option value="GAB">GABON</option>
-
-                      <option value="GMB">GAMBIA</option>
-
-                      <option value="GEO">GEORGIA</option>
-
-                      <option value="DEU">GERMANY</option>
-
-                      <option value="GHA">GHANA</option>
-
-                      <option value="GRC">GREECE</option>
-
-                      <option value="GRD">GRENADA</option>
-
-                      <option value="GTM">GUATEMALA</option>
-
-                      <option value="GIN">GUINEA</option>
-
-                      <option value="GUY">GUYANA</option>
-
-                      <option value="HTI">HAITI</option>
-
-                      <option value="HND">HONDURAS</option>
-
-                      <option value="HUN">HUNGARY</option>
-
-                      <option value="ISL">ICELAND</option>
-
-                      <option value="IDN">INDONESIA</option>
-
-                      <option value="IRN">IRAN</option>
-
-                      <option value="IRL">IRELAND</option>
-
-                      <option value="ISR">ISRAEL</option>
-
-                      <option value="ITA">ITALY</option>
-
-                      <option value="JAM">JAMAICA</option>
-
-                      <option value="JPN">JAPAN</option>
-
-                      <option value="JOR">JORDAN</option>
-
-                      <option value="KAZ">KAZAKHSTAN</option>
-
-                      <option value="KEN">KENYA</option>
-
-                      <option value="KIR">KIRIBATI</option>
-
-                      <option value="KGZ">KYRGYZSTAN</option>
-
-                      <option value="LAO">LAOS</option>
-
-                      <option value="LVA">LATVIA</option>
-
-                      <option value="LSO">LESOTHO</option>
-
-                      <option value="LBR">LIBERIA</option>
-
-                      <option value="LIE">LIECHTENSTEIN</option>
-
-                      <option value="LTU">LITHUANIA</option>
-
-                      <option value="LUX">LUXEMBOURG</option>
-
-                      <option value="MDG">MADAGASCAR</option>
-
-                      <option value="MWI">MALAWI</option>
-
-                      <option value="MYS">MALAYSIA</option>
-
-                      <option value="MLI">MALI</option>
-
-                      <option value="MLT">MALTA</option>
-
-                      <option value="MHL">MARSHALL ISLANDS</option>
-
-                      <option value="MUS">MAURITIUS</option>
-
-                      <option value="MEX">MEXICO</option>
-
-                      <option value="FSM">MICRONESIA (FEDERATED STATES OF)</option>
-
-                      <option value="MDA">MOLDOVA</option>
-
-                      <option value="MCO">MONACO</option>
-
-                      <option value="MNG">MONGOLIA</option>
-
-                      <option value="MNE">MONTENEGRO</option>
-
-                      <option value="MSR">MONTSERRAT</option>
-
-                      <option value="MOZ">MOZAMBIQUE</option>
-
-                      <option value="MMR">MYANMAR</option>
-
-                      <option value="NAM">NAMIBIA</option>
-
-                      <option value="NRU">NAURU</option>
-
-                      <option value="NLD">NETHERLANDS</option>
-
-                      <option value="NZL">NEW ZEALAND</option>
-
-                      <option value="NIC">NICARAGUA</option>
-
-                      <option value="NER">NIGER</option>
-
-                      <option value="NIU">NIUE ISLAND</option>
-
-                      <option value="NOR">NORWAY</option>
-
-                      <option value="OMN">OMAN</option>
-
-                      <option value="PLW">PALAU</option>
-
-                      <option value="PSE">PALESTINE</option>
-
-                      <option value="PAN">PANAMA</option>
-
-                      <option value="PNG">PAPUA NEW GUINEA</option>
-
-                      <option value="PRY">PARAGUAY</option>
-
-                      <option value="PER">PERU</option>
-
-                      <option value="PHL">PHILIPPINES</option>
-
-                      <option value="POL">POLAND</option>
-
-                      <option value="PRT">PORTUGAL</option>
-
-                      <option value="QAT">QATAR</option>
-
-                      <option value="KOR">REPUBLIC OF KOREA</option>
-
-                      <option value="MKD">REPUBLIC OF MACEDONIA</option>
-
-                      <option value="ROU">ROMANIA</option>
-
-                      <option value="RUS">RUSSIAN FEDERATION</option>
-
-                      <option value="RWA">RWANDA</option>
-
-                      <option value="KNA">SAINT KITTS AND NEVIS</option>
-
-                      <option value="LCA">SAINT LUCIA</option>
-
-                      <option value="VCT">SAINT VINCENT AND THE GRENADINES</option>
-
-                      <option value="WSM">SAMOA</option>
-
-                      <option value="SMR">SAN MARINO</option>
-
-                      <option value="SEN">SENEGAL</option>
-
-                      <option value="SRB">SERBIA</option>
-
-                      <option value="SYC">SEYCHELLES</option>
-
-                      <option value="SLE">SIERRA LEONE</option>
-
-                      <option value="SGP">SINGAPORE</option>
-
-                      <option value="SVK">SLOVAKIA</option>
-
-                      <option value="SVN">SLOVENIA</option>
-
-                      <option value="SLB">SOLOMON ISLANDS</option>
-
-                      <option value="ZAF">SOUTH AFRICA</option>
-
-                      <option value="ESP">SPAIN</option>
-
-                      <option value="LKA">SRI LANKA</option>
-
-                      <option value="SUR">SURINAME</option>
-
-                      <option value="SWZ">SWAZILAND</option>
-
-                      <option value="SWE">SWEDEN</option>
-
-                      <option value="CHE">SWITZERLAND</option>
-
-                      <option value="TWN">TAIWAN</option>
-
-                      <option value="TJK">TAJIKISTAN</option>
-
-                      <option value="TZA">TANZANIA</option>
-
-                      <option value="TES">TEST COUNTRY</option>
-
-                      <option value="THA">THAILAND</option>
-
-                      <option value="TON">TONGA</option>
-
-                      <option value="TTO">TRINIDAD AND TOBAGO</option>
-
-                      <option value="TCA">TURKS AND CAICOS ISL</option>
-
-                      <option value="TUV">TUVALU</option>
-
-                      <option value="UGA">UGANDA</option>
-
-                      <option value="UKR">UKRAINE</option>
-
-                      <option value="ARE">UNITED ARAB EMIRATES</option>
-
-                      <option value="GBR">UNITED KINGDOM</option>
-
-                      <option value="USA">UNITED STATES OF AMERICA</option>
-
-                      <option value="URY">URUGUAY</option>
-
-                      <option value="UZB">UZBEKISTAN</option>
-
-                      <option value="VUT">VANUATU</option>
-
-                      <option value="VAT">VATICAN CITY STATE ( HOLY SEE)</option>
-
-                      <option value="VEN">VENEZUELA</option>
-
-                      <option value="VNM">VIETNAM</option>
-
-                      <option value="ZMB">ZAMBIA</option>
-
-                      <option value="ZWE">ZIMBABWE</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Username</label>
-                  <div class="col-lg-9">
-                    <input class="form-control" type="text" value="jhonsanmark">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Password</label>
-                  <div class="col-lg-9">
-                    <input class="form-control" type="password" value="11111122333">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
-                  <div class="col-lg-9">
-                    <input class="form-control" type="password" value="11111122333">
+                    <input type="file">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -633,6 +284,37 @@
                 </div>
               </form>
             </div>
+
+            <div class="tab-pane" id="changepassword">
+              <form method="post" oninput='pass2.setCustomValidity(pass2.value != pass1.value ? "Passwords do not match." : "")'>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Fill Your Password</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="password" value="">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">New Password</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="password" value="" name="pass1">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Confirm New Password</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="password" value="" name="pass2">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label"></label>
+                  <div class="col-lg-9">
+                    <input type="reset" class="btn btn-secondary" value="Cancel">
+                    <input type="button" class="btn btn-primary" value="Save Changes">
+                  </div>
+                </div>
+              </form>
+            </div>
+
           </div>
         </div>
       </div>

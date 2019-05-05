@@ -15,6 +15,12 @@ public class Reviewer {
     @Column(name = "NAME_REVIEWER")
     private String fullName;
 
+    @Column(name = "FIRST_NAME")
+    private String firstName;
+
+    @Column(name = "LAST_NAME")
+    private String lastName;
+
     @Column(name = "EMAIL_REVIEWER")
     private String email;
 
@@ -39,12 +45,14 @@ public class Reviewer {
     @Column(name = "GENDER")
     private int gender;
 
-    public Reviewer(){}
+    public Reviewer() {}
 
     public Reviewer(String idReviewer, String fullName, String email, Date dateOfBirth, Date dateCreated,
-                    String idAccount, String imgAvatar, String imgPanel, int gender) {
+                    String idAccount, String imgAvatar, String imgPanel, int gender, String firstName, String lastName) {
         this.idReviewer = idReviewer;
         this.fullName = fullName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.dateCreated = dateCreated;
@@ -125,4 +133,21 @@ public class Reviewer {
     public void setGender(int gender) {
         this.gender = gender;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }
+
