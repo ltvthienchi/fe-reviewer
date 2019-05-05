@@ -12,7 +12,7 @@
   </div>
 </div>
 <div class="row p-main">
-  <div class="col-4">
+  <div *ngFor="let pro of lstPost" class="col-4">
     <div class="border-radius">
       <p class="text-center">Compare With</p>
       <form class="form-inline">
@@ -22,7 +22,7 @@
         </div>
       </form>
       <div class="compare-product">
-        <img class="img-fluid img-content" src="../../../assets/image/phone1.png">
+        <img class="img-fluid img-content" src="{{pro.imageProduct}}">
       </div>
       <div>
         <table class="table">
@@ -38,7 +38,7 @@
             <td>
               <div class="progress">
                 <div class="progress-bar" role="progressbar"
-                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%' : pro.avgBattery}" >
                 </div>
               </div>
             </td>
@@ -48,7 +48,7 @@
             <td>
               <div class="progress">
                 <div class="progress-bar" role="progressbar"
-                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%' : pro.avgDisplay}">
                 </div>
               </div>
             </td>
@@ -58,7 +58,7 @@
             <td>
               <div class="progress">
                 <div class="progress-bar" role="progressbar"
-                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%' : pro.avgPerformance}">
                 </div>
               </div>
             </td>
@@ -68,7 +68,17 @@
             <td>
               <div class="progress">
                 <div class="progress-bar" role="progressbar"
-                     aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                     aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%' : pro.avgCamera}">
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr class="table-active">
+            <th scope="row">Design</th>
+            <td>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar"
+                     aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%' : pro.avgDesign}">
                 </div>
               </div>
             </td>
@@ -78,136 +88,136 @@
       </div>
     </div>
   </div>
-  <div class="col-4">
-    <div class="border-radius">
-      <p class="text-center">Compare With</p>
-      <form class="form-inline">
-        <div class="search-form">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-        </div>
-      </form>
-      <div class="compare-product">
-        <img class="img-fluid img-content" src="../../../assets/image/phone2.png">
-      </div>
-      <div>
-        <table class="table">
-          <thead>
-          <tr>
-          </tr>
-          <tr>
-            <td style="width: 60px"></td>
-          </tr>
-          <tbody>
-          <tr class="table-active">
-            <th scope="row">Battery</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">Display</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">Performance</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">Camera</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                </div>
-              </div>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="col-4">
-    <div class="border-radius">
-      <p class="text-center">Compare With</p>
-      <form class="form-inline">
-        <div class="search-form">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-        </div>
-      </form>
-      <div class="compare-product">
-        <img class="img-fluid img-content" src="../../../assets/image/phone3.png">
-      </div>
-      <div>
-        <table class="table">
-          <thead>
-          <tr>
-          </tr>
-          <tr>
-            <td style="width: 60px"></td>
-          </tr>
-          <tbody>
-          <tr class="table-active">
-            <th scope="row">Battery</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">Display</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">Performance</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">Camera</th>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:30%">
-                </div>
-              </div>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+<!--  <div class="col-4">-->
+<!--    <div class="border-radius">-->
+<!--      <p class="text-center">Compare With</p>-->
+<!--      <form class="form-inline">-->
+<!--        <div class="search-form">-->
+<!--          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--      <div class="compare-product">-->
+<!--        <img class="img-fluid img-content" src="../../../assets/image/phone2.png">-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <table class="table">-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td style="width: 60px"></td>-->
+<!--          </tr>-->
+<!--          <tbody>-->
+<!--          <tr class="table-active">-->
+<!--            <th scope="row">Battery</th>-->
+<!--            <td>-->
+<!--              <div class="progress">-->
+<!--                <div class="progress-bar" role="progressbar"-->
+<!--                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          <tr class="table-active">-->
+<!--            <th scope="row">Display</th>-->
+<!--            <td>-->
+<!--              <div class="progress">-->
+<!--                <div class="progress-bar" role="progressbar"-->
+<!--                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:70%">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          <tr class="table-active">-->
+<!--            <th scope="row">Performance</th>-->
+<!--            <td>-->
+<!--              <div class="progress">-->
+<!--                <div class="progress-bar" role="progressbar"-->
+<!--                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          <tr class="table-active">-->
+<!--            <th scope="row">Camera</th>-->
+<!--            <td>-->
+<!--              <div class="progress">-->
+<!--                <div class="progress-bar" role="progressbar"-->
+<!--                     aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:70%">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="col-4">-->
+<!--    <div class="border-radius">-->
+<!--      <p class="text-center">Compare With</p>-->
+<!--      <form class="form-inline">-->
+<!--        <div class="search-form">-->
+<!--          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--      <div class="compare-product">-->
+<!--        <img class="img-fluid img-content" src="../../../assets/image/phone3.png">-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <table class="table">-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td style="width: 60px"></td>-->
+<!--          </tr>-->
+<!--          <tbody>-->
+<!--          <tr class="table-active">-->
+<!--            <th scope="row">Battery</th>-->
+<!--            <td>-->
+<!--              <div class="progress">-->
+<!--                <div class="progress-bar" role="progressbar"-->
+<!--                     aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          <tr class="table-active">-->
+<!--            <th scope="row">Display</th>-->
+<!--            <td>-->
+<!--              <div class="progress">-->
+<!--                <div class="progress-bar" role="progressbar"-->
+<!--                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:70%">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          <tr class="table-active">-->
+<!--            <th scope="row">Performance</th>-->
+<!--            <td>-->
+<!--              <div class="progress">-->
+<!--                <div class="progress-bar" role="progressbar"-->
+<!--                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          <tr class="table-active">-->
+<!--            <th scope="row">Camera</th>-->
+<!--            <td>-->
+<!--              <div class="progress">-->
+<!--                <div class="progress-bar" role="progressbar"-->
+<!--                     aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:30%">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </div>

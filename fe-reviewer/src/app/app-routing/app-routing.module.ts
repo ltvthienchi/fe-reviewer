@@ -38,10 +38,10 @@ const routes: Routes = [
       { path: 'company', component: CompanyComponent},
       { path: 'company/detail/:id', component: DetailCompanyComponent},
       { path: 'company/view-history', component: ViewHistoryCompanyComponent},
-      { path: 'user-update-page', component: UserUpdatePageComponent},
-      { path: 'feedback', component: FeedbackReviewerComponent},
-      { path: 'user-page', component: UserPageComponent},
-      { path: 'compare', component: CompareComponent},
+      { path: 'user-update-page', component: UserUpdatePageComponent, canActivate: [AuthGuard]},
+      { path: 'feedback', component: FeedbackReviewerComponent, canActivate: [AuthGuard]},
+      { path: 'user-page', component: UserPageComponent, canActivate: [AuthGuard]},
+      { path: 'compare', component: CompareComponent, canActivate: [AuthGuard]},
       { path: 'register-confirmation', component: RegisterConfirmationComponent}
     ]
   },

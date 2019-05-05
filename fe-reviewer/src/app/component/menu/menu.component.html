@@ -34,6 +34,7 @@
 
             <li class="nav-item">
               <a class="nav-link" routerLink="/compare" tabindex="-1" aria-disabled="true">Compare</a>
+              <span *ngIf="count >= 0" class="numb-badge">{{count}}</span>
             </li>
 
             <!--<li class="br-l"></li>-->

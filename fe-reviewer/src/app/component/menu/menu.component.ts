@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthGuardService} from '../../services/auth/auth-guard.service';
+import {ContentPostComponent} from '../home/content-post/content-post.component';
+import { DataService } from '../../services/data-service/data.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,16 +12,19 @@ import {AuthGuardService} from '../../services/auth/auth-guard.service';
 export class MenuComponent implements OnInit {
 
   private fullName: string;
-  constructor(private authGuard: AuthGuardService, private router: Router) {
+  count: number;
+  constructor(private authGuard: AuthGuardService, private router: Router, private data: DataService) {
     this.fullName = localStorage.getItem('fullName');
   }
 
   ngOnInit() {
-    console.log(window.location.toString());
+    this.data.change.subscribe(count => {
+      this.count = count;
+    });
   }
 
   checkAuthGuard() {
-    return this.authGuard.canActivate();
+    return this.authGuard.checkLogin();
   }
   removeToken() {
     localStorage.removeItem('userToken');

@@ -47,3 +47,17 @@
 .br-l {
   border-left: 1px solid silver;
 }
+.numb-badge {
+  position: relative;
+  top: -10px;
+  right: 10px;
+  padding: 0px 6px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+  line-height: 18px;
+  font-size: 10px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
