@@ -18,4 +18,13 @@ export class AuthGuardService implements CanActivate {
     }
     return true;
   }
+
+  isCompany(): boolean {
+    const role = localStorage.getItem('role');
+    if (role === 'ROLE_COMPANY') {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

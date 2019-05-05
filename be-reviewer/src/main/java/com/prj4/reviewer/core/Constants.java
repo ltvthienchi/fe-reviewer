@@ -16,5 +16,12 @@ public class Constants {
 
     // And receiver!
     public static final String FRIEND_EMAIL = "hohoanvu1993@gmail.com";
+
+
+    // Type IMAGE
+    public static final String POST_IMG = "POST_IMG";
+    public static final String IMAGE_AVA = "IMAGE_AVA";
+    public static final String IMAGE_PANEL = "IMAGE_PANEL";
+
 }
 

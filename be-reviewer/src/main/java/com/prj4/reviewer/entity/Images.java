@@ -20,6 +20,12 @@ public class Images {
 	@Column(name = "TYPE_IMG")
 	private String typeImg;
 
+	public Images(String idImage, String imgPath, String typeImg) {
+		this.idImage = idImage;
+		this.imgPath = imgPath;
+		this.typeImg = typeImg;
+	}
+
 	public String getIdImage() {
 		return idImage;
 	}

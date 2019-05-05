@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../../model/product.model';
 import {forEach} from '@angular/router/src/utils/collection';
+import {DataService} from '../../services/data-service/data.service';
 
 @Component({
   selector: 'app-compare',
@@ -10,7 +11,7 @@ import {forEach} from '@angular/router/src/utils/collection';
 export class CompareComponent implements OnInit {
 
   private lstPost: any;
-  constructor() { }
+  constructor(private data: DataService) { }
 
   ngOnInit() {
     const stringlistPro = sessionStorage.getItem('lstProduct');
@@ -37,4 +38,23 @@ export class CompareComponent implements OnInit {
     }
   }
 
+  removeProduct(idProduct) {
+    type ProductArrayType = Array<Product>;
+    const lstPro: ProductArrayType = [];
+    for (let i = 0; i < this.lstPost.length; i++) {
+      if (this.lstPost[i].idPostProduct !== idProduct) {
+        lstPro.push(this.lstPost[i]);
+      }
+    }
+    let stringJson: string;
+    if (lstPro.length !== 0) {
+      stringJson = JSON.stringify(lstPro);
+      sessionStorage.setItem('lstProduct', stringJson);
+    } else {
+      sessionStorage.removeItem('lstProduct');
+    }
+    this.lstPost = lstPro;
+
+    this.data.decreaseProduct();
+  }
 }
