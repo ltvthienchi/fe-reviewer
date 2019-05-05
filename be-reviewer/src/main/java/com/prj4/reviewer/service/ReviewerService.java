@@ -22,7 +22,6 @@ public class ReviewerService {
     public String getFullName(String idAccount) {
         return reviewerRepository.findByIdAccount(idAccount).getFullName();
     }
-
     public void saveReviewer(Reviewer reviewer) {
         reviewerRepository.save(reviewer);
     }
@@ -34,6 +33,11 @@ public class ReviewerService {
         } else {
             return true;
         }
+    }
+
+    public Reviewer getReviewerByEmail(String email){
+        Reviewer reviewer = reviewerRepository.findByEmail(email);
+        return reviewer;
     }
 
 }

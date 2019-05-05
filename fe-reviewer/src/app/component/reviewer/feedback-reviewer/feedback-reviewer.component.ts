@@ -26,11 +26,9 @@ this.notifier = notifier;}
 
   ngOnInit() {
     this.feedbackForm = this.formBuilder.group({
-      email: ['', [validatorRequired, validatorEmail]],
-      password: ['', [validatorPassword]],
-      confirmPassword: ['', [validatorConfirmPassword]],
-      firstName: ['', [validatorRequired, validatorName]],
-      lastName: ['', [validatorRequired, validatorName]],
+      titleFeedback: ['', [validatorRequired]],
+      contentFeedback: ['', [validatorRequired]],
+      
     });
   }
   submitFeedbackForm() {
@@ -41,19 +39,24 @@ this.notifier = notifier;}
       this.validatorForm.feedbackForm = true;
       // this.userService.registerUser(this.validatorForm.value)
       const feedback: FeedbackWebsite = {
-        titleFeedback: this.feedbackForm.value.email,
-        contentFeedback: this.feedbackForm.value.password,
-        email: "aaaa"
+        titleFeedback: this.feedbackForm.value.titleFeedback,
+        contentFeedback: this.feedbackForm.value.contentFeedback,
+        email: localStorage.getItem('email'),
+        role: localStorage.getItem('role')
         
       };
-      // this.httpService.feedbackWebsite(FeedbackWebsite).subscribe((data: any) => {
-      //   if (data.status === 'SUCCESS') {
-      //     this.showNotification( 'success', 'Create Successfully!! Please check your mail box to Active Account!' );
-      //   } else {
-      //     this.showNotification( 'error', data.result );
-      //   }
-      // });
+      this.httpService.feedbackWebsite(feedback).subscribe((data: any) => {
+        if (data.status === 'SUCCESS') {
+          this.showNotification( 'success', 'Send feedback successfully' );
+          this.feedbackForm.reset();
+        } else {
+          this.showNotification( 'error', data.result );
+        }
+      });
     }
+  }
+  public showNotification(type: string, message: string): void {
+    this.notifier.notify(type, message);
   }
 
 }

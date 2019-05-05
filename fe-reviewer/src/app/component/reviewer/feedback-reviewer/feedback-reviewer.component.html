@@ -2,18 +2,28 @@
   <br>
   <h2 class="text-center text-info">Feedback To Admin About Website</h2>
 
-  <form class="margintop">
+  <form [formGroup]="feedbackForm" (submit)="submitFeedbackForm()" class="margintop">
     <div class="form-group row">
-      <label for="title" class=" col-sm-2"><strong>Title:</strong></label>
-      <input type="text" class="form-control col-sm-10" id="title" placeholder="Enter Title" name="title" required>
+      <label for="title" class=" col-2"><strong>Title:</strong></label>
+      <input type="text" class="form-control col-10" id="title" placeholder="Enter Title"
+        formControlName="titleFeedback">
+      <div class="offset-2">
+        <app-text-alert [field]="'titleFeedback'" [invalidField]="'titleFeedback'" style="width: 100%"
+          [form]="feedbackForm" [invalidForm]="validatorForm.feedbackForm"></app-text-alert>
+      </div>
     </div>
 
     <div class="form-group row">
-      <label for="content" class="col-sm-2"><strong>Content:</strong></label>
-      <textarea class="form-control col-sm-10" id="content" placeholder="Enter Content" name="content" rows="10" required></textarea>
+      <label for="content" class="col-2"><strong>Content:</strong></label>
+      <textarea class="form-control col-10" id="content" placeholder="Enter Content"
+        formControlName="contentFeedback" rows="10"></textarea>
+        <div class="offset-2">
+          <app-text-alert [field]="'contentFeedback'" [invalidField]="'contentFeedback'" style="width: 100%"
+            [form]="feedbackForm" [invalidForm]="validatorForm.feedbackForm"></app-text-alert>
+        </div>
     </div>
 
-    
+
     <button type="submit" class="btn btn-primary float-right">Submit</button>
   </form>
 

@@ -28,5 +28,10 @@ public class CompanyService {
             return true;
         }
     }
+
+    public Company getCompanyByEmail(String email){
+        Company company = companyRepository.findByEmailCompany(email);
+        return company;
+    }
 }
 
