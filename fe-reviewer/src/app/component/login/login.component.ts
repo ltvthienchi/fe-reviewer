@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
           }
           localStorage.setItem('fullName', tokenDecoded.fullName);
           localStorage.setItem('isActive', tokenDecoded.isActive);
+          localStorage.setItem('email', tokenDecoded.sub);
           if (tokenDecoded.isActive !== true) {
             this.showNotification('error', 'Account is not active!!');
           } else {
