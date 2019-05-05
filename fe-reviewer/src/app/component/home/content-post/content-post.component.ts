@@ -1,9 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {AuthGuardService} from '../../../services/auth/auth-guard.service';
 import {NotifierService} from 'angular-notifier';
 import * as $ from 'jquery';
 import {MatDialog} from '@angular/material';
 import {ModalRatingComponent} from '../modal-rating/modal-rating.component';
+import {Product} from '../../../model/product.model';
+import {DataService} from '../../../services/data-service/data.service';
 
 @Component({
   selector: 'app-content-post',
@@ -24,13 +26,16 @@ export class ContentPostComponent implements OnInit {
   thumbLabel = true;
   value = 1;
 
-  constructor(private authGuard: AuthGuardService, public dialog: MatDialog) { }
+  constructor(private authGuard: AuthGuardService, public dialog: MatDialog, notifier: NotifierService, private data: DataService) {
+    this.notifier = notifier;
+  }
 
   ngOnInit() {
+
   }
 
   checkAuthGuard() {
-    return this.authGuard.canActivate();
+    return this.authGuard.checkLogin();
   }
 
   toggleRatings(id) {
@@ -52,5 +57,54 @@ export class ContentPostComponent implements OnInit {
       }
     });
   }
+  compareProduct(item: any) {
+    const product: Product = {
+      idPostProduct: item.idPostProduct,
+      imageProduct: item.image,
+      avgDisplay: item.avgDisplay,
+      avgPerformance: item.avgPerformance,
+      avgCamera: item.avgCamera,
+      avgBattery: item.avgBattery,
+      avgDesign: 0
+    };
+    type ProductArrayType = Array<Product>;
+    const lstPost: ProductArrayType = [];
+    const sessionString = sessionStorage.getItem('lstProduct');
+    const lstJson = JSON.parse(sessionString);
+    if (lstJson === null) {
+      lstPost.push(product);
+      this.data.increaseProduct();
+      const stringJson = JSON.stringify(lstPost);
+      sessionStorage.setItem('lstProduct', stringJson);
+    } else {
+      if (!this.checkExistProductId(lstJson, product.idPostProduct)) {
+        if (lstJson.length > 0 && lstJson.length < 3) {
+          // const productString = JSON.stringify(product);
+          this.data.increaseProduct();
+          lstJson.push(product);
+          const stringJson = JSON.stringify(lstJson);
+          sessionStorage.setItem('lstProduct', stringJson);
+        } else {
+          this.showNotification('error', 'Maximum Product to compare is 3!!');
+        }
+      } else {
+        this.showNotification('error', 'Product is existing!!');
+      }
 
+    }
+    // sessionStorage.setItem('countProduct', this.count.toString());
+  }
+
+  public showNotification(type: string, message: string): void {
+    this.notifier.notify(type, message);
+  }
+
+  public checkExistProductId(lstJson, idPostProduct) {
+    for (const i in lstJson) {
+      if (lstJson[i].idPostProduct === idPostProduct) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

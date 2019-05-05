@@ -20,7 +20,7 @@ export class CompanyComponent implements OnInit {
   ngOnInit() {
   }
   checkAuthGuard() {
-    return this.authGuard.canActivate();
+    return this.authGuard.checkLogin();
   }
   isCommpanyAccount() {
     const type_reviewer = localStorage.getItem('role');

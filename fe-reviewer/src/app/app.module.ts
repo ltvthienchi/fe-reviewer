@@ -55,6 +55,7 @@ import { ModalRatingComponent } from './component/home/modal-rating/modal-rating
 import {AdminService} from './services/admin-service/admin.service';
 import {AuthAfterLoginService} from './services/auth/auth-after-login.service';
 import {HttpService} from './services/http/http.service';
+import {DataService} from './services/data-service/data.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -178,7 +179,8 @@ export function tokenGetter() {
     CompanyService,
     AdminService,
     AuthAfterLoginService,
-    HttpService
+    HttpService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })
