@@ -4,4 +4,6 @@ export class User {
   typeAccount: number;
   nameAccount: string;
   isActive: boolean;
+  firstName: string;
+  lastName: string;
 }

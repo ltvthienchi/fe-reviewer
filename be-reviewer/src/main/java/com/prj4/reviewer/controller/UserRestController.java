@@ -2,16 +2,15 @@ package com.prj4.reviewer.controller;
 
 import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
-import com.prj4.reviewer.entity.Company;
 import com.prj4.reviewer.entity.Reviewer;
 import com.prj4.reviewer.entity.User;
+import com.prj4.reviewer.request.ChangePasswordRequest;
 import com.prj4.reviewer.request.UseRequest;
+import com.prj4.reviewer.service.ChangePasswordService;
 import com.prj4.reviewer.service.GenerateId;
 import com.prj4.reviewer.service.ReviewerService;
 import com.prj4.reviewer.service.UserService;
-import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.SpringVersion;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,6 +35,9 @@ public class UserRestController {
     ReviewerService reviewerService;
 
     @Autowired
+    ChangePasswordService changePasswordService;
+
+    @Autowired
     GenerateId generateId;
 
     @Autowired
@@ -56,7 +58,7 @@ public class UserRestController {
                 userRequest.getTypeAccount(), Constants.IS_TEST_MODE ? true : userRequest.isActive());
 
         Reviewer reviewer = new Reviewer(idReviewer, userRequest.getNameAccount(), userRequest.getUserName(), null, new Date(),
-                idAccount, null, null, 1);
+                idAccount, null, null, 1, userRequest.getFirstName() , userRequest.getLastName());
 
         if (!userService.isExistingAccount(userRequest.getUserName()) &&
                 !reviewerService.isExistingReviewer(userRequest.getUserName())) {
@@ -87,6 +89,34 @@ public class UserRestController {
         }
 
     }
+
+    @PostMapping(BASE_POST_LINK + "updatePassword")
+    public JsonResponse<String> updatePassword(@RequestBody @Valid ChangePasswordRequest changePasswordRequest) {
+        String encodedPass = new BCryptPasswordEncoder().encode(changePasswordRequest.getNewPassword());
+        String email = changePasswordRequest.getEmail();
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        //        // Call service
+        try {
+            changePasswordService.changePassword(email, encodedPass);
+            return JsonResponse.accept("Success");
+        } catch (Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+//
+//            if (encoder.matches(UseRequest., user.getPassAccount())) {
+//                String fullName = null;
+//                if (user.getTypeAccount() == 1) {
+//                    fullName = companyService.getFullName(user.getIdAccount());
+//                } else {
+//                    fullName = reviewerService.getFullName(user.getIdAccount());
+//                }
+//                final String token = jwtTokenUtil.generateToken(user, user.getTypeAccount(), user.isActive(), fullName);
+//                return JsonResponse.accept(token);
+//            } else {
+//                return JsonResponse.reject("Password is not correct!!!");
+//            }
+    }
+
 
     public void sendHtmlEmail(String idAccount) throws MessagingException {
 

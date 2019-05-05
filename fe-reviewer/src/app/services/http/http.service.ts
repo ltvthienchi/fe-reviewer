@@ -13,4 +13,12 @@ export class HttpService {
     return this.http.get(URL_SERVER.postProduct + 'getAll', getHeader());
   }
 
+  public getReviewerInfo(email): Observable<any> {
+    return this.http.post(URL_SERVER.infoReviewer + 'getReviewerInfo', email, getHeader());
+  }
+
+
+  public postprofile(): Observable<any> {
+    return this.http.post(URL_SERVER.infoReviewer + 'updateReview', getHeader());
+  }
 }
