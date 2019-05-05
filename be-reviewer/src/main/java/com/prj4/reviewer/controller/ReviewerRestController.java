@@ -58,7 +58,7 @@ public class ReviewerRestController {
 
     @PostMapping(BASE_POST_LINK + "getReviewerInfo")
     Reviewer getReviewerInfo(@RequestBody String email) {
-        return reviewerService.getReviewerInfo(email);
+        return reviewerService.getReviewerByEmail(email);
     }
 
     @PostMapping(BASE_POST_LINK + "updateReview")
