@@ -47,6 +47,7 @@ public class FeedbackAdminController {
         }
         feedbackAdmin.setContentFeedback(feedbackAdminRequest.getContentFeedback());
         feedbackAdmin.setTitleFeedback(feedbackAdminRequest.getTitleFeedback());
+        feedbackAdmin.setEmailFeedback(feedbackAdminRequest.getEmail());
         feedbackAdmin.setDtCreated(new Date());
         feedbackAdminService.createFeedback(feedbackAdmin);
 
