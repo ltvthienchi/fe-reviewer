@@ -26,15 +26,27 @@ public class FeedbackAdmin {
     @Column(name = "DT_CREATED")
     private Date dtCreated;
 
+    @Column(name = "EMAIL_FEEDBACK")
+    private String emailFeedback;
+
     public FeedbackAdmin() {
     }
 
-    public FeedbackAdmin(String idFeedbackAdmin, String idReviewer, String contentFeedback, String titleFeedback, Date dtCreated) {
+    public FeedbackAdmin(String idFeedbackAdmin, String idReviewer, String contentFeedback, String titleFeedback, Date dtCreated, String emailFeedback) {
         this.idFeedbackAdmin = idFeedbackAdmin;
         this.idReviewer = idReviewer;
         this.contentFeedback = contentFeedback;
         this.titleFeedback = titleFeedback;
         this.dtCreated = dtCreated;
+        this.emailFeedback = emailFeedback;
+    }
+
+    public String getEmailFeedback() {
+        return emailFeedback;
+    }
+
+    public void setEmailFeedback(String emailFeedback) {
+        this.emailFeedback = emailFeedback;
     }
 
     public String getIdFeedbackAdmin() {
