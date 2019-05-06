@@ -6,6 +6,8 @@ import {MatDialog} from '@angular/material';
 import {ModalRatingComponent} from '../modal-rating/modal-rating.component';
 import {Product} from '../../../model/product.model';
 import {DataService} from '../../../services/data-service/data.service';
+import {HttpService} from '../../../services/http/http.service';
+import {rating} from '../../../model/rating.model';
 
 @Component({
   selector: 'app-content-post',
@@ -26,7 +28,9 @@ export class ContentPostComponent implements OnInit {
   thumbLabel = true;
   value = 1;
 
-  constructor(private authGuard: AuthGuardService, public dialog: MatDialog, notifier: NotifierService, private data: DataService) {
+  constructor(private authGuard: AuthGuardService, public dialog: MatDialog,
+              notifier: NotifierService, private data: DataService,
+              private http: HttpService) {
     this.notifier = notifier;
   }
 
@@ -38,12 +42,16 @@ export class ContentPostComponent implements OnInit {
     return this.authGuard.checkLogin();
   }
 
-  toggleRatings(id) {
+  toggleRatings(idProduct, idReviewer) {
     const dataRating = {
-      display: 0,
-      performance: 0,
-      camera: 0,
-      battery: 0
+      idProduct: idProduct,
+      idReviewer: idReviewer,
+      dtCreated: new Date(),
+      rtBattery: 1,
+      rtDisplay: 1,
+      rtPerformance: 1,
+      rtDesign: 1,
+      rtCamera: 1
     };
     const dialogRef = this.dialog.open(ModalRatingComponent, {
       width: '450px',
@@ -53,10 +61,13 @@ export class ContentPostComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result) {
-        console.log(result);
+        this.http.createRating(result).subscribe(res => {
+          console.log(res);
+        });
       }
     });
   }
+
   compareProduct(item: any) {
     const product: Product = {
       idPostProduct: item.idPostProduct,

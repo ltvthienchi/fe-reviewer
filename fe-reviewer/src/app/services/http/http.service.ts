@@ -26,4 +26,12 @@ export class HttpService {
   public postprofile(): Observable<any> {
     return this.http.post(URL_SERVER.infoReviewer + 'updateReview', getHeader());
   }
+
+  public createRating(data): Observable<any> {
+    return this.http.post(URL_SERVER.rating + 'create', data, getHeader());
+  }
+
+  public findByProductAndReviewer(data): Observable<any> {
+    return this.http.post(URL_SERVER.rating + 'findByProductAndReviewer', data, getHeader());
+  }
 }

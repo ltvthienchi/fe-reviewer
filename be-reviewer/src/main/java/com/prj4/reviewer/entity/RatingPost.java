@@ -1,6 +1,6 @@
 package com.prj4.reviewer.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,19 +25,33 @@ public class RatingPost {
     private Date dtCreated;
 
 	@Column(name = "RT_BATTERY")
-    private int rtBattery;
+    private float rtBattery;
 
 	@Column(name = "RT_DISPLAY")
-	private int rtDisplay;
+	private float rtDisplay;
 
 	@Column(name = "RT_PERFORMANCE")
-	private int rtPerformance;
+	private float rtPerformance;
 
 	@Column(name = "RT_DESIGN")
-	private int rtDesign;
+	private float rtDesign;
 
 	@Column(name = "RT_CAMERA")
-	private int rtCamera;
+	private float rtCamera;
+
+	public RatingPost() {}
+
+	public RatingPost(String idRatingProduct, String idProduct, String idReviewer, Date dtCreated, float rtBattery, float rtDisplay, float rtPerformance, float rtDesign, float rtCamera) {
+		this.idRatingProduct = idRatingProduct;
+		this.idProduct = idProduct;
+		this.idReviewer = idReviewer;
+		this.dtCreated = dtCreated;
+		this.rtBattery = rtBattery;
+		this.rtDisplay = rtDisplay;
+		this.rtPerformance = rtPerformance;
+		this.rtDesign = rtDesign;
+		this.rtCamera = rtCamera;
+	}
 
 	public String getIdRatingProduct() {
 		return idRatingProduct;
@@ -71,43 +85,43 @@ public class RatingPost {
 		this.dtCreated = dtCreated;
 	}
 
-	public int getRtBattery() {
+	public float getRtBattery() {
 		return rtBattery;
 	}
 
-	public void setRtBattery(int rtBattery) {
+	public void setRtBattery(float rtBattery) {
 		this.rtBattery = rtBattery;
 	}
 
-	public int getRtDisplay() {
+	public float getRtDisplay() {
 		return rtDisplay;
 	}
 
-	public void setRtDisplay(int rtDisplay) {
+	public void setRtDisplay(float rtDisplay) {
 		this.rtDisplay = rtDisplay;
 	}
 
-	public int getRtPerformance() {
+	public float getRtPerformance() {
 		return rtPerformance;
 	}
 
-	public void setRtPerformance(int rtPerformance) {
+	public void setRtPerformance(float rtPerformance) {
 		this.rtPerformance = rtPerformance;
 	}
 
-	public int getRtDesign() {
+	public float getRtDesign() {
 		return rtDesign;
 	}
 
-	public void setRtDesign(int rtDesign) {
+	public void setRtDesign(float rtDesign) {
 		this.rtDesign = rtDesign;
 	}
 
-	public int getRtCamera() {
+	public float getRtCamera() {
 		return rtCamera;
 	}
 
-	public void setRtCamera(int rtCamera) {
+	public void setRtCamera(float rtCamera) {
 		this.rtCamera = rtCamera;
 	}
 }

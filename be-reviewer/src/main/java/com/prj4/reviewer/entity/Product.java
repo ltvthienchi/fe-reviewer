@@ -19,29 +19,30 @@ public class Product {
     @Column(name = "TAG_PRODUCT")
     private String tagProduct;
 
-    @Column(name = "DT_CREATED")
+    @Column(name = "DT_CREATE")
     private Date dtCreated;
 
     @Column(name = "AVG_BATTERY")
-    private int avgBattery;
+    private float avgBattery;
 
     @Column(name = "AVG_DISPLAY")
-    private int avgDisplay;
+    private float avgDisplay;
 
     @Column(name = "AVG_PERFORMANCE")
-    private int avgPerformance;
+    private float avgPerformance;
 
     @Column(name = "AVG_DESIGN")
-    private int avgDesign;
+    private float avgDesign;
 
     @Column(name = "AVG_CAMERA")
-    private int avgCamera;
+    private float avgCamera;
 
-    @Column(name = "NUMB_RATINNG")
+    @Column(name = "NUMB_RATING")
     private int numRating;
 
-    public Product(String idProduct, String nameProduct, String tagProduct, Date dtCreated, int avgBattery,
-                   int avgDisplay, int avgPerformance, int avgDesign, int avgCamera, int numRating) {
+    public Product() {}
+
+    public Product(String idProduct, String nameProduct, String tagProduct, Date dtCreated, float avgBattery, float avgDisplay, float avgPerformance, float avgDesign, float avgCamera, int numRating) {
         this.idProduct = idProduct;
         this.nameProduct = nameProduct;
         this.tagProduct = tagProduct;
@@ -86,43 +87,43 @@ public class Product {
         this.dtCreated = dtCreated;
     }
 
-    public int getAvgBattery() {
+    public float getAvgBattery() {
         return avgBattery;
     }
 
-    public void setAvgBattery(int avgBattery) {
+    public void setAvgBattery(float avgBattery) {
         this.avgBattery = avgBattery;
     }
 
-    public int getAvgDisplay() {
+    public float getAvgDisplay() {
         return avgDisplay;
     }
 
-    public void setAvgDisplay(int avgDisplay) {
+    public void setAvgDisplay(float avgDisplay) {
         this.avgDisplay = avgDisplay;
     }
 
-    public int getAvgPerformance() {
+    public float getAvgPerformance() {
         return avgPerformance;
     }
 
-    public void setAvgPerformance(int avgPerformance) {
+    public void setAvgPerformance(float avgPerformance) {
         this.avgPerformance = avgPerformance;
     }
 
-    public int getAvgDesign() {
+    public float getAvgDesign() {
         return avgDesign;
     }
 
-    public void setAvgDesign(int avgDesign) {
+    public void setAvgDesign(float avgDesign) {
         this.avgDesign = avgDesign;
     }
 
-    public int getAvgCamera() {
+    public float getAvgCamera() {
         return avgCamera;
     }
 
-    public void setAvgCamera(int avgCamera) {
+    public void setAvgCamera(float avgCamera) {
         this.avgCamera = avgCamera;
     }
 
