@@ -5,15 +5,12 @@ import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Images;
 import com.prj4.reviewer.entity.Product;
 import com.prj4.reviewer.request.PostProductRequest;
-import com.prj4.reviewer.request.PostRequest;
-import com.prj4.reviewer.response.PostResponse;
 import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.prj4.reviewer.entity.Post;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
 
@@ -60,7 +57,8 @@ public class PostRestController {
         String idCompany = companyService.getCompanyId(postProductRequest.getEmailUser());
         Product product = new Product(idProduct, postProductRequest.getNameProduct(), null,
                 new Date(), 0 ,0,
-                0, 0,0,0);
+                0, 0,0,0,
+                null , null, null, null,null );
         Post post = new Post(idPost, idProduct, idCompany,
                 postProductRequest.getContentPost(), new Date(), idImage);
 

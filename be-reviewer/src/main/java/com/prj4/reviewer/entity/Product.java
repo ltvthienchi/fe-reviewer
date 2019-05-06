@@ -23,25 +23,41 @@ public class Product {
     private Date dtCreated;
 
     @Column(name = "AVG_BATTERY")
-    private int avgBattery;
+    private float avgBattery;
 
     @Column(name = "AVG_DISPLAY")
-    private int avgDisplay;
+    private float avgDisplay;
 
     @Column(name = "AVG_PERFORMANCE")
-    private int avgPerformance;
+    private float avgPerformance;
 
     @Column(name = "AVG_DESIGN")
-    private int avgDesign;
+    private float avgDesign;
 
     @Column(name = "AVG_CAMERA")
-    private int avgCamera;
+    private float avgCamera;
 
-    @Column(name = "NUMB_RATINNG")
+    @Column(name = "NUMB_RATING")
     private int numRating;
 
-    public Product(String idProduct, String nameProduct, String tagProduct, Date dtCreated, int avgBattery,
-                   int avgDisplay, int avgPerformance, int avgDesign, int avgCamera, int numRating) {
+    @Column(name = "INFO_BATTERY")
+    private String infoBattery;
+
+    @Column(name = "INFO_DISPLAY")
+    private String infoDisplay;
+
+    @Column(name = "INFO_PERFORMANCE")
+    private String infoPerformance;
+
+    @Column(name = "INFO_DESIGN")
+    private String infoDesign;
+
+    @Column(name = "INFO_CAMERA")
+    private String infoCamera;
+
+    public Product(String idProduct, String nameProduct, String tagProduct, Date dtCreated, float avgBattery,
+                   float avgDisplay, float avgPerformance, float avgDesign, float avgCamera, int numRating,
+                   String infoBattery, String infoDisplay, String infoPerformance, String infoDesign, String infoCamera) {
         this.idProduct = idProduct;
         this.nameProduct = nameProduct;
         this.tagProduct = tagProduct;
@@ -52,6 +68,11 @@ public class Product {
         this.avgDesign = avgDesign;
         this.avgCamera = avgCamera;
         this.numRating = numRating;
+        this.infoBattery = infoBattery;
+        this.infoDisplay = infoDisplay;
+        this.infoPerformance = infoPerformance;
+        this.infoDesign = infoDesign;
+        this.infoCamera = infoCamera;
     }
 
     public String getIdProduct() {
@@ -86,40 +107,44 @@ public class Product {
         this.dtCreated = dtCreated;
     }
 
-    public int getAvgBattery() {
+    public float getAvgBattery() {
         return avgBattery;
     }
 
-    public void setAvgBattery(int avgBattery) {
+    public void setAvgBattery(float avgBattery) {
         this.avgBattery = avgBattery;
     }
 
-    public int getAvgDisplay() {
+    public float getAvgDisplay() {
         return avgDisplay;
     }
 
-    public void setAvgDisplay(int avgDisplay) {
+    public void setAvgDisplay(float avgDisplay) {
         this.avgDisplay = avgDisplay;
     }
 
-    public int getAvgPerformance() {
+    public float getAvgPerformance() {
         return avgPerformance;
     }
 
-    public void setAvgPerformance(int avgPerformance) {
+    public void setAvgPerformance(float avgPerformance) {
         this.avgPerformance = avgPerformance;
     }
 
-    public int getAvgDesign() {
+    public float getAvgDesign() {
         return avgDesign;
     }
 
-    public void setAvgDesign(int avgDesign) {
+    public void setAvgDesign(float avgDesign) {
         this.avgDesign = avgDesign;
     }
 
-    public int getAvgCamera() {
+    public float getAvgCamera() {
         return avgCamera;
+    }
+
+    public void setAvgCamera(float avgCamera) {
+        this.avgCamera = avgCamera;
     }
 
     public void setAvgCamera(int avgCamera) {
@@ -132,5 +157,45 @@ public class Product {
 
     public void setNumRating(int numRating) {
         this.numRating = numRating;
+    }
+
+    public String getInfoBattery() {
+        return infoBattery;
+    }
+
+    public void setInfoBattery(String infoBattery) {
+        this.infoBattery = infoBattery;
+    }
+
+    public String getInfoDisplay() {
+        return infoDisplay;
+    }
+
+    public void setInfoDisplay(String infoDisplay) {
+        this.infoDisplay = infoDisplay;
+    }
+
+    public String getInfoPerformance() {
+        return infoPerformance;
+    }
+
+    public void setInfoPerformance(String infoPerformance) {
+        this.infoPerformance = infoPerformance;
+    }
+
+    public String getInfoDesign() {
+        return infoDesign;
+    }
+
+    public void setInfoDesign(String infoDesign) {
+        this.infoDesign = infoDesign;
+    }
+
+    public String getInfoCamera() {
+        return infoCamera;
+    }
+
+    public void setInfoCamera(String infoCamera) {
+        this.infoCamera = infoCamera;
     }
 }
