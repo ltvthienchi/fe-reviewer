@@ -9,6 +9,7 @@ import {
   validatorPassword,
 } from '../../services/validator/validator';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {HttpService} from '../../services/http/http.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
     signInForm: true
   };
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router,
-              notifier: NotifierService, jwtHelper: JwtHelperService) {
+              notifier: NotifierService, jwtHelper: JwtHelperService, private http: HttpService) {
     this.notifier = notifier;
     this.jwtHelper = jwtHelper;
   }
@@ -54,6 +55,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('fullName', tokenDecoded.fullName);
           localStorage.setItem('isActive', tokenDecoded.isActive);
           localStorage.setItem('email', tokenDecoded.sub);
+          this.http.getReviewerInfo(tokenDecoded.sub).subscribe(res => {
+            localStorage.setItem('idReviewer', res.idReviewer);
+          });
           if (tokenDecoded.isActive !== true) {
             this.showNotification('error', 'Account is not active!!');
           } else {

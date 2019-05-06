@@ -45,7 +45,7 @@ public class RatingController {
             float rtDesign = ratingRequest.getRtDesign();
             float rtCamera = ratingRequest.getRtCamera();
             int plusNum = 0;
-            RatingPost checkRating = ratingService.findByIdReviewer(idReviewer);
+            RatingPost checkRating = ratingService.findByIdProductAndIdReviewer(idProduct, idReviewer);
             float curBattery = rtBattery;
             float curDisplay = rtDisplay;
             float curPerformance = rtPerformance;
@@ -102,7 +102,7 @@ public class RatingController {
     public RatingPost findByProductAndReviewer(@RequestBody RatingRequest ratingRequest) {
         System.out.println(ratingRequest.getIdProduct());
         System.out.println(ratingRequest.getIdReviewer());
-        RatingPost curRating = ratingService.findByIdProduct(ratingRequest.getIdProduct());
+        RatingPost curRating = ratingService.findByIdProductAndIdReviewer(ratingRequest.getIdProduct(), ratingRequest.getIdReviewer());
         if (curRating == null) return null;
         if (curRating.getIdReviewer().equals(ratingRequest.getIdReviewer())) {
             return curRating;

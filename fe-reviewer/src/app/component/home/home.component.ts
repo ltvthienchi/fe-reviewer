@@ -28,7 +28,10 @@ export class HomeComponent implements OnInit {
   thumbLabel = true;
   value = 1;
 
-  myData = arrPostProduct;
+  myData = [];
+  dataPost = [];
+  dataCompany = [];
+  dataProduct = [];
 
   public constructor(notifier: NotifierService, private broad: Broadcaster,
                      private eventMessage: EventMessage, private httpService: HttpService) {
@@ -36,8 +39,86 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.httpService.getAllPost().subscribe(res => {
-      console.log(res);
+    Promise.all([
+      this.getAllPost(),
+      this.getCompany(),
+      this.getProduct()
+    ]).then(res => {
+      this.dataPost.map(item => {
+        let newItem = {
+          idPostProduct: null,
+          idProduct: null,
+          idReviewer: localStorage.getItem('idReviewer'),
+          idCompany: null,
+          nameCompany: null,
+          content: null,
+          image: '../../assets/wallpaper/loginWall.jpg',
+          avatar: '',
+          avgDisplay: 1,
+          avgPerformance: 1,
+          avgCamera: 1,
+          avgBattery: 1,
+          avgDesign: 1,
+          totalComment: 1,
+        };
+
+        newItem.idPostProduct = item.idPostProduct;
+        newItem.idProduct = item.idProduct;
+        newItem.idCompany = item.idCompany;
+        newItem.content = item.contentPost;
+
+        this.dataCompany.map(itemCompany => {
+          if (newItem.idCompany === itemCompany.idCompany) {
+            newItem.nameCompany = itemCompany.nameCompany;
+            newItem.avatar = itemCompany.imgAvatarCompany;
+            // newItem.image = itemCompany.imgAvatarCompany;
+          }
+        });
+
+        this.dataProduct.map(itemProduct => {
+          if (newItem.idProduct === itemProduct.idProduct) {
+            newItem.avgDisplay = itemProduct.avgDisplay;
+            newItem.avgPerformance = itemProduct.avgPerformance;
+            newItem.avgCamera = itemProduct.avgCamera;
+            newItem.avgBattery = itemProduct.avgBattery;
+            newItem.avgDesign = itemProduct.avgDesign;
+          }
+        });
+
+        this.myData.push(newItem);
+      });
+    })
+
+  }
+
+  getAllPost() {
+    return new Promise(resolve => {
+      this.httpService.getAllPost().subscribe(res => {
+        if (res) { this.dataPost = res }
+        resolve()
+      })
+    })
+  }
+
+  getCompany() {
+    return new Promise(resolve => {
+      this.httpService.getAllCompany().subscribe(res => {
+        if (res) {
+          this.dataCompany = res;
+        }
+        resolve();
+      })
+    })
+  }
+
+  getProduct() {
+    return new Promise(resolve => {
+      this.httpService.getAllProduct().subscribe(res => {
+        if (res) {
+          this.dataProduct = res;
+        }
+        resolve();
+      })
     })
   }
 

@@ -21,6 +21,7 @@ export class AdminSideComponent implements OnInit {
     localStorage.removeItem('role');
     localStorage.removeItem('fullName');
     localStorage.removeItem('isActive');
+    localStorage.removeItem('idReviewer');
   }
 
 }

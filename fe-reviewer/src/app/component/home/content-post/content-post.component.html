@@ -23,41 +23,41 @@
 
         <div class="col-2">
           <div class="number-rating-total">
-            <span>10.0</span>
+            <span>{{(item.avgDesign + item.avgBattery + item.avgCamera + item.avgPerformance + item.avgDisplay) / 5 | floatFixed}}</span>
           </div>
         </div>
 
         <div class="col-2">
           <div class="number-rating">
-            <p class="point">{{item.avgDisplay}}</p>
-            <p class="description">Display</p>
-          </div>
-        </div>
-
-        <div class="col-2">
-          <div class="number-rating">
-            <p class="point">{{item.avgPerformance}}</p>
+            <p class="point">{{item.avgPerformance | floatFixed}}</p>
             <p class="description">Performance</p>
           </div>
         </div>
 
         <div class="col-2">
           <div class="number-rating">
-            <p class="point">{{item.avgCamera}}</p>
+            <p class="point">{{item.avgDisplay | floatFixed}}</p>
+            <p class="description">Display</p>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <div class="number-rating">
+            <p class="point">{{item.avgCamera | floatFixed}}</p>
             <p class="description">Camera</p>
           </div>
         </div>
 
         <div class="col-2">
           <div class="number-rating">
-            <p class="point">{{item.avgBattery}}</p>
+            <p class="point">{{item.avgBattery | floatFixed}}</p>
             <p class="description">Battery</p>
           </div>
         </div>
 
         <div class="col-2">
           <div class="number-rating">
-            <p class="point">{{item.avgDesign}}</p>
+            <p class="point">{{item.avgDesign | floatFixed}}</p>
             <p class="description">Design</p>
           </div>
         </div>

@@ -5,12 +5,17 @@ import com.prj4.reviewer.reporsitory.ProductReporsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ProductService {
     @Autowired
     ProductReporsitory productReporsitory;
+
+    public List<Product> getAll() {
+        return (List<Product>) productReporsitory.findAll();
+    }
 
     public void saveProduct(Product p) {
         productReporsitory.save(p);

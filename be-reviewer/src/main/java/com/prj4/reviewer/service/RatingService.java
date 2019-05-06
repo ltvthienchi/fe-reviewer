@@ -34,4 +34,8 @@ public class RatingService {
         return ratingPostRepository.findByIdProduct(id);
     }
 
+    public RatingPost findByIdProductAndIdReviewer(String idProduct, String idReviewer) {
+        return ratingPostRepository.findByIdProductAndIdReviewer(idProduct, idReviewer);
+    }
+
 }

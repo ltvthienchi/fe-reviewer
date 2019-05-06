@@ -63,6 +63,18 @@ export class ContentPostComponent implements OnInit {
       if (result) {
         this.http.createRating(result).subscribe(res => {
           console.log(res);
+          if (res.status === 'SUCCESS') {
+            this.http.getProductById(this.item).subscribe(myProduct => {
+              this.item.avgBattery = myProduct.avgBattery;
+              this.item.avgCamera = myProduct.avgCamera;
+              this.item.avgDesign = myProduct.avgDesign;
+              this.item.avgDisplay = myProduct.avgDisplay;
+              this.item.avgPerformance = myProduct.avgPerformance;
+              this.showNotification('success', 'Thank you for your rating!');
+            });
+          } else {
+            this.showNotification('error', 'Your rating error, please try again!');
+          }
         });
       }
     });
