@@ -1,5 +1,6 @@
 package com.prj4.reviewer.response;
 import java.io.Serializable;
+import java.util.Date;
 
 public class PostResponse implements Serializable {
     private String idPostProduct;
@@ -20,14 +21,15 @@ public class PostResponse implements Serializable {
     private String infoPerformance;
     private String infoDesign;
     private String infoCamera;
+    private Date dtCreated;
 
-//    public PostResponse() {}
+  public PostResponse() {}
 
     public PostResponse(String idPostProduct, String idProduct, String idCompany, String nameCompany, String content,
                         String avatarCompany, String imgPost, float avgDisplay, float avgPerformance,
                         float avgCamera, float avgBattery, float avgDesign, int totalComment,
                         String infoBattery, String infoDisplay, String infoPerformance, String infoDesign,
-                        String infoCamera) {
+                        String infoCamera, Date dtCreated) {
         this.idPostProduct = idPostProduct;
         this.idProduct = idProduct;
         this.idCompany = idCompany;
@@ -46,6 +48,7 @@ public class PostResponse implements Serializable {
         this.infoPerformance = infoPerformance;
         this.infoDesign = infoDesign;
         this.infoCamera = infoCamera;
+        this.dtCreated = dtCreated;
     }
 
     public String getIdPostProduct() {
@@ -190,5 +193,13 @@ public class PostResponse implements Serializable {
 
     public void setInfoCamera(String infoCamera) {
         this.infoCamera = infoCamera;
+    }
+
+    public Date getDtCreated() {
+        return dtCreated;
+    }
+
+    public void setDtCreated(Date dtCreated) {
+        this.dtCreated = dtCreated;
     }
 }

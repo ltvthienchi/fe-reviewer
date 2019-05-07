@@ -105,7 +105,7 @@ public class PostRestController {
                     p.getContentPost(), avatarCompany, imgPost, product.getAvgDisplay(), product.getAvgPerformance(),
                     product.getAvgCamera(),product.getAvgBattery(), product.getAvgDesign(), 0,
                     product.getInfoBattery(), product.getInfoDisplay(), product.getInfoPerformance(),
-                    product.getInfoDesign(),product.getInfoCamera());
+                    product.getInfoDesign(),product.getInfoCamera(), p.getDtCreated());
             lstPostResponse.add(postResponse);
 
         }
