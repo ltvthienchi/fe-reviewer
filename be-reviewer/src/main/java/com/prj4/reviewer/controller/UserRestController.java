@@ -2,14 +2,13 @@ package com.prj4.reviewer.controller;
 
 import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
+import com.prj4.reviewer.entity.Comment;
 import com.prj4.reviewer.entity.Reviewer;
 import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.request.ChangePasswordRequest;
+import com.prj4.reviewer.request.CommentRequest;
 import com.prj4.reviewer.request.UseRequest;
-import com.prj4.reviewer.service.ChangePasswordService;
-import com.prj4.reviewer.service.GenerateId;
-import com.prj4.reviewer.service.ReviewerService;
-import com.prj4.reviewer.service.UserService;
+import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -39,6 +38,9 @@ public class UserRestController {
 
     @Autowired
     GenerateId generateId;
+
+    @Autowired
+    CommentService commentService;
 
     @Autowired
     public JavaMailSender emailSender;
@@ -138,6 +140,26 @@ public class UserRestController {
         this.emailSender.send(message);
 
         //return "Email Sent!";
+    }
+
+    @PostMapping(BASE_POST_LINK + "createComment")
+    public JsonResponse<String> createUser(@RequestBody CommentRequest commentRequest) {
+        String idComment = generateId.generateId("COMMENT_", new Date());
+        boolean isReply = commentRequest.getIdReply() != null ? true : false;
+        Comment comment = new Comment(idComment, commentRequest.getIdPost(), commentRequest.getIdReviewer(),
+                commentRequest.getIdReply(), isReply, commentRequest.getContent(), new Date());
+        try {
+            commentService.createComment(comment);
+            return JsonResponse.accept("Success");
+        } catch (Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+    }
+
+    @PostMapping(BASE_POST_LINK + "getCommentByProductId")
+    public JsonResponse<String> getCommentByProductId(@RequestBody String idProduct) {
+        commentService.getCommentByProductId(idProduct);
+        return null;
     }
 }
 

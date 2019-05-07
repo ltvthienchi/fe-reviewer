@@ -33,6 +33,7 @@ export class MenuComponent implements OnInit {
     localStorage.removeItem('fullName');
     localStorage.removeItem('isActive');
     localStorage.removeItem('idUser');
+    localStorage.removeItem('email');
   }
 
   isCompany() {
