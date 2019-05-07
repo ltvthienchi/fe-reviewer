@@ -58,6 +58,7 @@ import {HttpService} from './services/http/http.service';
 import {DataService} from './services/data-service/data.service';
 import { FloatFixedPipe } from './services/pipe/float-fixed.pipe';
 import { HomeCompanyComponent } from './component/company/home-company/home-company.component';
+import { CreateProductComponent } from './component/company/create-product/create-product.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -153,6 +154,7 @@ export function tokenGetter() {
     ModalRatingComponent,
     FloatFixedPipe,
     HomeCompanyComponent,
+    CreateProductComponent,
   ],
   imports: [
     HttpClientModule,

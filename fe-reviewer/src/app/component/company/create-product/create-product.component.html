@@ -1,0 +1,207 @@
+<!--<div class="row w-80">-->
+<!--  <div class="col-3"></div>-->
+  <div style="background: white; padding: 20px; margin-top: 20px">
+    <h3>Create new product</h3>
+    <p class="title-group"><span>General Information</span></p>
+    <div class="row"  style="margin-right: -5px;">
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="nameProduct">Name Product</label>
+          <input id="nameProduct" [(ngModel)]="newPost.nameProduct" placeholder="Enter name of product" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="image">Image Product</label>
+          <input class="col-sm-10" type="file" id="image" style="padding: 0;"
+                  name="file" (change)="handleFileInput($event.target.files)">
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="form-group my-form">
+          <label for="contentPost">Content Product</label>
+<!--          <textarea rows="4" id="contentPost" class="form-control" [(ngModel)]="newPost.contentPost"> placeholder="Enter content of product"</textarea>-->
+          <input id="contentPost" [(ngModel)]="newPost.contentPost" placeholder="Enter content of product" type="text" class="form-control" >
+        </div>
+      </div>
+    </div>
+
+    <p class="title-group"><span>Battery Information</span></p>
+    <div class="row"  style="margin-right: -5px;">
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="infoBattery_1">Capacity</label>
+          <input id="infoBattery_1" [(ngModel)]="newPost.infoBattery.capacity" placeholder="Enter capacity of Battery" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="infoBattery_2">Type</label>
+          <input id="infoBattery_2" [(ngModel)]="newPost.infoBattery.type" placeholder="Enter type of Battery" type="text" class="form-control" >
+        </div>
+      </div>
+
+    </div>
+
+    <p class="title-group"><span>Display Information</span></p>
+    <div class="row"  style="margin-right: -5px;">
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="infoDisplay_1">Resolution</label>
+          <input id="infoDisplay_1" [(ngModel)]="newPost.infoDisplay.resolution" placeholder="Enter resolution of Display" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="infoDisplay_2">Size</label>
+          <input id="infoDisplay_2" [(ngModel)]="newPost.infoDisplay.size" placeholder="Enter size of Display" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="infoDisplay_3">Type</label>
+          <input id="infoDisplay_3" [(ngModel)]="newPost.infoDisplay.type" placeholder="Enter type of Display" type="text" class="form-control" >
+        </div>
+      </div>
+
+    </div>
+
+    <p class="title-group"><span>Platform Information</span></p>
+    <div class="row"  style="margin-right: -5px;">
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="platform_1">Chip</label>
+          <input id="platform_1" [(ngModel)]="newPost.infoPerformance.platform.chip" placeholder="Enter chip of Information" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="platform_4">OS</label>
+          <input id="platform_4" [(ngModel)]="newPost.infoPerformance.platform.os" placeholder="Enter Os of Information" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="platform_2">CPU</label>
+          <input id="platform_2" [(ngModel)]="newPost.infoPerformance.platform.cpu" placeholder="Enter CPU of Information" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="platform_3">GPU</label>
+          <input id="platform_3" [(ngModel)]="newPost.infoPerformance.platform.gpu" placeholder="Enter GPU of Information" type="text" class="form-control" >
+        </div>
+      </div>
+
+
+    </div>
+
+    <p class="title-group"><span>Memory Information</span></p>
+    <div class="row"  style="margin-right: -5px;">
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="memory_1">Card</label>
+          <input id="memory_1" [(ngModel)]="newPost.infoPerformance.memory.card" placeholder="Enter card of Memory" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="memory_2">Internal</label>
+          <input id="memory_2" [(ngModel)]="newPost.infoPerformance.memory.internal" placeholder="Enter internal of Memory" type="text" class="form-control" >
+        </div>
+      </div>
+
+
+    </div>
+
+    <p class="title-group"><span>Design Information</span></p>
+    <div class="row"  style="margin-right: -5px;">
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="design_1">Dimensions</label>
+          <input id="design_1" [(ngModel)]="newPost.infoDesign.dimensions" placeholder="Enter dimensions of Design" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="design_2">Weight</label>
+          <input id="design_2" [(ngModel)]="newPost.infoDesign.weight" placeholder="Enter weight of Design" type="text" class="form-control" >
+        </div>
+      </div>
+
+    </div>
+
+    <p class="title-group"><span>Camera Main Information</span></p>
+    <div class="row"  style="margin-right: -5px;">
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="main_1">Features</label>
+          <input id="main_1" [(ngModel)]="newPost.infoCamera.main.features" placeholder="Enter features of Camera Main" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="main_2">Modules</label>
+          <input id="main_2" [(ngModel)]="newPost.infoCamera.main.modules" placeholder="Enter modules of Camera Main" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="main_3">Video</label>
+          <input id="main_3" [(ngModel)]="newPost.infoCamera.main.video" placeholder="Enter video of Camera Main" type="text" class="form-control" >
+        </div>
+      </div>
+
+    </div>
+
+    <p class="title-group"><span>Camera Selfie Information</span></p>
+    <div class="row"  style="margin-right: -5px;">
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="self_1">Features</label>
+          <input id="self_1" [(ngModel)]="newPost.infoCamera.self.features" placeholder="Enter features of Camera Selfie" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="self_2">Modules</label>
+          <input id="self_2" [(ngModel)]="newPost.infoCamera.self.modules" placeholder="Enter modules of Camera Selfie" type="text" class="form-control" >
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group my-form">
+          <label for="self_3">Video</label>
+          <input id="self_3" [(ngModel)]="newPost.infoCamera.self.video" placeholder="Enter video of Camera Selfie" type="text" class="form-control" >
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-group" style="border-top: 2px solid silver; padding-top: 10px">
+      <!--        <button type="button" class="btn btn-outline-secondary float-right" data-dismiss="modal">Close</button>-->
+      <button type="submit" class="btn btn-outline-info float-right" (click)="uploadContent()">Create new post</button>
+    </div>
+  </div>
+<!--</div>-->
