@@ -1,0 +1,10 @@
+.title-group {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;;
+}
+
+.title-group span {
+  padding-bottom: 3px;
+  border-bottom: 2px solid black;
+}

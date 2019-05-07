@@ -57,6 +57,7 @@ import {AuthAfterLoginService} from './services/auth/auth-after-login.service';
 import {HttpService} from './services/http/http.service';
 import {DataService} from './services/data-service/data.service';
 import { FloatFixedPipe } from './services/pipe/float-fixed.pipe';
+import { CreateProductComponent } from './component/company/create-product/create-product.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -151,6 +152,7 @@ export function tokenGetter() {
     RegisterConfirmationComponent,
     ModalRatingComponent,
     FloatFixedPipe,
+    CreateProductComponent,
   ],
   imports: [
     HttpClientModule,
