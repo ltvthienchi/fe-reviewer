@@ -75,7 +75,7 @@ public class AuthenticationController {
     @RequestMapping(value = "/generate-token-admin", method = RequestMethod.POST)
     public JsonResponse<String> registerAdmin(@RequestBody LoginUser loginUser) throws AuthenticationException {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        final Admin admin = adminService.findByUserName(loginUser.getUserName());
+        final Admin admin = adminService.findByEmailAdmin(loginUser.getUserName());
         if (admin != null) {
             if (encoder.matches(loginUser.getPassword(), admin.getPassAdmin())) {
                 String fullName = admin.getFullNameAdmin();

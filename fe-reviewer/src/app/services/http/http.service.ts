@@ -57,14 +57,10 @@ export class HttpService {
     return this.http.post(URL_SERVER.infoReviewer + 'updateReview', getHeader());
   }
 
-<<<<<<< HEAD
-  //
-=======
   public getAllAdmin(): Observable<any>{
     return this.http.get(URL_SERVER.admin + 'getAllAdmin',getHeader());
   }
 
->>>>>>> DamNH
 
   public uploadImage(data: any) {
     let input = new FormData();

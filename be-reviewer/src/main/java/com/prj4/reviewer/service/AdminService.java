@@ -2,6 +2,7 @@ package com.prj4.reviewer.service;
 
 import com.prj4.reviewer.entity.Admin;
 import com.prj4.reviewer.reporsitory.AdminRepository;
+import com.prj4.reviewer.request.AdminBlockRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
