@@ -10,12 +10,8 @@ import {HttpService} from '../../services/http/http.service';
 })
 export class CompanyComponent implements OnInit {
 
-  value = 5;
-  max = 5;
-  min = 0.5;
-  step = 0.5;
-
-  myData = arrPostProduct;
+  isPostProduct = false;
+  txtPostProduct = 'Post Product';
   constructor(private authGuard: AuthGuardService, private http: HttpService) { }
 
   ngOnInit() {
@@ -29,5 +25,13 @@ export class CompanyComponent implements OnInit {
     return localStorage.getItem('role') === 'ROLE_COMPANY';
   }
 
-
+  changeIsPostProduct() {
+    if (!this.isPostProduct) {
+      this.isPostProduct = true;
+      this.txtPostProduct = 'Show timeline';
+    } else {
+      this.isPostProduct = false;
+      this.txtPostProduct = 'Post Product';
+    }
+  }
 }
