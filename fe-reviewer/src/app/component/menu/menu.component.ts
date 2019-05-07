@@ -32,6 +32,7 @@ export class MenuComponent implements OnInit {
     localStorage.removeItem('role');
     localStorage.removeItem('fullName');
     localStorage.removeItem('isActive');
+    localStorage.removeItem('idUser');
   }
 
   isCompany() {

@@ -12,7 +12,6 @@ import com.prj4.reviewer.service.PostService;
 import com.prj4.reviewer.service.ReviewerService;
 import com.prj4.reviewer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -54,11 +53,6 @@ public class ReviewerRestController {
     @GetMapping(BASE_POST_LINK + "reviewers")
     List<Reviewer> getReviewers() {
         return (List<Reviewer>) reviewerRepository.findAll();
-    }
-
-    @PostMapping(BASE_POST_LINK + "getReviewerInfo")
-    Reviewer getReviewerInfo(@RequestBody String email) {
-        return reviewerService.getReviewerByEmail(email);
     }
 
     @PostMapping(BASE_POST_LINK + "updateReview")

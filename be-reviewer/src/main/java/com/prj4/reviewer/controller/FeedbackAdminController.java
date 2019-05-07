@@ -39,8 +39,7 @@ public class FeedbackAdminController {
         feedbackAdmin.setIdFeedbackAdmin(generateId.generateId("FeedbackAdmin_", new Date()));
         String role = feedbackAdminRequest.getRole();
         if (role.equals("ROLE_NORMAL")){
-            Reviewer reviewer = reviewerService.getReviewerByEmail(feedbackAdminRequest.getEmail());
-            feedbackAdmin.setIdReviewer(reviewer.getIdReviewer());
+            feedbackAdmin.setIdReviewer(reviewerService.getReviewerIdByEmail(feedbackAdminRequest.getEmail()));
         } else {
             Company company = companyService.getCompanyByEmail(feedbackAdminRequest.getEmail());
             feedbackAdmin.setIdReviewer(company.getIdCompany());

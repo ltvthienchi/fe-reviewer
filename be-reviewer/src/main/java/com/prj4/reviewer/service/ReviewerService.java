@@ -1,7 +1,6 @@
 package com.prj4.reviewer.service;
 
 import com.prj4.reviewer.entity.Reviewer;
-import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.reporsitory.FeedbackCompanyRepository;
 import com.prj4.reviewer.reporsitory.ReviewerRepository;
 import com.prj4.reviewer.reporsitory.UserRepository;
@@ -43,9 +42,9 @@ public class ReviewerService {
     }
 
 
-    public Reviewer getReviewerByEmail(String email){
-        Reviewer reviewer = reviewerRepository.findByEmail(email);
-        return reviewer;
+    public String getReviewerIdByEmail(String email){
+        reviewerRepository.findByEmail(email);
+        return reviewerRepository.findByEmail(email).getIdReviewer();
     }
     // Hàm bao gồm nhưng data trong request
     public void updateInfo(String email, String firstName, String lastName,  Date dobReviewer, int gender) {
@@ -56,4 +55,5 @@ public class ReviewerService {
         reviewer.setLastName(lastName);
         reviewerRepository.save(reviewer);
     }
+
 }

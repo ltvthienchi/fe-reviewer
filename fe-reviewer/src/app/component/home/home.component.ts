@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
         let newItem = {
           idPostProduct: null,
           idProduct: null,
-          idReviewer: localStorage.getItem('idReviewer'),
+          idReviewer: localStorage.getItem('idUser'),
           idCompany: null,
           nameCompany: null,
           content: null,

@@ -7,7 +7,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -46,24 +45,26 @@ public class JwtTokenUtil implements Serializable {
         return expiration.before(new Date());
     }
 
-    public String generateToken(Object object, int typeAccount, boolean isActive, String fullName) {
+    public String generateToken(Object object, int typeAccount, boolean isActive, String fullName, String idUser) {
         String typeAccountRole = null;
         if (typeAccount == 1 || typeAccount == 2) {
             typeAccountRole = typeAccount == 1 ? "ROLE_COMPANY" : "ROLE_NORMAL";
             User user = (User) object;
-            return doGenerateToken(user.getUserName(), typeAccountRole, isActive, fullName);
+            return doGenerateToken(user.getUserName(), typeAccountRole, isActive, fullName, idUser);
         } else {
             typeAccountRole = "ROLE_ADMIN";
             Admin admin = (Admin) object;
-            return doGenerateToken(admin.getEmailAdmin(), typeAccountRole, isActive, fullName);
+            return doGenerateToken(admin.getEmailAdmin(), typeAccountRole, isActive, fullName, idUser);
         }
     }
 
-    private String doGenerateToken(String subject, String typeAccountName, boolean isActive, String fullName) {
+    private String doGenerateToken(String subject, String typeAccountName, boolean isActive,
+                                   String fullName, String idUser) {
         Claims claims = Jwts.claims().setSubject(subject);
         claims.put("scopes", Arrays.asList(new SimpleGrantedAuthority(typeAccountName)));
         claims.put("isActive", Boolean.valueOf(isActive));
         claims.put("fullName", fullName);
+        claims.put("idUser", idUser);
 
         return Jwts.builder()
                 .setClaims(claims)

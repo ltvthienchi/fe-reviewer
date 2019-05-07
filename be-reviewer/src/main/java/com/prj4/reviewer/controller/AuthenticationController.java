@@ -53,12 +53,16 @@ public class AuthenticationController {
         if (user != null) {
             if (encoder.matches(loginUser.getPassword(), user.getPassAccount())) {
                 String fullName = null;
+                String idUser = null;
                 if (user.getTypeAccount() == 1) {
                     fullName = companyService.getFullName(user.getIdAccount());
+                    idUser = companyService.getCompanyId(loginUser.getUserName());
                 } else {
                     fullName = reviewerService.getFullName(user.getIdAccount());
+                    idUser = reviewerService.getReviewerIdByEmail(loginUser.getUserName());
                 }
-                final String token = jwtTokenUtil.generateToken(user, user.getTypeAccount(), user.isActive(), fullName);
+                final String token = jwtTokenUtil.generateToken(user, user.getTypeAccount(),
+                        user.isActive(), fullName, idUser);
                 return JsonResponse.accept(token);
             } else {
                 return JsonResponse.reject("Password is not correct!!!");
@@ -75,7 +79,7 @@ public class AuthenticationController {
         if (admin != null) {
             if (encoder.matches(loginUser.getPassword(), admin.getPassAdmin())) {
                 String fullName = admin.getFullNameAdmin();
-                final String token = jwtTokenUtil.generateToken(admin, 3, admin.isActive(), fullName);
+                final String token = jwtTokenUtil.generateToken(admin, 3, admin.isActive(), fullName, admin.getIdAdmin());
                 return JsonResponse.accept(token);
             } else {
                 return JsonResponse.reject("Password is not correct!!!");
