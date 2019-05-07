@@ -16,16 +16,14 @@ public class CommentRequest {
 
     private final Date dateCreate;
 
-    private final Date dateUpdate;
 
-    public CommentRequest(String idPost, String idReviewer, String idReply, Boolean isReply, String content, Date dateCreate, Date dateUpdate) {
+    public CommentRequest(String idPost, String idReviewer, String idReply, Boolean isReply, String content, Date dateCreate) {
         this.idPost = idPost;
         this.idReviewer = idReviewer;
         this.idReply = idReply;
         this.isReply = isReply;
         this.content = content;
         this.dateCreate = dateCreate;
-        this.dateUpdate = dateUpdate;
     }
 
     public String getIdPost() {
@@ -51,9 +49,4 @@ public class CommentRequest {
     public Date getDateCreate() {
         return dateCreate;
     }
-
-    public Date getDateUpdate() {
-        return dateUpdate;
-    }
-
 }

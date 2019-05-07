@@ -44,6 +44,8 @@ export class LoginAdminComponent implements OnInit {
           localStorage.setItem('userToken', data.result);
           localStorage.setItem('fullName', tokenDecoded.fullName);
           localStorage.setItem('isActive', tokenDecoded.isActive);
+          localStorage.setItem('email', tokenDecoded.sub);
+          localStorage.setItem('idUser', tokenDecoded.idUser);
           if (tokenDecoded.scopes[0].authority === 'ROLE_ADMIN') {
             localStorage.setItem('role', 'ROLE_ADMIN');
           }

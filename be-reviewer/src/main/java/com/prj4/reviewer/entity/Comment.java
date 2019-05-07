@@ -1,10 +1,10 @@
 package com.prj4.reviewer.entity;
 
-import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table(name = "COMMENT_PRODUCT")// This tells Hibernate to make a table out of this class
@@ -32,6 +32,18 @@ public class Comment {
 
 	@Column(name = "DT_CREATED")
     private Date dateCreate;
+
+	public Comment(){}
+
+	public Comment(String idComment, String idPost, String idReviewer, String idReply, Boolean isReply, String content, Date dateCreate) {
+		this.idComment = idComment;
+		this.idPost = idPost;
+		this.idReviewer = idReviewer;
+		this.idReply = idReply;
+		this.isReply = isReply;
+		this.content = content;
+		this.dateCreate = dateCreate;
+	}
 
 	public String getIdComment() {
 		return idComment;
