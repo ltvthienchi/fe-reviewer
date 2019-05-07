@@ -1,6 +1,7 @@
-<div class="row w-80">
-  <div class="col-3"></div>
-  <div class="col-9" style="background: white; padding: 20px">
+<!--<div class="row w-80">-->
+<!--  <div class="col-3"></div>-->
+  <div style="background: white; padding: 20px; margin-top: 20px">
+    <h3>Create new product</h3>
     <p class="title-group"><span>General Information</span></p>
     <div class="row"  style="margin-right: -5px;">
 
@@ -15,7 +16,7 @@
         <div class="form-group my-form">
           <label for="image">Image Product</label>
           <input class="col-sm-10" type="file" id="image" style="padding: 0;"
-                 [(ngModel)]="newPost.fileImage" name="file" (change)="handleFileInput($event.target['files'])">
+                  name="file" (change)="handleFileInput($event.target.files)">
         </div>
       </div>
 
@@ -203,4 +204,4 @@
       <button type="submit" class="btn btn-outline-info float-right" (click)="uploadContent()">Create new post</button>
     </div>
   </div>
-</div>
+<!--</div>-->

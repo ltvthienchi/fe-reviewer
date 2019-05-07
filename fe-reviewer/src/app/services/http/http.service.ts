@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {getHeader} from './header';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {URL_SERVER} from '../../../environments/environment';
 import { FeedbackWebsite } from '../../model/feedbackWebsite.model';
 
@@ -59,12 +59,35 @@ export class HttpService {
 
   //
 
-  uploadImage(data: any) {
+  public uploadImage(data: any) {
     let input = new FormData();
-    input.append('file', data.file, data.file.name);
-    input.append('name', data.name);
-    input.append('content', data.content);
-    return this.http.post('http://localhost:8080/createContent', input ,getHeader());
+    // file
+    // nameProduct
+    // contentPost
+    // infoBattery
+    // infoDisplay
+    // infoPerformance
+    // infoDesign
+    // infoCamera
+    // emailCompany
+    console.log(data.fileImage, data.fileImage.name);
+    input.append('file', data.fileImage, data.fileImage.name);
+    input.append('nameProduct', data.nameProduct);
+    input.append('contentPost', data.contentPost);
+    input.append('emailCompany', localStorage.getItem('email'));
+    input.append('infoBattery', JSON.stringify(data.infoBattery));
+    input.append('infoDisplay', JSON.stringify(data.infoDisplay));
+    input.append('infoPerformance', JSON.stringify(data.infoPerformance));
+    input.append('infoDesign', JSON.stringify(data.infoDesign));
+    input.append('infoCamera', JSON.stringify(data.infoCamera));
+
+    const auth_token = localStorage.getItem('userToken');
+    const reqHeader = new HttpHeaders({
+      'Authorization': 'Bearer ' + auth_token
+    });
+    // return {headers: reqHeader};
+
+    return this.http.post(URL_SERVER.postProduct + 'postProduct', input ,{headers: reqHeader});
   }
 
 

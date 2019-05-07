@@ -17,44 +17,44 @@ export class CreateProductComponent implements OnInit {
   myData = arrPostProduct;
   newPost = {
     fileImage: null,
-    nameProduct: null,
-    contentPost: null,
-    emailCompany: null,
+    nameProduct: 'My test',
+    contentPost: 'My test',
+    emailCompany: 'My test',
     infoBattery: {
-      capacity: null,
-      type: null
+      capacity: 'My test',
+      type: 'My test'
     },
     infoDisplay: {
-      type: null,
-      size: null,
-      resolution: null,
+      type: 'My test',
+      size: 'My test',
+      resolution: 'My test',
     },
     infoPerformance: {
       platform: {
-        os: null,
-        chip: null,
-        cpu: null,
-        gpu: null
+        os: 'My test',
+        chip: 'My test',
+        cpu: 'My test',
+        gpu: 'My test'
       },
       memory: {
-        card: null,
-        internal: null
+        card: 'My test',
+        internal: 'My test'
       }
     },
     infoDesign: {
-      dimensions: null,
-      weight: null,
+      dimensions: 'My test',
+      weight: 'My test',
     },
     infoCamera: {
       main: {
-        modules: null,
-        features: null,
-        video: null
+        modules: 'My test',
+        features: 'My test',
+        video: 'My test'
       },
       self: {
-        modules: null,
-        features: null,
-        video: null
+        modules: 'My test',
+        features: 'My test',
+        video: 'My test'
       }
     }
   };
@@ -73,15 +73,10 @@ export class CreateProductComponent implements OnInit {
   }
 
   uploadContent(): void {
-    console.log(this.newPost);
-    // const upload = {
-    //   name: this.newPost.name,
-    //   content:this.newPost.content,
-    //   file: this.fileToUpload,
-    // };
-    // this.http.uploadImage(upload).subscribe((data: any) => {
-    //   console.log(data);
-    // })
+    this.newPost.fileImage = this.fileToUpload;
+    this.http.uploadImage(this.newPost).subscribe((data: any) => {
+      console.log(data);
+    })
 
   }
 
