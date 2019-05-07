@@ -7,8 +7,8 @@
     </div>
     <div class="col-sm-9">
         <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
-                    [(ngModel)]="dataRating.performance" style="width: 85%"></mat-slider>
-        <p class="point-slider">{{dataRating.performance}}</p>
+                    [(ngModel)]="curData.rtPerformance" style="width: 85%"></mat-slider>
+        <p class="point-slider">{{curData.rtPerformance}}</p>
     </div>
   </div>
 
@@ -18,8 +18,8 @@
     </div>
     <div class="col-sm-9">
       <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
-                  [(ngModel)]="dataRating.display" style="width: 85%"></mat-slider>
-      <p class="point-slider">{{dataRating.display}}</p>
+                  [(ngModel)]="curData.rtDisplay" style="width: 85%"></mat-slider>
+      <p class="point-slider">{{curData.rtDisplay}}</p>
     </div>
   </div>
 
@@ -29,8 +29,8 @@
     </div>
     <div class="col-sm-9">
       <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
-                  [(ngModel)]="dataRating.camera" style="width: 85%"></mat-slider>
-      <p class="point-slider">{{dataRating.camera}}</p>
+                  [(ngModel)]="curData.rtCamera" style="width: 85%"></mat-slider>
+      <p class="point-slider">{{curData.rtCamera}}</p>
     </div>
   </div>
 
@@ -40,8 +40,19 @@
     </div>
     <div class="col-sm-9">
       <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
-                  [(ngModel)]="dataRating.battery" style="width: 85%"></mat-slider>
-      <p class="point-slider">{{dataRating.battery}}</p>
+                  [(ngModel)]="curData.rtBattery" style="width: 85%"></mat-slider>
+      <p class="point-slider">{{curData.rtBattery}}</p>
+    </div>
+  </div>
+
+  <div class="item-ratting row">
+    <div class="col-sm-3 center">
+      <span class="title-slider">Design</span>
+    </div>
+    <div class="col-sm-9">
+      <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
+                  [(ngModel)]="curData.rtDesign" style="width: 85%"></mat-slider>
+      <p class="point-slider">{{curData.rtDesign}}</p>
     </div>
   </div>
 

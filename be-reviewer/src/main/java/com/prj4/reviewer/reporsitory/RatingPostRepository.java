@@ -7,5 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RatingPostRepository extends CrudRepository<RatingPost, String> {
-
+    RatingPost findByIdRatingProduct(String idRatingProduct);
+    RatingPost findByIdReviewer(String idReviewer);
+    RatingPost findByIdProduct(String idProduct);
+    RatingPost findByIdProductAndIdReviewer(String idProduct, String idReviewer);
 }

@@ -56,6 +56,7 @@ import {AdminService} from './services/admin-service/admin.service';
 import {AuthAfterLoginService} from './services/auth/auth-after-login.service';
 import {HttpService} from './services/http/http.service';
 import {DataService} from './services/data-service/data.service';
+import { FloatFixedPipe } from './services/pipe/float-fixed.pipe';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -71,7 +72,7 @@ const customNotifierOptions: NotifierOptions = {
   },
   theme: 'material',
   behaviour: {
-    autoHide: 5000,
+    autoHide: 3000,
     onClick: 'hide',
     onMouseover: 'pauseAutoHide',
     showDismissButton: true,
@@ -149,6 +150,7 @@ export function tokenGetter() {
     TextAlertComponent,
     RegisterConfirmationComponent,
     ModalRatingComponent,
+    FloatFixedPipe,
   ],
   imports: [
     HttpClientModule,

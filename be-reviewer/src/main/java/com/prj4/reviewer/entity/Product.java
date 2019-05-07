@@ -19,7 +19,7 @@ public class Product {
     @Column(name = "TAG_PRODUCT")
     private String tagProduct;
 
-    @Column(name = "DT_CREATED")
+    @Column(name = "DT_CREATE")
     private Date dtCreated;
 
     @Column(name = "AVG_BATTERY")
@@ -54,6 +54,8 @@ public class Product {
 
     @Column(name = "INFO_CAMERA")
     private String infoCamera;
+
+    public Product() {}
 
     public Product(String idProduct, String nameProduct, String tagProduct, Date dtCreated, float avgBattery,
                    float avgDisplay, float avgPerformance, float avgDesign, float avgCamera, int numRating,
@@ -144,10 +146,6 @@ public class Product {
     }
 
     public void setAvgCamera(float avgCamera) {
-        this.avgCamera = avgCamera;
-    }
-
-    public void setAvgCamera(int avgCamera) {
         this.avgCamera = avgCamera;
     }
 
