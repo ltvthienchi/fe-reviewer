@@ -57,7 +57,15 @@ export class HttpService {
     return this.http.post(URL_SERVER.infoReviewer + 'updateReview', getHeader());
   }
 
+  //
 
+  uploadImage(data: any) {
+    let input = new FormData();
+    input.append('file', data.file, data.file.name);
+    input.append('name', data.name);
+    input.append('content', data.content);
+    return this.http.post('http://localhost:8080/createContent', input ,getHeader());
+  }
 
 
 }

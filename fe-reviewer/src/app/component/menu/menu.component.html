@@ -1,7 +1,7 @@
 <!--<div class="container-fuild bg-main">-->
   <!--<div class="menu">-->
     <nav class="menu bg-main navbar fixed-top navbar-expand-lg navbar-light ">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" routerLink="/" >
         <img style="width: 180px; height: 55px" src="../../../assets/wallpaper/logo.png" />
       </a>
 
@@ -51,9 +51,9 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 <!--                <a class="dropdown-item" href="#">Action</a>-->
 <!--                <a class="dropdown-item" href="#">Another action</a>-->
-                <a class="dropdown-item" *ngIf="!isCompany()" href="user-page">Your Page</a>
-                <a class="dropdown-item" *ngIf="isCompany()" href="company">Company Page</a>
-                <a class="dropdown-item" href="feedback">Feedback Website</a>
+                <a class="dropdown-item" *ngIf="!isCompany()" routerLink="/user-page">Your Page</a>
+                <a class="dropdown-item" *ngIf="isCompany()" routerLink="/company">Company Page</a>
+                <a class="dropdown-item" routerLink="/feedback">Feedback Website</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" (click)="removeToken()">Sign Out</a>
 
