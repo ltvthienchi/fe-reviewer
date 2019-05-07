@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface CompanyRepository extends CrudRepository<Company, String> {
     Company findByIdAccount(String idAccount);
     Company findByEmailCompany(String emailCompany);
+    Company findByIdCompany(String idCompany);
 }

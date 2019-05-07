@@ -49,8 +49,8 @@ public class CompanyRestController {
 
         Company comp = new Company(idCompany,companyRequest.getNameCompany(),companyRequest.getAddrCompany(),
                 companyRequest.getWebCompany(), null, companyRequest.getTelCompany(),
-                new Date(), idAccount, null,
-                null, companyRequest.getEmailCompany());
+                new Date(), idAccount, "9999",
+                "8888", companyRequest.getEmailCompany());
 
         User userAccount = new User(idAccount, companyRequest.getEmailCompany(), encodedPass,
                 companyRequest.getTypeAccount(), Constants.IS_TEST_MODE ? true : false);

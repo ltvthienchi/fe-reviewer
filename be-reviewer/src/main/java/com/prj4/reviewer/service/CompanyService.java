@@ -2,7 +2,9 @@ package com.prj4.reviewer.service;
 
 
 import com.prj4.reviewer.entity.Company;
+import com.prj4.reviewer.entity.Images;
 import com.prj4.reviewer.reporsitory.CompanyRepository;
+import com.prj4.reviewer.reporsitory.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class CompanyService {
 
     @Autowired
     CompanyRepository companyRepository;
+
+    @Autowired
+    ImageRepository imageRepository;
 
     public List<Company> getAll() {
         return (List<Company>) companyRepository.findAll();
@@ -40,6 +45,15 @@ public class CompanyService {
     }
     public String getCompanyId(String email) {
         return companyRepository.findByEmailCompany(email).getIdCompany();
+    }
+
+    public String getNameCompanyById(String idCompany) {
+        return companyRepository.findByIdCompany(idCompany).getNameCompany();
+    }
+
+    public String getImageAvaComp(String idCompany) {
+        String idImage = companyRepository.findByIdCompany(idCompany).getImgAvatarCompany();
+        return imageRepository.findByIdImage(idImage).getImgPath();
     }
 }
 

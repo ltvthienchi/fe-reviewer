@@ -43,7 +43,7 @@ public class ReviewerService {
 
 
     public String getReviewerIdByEmail(String email){
-        reviewerRepository.findByEmail(email);
+        //reviewerRepository.findByEmail(email);
         return reviewerRepository.findByEmail(email).getIdReviewer();
     }
     // Hàm bao gồm nhưng data trong request

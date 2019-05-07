@@ -3,6 +3,7 @@ package com.prj4.reviewer.service;
 import com.prj4.reviewer.entity.Comment;
 import com.prj4.reviewer.entity.Post;
 import com.prj4.reviewer.reporsitory.CommentRepository;
+import com.prj4.reviewer.reporsitory.ImageRepository;
 import com.prj4.reviewer.reporsitory.PostRepository;
 import com.prj4.reviewer.request.CommentRequest;
 import com.prj4.reviewer.response.CommentResponse;
@@ -19,6 +20,8 @@ public class PostService {
     CommentRepository commentRepository;
     @Autowired
     PostRepository postRepository;
+    @Autowired
+    ImageRepository imageRepository;
 
 
 
@@ -41,13 +44,21 @@ public class PostService {
         return new CommentResponse();
     }
 
-    public List<Post> getAllPost() {
-        return (List<Post>) postRepository.findAll();
+    public List<Post> getAllPostByDtCreated() {
+        return postRepository.findAllByOrderByDtCreatedDesc();
+    }
+
+    public List<Post> getAllPostByComId(String idCompany) {
+        return postRepository.findByIdCompanyOrderByDtCreatedDesc(idCompany);
     }
 
 
     public void createPost(Post post) {
         postRepository.save(post);
+    }
+
+    public String getImagePost(String idImage) {
+        return imageRepository.findByIdImage(idImage).getImgPath();
     }
 
 }

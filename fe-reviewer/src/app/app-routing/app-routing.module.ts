@@ -50,8 +50,8 @@ const routes: Routes = [
     component: LoginSideComponent,
     children: [
       { path: '', redirectTo: '/login', pathMatch: 'full'},
-      { path: 'login', component: LoginComponent, canActivate: [AuthAfterLogin] },
-      { path: 'signup', component: SignUpComponent, canActivate: [AuthAfterLogin] },
+      { path: 'login', component: LoginComponent},
+      { path: 'signup', component: SignUpComponent},
     ]
   },
   {
@@ -67,7 +67,7 @@ const routes: Routes = [
       { path: 'admin/feedback', component: FeedbackAdminComponent, canActivate: [AuthGuardAdmin] }
     ]
   },
-  { path: 'admin/login', component: LoginAdminComponent, canActivate: [AuthAfterLogin] },
+  { path: 'admin/login', component: LoginAdminComponent },
   {path: '**', redirectTo: ''}
 ];
 

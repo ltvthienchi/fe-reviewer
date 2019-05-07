@@ -5,6 +5,7 @@ import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Images;
 import com.prj4.reviewer.entity.Product;
 import com.prj4.reviewer.request.PostProductRequest;
+import com.prj4.reviewer.response.PostResponse;
 import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import com.prj4.reviewer.entity.Post;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,8 +42,9 @@ public class PostRestController {
     GenerateId generateId;
 
     @GetMapping(BASE_POST_LINK + "getAll")
-    public List<Post> getAll() {
-        return postService.getAllPost();
+    public List<PostResponse> getAll() {
+        List<Post> lstPost = postService.getAllPostByDtCreated();
+        return createListPostReponse(lstPost);
     }
 
     @PostMapping(BASE_POST_LINK + "postProduct")
@@ -83,6 +86,30 @@ public class PostRestController {
 
 
         return JsonResponse.accept("Success");
+    }
+
+    @GetMapping(BASE_POST_LINK + "getAllByComId")
+    public List<PostResponse> getAllByComId(@RequestBody String idCompany) {
+        List<Post> lstPost = postService.getAllPostByComId(idCompany);
+        return createListPostReponse(lstPost);
+    }
+
+    public List<PostResponse> createListPostReponse(List<Post> lstPost) {
+        List<PostResponse> lstPostResponse= new ArrayList<>();
+        for(Post p : lstPost) {
+            Product product = productService.getProductById(p.getIdProduct());
+            String imgPost = postService.getImagePost(p.getIdImage());
+            String nameCompany = companyService.getNameCompanyById(p.getIdCompany());
+            String avatarCompany = companyService.getImageAvaComp(p.getIdCompany());
+            PostResponse postResponse= new PostResponse(p.getIdPostProduct(), p.getIdProduct(), p.getIdCompany(), nameCompany,
+                    p.getContentPost(), avatarCompany, imgPost, product.getAvgDisplay(), product.getAvgPerformance(),
+                    product.getAvgCamera(),product.getAvgBattery(), product.getAvgDesign(), 0,
+                    product.getInfoBattery(), product.getInfoDisplay(), product.getInfoPerformance(),
+                    product.getInfoDesign(),product.getInfoCamera());
+            lstPostResponse.add(postResponse);
+
+        }
+        return lstPostResponse;
     }
 
 

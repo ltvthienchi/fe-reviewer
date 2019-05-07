@@ -1,17 +1,14 @@
 package com.prj4.reviewer.controller;
 
-import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Product;
-import com.prj4.reviewer.entity.RatingPost;
 import com.prj4.reviewer.request.ProductRequest;
-import com.prj4.reviewer.request.RatingRequest;
+import com.prj4.reviewer.response.PostResponse;
 import com.prj4.reviewer.service.GenerateId;
 import com.prj4.reviewer.service.ProductService;
-import com.prj4.reviewer.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
