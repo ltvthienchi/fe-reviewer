@@ -1,6 +1,6 @@
 package com.prj4.reviewer.entity;
 
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -31,6 +31,42 @@ public class Admin {
 
 	@Column(name = "ISACTIVE")
 	private boolean isActive;
+
+	@Column(name = "ADDRESS")
+	private String addressAdmin;
+
+	@Column(name = "PHONE")
+	private String phoneAdmin;
+
+	public Admin() {
+	}
+
+	public Admin(String fullNameAdmin, String emailAdmin, String passAdmin, Date dobAdmin, Date dtCreated, boolean isActive, String addressAdmin, String phoneAdmin) {
+		this.fullNameAdmin = fullNameAdmin;
+		this.emailAdmin = emailAdmin;
+		this.passAdmin = passAdmin;
+		this.dobAdmin = dobAdmin;
+		this.dtCreated = dtCreated;
+		this.isActive = isActive;
+		this.addressAdmin = addressAdmin;
+		this.phoneAdmin = phoneAdmin;
+	}
+
+	public String getAddressAdmin() {
+		return addressAdmin;
+	}
+
+	public void setAddressAdmin(String addressAdmin) {
+		this.addressAdmin = addressAdmin;
+	}
+
+	public String getPhoneAdmin() {
+		return phoneAdmin;
+	}
+
+	public void setPhoneAdmin(String phoneAdmin) {
+		this.phoneAdmin = phoneAdmin;
+	}
 
 	public String getIdAdmin() {
 		return idAdmin;
