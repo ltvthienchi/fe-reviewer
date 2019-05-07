@@ -16,4 +16,5 @@ export const URL_SERVER = {
   rating: rootUrl + '/data/rating/',
   company: rootUrl + '/data/company/',
   product: rootUrl + '/data/product/',
+  admin: rootUrl + '/data/admin/',
 };

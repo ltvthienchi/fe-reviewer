@@ -18,7 +18,7 @@
         <thead>
         <tr>
           <th>Admin Name</th>
-          <th>Password</th>
+          <th>Date Of Birth</th>
           <th>Email</th>
           <th>Address</th>
           <th>Phone</th>
@@ -26,9 +26,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>Thomas Hardy</td>
-          <td>Password</td>
+        <tr *ngFor = "let admin of listAdmin">
+          
+
+          <td>{{admin.fullNameAdmin}}</td>
+          <td>{{Admin.dobAdmin}}</td>
           <td>thomashardy@mail.com</td>
           <td>89 Chiaroscuro Rd, Portland, USA</td>
           <td>(171) 555-2222</td>
@@ -41,62 +43,7 @@
                                                                                  title="Delete"></i></a>
           </td>
         </tr>
-        <tr>
-          <td>Dominique Perrier</td>
-          <td>Password</td>
-          <td>dominiqueperrier@mail.com</td>
-          <td>Obere Str. 57, Berlin, Germany</td>
-          <td>(313) 555-5735</td>
-          <td>
-            <a href="#editAdminModal" class="edit" data-toggle="modal"><i class="fas fa-pen" data-toggle="tooltip"
-                                                                          title="Edit"></i></a>
-            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt"
-                                                                                 data-toggle="tooltip"
-                                                                                 title="Delete"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td>Maria Anders</td>
-          <td>Password</td>
-          <td>mariaanders@mail.com</td>
-          <td>25, rue Lauriston, Paris, France</td>
-          <td>(503) 555-9931</td>
-          <td>
-            <a href="#editAdminModal" class="edit" data-toggle="modal"><i class="fas fa-pen" data-toggle="tooltip"
-                                                                          title="Edit"></i></a>
-            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt"
-                                                                                 data-toggle="tooltip"
-                                                                                 title="Delete"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td>Fran Wilson</td>
-          <td>Password</td>
-          <td>franwilson@mail.com</td>
-          <td>C/ Araquil, 67, Madrid, Spain</td>
-          <td>(204) 619-5731</td>
-          <td>
-            <a href="#editAdminModal" class="edit" data-toggle="modal"><i class="fas fa-pen" data-toggle="tooltip"
-                                                                          title="Edit"></i></a>
-            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt"
-                                                                                 data-toggle="tooltip"
-                                                                                 title="Delete"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td>Martin Blank</td>
-          <td>Password</td>
-          <td>martinblank@mail.com</td>
-          <td>Via Monte Bianco 34, Turin, Italy</td>
-          <td>(480) 631-2097</td>
-          <td>
-            <a href="#editAdminModal" class="edit" data-toggle="modal"><i class="fas fa-pen" data-toggle="tooltip"
-                                                                          title="Edit"></i></a>
-            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt"
-                                                                                 data-toggle="tooltip"
-                                                                                 title="Delete"></i></a>
-          </td>
-        </tr>
+        
         </tbody>
       </table>
       <div class="clearfix">

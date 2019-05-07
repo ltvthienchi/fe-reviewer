@@ -57,6 +57,10 @@ export class HttpService {
     return this.http.post(URL_SERVER.infoReviewer + 'updateReview', getHeader());
   }
 
+  public getAllAdmin(): Observable<any>{
+    return this.http.get(URL_SERVER.admin + 'getAllAdmin',getHeader());
+  }
+
 
 
 
