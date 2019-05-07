@@ -36,12 +36,6 @@
     height: 600px;
     background-color: #fff;
 }
-.boderbody-left{
-    /* border: solid 1px  rgb(185, 178, 178); */
-    height: 400px;
-    margin-top: 75px;
-}
-
 .bodercpn{
     border-radius: 0.5rem;
     height: 200px;
@@ -66,7 +60,8 @@
 
     
 .scroll-bar-hidden {
-    overflow: scroll !important;
+  overflow: scroll !important;
+  background-color: #E9EBEE;
     /* overflow-x: hidden !important; */
 }
 

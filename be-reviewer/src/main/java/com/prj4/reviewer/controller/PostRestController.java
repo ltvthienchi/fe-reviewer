@@ -9,6 +9,7 @@ import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.prj4.reviewer.entity.Post;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.Date;
@@ -44,23 +45,31 @@ public class PostRestController {
     }
 
     @PostMapping(BASE_POST_LINK + "postProduct")
-    public JsonResponse<String> postProduct(@RequestBody PostProductRequest postProductRequest) {
-        String fileName =  fileStorageService.storeFile(postProductRequest.getImageProduct());
+    public JsonResponse<String> postProduct(
+            @RequestParam("file") MultipartFile file,
+            @RequestParam("nameProduct") String nameProduct,
+            @RequestParam("contentPost") String contentPost,
+            @RequestParam("infoBattery") String infoBattery,
+            @RequestParam("infoDisplay") String infoDisplay,
+            @RequestParam("infoPerformance") String infoPerformance,
+            @RequestParam("infoDesign") String infoDesign,
+            @RequestParam("infoCamera") String infoCamera,
+            @RequestParam("emailCompany") String emailCompany) {
+
         String idProduct = generateId.generateId("PRODUCT_", new Date());
         String idPost = generateId.generateId("POST_", new Date());
         String idImage = generateId.generateId("IMAGE_", new Date());
-        String pathProduct = "/" + idProduct + "/";
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/downloadFile/" + pathProduct)
-                .path(fileName)
-                .toUriString();
-        String idCompany = companyService.getCompanyId(postProductRequest.getEmailUser());
-        Product product = new Product(idProduct, postProductRequest.getNameProduct(), null,
+
+        String fileName =  fileStorageService.storeFile(file, idImage, Constants.POST_IMG);
+
+        String fileDownloadUri = "http://localhost/img/reviewer/" + fileName;
+        String idCompany = companyService.getCompanyId(emailCompany);
+        Product product = new Product(idProduct, nameProduct, null,
                 new Date(), 0 ,0,
                 0, 0,0,0,
-                null , null, null, null,null );
+                infoBattery , infoDisplay, infoPerformance, infoDesign,infoCamera );
         Post post = new Post(idPost, idProduct, idCompany,
-                postProductRequest.getContentPost(), new Date(), idImage);
+                contentPost, new Date(), idImage);
 
         Images images = new Images(idImage, fileDownloadUri, Constants.POST_IMG);
 

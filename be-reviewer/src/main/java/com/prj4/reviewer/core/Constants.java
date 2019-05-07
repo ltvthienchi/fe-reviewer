@@ -22,6 +22,8 @@ public class Constants {
     public static final String POST_IMG = "POST_IMG";
     public static final String IMAGE_AVA = "IMAGE_AVA";
     public static final String IMAGE_PANEL = "IMAGE_PANEL";
+    public static final int COMPANY_IMAGE_TYPE = 1;
+    public static final int REVIEWER_IMAGE_TYPE = 2;
 
 }
 

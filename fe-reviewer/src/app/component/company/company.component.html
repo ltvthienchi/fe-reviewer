@@ -4,27 +4,9 @@
       <!-- avatar -->
       <div class="boderavt">
         <img src="https://cdn.fptshop.com.vn/Uploads/Originals/2018/10/11/636748771945393060_iPhone-Xs-Max-gold.png"
-          class="" alt="">
+             class="" alt="">
       </div>
-      <!-- menu left -->
-      <div class="boderbody-left text-left">
-
-        <h4 class="">Company A</h4>
-        <br>
-        <i class="fas fa-home"></i>
-        <a class="marginleft">Home</a>
-        <hr>
-        <i class="far fa-images"></i>
-        <a class="marginleft">Image</a>
-        <hr>
-        <i class="fab fa-facebook-messenger"></i>
-        <a class="marginleft">Messenger</a>
-        <hr>
-
-      </div>
-
     </div>
-
     <div class="col-9 ">
       <!-- backgroud -->
       <div class="boderbg rounded">
@@ -32,142 +14,20 @@
           src="https://images-na.ssl-images-amazon.com/images/G/01/img15/brawner/iPhoneXS_OVERVIEW-PAGE-L_US3_4._CB479284099_.jpg"
           class="" alt="">
       </div>
-      <!-- menu company -->
-
-      <div class="menucpn">
-        <div class="row" style="padding-left: 5px">
-          <div *ngIf="checkAuthGuard() && !isCommpanyAccount()">
-            <button class="btn btn-outline-info btnmargin margin-left">
-              <i class="fas fa-plus-circle" *ngIf="true"> Subscribe</i>
-              <i class="fas fa-minus-circle" *ngIf="false"> Subscribe</i>
-            </button>
-          </div>
-          <div *ngIf="checkAuthGuard() && isCommpanyAccount()">
-            <button class="btn btn-outline-info btnmargin" data-toggle="modal" data-target="#post"><i
-              class="fas fa-edit"> Post Product</i></button>
-          </div>
-          <div style="padding-left: 5px"  *ngIf="checkAuthGuard() && !isCommpanyAccount()">
-            <button class="btn btn-outline-success btnmargin  margin-right"><i class="fab fa-facebook-messenger">
-              Messenger</i></button>
-          </div>
-        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <!-- menu left -->
+      <div class="boderbody-left text-left">
+        <h4 class="">Company A</h4>
       </div>
-
-
-      <div class="row">
-
-        <div class="col-8">
-          <div class="boderbody-mid scroll-bar-hidden">
-            <div *ngFor="let item of myData">
-              <app-content-post [item]="item"></app-content-post>
-            </div>
-          </div>
-        </div>
-        <div class="col-4 sticky-top">
-          <div class="bodercpn text-center">
-            <br>
-            <h3 class=" margintop">Rating</h3>
-            <p class="text-info"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span
-                class="badge badge-light">(4.5/5)</span>
-            </p>
-
-            <div *ngIf="checkAuthGuard() && !isCommpanyAccount()">
-              <button class="btn btn-outline-info" data-toggle="modal" data-target="#review">Review this Company</button>
-            </div>
-
-          </div>
-
-
-
-          <div class="bodercpn margintop">
-            <h4 class="text-center">Address</h4>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3257176556144!2d106.66413881462262!3d10.786346192314788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed23ca5d8db%3A0x24d414f45e5a523!2zNTkwIEPDoWNoIE3huqFuZyBUaMOhbmcgOCwgUGjGsOG7nW5nIDExLCBRdeG6rW4gMywgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1555667078797!5m2!1svi!2s"
-              frameborder="0" style="border:0" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
+    </div>
+    <div class="col-9 ">
+      <app-home-company></app-home-company>
+      <!--<app-home-company></app-home-company>-->
     </div>
   </div>
 
 
-  <!-- modal-review -->
-  <div class="modal fade" id="review">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title text-info text-h4">Reivew company A</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body w-80">
-          <div class="form-group row">
-            <label for="rating" class="col-sm-2"><strong>Rating:</strong></label>
-            <div class="col-10">
-              <mat-slider [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="true"
-                [tick-interval]="1" [(ngModel)]="value" style="width: 60%"></mat-slider>
-              <span style="margin-left: 10px">{{value}}</span>
-            </div>
-
-          </div>
-          <div class="form-group row">
-            <label for="content" class="col-sm-2"><strong>Content:</strong></label>
-            <textarea class="form-control col-sm-10" id="content" placeholder="Write what you think about your company"
-              name="content" rows="5" required></textarea>
-          </div>
-
-
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-outline-info">submit</button>
-          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- modal-post -->
-  <div class="modal fade" id="post">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title text-info text-h4">Create Product Post</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body w-80">
-          <div class="form-group row">
-            <label for="name" class="col-sm-2"><strong>Name: </strong></label>
-            <input class="form-control col-10" id="name" placeholder="Enter name product">
-            <input class="form-control col-10" id="name" placeholder="Enter name product">
-          </div>
-          <div class="form-group row">
-            <label class="col-2" for="image"><strong>Image: </strong></label>
-            <input type="file" id="image" class="form-control-file border col-10 paddingleft" placeholder="cai dmmmm">
-          </div>
-          <div class="form-group row">
-            <label for="content" class="col-sm-2"><strong>Content:</strong></label>
-            <textarea class="form-control col-sm-10" id="content" placeholder="Write what you think about your company"
-                      name="content" rows="5" required></textarea>
-          </div>
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-outline-info">submit</button>
-          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
 </div>
