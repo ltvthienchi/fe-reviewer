@@ -32,6 +32,8 @@ export class UserPageComponent implements OnInit {
   private lastName: string;
   private genderReviewer: number;
   private dobReviewer = '01-01-2019';
+  private changeAvar;
+  private changeBackground;
   validatorForm = {
     changePass: true,
     updateInfoProfile: true
@@ -44,7 +46,6 @@ export class UserPageComponent implements OnInit {
     this.dobReviewer = '';
     this.emailReviewer = localStorage.getItem('email');
     this.fullName = localStorage.getItem('fullName');
-
     this.changePass = this.formBuilder.group({
       newPass: ['', [validatorPassword]],
       confNewPass: ['', [validatorConfirmPassword]],
@@ -52,10 +53,8 @@ export class UserPageComponent implements OnInit {
     this.updateInfoProfile = this.formBuilder.group({
       firstName: ['', [validatorRequired, validatorName]],
       lastName: ['', [validatorRequired, validatorName]],
-      dobReviewer: ['', [validatorRequired, validatorName]],
+      dobReviewer: [''],
       genderReviewer: [true],
-      avaReviewer: [''],
-      panelReviewer: [''],
     });
   }
 
@@ -74,24 +73,21 @@ export class UserPageComponent implements OnInit {
       this.updateInfoProfile.controls['dobReviewer'].setValue(parseDob);
       this.updateInfoProfile.controls['genderReviewer'].setValue(gender);
     });
-
-
   }
 
   submitUpdateInfo() {
+    console.log(this.updateInfoProfile);
     if (this.updateInfoProfile.status === 'INVALID') {
       this.validatorForm.updateInfoProfile = false;
-      // console.log(this.updateInfoProfile);
     } else {
       this.validatorForm.updateInfoProfile = true;
-      // this.userService.registerUser(this.validatorForm.value)
       const updateInPro: UpdateInfoProfile = {
         firstName: this.updateInfoProfile.value.firstName,
         lastName: this.updateInfoProfile.value.lastName,
         dob: this.updateInfoProfile.value.dobReviewer,
         gender: this.updateInfoProfile.value.gender,
-        avaReviewer: this.updateInfoProfile.value.avaReviewer,
-        panelReviewer: this.updateInfoProfile.value.panelReviewer
+        avaReviewer: this.changeAvar,
+        panelReviewer: this.changeBackground
       };
       this.httpService.updateInfoPro(updateInPro).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
@@ -104,11 +100,20 @@ export class UserPageComponent implements OnInit {
     }
   }
 
+  handleFileInput(files: FileList, type) {
+    if (type === 'avatar') {
+      this.changeAvar = files.item(0);
+    } else {
+      this.changeBackground = files.item(0);
+    }
+    // this.fileToUpload = files.item(0);
+  }
+
   test() {
     console.log(this.updateInfoProfile.controls);
   }
 
-  submitchangePass() {
+  submitChangePass() {
     if (this.changePass.status === 'INVALID') {
       this.validatorForm.changePass = false;
       console.log(this.changePass);

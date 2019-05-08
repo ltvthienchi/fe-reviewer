@@ -64,15 +64,16 @@ public class ReviewerRestController {
             @RequestParam("idReviewer") String idReviewer,
             @RequestParam("firstName") String firstName,
             @RequestParam("lastName") String lastName,
-            @RequestParam("dob") Date dob,
-            @RequestParam("gender") boolean gender,
+            @RequestParam("dob") String dob,
+            @RequestParam("gender") String gender,
             @RequestParam("avaReviewer") MultipartFile avaReviewer,
             @RequestParam("panelReviewer") MultipartFile panelReviewer
             ) {
 
         try {
-            int genderReviewer = gender == true ? 1 : 0;
-            reviewerService.updateInfo(idReviewer, firstName, lastName, dob, genderReviewer, avaReviewer, panelReviewer);
+            Date newDob = new SimpleDateFormat("yyyy-mm-dd").parse(dob);
+            int genderReviewer = gender.equals("true") ? 1 : 0;
+            reviewerService.updateInfo(idReviewer, firstName, lastName, newDob, genderReviewer, avaReviewer, panelReviewer);
             return JsonResponse.accept("Success");
         } catch (Exception ex) {
             return JsonResponse.reject(ex.getMessage());
