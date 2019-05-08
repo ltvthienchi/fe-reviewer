@@ -12,9 +12,11 @@ import { DataService } from '../../services/data-service/data.service';
 export class MenuComponent implements OnInit {
 
   private fullName: string;
+  private idCompany: string;
   count: number;
   constructor(private authGuard: AuthGuardService, private router: Router, private data: DataService) {
     this.fullName = localStorage.getItem('fullName');
+    this.idCompany = localStorage.getItem('idUser');
   }
 
   ngOnInit() {

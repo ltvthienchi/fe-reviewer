@@ -40,51 +40,10 @@ export class CompanyComponent implements OnInit {
     this.http.getDetailCompany(this.idCompany).subscribe( (data: any) => {
       if (data) {
         this.detailCompany = data.company;
-        const newItem = {
-          idPostProduct: null,
-          idProduct: null,
-          idCompany: null,
-          nameCompany: null,
-          content: null,
-          image: '../../assets/wallpaper/loginWall.jpg',
-          avatar: '',
-          avgDisplay: 1,
-          avgPerformance: 1,
-          avgCamera: 1,
-          avgBattery: 1,
-          avgDesign: 1,
-          totalComment: 1,
-          infoBattery: '',
-          infoDisplay: '',
-          infoPerformance: '',
-          infoDesign: '',
-          infoCamera: '',
-          dtCreated: null,
-          idReviewer: ''
-        };
-        for (let i = 0; i < data.lstPost.length; i++) {
-          newItem.idPostProduct = data.lstPost[i].idPostProduct;
-          newItem.idProduct = data.lstPost[i].idProduct;
-          newItem.idCompany = data.lstPost[i].idCompany;
-          newItem.nameCompany = data.lstPost[i].nameCompany;
-          newItem.content = data.lstPost[i].content;
-          newItem.image = data.lstPost[i].image;
-          newItem.avatar = data.lstPost[i].avatar;
-          newItem.avgDisplay = data.lstPost[i].avgDisplay;
-          newItem.avgPerformance = data.lstPost[i].avgPerformance;
-          newItem.avgCamera = data.lstPost[i].avgCamera
-          newItem.avgBattery = data.lstPost[i].avgBattery;
-          newItem.avgDesign = data.lstPost[i].avgDesign;
-          newItem.totalComment = data.lstPost[i].totalComment;
-          newItem.infoBattery = data.lstPost[i].infoBattery;
-          newItem.infoDisplay = data.lstPost[i].infoDisplay;
-          newItem.infoPerformance = data.lstPost[i].infoPerformance;
-          newItem.infoDesign = data.lstPost[i].infoDesign;
-          newItem.infoCamera = data.lstPost[i].infoCamera;
-          newItem.dtCreated = data.lstPost[i].dtCreated;
-          newItem.idReviewer = localStorage.getItem('idUser');
-          this.myData.push(newItem);
-        }
+        data.lstPost.map(item => {
+          item.idReviewer = localStorage.getItem('idUser');
+          this.myData.push(item);
+        });
         this.lstPost = this.myData;
       }
     });

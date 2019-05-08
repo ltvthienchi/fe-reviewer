@@ -52,7 +52,7 @@
 <!--                <a class="dropdown-item" href="#">Action</a>-->
 <!--                <a class="dropdown-item" href="#">Another action</a>-->
                 <a class="dropdown-item" *ngIf="!isCompany()" routerLink="/user-page">Your Page</a>
-                <a class="dropdown-item" *ngIf="isCompany()" routerLink="/company">Company Page</a>
+                <a class="dropdown-item" *ngIf="isCompany()" [routerLink]="'/company/' + idCompany">Company Page</a>
                 <a class="dropdown-item" routerLink="/feedback">Feedback Website</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" (click)="removeToken()">Sign Out</a>

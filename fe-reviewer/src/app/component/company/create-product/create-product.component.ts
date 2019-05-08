@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {arrPostProduct} from '../../../services/local_database/post-product';
 import {AuthGuardService} from '../../../services/auth/auth-guard.service';
 import {HttpService} from '../../../services/http/http.service';
+import {NotifierService} from 'angular-notifier';
+import {EventMessage} from '../../../services/event_message/event-message.service';
+import {Router} from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-create-product',
@@ -59,7 +63,8 @@ export class CreateProductComponent implements OnInit {
     }
   };
   fileToUpload: File = null;
-  constructor(private authGuard: AuthGuardService, private http: HttpService) { }
+  constructor(private authGuard: AuthGuardService, private http: HttpService,
+              private notifier: NotifierService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -75,9 +80,12 @@ export class CreateProductComponent implements OnInit {
   uploadContent(): void {
     this.newPost.fileImage = this.fileToUpload;
     this.http.uploadImage(this.newPost).subscribe((data: any) => {
-      console.log(data);
-    })
-
+      if (data.status === 'SUCCESS') {
+        $('#changeCreateProduct').click();
+        this.notifier.notify('success', 'New product create success');
+        this.router.navigate(['/company/' + localStorage.getItem('idUser')]);
+      }
+    });
   }
 
   handleFileInput(files: FileList) {

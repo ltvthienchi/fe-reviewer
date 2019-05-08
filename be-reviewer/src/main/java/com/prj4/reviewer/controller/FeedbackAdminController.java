@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -52,6 +53,11 @@ public class FeedbackAdminController {
 
 
         return JsonResponse.accept("");
+    }
+
+    @PostMapping(BASE_POST_LINK + "getAllFeedback")
+    public List<FeedbackAdmin> getAllFeedback(){
+        return feedbackAdminService.getAll();
     }
 
 }

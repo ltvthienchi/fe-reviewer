@@ -5,6 +5,8 @@ import com.prj4.reviewer.reporsitory.FeedbackAdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FeedbackAdminService {
 
@@ -13,5 +15,9 @@ public class FeedbackAdminService {
 
     public void createFeedback(FeedbackAdmin feedbackAdmin){
         feedbackAdminRepository.save(feedbackAdmin);
+    }
+
+    public List<FeedbackAdmin> getAll(){
+       return (List<FeedbackAdmin>)feedbackAdminRepository.findAll();
     }
 }

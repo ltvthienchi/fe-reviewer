@@ -18,7 +18,7 @@ export class ContentPostComponent implements OnInit {
 
   @Input() item;
   private notifier: NotifierService;
-  toggleButton: boolean = false;
+  toggleButton = false;
   toggleRating = true;
 
   invert = false;
@@ -27,15 +27,74 @@ export class ContentPostComponent implements OnInit {
   step = 1;
   thumbLabel = true;
   value = 1;
+  dataDetail = {
+    infoBattery: {
+      capacity: '',
+      type: ''
+    },
+    infoDisplay: {
+      type: '',
+      size: '',
+      resolution: '',
+    },
+    infoPerformance: {
+      platform: {
+        os: '',
+        chip: '',
+        cpu: '',
+        gpu: ''
+      },
+      memory: {
+        card: '',
+        internal: ''
+      }
+    },
+    infoDesign: {
+      dimensions: '',
+      weight: '',
+    },
+    infoCamera: {
+      main: {
+        modules: '',
+        features: '',
+        video: ''
+      },
+      self: {
+        modules: '',
+        features: '',
+        video: ''
+      }
+    }
+  };
+  newItem = {
+    idPostProduct: null,
+    idProduct: null,
+    idCompany: null,
+    nameCompany: null,
+    content: null,
+    imgPost: '',
+    avatarCompany: '',
+    avgDisplay: 1,
+    avgPerformance: 1,
+    avgCamera: 1,
+    avgBattery: 1,
+    avgDesign: 1,
+    totalComment: 1,
+    infoBattery: '',
+    infoDisplay: '',
+    infoPerformance: '',
+    infoDesign: '',
+    infoCamera: '',
+    dtCreated: null,
+    idReviewer: ''
+  };
 
   constructor(private authGuard: AuthGuardService, public dialog: MatDialog,
-              notifier: NotifierService, private data: DataService,
-              private http: HttpService) {
+              notifier: NotifierService, private data: DataService, private http: HttpService) {
     this.notifier = notifier;
   }
 
   ngOnInit() {
-
   }
 
   checkAuthGuard() {
@@ -129,5 +188,16 @@ export class ContentPostComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  public detailProduct(item) {
+    console.log(item);
+    this.dataDetail = {
+      infoBattery: JSON.parse(item.infoBattery),
+      infoDisplay: JSON.parse(item.infoDisplay),
+      infoPerformance: JSON.parse(item.infoPerformance),
+      infoDesign: JSON.parse(item.infoDesign),
+      infoCamera: JSON.parse(item.infoCamera)
+    };
   }
 }

@@ -43,50 +43,8 @@ export class HomeComponent implements OnInit {
       this.getAllPost(),
     ]).then(res => {
       this.dataPost.map(item => {
-        let newItem = {
-          idPostProduct: null,
-          idProduct: null,
-          idCompany: null,
-          nameCompany: null,
-          content: null,
-          image: '../../assets/wallpaper/loginWall.jpg',
-          avatar: '',
-          avgDisplay: 1,
-          avgPerformance: 1,
-          avgCamera: 1,
-          avgBattery: 1,
-          avgDesign: 1,
-          totalComment: 1,
-          infoBattery: '',
-          infoDisplay: '',
-          infoPerformance: '',
-          infoDesign: '',
-          infoCamera: '',
-          dtCreated: null,
-          idReviewer: ''
-        };
-
-        newItem.idPostProduct = item.idPostProduct;
-          newItem.idProduct = item.idProduct;
-          newItem.idCompany = item.idCompany;
-          newItem.nameCompany = item.nameCompany;
-          newItem.content = item.content;
-          newItem.image = item.image;
-          newItem.avatar = item.avatar;
-          newItem.avgDisplay = item.avgDisplay;
-          newItem.avgPerformance = item.avgPerformance;
-          newItem.avgCamera = item.avgCamera
-          newItem.avgBattery = item.avgBattery;
-          newItem.avgDesign = item.avgDesign;
-          newItem.totalComment = item.totalComment;
-          newItem.infoBattery = item.infoBattery;
-          newItem.infoDisplay = item.infoDisplay;
-          newItem.infoPerformance = item.infoPerformance;
-          newItem.infoDesign = item.infoDesign;
-          newItem.infoCamera = item.infoCamera;
-          newItem.dtCreated = item.dtCreated;
-        newItem.idReviewer = localStorage.getItem('idUser');
-        this.myData.push(newItem);
+        item.idReviewer = localStorage.getItem('idUser');
+        this.myData.push(item);
       });
     });
 

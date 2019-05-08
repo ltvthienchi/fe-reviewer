@@ -34,7 +34,7 @@
             </button>
           </div>
           <div *ngIf="checkAuthGuard() && isCompanyAccount()">
-            <button class="btn btn-outline-info btnmargin margin-left" (click)="changeIsPostProduct()">
+            <button class="btn btn-outline-info btnmargin margin-left" id="changeCreateProduct" (click)="changeIsPostProduct()">
               <i class="fas fa-edit"></i>
               <span style="padding-right: 8px">{{txtPostProduct}}</span>
             </button>
