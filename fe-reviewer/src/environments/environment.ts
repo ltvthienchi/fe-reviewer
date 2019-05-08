@@ -10,6 +10,7 @@ export const environment = {
 export const rootUrl = 'http://localhost:8080';
 
 export const URL_SERVER = {
+  token_unAu:  rootUrl + '/signup/',
   postProduct: rootUrl + '/data/posts/',
   feedbackWebsite: rootUrl + '/data/feedback/',
   infoReviewer: rootUrl + '/data/reviewer/',

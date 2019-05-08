@@ -41,14 +41,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     Promise.all([
       this.getAllPost(),
-      this.getCompany(),
-      this.getProduct()
     ]).then(res => {
       this.dataPost.map(item => {
         let newItem = {
           idPostProduct: null,
           idProduct: null,
-          idReviewer: localStorage.getItem('idUser'),
           idCompany: null,
           nameCompany: null,
           content: null,
@@ -60,67 +57,71 @@ export class HomeComponent implements OnInit {
           avgBattery: 1,
           avgDesign: 1,
           totalComment: 1,
+          infoBattery: '',
+          infoDisplay: '',
+          infoPerformance: '',
+          infoDesign: '',
+          infoCamera: '',
+          dtCreated: null,
+          idReviewer: ''
         };
 
         newItem.idPostProduct = item.idPostProduct;
-        newItem.idProduct = item.idProduct;
-        newItem.idCompany = item.idCompany;
-        newItem.content = item.contentPost;
-
-        this.dataCompany.map(itemCompany => {
-          if (newItem.idCompany === itemCompany.idCompany) {
-            newItem.nameCompany = itemCompany.nameCompany;
-            newItem.avatar = itemCompany.imgAvatarCompany;
-            // newItem.image = itemCompany.imgAvatarCompany;
-          }
-        });
-
-        this.dataProduct.map(itemProduct => {
-          if (newItem.idProduct === itemProduct.idProduct) {
-            newItem.avgDisplay = itemProduct.avgDisplay;
-            newItem.avgPerformance = itemProduct.avgPerformance;
-            newItem.avgCamera = itemProduct.avgCamera;
-            newItem.avgBattery = itemProduct.avgBattery;
-            newItem.avgDesign = itemProduct.avgDesign;
-          }
-        });
-
+          newItem.idProduct = item.idProduct;
+          newItem.idCompany = item.idCompany;
+          newItem.nameCompany = item.nameCompany;
+          newItem.content = item.content;
+          newItem.image = item.image;
+          newItem.avatar = item.avatar;
+          newItem.avgDisplay = item.avgDisplay;
+          newItem.avgPerformance = item.avgPerformance;
+          newItem.avgCamera = item.avgCamera
+          newItem.avgBattery = item.avgBattery;
+          newItem.avgDesign = item.avgDesign;
+          newItem.totalComment = item.totalComment;
+          newItem.infoBattery = item.infoBattery;
+          newItem.infoDisplay = item.infoDisplay;
+          newItem.infoPerformance = item.infoPerformance;
+          newItem.infoDesign = item.infoDesign;
+          newItem.infoCamera = item.infoCamera;
+          newItem.dtCreated = item.dtCreated;
+        newItem.idReviewer = localStorage.getItem('idUser');
         this.myData.push(newItem);
       });
-    })
+    });
 
   }
 
   getAllPost() {
     return new Promise(resolve => {
       this.httpService.getAllPost().subscribe(res => {
-        if (res) { this.dataPost = res }
-        resolve()
-      })
-    })
+        if (res) { this.dataPost = res; }
+        resolve();
+      });
+    });
   }
 
-  getCompany() {
-    return new Promise(resolve => {
-      this.httpService.getAllCompany().subscribe(res => {
-        if (res) {
-          this.dataCompany = res;
-        }
-        resolve();
-      })
-    })
-  }
+  // getCompany() {
+  //   return new Promise(resolve => {
+  //     this.httpService.getAllCompany().subscribe(res => {
+  //       if (res) {
+  //         this.dataCompany = res;
+  //       }
+  //       resolve();
+  //     });
+  //   });
+  // }
 
-  getProduct() {
-    return new Promise(resolve => {
-      this.httpService.getAllProduct().subscribe(res => {
-        if (res) {
-          this.dataProduct = res;
-        }
-        resolve();
-      })
-    })
-  }
+  // getProduct() {
+  //   return new Promise(resolve => {
+  //     this.httpService.getAllProduct().subscribe(res => {
+  //       if (res) {
+  //         this.dataProduct = res;
+  //       }
+  //       resolve();
+  //     });
+  //   });
+  // }
 
   toggleRatings(id) {
     console.log(id);

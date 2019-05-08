@@ -10,4 +10,5 @@ import java.util.List;
 public interface ProductReporsitory extends CrudRepository<Product, String> {
     Product findByIdProduct(String idProduct);
     List<Product> findAllByOrderByDtCreatedDesc();
+    List<Product> findAllByOrderByNumRatingDesc();
 }

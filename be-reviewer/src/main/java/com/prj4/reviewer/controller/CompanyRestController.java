@@ -3,17 +3,19 @@ package com.prj4.reviewer.controller;
 import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Company;
+import com.prj4.reviewer.entity.Post;
 import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.request.CompanyRequest;
-import com.prj4.reviewer.service.CompanyService;
-import com.prj4.reviewer.service.GenerateId;
-import com.prj4.reviewer.service.UserService;
+import com.prj4.reviewer.response.CompanyResponse;
+import com.prj4.reviewer.response.DetailCompanyReponse;
+import com.prj4.reviewer.response.PostResponse;
+import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,10 +31,22 @@ public class CompanyRestController {
     CompanyService companyService;
 
     @Autowired
+    PostService postService;
+
+    @Autowired
+    ProductService productService;
+
+    @Autowired
     GenerateId generateId;
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    ImageService imageService;
+
+    @Autowired
+    CreatePostResponseService createPostResponseService;
 
     @GetMapping(BASE_POST_LINK + "getAll")
     public List<Company> getAll() {
@@ -50,7 +64,7 @@ public class CompanyRestController {
         Company comp = new Company(idCompany,companyRequest.getNameCompany(),companyRequest.getAddrCompany(),
                 companyRequest.getWebCompany(), null, companyRequest.getTelCompany(),
                 new Date(), idAccount, "9999",
-                "8888", companyRequest.getEmailCompany());
+                "8888", companyRequest.getEmailCompany(), 0);
 
         User userAccount = new User(idAccount, companyRequest.getEmailCompany(), encodedPass,
                 companyRequest.getTypeAccount(), Constants.IS_TEST_MODE ? true : false);
@@ -68,4 +82,21 @@ public class CompanyRestController {
         }
         return JsonResponse.reject("Account is created!");
     }
+
+    @PostMapping(BASE_POST_LINK + "getCompanyById")
+    public DetailCompanyReponse getCompanyById(@RequestBody String idCompany) {
+        Company company = companyService.getCompanyById(idCompany);
+        String imgAvatarCompany = imageService.getImagePathById(company.getImgAvatarCompany());
+        String imgPanelCompany = imageService.getImagePathById(company.getImgPanelCompany());
+        CompanyResponse companyResponse = new CompanyResponse(company.getIdCompany(),company.getNameCompany(),
+                company.getAddrCompany(), company.getWebCompany(), company.getTelCompany(),
+                imgAvatarCompany, imgPanelCompany,
+                company.getEmailCompany(), company.getAvgRatingComp());
+        List<Post> lstPostOrigin = postService.getAllPostByComId(idCompany);
+        List<PostResponse> lstPost = createPostResponseService.createListPostReponse(lstPostOrigin);
+        DetailCompanyReponse detailCompanyReponse = new DetailCompanyReponse(companyResponse, lstPost);
+        return detailCompanyReponse;
+    }
+
+
 }
