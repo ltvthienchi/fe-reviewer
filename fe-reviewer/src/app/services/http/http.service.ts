@@ -4,6 +4,7 @@ import {getHeader} from './header';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {URL_SERVER} from '../../../environments/environment';
 import { FeedbackWebsite } from '../../model/feedbackWebsite.model';
+import { Admin } from '../../model/admin.model';
 
 @Injectable()
 export class HttpService {
@@ -136,6 +137,10 @@ export class HttpService {
   public getDetailCompany(idCompany: string) {
     return this.http.post(URL_SERVER.company + 'getCompanyById', idCompany, getHeader());
 }
+
+ public editAdmin(data:any){
+   return this.http.post(URL_SERVER.admin + 'editAdmin',data, getHeader())
+ }
 
 
 }
