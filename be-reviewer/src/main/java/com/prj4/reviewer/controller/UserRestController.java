@@ -60,7 +60,7 @@ public class UserRestController {
                 userRequest.getTypeAccount(), Constants.IS_TEST_MODE ? true : userRequest.isActive());
 
         Reviewer reviewer = new Reviewer(idReviewer, userRequest.getNameAccount(), userRequest.getUserName(), null, new Date(),
-                idAccount, null, null, 1, null , null);
+                idAccount, "7777", "6666", 1, userRequest.getFirstName() , userRequest.getLastName());
 
         if (!userService.isExistingAccount(userRequest.getUserName()) &&
                 !reviewerService.isExistingReviewer(userRequest.getUserName())) {

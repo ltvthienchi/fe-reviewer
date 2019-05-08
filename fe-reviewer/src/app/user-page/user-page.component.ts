@@ -10,7 +10,7 @@ import {
 } from '../services/validator/validator';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NotifierService} from 'angular-notifier';
-import {UpdateInfoprofile} from '../model/updateInfoProfile.model';
+import {UpdateInfoProfile} from '../model/updateInfoProfile.model';
 import {ChangePass} from '../model/changePass.model';
 
 
@@ -39,29 +39,43 @@ export class UserPageComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, notifier: NotifierService, private httpService: HttpService) {
     this.notifier = notifier;
+    this.firstName = '';
+    this.lastName = '';
+    this.dobReviewer = '';
+    this.emailReviewer = localStorage.getItem('email');
+    this.fullName = localStorage.getItem('fullName');
+
+    this.changePass = this.formBuilder.group({
+      newPass: ['', [validatorPassword]],
+      confNewPass: ['', [validatorConfirmPassword]],
+    });
+    this.updateInfoProfile = this.formBuilder.group({
+      firstName: ['', [validatorRequired, validatorName]],
+      lastName: ['', [validatorRequired, validatorName]],
+      dobReviewer: ['', [validatorRequired, validatorName]],
+      genderReviewer: [true],
+      avaReviewer: [''],
+      panelReviewer: [''],
+    });
   }
 
 
   ngOnInit() {
-    this.changePass = this.formBuilder.group({
-      email: ['', [validatorRequired, validatorEmail]],
-      newPass: ['', [validatorPassword]],
-      conNewPass: ['', [validatorConfirmPassword]],
-    })
-    this.updateInfoProfile = this.formBuilder.group({
-      firstName: ['', [validatorRequired], validatorName],
-      lastName: ['', [validatorRequired], validatorName],
-      dobReviewer: ['', [validatorRequired], validatorName],
+    this.httpService.getReviewerInfo(this.emailReviewer).subscribe( (data: any) => {
+      const dob = new Date(data.dateOfBirth);
+      const year = dob.getFullYear();
+      const month = dob.getMonth() + 1 <= 9 ? `0${dob.getMonth() + 1}` : dob.getMonth() + 1;
+      const date = dob.getDate() <= 9 ? `0${dob.getDate()}` : dob.getDate();
+      const parseDob = `${year}-${month}-${date}`;
+      const gender = !!data.gender;
+      this.dobReviewer = parseDob;
+      this.updateInfoProfile.controls['firstName'].setValue(data.firstName);
+      this.updateInfoProfile.controls['lastName'].setValue(data.lastName);
+      this.updateInfoProfile.controls['dobReviewer'].setValue(parseDob);
+      this.updateInfoProfile.controls['genderReviewer'].setValue(gender);
     });
 
-    this.emailReviewer = localStorage.getItem('email');
-    this.fullName = localStorage.getItem('fullName');
-    this.httpService.getReviewerInfo(this.emailReviewer).subscribe( (data: any) => {
-      this.firstName = data.firstName;
-      this.lastName = data.lastName;
-      this.genderReviewer = data.gender;
-      this.dobReviewer = data.dateOfBirth;
-    });
+
   }
 
   submitUpdateInfo() {
@@ -71,12 +85,13 @@ export class UserPageComponent implements OnInit {
     } else {
       this.validatorForm.updateInfoProfile = true;
       // this.userService.registerUser(this.validatorForm.value)
-      const updateInPro: UpdateInfoprofile = {
+      const updateInPro: UpdateInfoProfile = {
         firstName: this.updateInfoProfile.value.firstName,
         lastName: this.updateInfoProfile.value.lastName,
         dob: this.updateInfoProfile.value.dobReviewer,
         gender: this.updateInfoProfile.value.gender,
-
+        avaReviewer: this.updateInfoProfile.value.avaReviewer,
+        panelReviewer: this.updateInfoProfile.value.panelReviewer
       };
       this.httpService.updateInfoPro(updateInPro).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
@@ -90,7 +105,7 @@ export class UserPageComponent implements OnInit {
   }
 
   test() {
-    console.log(this.dobReviewer);
+    console.log(this.updateInfoProfile.controls);
   }
 
   submitchangePass() {

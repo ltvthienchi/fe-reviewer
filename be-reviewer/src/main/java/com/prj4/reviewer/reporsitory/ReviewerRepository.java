@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface ReviewerRepository extends CrudRepository<Reviewer, String> {
     Reviewer findByIdAccount(String idAccount);
     Reviewer findByEmail(String emailReviewer);
+    Reviewer findByIdReviewer(String idReviewer);
 }

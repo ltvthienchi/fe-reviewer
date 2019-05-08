@@ -60,9 +60,20 @@ export class HttpService {
   }
 
 
-  public updateInfoPro(uip): Observable<any> {
-    const data = JSON.stringify(uip);
-    return this.http.post(URL_SERVER.infoReviewer + 'updateReview', data, getHeader());
+  public updateInfoPro(data): Observable<any> {
+    let input = new FormData();
+    input.append('idReviewer', localStorage.getItem('idUser'));
+    input.append('firstName', data.firstName);
+    input.append('lastName', data.lastName);
+    input.append('dob', data.dob);
+    input.append('gender', data.gender);
+    input.append('avaReviewer', data.avaReviewer, data.avaReviewer.name);
+    input.append('panelReviewer', data.panelReviewer, data.panelReviewer.name);
+    const auth_token = localStorage.getItem('userToken');
+    const reqHeader = new HttpHeaders({
+      'Authorization': 'Bearer ' + auth_token
+    });
+    return this.http.post(URL_SERVER.infoReviewer + 'updateReview', input, { headers: reqHeader});
   }
 
   public changePass(cp): Observable<any> {

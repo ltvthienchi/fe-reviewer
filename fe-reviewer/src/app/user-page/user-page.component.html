@@ -55,25 +55,11 @@
                   <i class="fas fa-calendar-alt"></i>
                 </div>
                 <div class="list-details">
-                  <span>{{dobReviewer | ddmmyyyy}}</span>
+                  <span>{{dobReviewer}}</span>
                   <small>Day of Birth</small>
                 </div>
               </li>
             </ul>
-            <!--<div class="row text-center mt-4">
-                <div class="col p-2">
-                    <h4 class="mb-1 line-height-5">154</h4>
-                    <small class="mb-0 font-weight-bold">Projects</small>
-                </div>
-                <div class="col p-2">
-                    <h4 class="mb-1 line-height-5">2.2k</h4>
-                    <small class="mb-0 font-weight-bold">Followers</small>
-                </div>
-                <div class="col p-2">
-                    <h4 class="mb-1 line-height-5">9.1k</h4>
-                    <small class="mb-0 font-weight-bold">Views</small>
-                </div>
-            </div>-->
           </div>
         </div>
       </div>
@@ -105,7 +91,6 @@
                       <!-- Timeline -->
                       <!--===================================================-->
                       <div class="timeline">
-
                         <!-- Timeline header -->
                         <div class="timeline-header">
                           <div class=" mb-1 text-white timeline-header-title bg-success">Now</div>
@@ -221,7 +206,7 @@
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">First name</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="text" value="{{firstName}}" formControlName="firstName">
+                      <input class="form-control" type="text" formControlName="firstName">
                     <app-text-alert [field]="'firstName'" [invalidField]="'firstName'" style="width: 100%"
                                     [form]="updateInfoProfile"
                                     [invalidForm]="validatorForm.updateInfoProfile"></app-text-alert>
@@ -231,7 +216,7 @@
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Last name</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="text" value="{{lastName}}" formControlName="lastName">
+                    <input class="form-control" type="text" formControlName="lastName">
                     <app-text-alert [field]="'lastName'" [invalidField]="'lastName'" style="width: 100%"
                                     [form]="updateInfoProfile"
                                     [invalidForm]="validatorForm.updateInfoProfile"></app-text-alert>
@@ -241,46 +226,43 @@
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Day of Birth</label>
                   <div class="col-lg-9">
-                    <input type="date" name="bday" [value]="dobReviewer" (blur)="test()" formControlName="dobReviewer">
-                    <!--                    <app-text-alert [field]="'dobReviewer'" [invalidField]="'dobReviewer'" style="width: 100%"-->
-                    <!--                                    [form]="updateInfoProfile" [invalidForm]="validatorForm.updateInfoProfile"></app-text-alert>-->
-
+                    <input type="date" name="bday" formControlName="dobReviewer">
+                    <app-text-alert [field]="'dobReviewer'" [invalidField]="'dobReviewer'" style="width: 100%"
+                                    [form]="updateInfoProfile" [invalidForm]="validatorForm.updateInfoProfile"></app-text-alert>
                   </div>
                 </div>
+
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Gender</label>
                   <div class="col-lg-9">
-                    <label class="radio-inline">
-                      <input type="radio" name="gender" checked> Male
+                    <label class="form-check-inline">
+                      <input class="form-check-input" type="radio" [value]="true" formControlName="genderReviewer"> Male
                     </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="gender"> Female
+                    <label class="form-check-inline">
+                      <input class="form-check-input" type="radio" [value]="false" formControlName="genderReviewer"> Female
                     </label>
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Email</label>
-                  <div class="col-lg-9">
-                    <input class="form-control" type="email" value="{{emailReviewer}}" disabled>
-                  </div>
-                </div>
+
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Change Avatar</label>
                   <div class="col-lg-9">
                     <input type="file">
                   </div>
                 </div>
+
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Change Backgroud</label>
                   <div class="col-lg-9">
                     <input type="file">
                   </div>
                 </div>
+
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label"></label>
                   <div class="col-lg-9">
                     <input type="reset" class="btn btn-secondary" value="Cancel">
-                    <input type="button" class="btn btn-primary" value="Save Changes">
+                    <input type="submit" class="btn btn-primary" (click)="test()" value="Save Changes">
                   </div>
                 </div>
               </form>
@@ -289,9 +271,9 @@
             <div class="tab-pane" id="changepassword">
               <form [formGroup]="changePass" (submit)="submitchangePass()">
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                  <label class="col-lg-3 col-form-label form-control-label">Your Current Password</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="email" value="{{emailReviewer}}" disabled>
+                    <input class="form-control" type="password">
                   </div>
                 </div>
                 <div class="form-group row">

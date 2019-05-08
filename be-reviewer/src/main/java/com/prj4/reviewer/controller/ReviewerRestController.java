@@ -1,5 +1,6 @@
 package com.prj4.reviewer.controller;
 
+import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Reviewer;
 import com.prj4.reviewer.reporsitory.ReviewerRepository;
@@ -8,11 +9,14 @@ import com.prj4.reviewer.request.FeedbackCompanyRequest;
 import com.prj4.reviewer.request.ReviewerRequest;
 import com.prj4.reviewer.response.CommentResponse;
 import com.prj4.reviewer.response.FeedbackCompanyResponse;
+import com.prj4.reviewer.response.ReviewerResponse;
+import com.prj4.reviewer.service.FileStorageService;
 import com.prj4.reviewer.service.PostService;
 import com.prj4.reviewer.service.ReviewerService;
 import com.prj4.reviewer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
@@ -56,19 +60,27 @@ public class ReviewerRestController {
     }
 
     @PostMapping(BASE_POST_LINK + "updateReview")
-    public JsonResponse<String> updateReviewer(@RequestBody @Valid ReviewerRequest reviewerRequest) {
-        String email = reviewerRequest.getEmail();
-        String firstName = reviewerRequest.getFirstName();
-        String lastName = reviewerRequest.getLastName();
-        int gender = reviewerRequest.getGender();
-        //        // Call service
+    public JsonResponse<String> updateReviewer(
+            @RequestParam("idReviewer") String idReviewer,
+            @RequestParam("firstName") String firstName,
+            @RequestParam("lastName") String lastName,
+            @RequestParam("dob") Date dob,
+            @RequestParam("gender") boolean gender,
+            @RequestParam("avaReviewer") MultipartFile avaReviewer,
+            @RequestParam("panelReviewer") MultipartFile panelReviewer
+            ) {
+
         try {
-            Date dobReviewer = new SimpleDateFormat("dd/MM/yyyy").parse(reviewerRequest.getDobReviewer());
-            reviewerService.updateInfo(email, firstName, lastName, dobReviewer, gender);
-//            reviewerService.saveReviewer(reviewer);
+            int genderReviewer = gender == true ? 1 : 0;
+            reviewerService.updateInfo(idReviewer, firstName, lastName, dob, genderReviewer, avaReviewer, panelReviewer);
             return JsonResponse.accept("Success");
         } catch (Exception ex) {
             return JsonResponse.reject(ex.getMessage());
         }
     }
+
+    @PostMapping(BASE_POST_LINK + "getReviewerInfo")
+    ReviewerResponse getReviewerInfo(@RequestBody String email) {
+        return reviewerService.getReviewerInfo(email);
     }
+}
