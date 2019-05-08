@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthGuardService} from '../../../services/auth/auth-guard.service';
 import {arrPostProduct} from '../../../services/local_database/post-product';
 
@@ -10,8 +10,9 @@ import {arrPostProduct} from '../../../services/local_database/post-product';
 export class HomeCompanyComponent implements OnInit {
 
   constructor(private authGuard: AuthGuardService) { }
-  myData = arrPostProduct;
-
+  private lstItem: any;
+  @Input('items') lstPro: any;
+  private myData = [];
   ngOnInit() {
   }
 

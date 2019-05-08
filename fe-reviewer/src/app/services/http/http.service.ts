@@ -12,7 +12,10 @@ export class HttpService {
 
   // PRODUCT POST
   public getAllPost(): Observable<any> {
-    return this.http.get(URL_SERVER.postProduct + 'getAll', getHeader());
+    const reqHeader = new HttpHeaders({
+      'No-Auth': 'True',
+      'Content-Type': 'application/json'});
+    return this.http.get(URL_SERVER.token_unAu + 'getAll', {headers: reqHeader});
   }
 
   // RATING
@@ -34,6 +37,10 @@ export class HttpService {
   // PRODUCT
 
   public getAllProduct(): Observable<any> {
+
+    const reqHeader = new HttpHeaders({
+      'No-Auth': 'True',
+      'Content-Type': 'application/json'});
     return this.http.get(URL_SERVER.product + 'getAll', getHeader());
   }
 
@@ -53,12 +60,18 @@ export class HttpService {
   }
 
 
-  public postprofile(): Observable<any> {
-    return this.http.post(URL_SERVER.infoReviewer + 'updateReview', getHeader());
+  public updateInfoPro(uip): Observable<any> {
+    const data = JSON.stringify(uip);
+    return this.http.post(URL_SERVER.infoReviewer + 'updateReview', data, getHeader());
+  }
+
+  public changePass(cp): Observable<any> {
+    const data = JSON.stringify(cp);
+    return this.http.post(URL_SERVER.changePass + 'updatePassword', data, getHeader());
   }
 
   public getAllAdmin(): Observable<any>{
-    return this.http.get(URL_SERVER.admin + 'getAllAdmin',getHeader());
+    return this.http.get(URL_SERVER.admin + 'getAllAdmin', getHeader());
   }
 
 
@@ -92,6 +105,17 @@ export class HttpService {
 
     return this.http.post(URL_SERVER.postProduct + 'postProduct', input ,{headers: reqHeader});
   }
+
+  public getListTopRating() {
+    const reqHeader = new HttpHeaders({
+      'No-Auth': 'True',
+      'Content-Type': 'application/json'});
+    return this.http.get(URL_SERVER.token_unAu + 'getListTopRating',  {headers: reqHeader});
+  }
+
+  public getDetailCompany(idCompany: string) {
+    return this.http.post(URL_SERVER.company + 'getCompanyById', idCompany, getHeader());
+}
 
 
 }

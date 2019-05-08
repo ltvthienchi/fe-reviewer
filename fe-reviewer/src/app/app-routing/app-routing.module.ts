@@ -35,8 +35,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/home', pathMatch: 'full'},
       { path: 'home', component: HomeComponent},
-      { path: 'company', component: CompanyComponent},
-      { path: 'company/detail/:id', component: DetailCompanyComponent},
+      { path: 'company/:id', component: CompanyComponent},
       { path: 'company/view-history', component: ViewHistoryCompanyComponent},
       { path: 'user-update-page', component: UserUpdatePageComponent, canActivate: [AuthGuard]},
       { path: 'feedback', component: FeedbackReviewerComponent, canActivate: [AuthGuard]},

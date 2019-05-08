@@ -55,5 +55,9 @@ public class CompanyService {
         String idImage = companyRepository.findByIdCompany(idCompany).getImgAvatarCompany();
         return imageRepository.findByIdImage(idImage).getImgPath();
     }
+
+    public Company getCompanyById(String idCompany) {
+        return companyRepository.findByIdCompany(idCompany);
+    }
 }
 

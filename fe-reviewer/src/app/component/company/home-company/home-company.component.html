@@ -1,27 +1,8 @@
-<!-- menu company -->
-<div class="menucpn">
-  <div class="row" style="padding-left: 5px">
-    <div *ngIf="checkAuthGuard() && !isCommpanyAccount()">
-      <button class="btn btn-outline-info btnmargin margin-left">
-        <i class="fas fa-plus-circle" *ngIf="true"> Subscribe</i>
-        <i class="fas fa-minus-circle" *ngIf="false"> Subscribe</i>
-      </button>
-    </div>
-    <div *ngIf="checkAuthGuard() && isCommpanyAccount()">
-      <button class="btn btn-outline-info btnmargin" data-toggle="modal" data-target="#post"><i
-        class="fas fa-edit"> Post Product</i></button>
-    </div>
-    <div style="padding-left: 5px" *ngIf="checkAuthGuard() && !isCommpanyAccount()">
-      <button class="btn btn-outline-success btnmargin  margin-right"><i class="fab fa-facebook-messenger">
-        Messenger</i></button>
-    </div>
-  </div>
-</div>
 <div class="row">
 
   <div class="col-8">
     <div class="boderbody-mid scroll-bar-hidden">
-      <div *ngFor="let item of myData">
+      <div *ngFor="let item of lstPro">
         <app-content-post [item]="item"></app-content-post>
       </div>
     </div>

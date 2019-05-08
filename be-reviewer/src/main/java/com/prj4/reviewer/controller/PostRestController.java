@@ -22,6 +22,7 @@ import java.util.List;
 public class PostRestController {
 
     private final static String BASE_POST_LINK = "/data/posts/";
+    private final static String NO_TOKEN = "/signup/";
 
     @Autowired
     PostService postService;
@@ -39,12 +40,15 @@ public class PostRestController {
      ImageService imageService;
 
     @Autowired
+    CreatePostResponseService createPostResponseService;
+
+    @Autowired
     GenerateId generateId;
 
-    @GetMapping(BASE_POST_LINK + "getAll")
+    @GetMapping(NO_TOKEN + "getAll")
     public List<PostResponse> getAll() {
         List<Post> lstPost = postService.getAllPostByDtCreated();
-        return createListPostReponse(lstPost);
+        return createPostResponseService.createListPostReponse(lstPost);
     }
 
     @PostMapping(BASE_POST_LINK + "postProduct")
@@ -91,25 +95,7 @@ public class PostRestController {
     @GetMapping(BASE_POST_LINK + "getAllByComId")
     public List<PostResponse> getAllByComId(@RequestBody String idCompany) {
         List<Post> lstPost = postService.getAllPostByComId(idCompany);
-        return createListPostReponse(lstPost);
-    }
-
-    public List<PostResponse> createListPostReponse(List<Post> lstPost) {
-        List<PostResponse> lstPostResponse= new ArrayList<>();
-        for(Post p : lstPost) {
-            Product product = productService.getProductById(p.getIdProduct());
-            String imgPost = postService.getImagePost(p.getIdImage());
-            String nameCompany = companyService.getNameCompanyById(p.getIdCompany());
-            String avatarCompany = companyService.getImageAvaComp(p.getIdCompany());
-            PostResponse postResponse= new PostResponse(p.getIdPostProduct(), p.getIdProduct(), p.getIdCompany(), nameCompany,
-                    p.getContentPost(), avatarCompany, imgPost, product.getAvgDisplay(), product.getAvgPerformance(),
-                    product.getAvgCamera(),product.getAvgBattery(), product.getAvgDesign(), 0,
-                    product.getInfoBattery(), product.getInfoDisplay(), product.getInfoPerformance(),
-                    product.getInfoDesign(),product.getInfoCamera(), p.getDtCreated());
-            lstPostResponse.add(postResponse);
-
-        }
-        return lstPostResponse;
+        return createPostResponseService.createListPostReponse(lstPost);
     }
 
 

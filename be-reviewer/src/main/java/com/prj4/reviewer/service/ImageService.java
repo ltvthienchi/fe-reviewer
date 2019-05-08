@@ -13,4 +13,7 @@ public class ImageService {
     public void saveImage(Images img) {
         imagesRepository.save(img);
     }
+    public String getImagePathById(String idImage) {
+        return imagesRepository.findByIdImage(idImage).getImgPath();
+    }
 }

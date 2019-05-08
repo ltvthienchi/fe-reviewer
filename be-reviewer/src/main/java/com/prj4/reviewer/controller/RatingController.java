@@ -4,18 +4,20 @@ import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Product;
 import com.prj4.reviewer.entity.RatingPost;
 import com.prj4.reviewer.request.RatingRequest;
+import com.prj4.reviewer.response.TopRatingResponse;
 import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-
 public class RatingController {
     private final static String BASE_POST_LINK = "/data/rating/";
+    private final static String NO_TOKEN = "/signup/";
 
     @Autowired
     RatingService ratingService;
@@ -109,6 +111,18 @@ public class RatingController {
         } else {
             return null;
         }
+    }
+
+    @GetMapping(NO_TOKEN + "getListTopRating")
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    public List<TopRatingResponse> getListTopRating() {
+        List<Product> lstPro = productService.getTopRating();
+        List<TopRatingResponse> lstTopRating = new ArrayList<>();
+        for(Product p : lstPro) {
+            TopRatingResponse topRate = new TopRatingResponse(p.getNameProduct(),p.getNumRating(),p.getIdProduct());
+            lstTopRating.add(topRate);
+        }
+        return lstTopRating;
     }
 
 }
