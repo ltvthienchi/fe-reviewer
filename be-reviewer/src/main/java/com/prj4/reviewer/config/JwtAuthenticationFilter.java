@@ -1,7 +1,9 @@
 package com.prj4.reviewer.config;
 
 
+import com.prj4.reviewer.entity.Admin;
 import com.prj4.reviewer.entity.User;
+import com.prj4.reviewer.service.AdminService;
 import com.prj4.reviewer.service.UserService;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureException;
@@ -29,6 +31,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private AdminService adminService;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
@@ -38,10 +42,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String header = req.getHeader(HEADER_STRING);
         String username = null;
         String authToken = null;
+        String role = null;
         if (header != null && header.startsWith(TOKEN_PREFIX)) {
             authToken = header.replace(TOKEN_PREFIX,"");
             try {
                 username = jwtTokenUtil.getUserNameFromToken(authToken);
+                role = jwtTokenUtil.getRoleFromToken(authToken);
             } catch (IllegalArgumentException e) {
                 logger.error("an error occured during getting username from token", e);
             } catch (ExpiredJwtException e) {
@@ -53,11 +59,24 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             logger.warn("couldn't find bearer string, will ignore the header");
         }
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            Object userDetails = null;
+            String email;
 
-            User userDetails = userService.findOne(username);
+            if (!role.equals("ROLE_ADMIN")) {
+                email = userService.findOne(username).getUserName();
+                userDetails = userService.findOne(username);
 
-            if (jwtTokenUtil.validateToken(authToken, userDetails)) {
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN")));
+
+            }
+            else
+            {
+                email = adminService.findByEmailAdmin(username).getEmailAdmin();
+                userDetails = adminService.findByEmailAdmin(username);
+            }
+
+            if (jwtTokenUtil.validateToken(authToken, email)) {
+                UsernamePasswordAuthenticationToken authentication =
+                        new UsernamePasswordAuthenticationToken(userDetails, null, Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN")));
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(req));
                 logger.info("authenticated user " + username + ", setting security context");
                 SecurityContextHolder.getContext().setAuthentication(authentication);
