@@ -19,6 +19,8 @@ export class CompanyComponent implements OnInit {
   private detailCompany: any;
   private lstPost: any;
   myData = [];
+  isPostProduct = false;
+  txtPostProduct = 'Post Product';
 
   constructor(private authGuard: AuthGuardService, private http: HttpService, private activatedRoute: ActivatedRoute) { }
 
@@ -96,5 +98,13 @@ export class CompanyComponent implements OnInit {
     return localStorage.getItem('role') === 'ROLE_COMPANY';
   }
 
-
+  changeIsPostProduct() {
+    if (!this.isPostProduct) {
+      this.isPostProduct = true;
+      this.txtPostProduct = 'Show timeline';
+    } else {
+      this.isPostProduct = false;
+      this.txtPostProduct = 'Post Product';
+    }
+  }
 }
