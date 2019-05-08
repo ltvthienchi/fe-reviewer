@@ -69,16 +69,16 @@
         <div class="card-body">
           <ul class="nav nav-pills nav-pills-primary nav-justified">
             <li class="nav-item">
-              <a href="javascript:void();" data-target="#profile" data-toggle="pill" class="nav-link active show"><i
+              <a href="#" data-target="#profile" data-toggle="pill" class="nav-link active show"><i
                 class="icon-user"></i> <span class="hidden-xs">Activity History</span></a>
             </li>
 
             <li class="nav-item">
-              <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i
+              <a href="#" data-target="#edit" data-toggle="pill" class="nav-link"><i
                 class="icon-note"></i> <span class="hidden-xs">Edit Profile</span></a>
             </li>
             <li class="nav-item">
-              <a href="javascript:void();" data-target="#changepassword" data-toggle="pill" class="nav-link"><i
+              <a href="#" data-target="#changepassword" data-toggle="pill" class="nav-link"><i
                 class="icon-note"></i> <span class="hidden-xs">Change Password</span></a>
             </li>
           </ul>
@@ -202,7 +202,7 @@
             </div>
 
             <div class="tab-pane" id="edit">
-              <form [formGroup]="updateInfoProfile" (submit)="submitUpdateInfo()">
+              <form [formGroup]="updateInfoProfile">
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">First name</label>
                   <div class="col-lg-9">
@@ -247,14 +247,14 @@
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Change Avatar</label>
                   <div class="col-lg-9">
-                    <input type="file">
+                    <input type="file" (change)="handleFileInput($event.target.files, 'avatar')">
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Change Backgroud</label>
+                  <label class="col-lg-3 col-form-label form-control-label">Change Background</label>
                   <div class="col-lg-9">
-                    <input type="file">
+                    <input type="file" (change)="handleFileInput($event.target.files, 'background')">
                   </div>
                 </div>
 
@@ -262,14 +262,14 @@
                   <label class="col-lg-3 col-form-label form-control-label"></label>
                   <div class="col-lg-9">
                     <input type="reset" class="btn btn-secondary" value="Cancel">
-                    <input type="submit" class="btn btn-primary" (click)="test()" value="Save Changes">
+                    <input type="button" class="btn btn-primary" (click)="submitUpdateInfo()" value="Save Changes">
                   </div>
                 </div>
               </form>
             </div>
 
             <div class="tab-pane" id="changepassword">
-              <form [formGroup]="changePass" (submit)="submitchangePass()">
+              <form [formGroup]="changePass" (submit)="submitChangePass()">
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Your Current Password</label>
                   <div class="col-lg-9">

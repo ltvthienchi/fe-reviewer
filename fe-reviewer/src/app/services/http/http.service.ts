@@ -66,13 +66,22 @@ export class HttpService {
     input.append('firstName', data.firstName);
     input.append('lastName', data.lastName);
     input.append('dob', data.dob);
-    input.append('gender', data.gender);
-    input.append('avaReviewer', data.avaReviewer, data.avaReviewer.name);
-    input.append('panelReviewer', data.panelReviewer, data.panelReviewer.name);
+    input.append('gender', JSON.stringify(data.gender));
+    if (data.avaReviewer) {
+      input.append('avaReviewer', data.avaReviewer, data.avaReviewer.name);
+    } else {
+      input.append('avaReviewer', null);
+    }
+    if (data.panelReviewer) {
+      input.append('panelReviewer', data.panelReviewer, data.panelReviewer.name);
+    } else {
+      input.append('panelReviewer', null);
+    }
     const auth_token = localStorage.getItem('userToken');
     const reqHeader = new HttpHeaders({
       'Authorization': 'Bearer ' + auth_token
     });
+    console.log('====> here!', data);
     return this.http.post(URL_SERVER.infoReviewer + 'updateReview', input, { headers: reqHeader});
   }
 
