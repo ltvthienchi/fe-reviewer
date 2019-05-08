@@ -41,15 +41,15 @@ public class AdminRestController {
     }
 
     @PostMapping(BASE_POST_LINK + "editAdmin")
-    public JsonResponse<String> editAdmin(AdminRequest adminRequest){
+    public JsonResponse<String> editAdmin(@RequestBody @Valid AdminRequest adminRequest){
 
         Admin admin = adminService.findByIdAdmin(adminRequest.getIdAdmin());
         // admin.setActive(adminRequest.isActive());
         admin.setDobAdmin(adminRequest.getDobAdmin());
         admin.setEmailAdmin(adminRequest.getEmailAdmin());
         admin.setFullNameAdmin(adminRequest.getFullNameAdmin());
-        String encodedPass = new BCryptPasswordEncoder().encode(adminRequest.getPassAdmin());
-        admin.setPassAdmin(encodedPass);
+       // String encodedPass = new BCryptPasswordEncoder().encode(adminRequest.getPassAdmin());
+       // admin.setPassAdmin(encodedPass);
         admin.setAddressAdmin(adminRequest.getAddressAdmin());
         admin.setPhoneAdmin(adminRequest.getPhoneAdmin());
         adminService.editAdmin(admin);

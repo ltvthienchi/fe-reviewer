@@ -10,6 +10,7 @@ import { NotifierService } from 'angular-notifier';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpService } from '../../../services/http/http.service';
 import { Admin } from '../../../model/admin.model';
+import { parse } from 'url';
 @Component({
   selector: 'app-manage-admin',
   templateUrl: './manage-admin.component.html',
@@ -46,14 +47,8 @@ export class ManageAdminComponent implements OnInit {
       passAdmin: ['', [validatorRequired]]
       
     });
-
-    this.httpService.getAllAdmin().subscribe((data: any) => {
-      
-     // console.log(data);
-      this.listAdmin = data;
-      console.log(this.listAdmin);
-      
-    });
+    this.loadData();
+    
   }
 
   public showNotification(type: string, message: string): void {
@@ -61,15 +56,43 @@ export class ManageAdminComponent implements OnInit {
   }
 
   public editAdmin(admin : any) {
-    admin.dobAdmin
+    
+    const dob = new Date(admin.dobAdmin);
+      const year = dob.getFullYear();
+      const month = dob.getMonth() + 1 <= 9 ? `0${dob.getMonth() + 1}` : dob.getMonth() + 1;
+      const date = dob.getDate() <= 9 ? `0${dob.getDate()}` : dob.getDate();
+      const parseDob = `${year}-${month}-${date}`;
+
     this.adminForm.setValue(admin);
-    this.adminForm.setValue({
-      dobAdmin: admin.dobAdmin.toISOString().slice(0,10)
-    })
+   
+    this.adminForm.controls['dobAdmin'].setValue(parseDob);
 
     this.dataEdit = admin;
     console.log(this.adminForm);
     //console.log(this.dataEdit);
+  }
+
+   submitEdit(){
+    const item = this.adminForm.value;
+    console.log(item);
+    this.httpService.editAdmin(item).subscribe((data: any) => {
+      if (data.status === 'SUCCESS') {
+        this.showNotification( 'success', 'Update Admin successfully' );
+        this.loadData();
+        
+      } else {
+        this.showNotification( 'error', data.result );
+      }
+    });
+  }
+  public loadData(){
+    this.httpService.getAllAdmin().subscribe((data: any) => {
+      
+      // console.log(data);
+       this.listAdmin = data;
+      // console.log(this.listAdmin);
+       
+     });
   }
 
 }
