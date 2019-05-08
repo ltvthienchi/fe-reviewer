@@ -30,10 +30,10 @@
           
 
           <td>{{admin.fullNameAdmin}}</td>
-          <td>{{Admin.dobAdmin}}</td>
-          <td>thomashardy@mail.com</td>
-          <td>89 Chiaroscuro Rd, Portland, USA</td>
-          <td>(171) 555-2222</td>
+          <td>{{admin.dobAdmin |  date:'dd/MM/yyyy'}}</td>
+          <td>{{admin.emailAdmin}}</td>
+          <td>{{admin.addressAdmin}}</td>
+          <td>{{admin.phoneAdmin}}</td>
           <td>
             <a href="#editAdminModal" class="edit" data-toggle="modal">
               <i class="fas fa-pen" data-toggle="tooltip"

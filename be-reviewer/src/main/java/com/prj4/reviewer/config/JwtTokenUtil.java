@@ -10,8 +10,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.function.Function;
 
 import static com.prj4.reviewer.core.Constants.ACCESS_TOKEN_VALIDITY_SECONDS;
@@ -22,6 +24,14 @@ public class JwtTokenUtil implements Serializable {
 
     public String getUserNameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
+    }
+    public String getRoleFromToken(String token) {
+        ArrayList<Object> lst = (ArrayList<Object>)getAllClaimsFromToken(token).get("scopes");
+        LinkedHashMap<String,String> link = (LinkedHashMap<String,String>)lst.get(0);
+        return link.get("authority");
+        //return lst.get(0).getAuthority();
+        //return link.get("authority");
+        //return null;
     }
 
     public Date getExpirationDateFromToken(String token) {
@@ -75,10 +85,10 @@ public class JwtTokenUtil implements Serializable {
                 .compact();
     }
 
-    public Boolean validateToken(String token, User user) {
+    public Boolean validateToken(String token, String email) {
         final String username = getUserNameFromToken(token);
         return (
-                username.equals(user.getUserName())
+                username.equals(email)
                         && !isTokenExpired(token));
     }
 
