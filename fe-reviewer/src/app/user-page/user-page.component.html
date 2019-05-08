@@ -55,7 +55,7 @@
                   <i class="fas fa-calendar-alt"></i>
                 </div>
                 <div class="list-details">
-                  <span>{{dobReviewer}}</span>
+                  <span>{{dobReviewer | ddmmyyyy}}</span>
                   <small>Day of Birth</small>
                 </div>
               </li>
@@ -74,16 +74,6 @@
                     <small class="mb-0 font-weight-bold">Views</small>
                 </div>
             </div>-->
-          </div>
-          <div class="card-footer text-center">
-            <a href="javascript:void()" class="btn-social btn-facebook waves-effect waves-light m-1"><i
-              class="fa fa-facebook"></i></a>
-            <a href="javascript:void()" class="btn-social btn-google-plus waves-effect waves-light m-1"><i
-              class="fa fa-google-plus"></i></a>
-            <a href="javascript:void()" class="list-inline-item btn-social btn-behance waves-effect waves-light"><i
-              class="fa fa-behance"></i></a>
-            <a href="javascript:void()" class="list-inline-item btn-social btn-dribbble waves-effect waves-light"><i
-              class="fa fa-dribbble"></i></a>
           </div>
         </div>
       </div>
@@ -227,34 +217,45 @@
             </div>
 
             <div class="tab-pane" id="edit">
-              <form>
+              <form [formGroup]="updateInfoProfile" (submit)="submitUpdateInfo()">
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">First name</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="text" value="{{firstName}}">
+                    <input class="form-control" type="text" value="{{firstName}}" formControlName="firstName">
+                    <app-text-alert [field]="'firstName'" [invalidField]="'firstName'" style="width: 100%"
+                                    [form]="updateInfoProfile"
+                                    [invalidForm]="validatorForm.updateInfoProfile"></app-text-alert>
+
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Last name</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="text" value="{{lastName}}">
+                    <input class="form-control" type="text" value="{{lastName}}" formControlName="lastName">
+                    <app-text-alert [field]="'lastName'" [invalidField]="'lastName'" style="width: 100%"
+                                    [form]="updateInfoProfile"
+                                    [invalidForm]="validatorForm.updateInfoProfile"></app-text-alert>
+
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Day of Birth</label>
                   <div class="col-lg-9">
-                    <input type="date" name="bday" value="{{dobReviewer}}">
+                    <input type="date" name="bday" [value]="dobReviewer" (blur)="test()" formControlName="dobReviewer">
+                    <!--                    <app-text-alert [field]="'dobReviewer'" [invalidField]="'dobReviewer'" style="width: 100%"-->
+                    <!--                                    [form]="updateInfoProfile" [invalidForm]="validatorForm.updateInfoProfile"></app-text-alert>-->
+
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Gender</label>
                   <div class="col-lg-9">
-                  <label class="radio-inline">
-                    <input type="radio" name="gender" checked> Male
-                  </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="gender"> Female
-                  </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="gender" checked> Male
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="gender"> Female
+                    </label>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -286,39 +287,44 @@
             </div>
 
             <div class="tab-pane" id="changepassword">
-              <form method="post" oninput='pass2.setCustomValidity(pass2.value != pass1.value ? "Passwords do not match." : "")'>
+              <form [formGroup]="changePass" (submit)="submitchangePass()">
                 <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">Fill Your Password</label>
+                  <label class="col-lg-3 col-form-label form-control-label">Email</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="password" value="">
+                    <input class="form-control" type="email" value="{{emailReviewer}}" disabled>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">New Password</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="password" value="" name="pass1">
+                    <input class="form-control" type="password" value="" formControlName="newPass">
+                    <app-text-alert [field]="'newPass'" [invalidField]="'newPass'"
+                                    [form]="changePass" [invalidForm]="validatorForm.changePass"></app-text-alert>
+
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Confirm New Password</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="password" value="" name="pass2">
+                    <input class="form-control" type="password" value="" formControlName="confNewPass">
+                    <app-text-alert [field]="'confNewPass'" [invalidField]="'confNewPass'"
+                                    [form]="changePass" [invalidForm]="validatorForm.changePass"></app-text-alert>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label"></label>
                   <div class="col-lg-9">
                     <input type="reset" class="btn btn-secondary" value="Cancel">
-                    <input type="button" class="btn btn-primary" value="Save Changes">
+                    <input type="submit" class="btn btn-primary" value="Save Changes">
                   </div>
                 </div>
               </form>
-            </div>
 
+
+            </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
