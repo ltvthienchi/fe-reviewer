@@ -53,12 +53,18 @@ export class HttpService {
   }
 
 
-  public postprofile(): Observable<any> {
-    return this.http.post(URL_SERVER.infoReviewer + 'updateReview', getHeader());
+  public updateInfoPro(uip): Observable<any> {
+    const data = JSON.stringify(uip);
+    return this.http.post(URL_SERVER.infoReviewer + 'updateReview', data, getHeader());
+  }
+
+  public changePass(cp): Observable<any> {
+    const data = JSON.stringify(cp);
+    return this.http.post(URL_SERVER.changePass + 'updatePassword', data, getHeader());
   }
 
   public getAllAdmin(): Observable<any>{
-    return this.http.get(URL_SERVER.admin + 'getAllAdmin',getHeader());
+    return this.http.get(URL_SERVER.admin + 'getAllAdmin', getHeader());
   }
 
 
