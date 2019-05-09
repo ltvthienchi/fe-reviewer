@@ -22,6 +22,7 @@ public class PostResponse implements Serializable {
     private String infoDesign;
     private String infoCamera;
     private Date dtCreated;
+    private String productName;
 
   public PostResponse() {}
 
@@ -29,7 +30,7 @@ public class PostResponse implements Serializable {
                         String avatarCompany, String imgPost, float avgDisplay, float avgPerformance,
                         float avgCamera, float avgBattery, float avgDesign, int totalComment,
                         String infoBattery, String infoDisplay, String infoPerformance, String infoDesign,
-                        String infoCamera, Date dtCreated) {
+                        String infoCamera, Date dtCreated, String productName) {
         this.idPostProduct = idPostProduct;
         this.idProduct = idProduct;
         this.idCompany = idCompany;
@@ -49,6 +50,7 @@ public class PostResponse implements Serializable {
         this.infoDesign = infoDesign;
         this.infoCamera = infoCamera;
         this.dtCreated = dtCreated;
+        this.productName = productName;
     }
 
     public String getIdPostProduct() {
@@ -201,5 +203,13 @@ public class PostResponse implements Serializable {
 
     public void setDtCreated(Date dtCreated) {
         this.dtCreated = dtCreated;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }
