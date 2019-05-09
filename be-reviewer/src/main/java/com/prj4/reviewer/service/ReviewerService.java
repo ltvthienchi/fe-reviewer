@@ -80,6 +80,7 @@ public class ReviewerService {
         reviewer.setGender(gender);
         reviewer.setFirstName(firstName);
         reviewer.setLastName(lastName);
+        reviewer.setFullName(firstName + " " + lastName);
         reviewerRepository.save(reviewer);
         if (avaReviewer != null) {
             Images images = imageRepository.findByIdImage(reviewer.getImgAvatar());

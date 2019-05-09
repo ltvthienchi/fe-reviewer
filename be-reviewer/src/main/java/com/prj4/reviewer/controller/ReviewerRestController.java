@@ -3,7 +3,9 @@ package com.prj4.reviewer.controller;
 import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Reviewer;
+import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.reporsitory.ReviewerRepository;
+import com.prj4.reviewer.request.ChangePasswordRequest;
 import com.prj4.reviewer.request.CommentRequest;
 import com.prj4.reviewer.request.FeedbackCompanyRequest;
 import com.prj4.reviewer.request.ReviewerRequest;
@@ -15,6 +17,7 @@ import com.prj4.reviewer.service.PostService;
 import com.prj4.reviewer.service.ReviewerService;
 import com.prj4.reviewer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -66,8 +69,8 @@ public class ReviewerRestController {
             @RequestParam("lastName") String lastName,
             @RequestParam("dob") String dob,
             @RequestParam("gender") String gender,
-            @RequestParam("avaReviewer") MultipartFile avaReviewer,
-            @RequestParam("panelReviewer") MultipartFile panelReviewer
+            @RequestParam(value = "avaReviewer", required = false) MultipartFile avaReviewer,
+            @RequestParam(value = "panelReviewer", required = false) MultipartFile panelReviewer
             ) {
 
         try {
@@ -84,4 +87,24 @@ public class ReviewerRestController {
     ReviewerResponse getReviewerInfo(@RequestBody String email) {
         return reviewerService.getReviewerInfo(email);
     }
+
+    @PostMapping(BASE_POST_LINK + "updatePassword")
+    public JsonResponse<String> updatePassword(@RequestBody ChangePasswordRequest changePasswordRequest) {
+        String encodedNewPass = new BCryptPasswordEncoder().encode(changePasswordRequest.getNewPassword());
+        String email = changePasswordRequest.getEmail();
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        User user = userService.findOne(email);
+        if (encoder.matches(changePasswordRequest.getOldPassword(), user.getPassAccount())) {
+            try {
+                user.setPassAccount(encodedNewPass);
+                userService.save(user);
+                return JsonResponse.accept("Success");
+            } catch (Exception ex) {
+                return JsonResponse.reject(ex.getMessage());
+            }
+        } else {
+            return JsonResponse.reject("Old password is wrong!!");
+        }
+    }
+
 }

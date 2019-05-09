@@ -269,28 +269,30 @@
             </div>
 
             <div class="tab-pane" id="changepassword">
-              <form [formGroup]="changePass" (submit)="submitChangePass()">
+              <form [formGroup]="ChangePassForm" (submit)="submitChangePass()">
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Your Current Password</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="password">
+                    <input class="form-control" type="password" formControlName="oldPass">
+                    <app-text-alert [field]="'oldPass'" [invalidField]="'oldPass'"
+                                    [form]="ChangePassForm" [invalidForm]="validatorForm.ChangePassForm"></app-text-alert>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">New Password</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="password" value="" formControlName="newPass">
-                    <app-text-alert [field]="'newPass'" [invalidField]="'newPass'"
-                                    [form]="changePass" [invalidForm]="validatorForm.changePass"></app-text-alert>
+                    <input class="form-control" type="password" formControlName="password">
+                    <app-text-alert [field]="'password'" [invalidField]="'password'"
+                                    [form]="ChangePassForm" [invalidForm]="validatorForm.ChangePassForm"></app-text-alert>
 
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Confirm New Password</label>
                   <div class="col-lg-9">
-                    <input class="form-control" type="password" value="" formControlName="confNewPass">
-                    <app-text-alert [field]="'confNewPass'" [invalidField]="'confNewPass'"
-                                    [form]="changePass" [invalidForm]="validatorForm.changePass"></app-text-alert>
+                    <input class="form-control" type="password" formControlName="confirmPassword">
+                    <app-text-alert [field]="'confirmPassword'" [invalidField]="'confirmPassword'"
+                                    [form]="ChangePassForm" [invalidForm]="validatorForm.ChangePassForm"></app-text-alert>
                   </div>
                 </div>
                 <div class="form-group row">

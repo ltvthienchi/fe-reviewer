@@ -3,7 +3,6 @@ import {HttpService} from '../services/http/http.service';
 
 import {
   validatorConfirmPassword,
-  validatorEmail,
   validatorName,
   validatorPassword,
   validatorRequired
@@ -23,9 +22,8 @@ import {ChangePass} from '../model/changePass.model';
 export class UserPageComponent implements OnInit {
 
   private notifier: NotifierService;
-  normalUserForm: FormGroup;
   updateInfoProfile: FormGroup;
-  changePass: FormGroup;
+  ChangePassForm: FormGroup;
   private emailReviewer: string;
   private firstName: string;
   private fullName: string;
@@ -35,7 +33,7 @@ export class UserPageComponent implements OnInit {
   private changeAvar;
   private changeBackground;
   validatorForm = {
-    changePass: true,
+    ChangePassForm: true,
     updateInfoProfile: true
   };
 
@@ -46,9 +44,10 @@ export class UserPageComponent implements OnInit {
     this.dobReviewer = '';
     this.emailReviewer = localStorage.getItem('email');
     this.fullName = localStorage.getItem('fullName');
-    this.changePass = this.formBuilder.group({
-      newPass: ['', [validatorPassword]],
-      confNewPass: ['', [validatorConfirmPassword]],
+    this.ChangePassForm = this.formBuilder.group({
+      oldPass: ['', [validatorPassword]],
+      password: ['', [validatorPassword]],
+      confirmPassword: ['', [validatorConfirmPassword]],
     });
     this.updateInfoProfile = this.formBuilder.group({
       firstName: ['', [validatorRequired, validatorName]],
@@ -85,14 +84,16 @@ export class UserPageComponent implements OnInit {
         firstName: this.updateInfoProfile.value.firstName,
         lastName: this.updateInfoProfile.value.lastName,
         dob: this.updateInfoProfile.value.dobReviewer,
-        gender: this.updateInfoProfile.value.gender,
+        gender: this.updateInfoProfile.value.genderReviewer,
         avaReviewer: this.changeAvar,
         panelReviewer: this.changeBackground
       };
+      this.firstName = this.updateInfoProfile.value.firstName;
+      this.lastName = this.updateInfoProfile.value.lastName;
       this.httpService.updateInfoPro(updateInPro).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
-          this.showNotification( 'success', 'Send feedback successfully' );
-          this.updateInfoProfile.reset();
+          this.showNotification( 'success', 'Update Profile successfully' );
+          localStorage.setItem('fullName', this.firstName + ' ' + this.lastName);
         } else {
           this.showNotification( 'error', data.result );
         }
@@ -114,21 +115,21 @@ export class UserPageComponent implements OnInit {
   }
 
   submitChangePass() {
-    if (this.changePass.status === 'INVALID') {
-      this.validatorForm.changePass = false;
-      console.log(this.changePass);
+    if (this.ChangePassForm.status === 'INVALID') {
+      this.validatorForm.ChangePassForm = false;
+      console.log(this.ChangePassForm);
     } else {
-      this.validatorForm.changePass = true;
+      this.validatorForm.ChangePassForm = true;
       // this.userService.registerUser(this.validatorForm.value)
       const changePass: ChangePass = {
-        newPass: this.normalUserForm.value.password,
-        email: localStorage.getItem('email'),
+        newPassword: this.ChangePassForm.value.password,
+        oldPassword: this.ChangePassForm.value.oldPass,
+        email: localStorage.getItem('email')
 
       };
       this.httpService.changePass(changePass).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
-          this.showNotification( 'success', 'Send feedback successfully' );
-          this.changePass.reset();
+          this.showNotification( 'success', 'Update Password successfully!!!' );
         } else {
           this.showNotification( 'error', data.result );
         }
