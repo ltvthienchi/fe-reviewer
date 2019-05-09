@@ -1,15 +1,16 @@
 package com.prj4.reviewer.request;
 
 public class ChangePasswordRequest {
-    private String email;
+    private String oldPassword;
     private String newPassword;
+    private String email;
 
-    public String getEmail() {
-        return email;
+    public String getOldPassword() {
+        return oldPassword;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
 
     public String getNewPassword() {
@@ -18,5 +19,13 @@ public class ChangePasswordRequest {
 
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

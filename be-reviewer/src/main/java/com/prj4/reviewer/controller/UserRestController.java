@@ -34,9 +34,6 @@ public class UserRestController {
     ReviewerService reviewerService;
 
     @Autowired
-    ChangePasswordService changePasswordService;
-
-    @Autowired
     GenerateId generateId;
 
     @Autowired
@@ -91,34 +88,6 @@ public class UserRestController {
         }
 
     }
-
-    @PostMapping(BASE_POST_LINK + "updatePassword")
-    public JsonResponse<String> updatePassword(@RequestBody @Valid ChangePasswordRequest changePasswordRequest) {
-        String encodedPass = new BCryptPasswordEncoder().encode(changePasswordRequest.getNewPassword());
-        String email = changePasswordRequest.getEmail();
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        //        // Call service
-        try {
-            changePasswordService.changePassword(email, encodedPass);
-            return JsonResponse.accept("Success");
-        } catch (Exception ex) {
-            return JsonResponse.reject(ex.getMessage());
-        }
-//
-//            if (encoder.matches(UseRequest., user.getPassAccount())) {
-//                String fullName = null;
-//                if (user.getTypeAccount() == 1) {
-//                    fullName = companyService.getFullName(user.getIdAccount());
-//                } else {
-//                    fullName = reviewerService.getFullName(user.getIdAccount());
-//                }
-//                final String token = jwtTokenUtil.generateToken(user, user.getTypeAccount(), user.isActive(), fullName);
-//                return JsonResponse.accept(token);
-//            } else {
-//                return JsonResponse.reject("Password is not correct!!!");
-//            }
-    }
-
 
     public void sendHtmlEmail(String idAccount) throws MessagingException {
 
