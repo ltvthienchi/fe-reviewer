@@ -8,5 +8,4 @@ export class Admin {
     addressAdmin: string;
     phoneAdmin: string;
     dtCreated: Date;
-    aaa:any;
   }
