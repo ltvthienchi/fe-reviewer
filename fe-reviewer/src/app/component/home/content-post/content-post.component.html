@@ -93,17 +93,17 @@
     </div>
 
     <div class="comment">
-      <app-comment-post [idProduct]="item.idProduct" ></app-comment-post>
+      <app-comment-post [idProduct]="item.idProduct" (itemReply)="getItemReply($event)" ></app-comment-post>
     </div>
     
     <div class="comment clearfix">
       <div class="avatar-comment">
-        <label for="inputComment" class="m-0">
+        <label [id]="'label'+item.idProduct" [for]="'inputComment'+item.idProduct" class="m-0">
           <img [src]="item.avatarCompany"/>
         </label>
       </div>
       <div class="input-comment">
-        <input id="inputComment" class="form-control" type="text" [(ngModel)]="valueComment" (keydown)="postComment($event)"/>
+        <input [id]="'inputComment'+item.idProduct" class="form-control" type="text" [(ngModel)]="valueComment" (keydown)="postComment($event)"/>
       </div>
     </div>
   </div>

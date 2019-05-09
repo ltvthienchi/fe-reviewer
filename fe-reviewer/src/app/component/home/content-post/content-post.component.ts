@@ -19,6 +19,7 @@ export class ContentPostComponent implements OnInit {
 
   @Input() item;
   valueComment = '';
+  curItemReply;
   dataDetail = {
     infoBattery: {
       capacity: '',
@@ -204,10 +205,26 @@ export class ContentPostComponent implements OnInit {
         content: this.valueComment,
         dateCreate: new Date()
       };
+      const isCheckReply = this.valueComment.split('@')[1].split('.')[0];
+      console.log(isCheckReply === this.curItemReply.idComment);
+      if (isCheckReply === this.curItemReply.idComment) {
+        newComment.isReply = true;
+        newComment.idReply = this.curItemReply.idComment;
+      }
+
       this.http.createComment(newComment).subscribe(res => {
         console.log(res);
         this.valueComment = '';
       });
     }
+  }
+
+  getItemReply(itemReply) {
+    this.valueComment = '';
+    this.curItemReply = itemReply;
+    this.valueComment = '@'+this.curItemReply.idComment + '. ';
+    const idInput = '#label'+this.item.idProduct;
+    $(idInput).click();
+    console.log(itemReply);
   }
 }

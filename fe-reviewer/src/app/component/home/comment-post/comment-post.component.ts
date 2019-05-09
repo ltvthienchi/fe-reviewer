@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpService} from '../../../services/http/http.service';
 
 @Component({
@@ -9,6 +9,7 @@ import {HttpService} from '../../../services/http/http.service';
 export class CommentPostComponent implements OnInit {
 
   @Input() idProduct;
+  @Output() itemReply = new EventEmitter();
   arrTest:any = [];
   dataComment:any = [];
 
@@ -34,6 +35,10 @@ export class CommentPostComponent implements OnInit {
       this.dataComment = arr;
       console.log(this.dataComment);
     })
+  }
+
+  replyComment(item) {
+    this.itemReply.emit(item);
   }
 
 }

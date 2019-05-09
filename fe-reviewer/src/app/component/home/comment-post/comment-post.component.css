@@ -1,0 +1,49 @@
+.view-comment {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.view-comment .avatar-comment {
+  width: 7%;
+  float: left;
+  min-width: 50px;
+}
+
+.view-comment .avatar-comment img {
+  height: 38px;
+  border-radius: 90px;
+  border: 1px solid silver;
+  margin: 0 auto;
+}
+
+
+.view-comment .input-comment {
+  width: 88%;
+  float: left;
+}
+
+.view-comment .input-comment p:first-child {
+  min-height: 38px;
+  outline: none;
+  border-radius: 90px !important;
+  background: #f2f3f5;
+  padding: 10px 18px;
+  word-break: break-all;
+  /*display: flex;*/
+  /*align-items: center;*/
+}
+
+.view-comment .input-comment .btn-reply {
+  margin: 0 0 5px 20px;
+  font-size: 14px;
+}
+
+.view-comment .input-comment .btn-reply:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.view-comment .input-comment .username {
+  font-weight: bold;
+  margin-right: 10px;
+}

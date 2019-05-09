@@ -262,29 +262,30 @@
   border-top: 1px solid silver;
 }
 
-.avatar-comment {
-  width: 10%;
+.comment .avatar-comment {
+  width: 7%;
   float: left;
+  min-width: 50px;
 }
 
-.avatar-comment img {
+.comment .avatar-comment img {
   height: 38px;
   border-radius: 90px;
   border: 1px solid silver;
   margin: 0 auto;
 }
 
-.input-comment {
+.comment .input-comment {
   width: 90%;
   float: left;
 }
 
-.input-comment input {
+.comment .input-comment input {
   outline: none;
   border-radius: 90px !important;
 }
 
-.input-comment input:focus {
+.comment .input-comment input:focus {
   box-shadow: none;
 }
 
