@@ -17,8 +17,7 @@ export class CompanyComponent implements OnInit {
   step = 0.5;
   private idCompany: string;
   private detailCompany: any;
-  private lstPost: any;
-  myData = [];
+  private lstPost = [];
   isPostProduct = false;
   txtPostProduct = 'Post Product';
 
@@ -42,9 +41,8 @@ export class CompanyComponent implements OnInit {
         this.detailCompany = data.company;
         data.lstPost.map(item => {
           item.idReviewer = localStorage.getItem('idUser');
-          this.myData.push(item);
+          this.lstPost.push(item);
         });
-        this.lstPost = this.myData;
       }
     });
   }
@@ -64,6 +62,16 @@ export class CompanyComponent implements OnInit {
     } else {
       this.isPostProduct = false;
       this.txtPostProduct = 'Post Product';
+      this.http.getDetailCompany(this.idCompany).subscribe( (data: any) => {
+        this.lstPost = [];
+        if (data) {
+          this.detailCompany = data.company;
+          data.lstPost.map(item => {
+            item.idReviewer = localStorage.getItem('idUser');
+            this.lstPost.push(item);
+          });
+        }
+      });
     }
   }
 }

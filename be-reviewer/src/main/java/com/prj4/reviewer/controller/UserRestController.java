@@ -20,6 +20,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -115,7 +116,7 @@ public class UserRestController {
     public JsonResponse<String> createUser(@RequestBody CommentRequest commentRequest) {
         String idComment = generateId.generateId("COMMENT_", new Date());
         boolean isReply = commentRequest.getIdReply() != null ? true : false;
-        Comment comment = new Comment(idComment, commentRequest.getIdPost(), commentRequest.getIdReviewer(),
+        Comment comment = new Comment(idComment, commentRequest.getIdProduct(), commentRequest.getIdReviewer(),
                 commentRequest.getIdReply(), isReply, commentRequest.getContent(), new Date());
         try {
             commentService.createComment(comment);
@@ -126,9 +127,9 @@ public class UserRestController {
     }
 
     @PostMapping(BASE_POST_LINK + "getCommentByProductId")
-    public JsonResponse<String> getCommentByProductId(@RequestBody String idProduct) {
-        commentService.getCommentByProductId(idProduct);
-        return null;
+    public List<Comment> getCommentByProductId(@RequestBody String idProduct) {
+        return commentService.getCommentByProductId(idProduct);
+//        return null;
     }
 }
 

@@ -1,0 +1,8 @@
+<div *ngFor="let item of dataComment">
+  <p style="color: blue">{{item.content}}</p>
+  <div *ngIf="item.children.length > 0">
+    <div *ngFor="let itemTwo of item.children">
+      <p style="color: red">{{itemTwo.content}}</p>
+    </div>
+  </div>
+</div>

@@ -4,15 +4,14 @@
       <img [src]="item.avatarCompany" alt="avatar"/>
     </div>
     <div class="info">
-      <p class="title txt-main"><a routerLink="/company/{{item.idCompany}}">{{item.nameCompany}}</a></p>
-      <p class="title-des">Top company</p>
+      <p class="title"><a class="txt-main" routerLink="/company/{{item.idCompany}}">{{item.nameCompany}}</a></p>
+      <p class="title-des">{{item.dtCreated | ddmmyyyy}}</p>
       <!--<span class="badge badge-primary">Iphone</span> <span class="badge badge-secondary">viet nam vo dich</span>-->
     </div>
   </div>
-
-
   <div class="body">
     <div class="content">
+      <h5 class="mb-2">{{item.nameProduct}}</h5>
       <p>{{item.content}}</p>
     </div>
     <div class="image">
@@ -62,12 +61,6 @@
           </div>
         </div>
 
-<!--        <div class="col-2">-->
-<!--          <div class="number-rating comment">-->
-<!--            <p class="point">{{item.totalComment}}</p>-->
-<!--            <p class="description">Comment</p>-->
-<!--          </div>-->
-<!--        </div>-->
       </div>
     </div>
   </div>
@@ -98,102 +91,126 @@
       <!--<textarea placeholder="Them binh luan"></textarea>-->
       <!--</div>-->
     </div>
+
+    <div class="comment">
+      <app-comment-post [idProduct]="item.idProduct" ></app-comment-post>
+    </div>
+    
+    <div class="comment clearfix">
+      <div class="avatar-comment">
+        <label for="inputComment" class="m-0">
+          <img [src]="item.avatarCompany"/>
+        </label>
+      </div>
+      <div class="input-comment">
+        <input id="inputComment" class="form-control" type="text" [(ngModel)]="valueComment" (keydown)="postComment($event)"/>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Information Detail</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Information Detail Of {{item.nameProduct}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p class="detail-table-header">Platform</p>
-        <p class="detail-table-content">
-          <span>OS</span>
-          <span>{{dataDetail.infoPerformance.platform.os}}</span>
-        </p>
-        <p class="detail-table-content">
-          <span>Chip</span>
-          <span>{{dataDetail.infoPerformance.platform.chip}}</span>
-        </p>
-        <p class="detail-table-content">
-          <span>CPU</span>
-          <span>{{dataDetail.infoPerformance.platform.cpu}}</span>
-        </p>
-        <p class="detail-table-content">
-          <span>GPU</span>
-          <span>{{dataDetail.infoPerformance.platform.gpu}}</span>
-        </p>
-        <p class="detail-table-header">Memory</p>
-        <p class="detail-table-content">
-          <span>Card</span>
-          <span>{{dataDetail.infoPerformance.memory.card}}</span>
-        </p>
-        <p class="detail-table-content">
-          <span>Internal</span>
-          <span>{{dataDetail.infoPerformance.memory.internal}}</span>
-        </p>
-        <p class="detail-table-header">Design</p>
-        <p class="detail-table-content">
-          <span>Dimensions</span>
-          <span>{{dataDetail.infoDesign.dimensions}}</span>
-        </p>
-        <p class="detail-table-content">
-          <span>Weight</span>
-          <span>{{dataDetail.infoDesign.weight}}</span>
-        </p>
-        <p class="detail-table-header">Display</p>
-        <p class="detail-table-content">
-          <span>Resolution</span>
-          <span>{{dataDetail.infoDisplay.resolution}}</span>
-        </p>
-        <p class="detail-table-content">
-          <span>Size</span>
-          <span>{{dataDetail.infoDisplay.size}}</span>
-        </p>
-        <p class="detail-table-content">
-          <span>Type</span>
-          <span>{{dataDetail.infoDisplay.type}}</span>
-        </p>
-        <p class="detail-table-header">Camera Main</p>
-        <p class="detail-table-content">
-          <span>Modules</span>
-          <span>{{dataDetail.infoCamera.main.modules}}</span>
-        </p>
-        <p class="detail-table-content">
-          <span>Features</span>
-          <span>{{dataDetail.infoCamera.main.features}}</span>
-        </p>
-        <p class="detail-table-content">
-          <span>Video</span>
-          <span>{{dataDetail.infoCamera.main.video}}</span>
-        </p>
-        <p class="detail-table-header">Camera Selfie</p>
-        <p class="detail-table-content">
-          <span>Modules</span>
-          <span>{{dataDetail.infoCamera.self.modules}}</span>
-        </p>
-        <p class="detail-table-content">
-          <span>Features</span>
-          <span>{{dataDetail.infoCamera.self.features}}</span>
-        </p>
-        <p class="detail-table-content">
-          <span>Video</span>
-          <span>{{dataDetail.infoCamera.self.video}}</span>
-        </p>
-        <p class="detail-table-header">Battery</p>
-        <p class="detail-table-content">
-          <span>Capacity</span>
-          <span>{{dataDetail.infoBattery.capacity}}</span>
-        </p>
-        <p class="detail-table-content">
-          <span>Type</span>
-          <span>{{dataDetail.infoBattery.type}}</span>
-        </p>
+        <div class="row">
+          <div class="col-12 mb-4">
+            <img [src]="item.imgPost" style="width: 100%; max-width: 900px; margin: 0 auto"/>
+          </div>
+          <div class="col-sm-6">
+            <p class="detail-table-header">Platform</p>
+            <p class="detail-table-content">
+              <span>OS</span>
+              <span>{{dataDetail.infoPerformance.platform.os}}</span>
+            </p>
+            <p class="detail-table-content">
+              <span>Chip</span>
+              <span>{{dataDetail.infoPerformance.platform.chip}}</span>
+            </p>
+            <p class="detail-table-content">
+              <span>CPU</span>
+              <span>{{dataDetail.infoPerformance.platform.cpu}}</span>
+            </p>
+            <p class="detail-table-content">
+              <span>GPU</span>
+              <span>{{dataDetail.infoPerformance.platform.gpu}}</span>
+            </p>
+            <p class="detail-table-header">Display</p>
+            <p class="detail-table-content">
+              <span>Resolution</span>
+              <span>{{dataDetail.infoDisplay.resolution}}</span>
+            </p>
+            <p class="detail-table-content">
+              <span>Size</span>
+              <span>{{dataDetail.infoDisplay.size}}</span>
+            </p>
+            <p class="detail-table-content">
+              <span>Type</span>
+              <span>{{dataDetail.infoDisplay.type}}</span>
+            </p>
+            <p class="detail-table-header">Battery</p>
+            <p class="detail-table-content">
+              <span>Capacity</span>
+              <span>{{dataDetail.infoBattery.capacity}}</span>
+            </p>
+            <p class="detail-table-content">
+              <span>Type</span>
+              <span>{{dataDetail.infoBattery.type}}</span>
+            </p>
+          </div>
+          <div class="col-sm-6">
+            <p class="detail-table-header">Memory</p>
+            <p class="detail-table-content">
+              <span>Card</span>
+              <span>{{dataDetail.infoPerformance.memory.card}}</span>
+            </p>
+            <p class="detail-table-content">
+              <span>Internal</span>
+              <span>{{dataDetail.infoPerformance.memory.internal}}</span>
+            </p>
+            <p class="detail-table-header">Design</p>
+            <p class="detail-table-content">
+              <span>Dimensions</span>
+              <span>{{dataDetail.infoDesign.dimensions}}</span>
+            </p>
+            <p class="detail-table-content">
+              <span>Weight</span>
+              <span>{{dataDetail.infoDesign.weight}}</span>
+            </p>
+            <p class="detail-table-header">Camera Main</p>
+            <p class="detail-table-content">
+              <span>Modules</span>
+              <span>{{dataDetail.infoCamera.main.modules}}</span>
+            </p>
+            <p class="detail-table-content">
+              <span>Features</span>
+              <span>{{dataDetail.infoCamera.main.features}}</span>
+            </p>
+            <p class="detail-table-content">
+              <span>Video</span>
+              <span>{{dataDetail.infoCamera.main.video}}</span>
+            </p>
+            <p class="detail-table-header">Camera Selfie</p>
+            <p class="detail-table-content">
+              <span>Modules</span>
+              <span>{{dataDetail.infoCamera.self.modules}}</span>
+            </p>
+            <p class="detail-table-content">
+              <span>Features</span>
+              <span>{{dataDetail.infoCamera.self.features}}</span>
+            </p>
+            <p class="detail-table-content">
+              <span>Video</span>
+              <span>{{dataDetail.infoCamera.self.video}}</span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

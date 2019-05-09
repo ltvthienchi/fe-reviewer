@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class CommentRequest {
 
-    private final String idPost;
+    private final String idProduct;
 
     private final String idReviewer;
 
@@ -14,20 +14,17 @@ public class CommentRequest {
 
     private final String content;
 
-    private final Date dateCreate;
 
-
-    public CommentRequest(String idPost, String idReviewer, String idReply, Boolean isReply, String content, Date dateCreate) {
-        this.idPost = idPost;
+    public CommentRequest(String idProduct, String idReviewer, String idReply, Boolean isReply, String content) {
+        this.idProduct = idProduct;
         this.idReviewer = idReviewer;
         this.idReply = idReply;
         this.isReply = isReply;
         this.content = content;
-        this.dateCreate = dateCreate;
     }
 
-    public String getIdPost() {
-        return idPost;
+    public String getIdProduct() {
+        return idProduct;
     }
 
     public String getIdReviewer() {
@@ -46,7 +43,4 @@ public class CommentRequest {
         return content;
     }
 
-    public Date getDateCreate() {
-        return dateCreate;
-    }
 }

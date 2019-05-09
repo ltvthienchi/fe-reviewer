@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "COMMENT_PRODUCT")// This tells Hibernate to make a table out of this class
@@ -15,7 +16,7 @@ public class Comment {
     private String idComment;
 
 	@Column(name = "ID_PRODUCT")
-	private String idPost;
+	private String idProduct;
 
 	@Column(name = "ID_REVIEWER")
 	private String idReviewer;
@@ -35,9 +36,9 @@ public class Comment {
 
 	public Comment(){}
 
-	public Comment(String idComment, String idPost, String idReviewer, String idReply, Boolean isReply, String content, Date dateCreate) {
+	public Comment(String idComment, String idProduct, String idReviewer, String idReply, Boolean isReply, String content, Date dateCreate) {
 		this.idComment = idComment;
-		this.idPost = idPost;
+		this.idProduct = idProduct;
 		this.idReviewer = idReviewer;
 		this.idReply = idReply;
 		this.isReply = isReply;
@@ -53,12 +54,12 @@ public class Comment {
 		this.idComment = idComment;
 	}
 
-	public String getIdPost() {
-		return idPost;
+	public String getIdProduct() {
+		return idProduct;
 	}
 
-	public void setIdPost(String idPost) {
-		this.idPost = idPost;
+	public void setIdProduct(String idProduct) {
+		this.idProduct = idProduct;
 	}
 
 	public String getIdReviewer() {
@@ -99,5 +100,24 @@ public class Comment {
 
 	public void setDateCreate(Date dateCreate) {
 		this.dateCreate = dateCreate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Comment comment = (Comment) o;
+		return Objects.equals(idComment, comment.idComment) &&
+				Objects.equals(idProduct, comment.idProduct) &&
+				Objects.equals(idReviewer, comment.idReviewer) &&
+				Objects.equals(idReply, comment.idReply) &&
+				Objects.equals(isReply, comment.isReply) &&
+				Objects.equals(content, comment.content) &&
+				Objects.equals(dateCreate, comment.dateCreate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idComment, idProduct, idReviewer, idReply, isReply, content, dateCreate);
 	}
 }

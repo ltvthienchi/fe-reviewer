@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../../services/http/http.service';
+import {TopRatingService} from '../../services/data-global/top-rating.service';
 
 @Component({
   selector: 'app-top-company',
@@ -8,15 +9,19 @@ import {HttpService} from '../../services/http/http.service';
 })
 export class TopCompanyComponent implements OnInit {
 
-  private lstData: any;
-  constructor(private http: HttpService) { }
+  private lstData = [];
+  constructor(private http: HttpService, private topRating: TopRatingService) { }
 
   ngOnInit() {
-    this.http.getListTopRating().subscribe(res => {
-      if (res) {
-        this.lstData = res;
-      }
-    });
+    this.topRating.fire();
+    this.getDataRating();
+  }
+
+  getDataRating() {
+    this.topRating.on().subscribe(res => {
+      this.lstData = res;
+      console.log(this.lstData);
+    })
   }
 
 }

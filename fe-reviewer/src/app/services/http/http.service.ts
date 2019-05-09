@@ -19,6 +19,14 @@ export class HttpService {
     return this.http.get(URL_SERVER.token_unAu + 'getAll', {headers: reqHeader});
   }
 
+  public createComment(data) {
+    return this.http.post(URL_SERVER.changePass + 'createComment', data, getHeader());
+  }
+
+  public getCommentByProduct(data) {
+    return this.http.post(URL_SERVER.changePass + 'getCommentByProductId', data, getHeader());
+  }
+
   // RATING
 
   public createRating(data): Observable<any> {
