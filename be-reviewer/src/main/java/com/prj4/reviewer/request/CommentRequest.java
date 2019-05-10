@@ -14,13 +14,17 @@ public class CommentRequest {
 
     private final String content;
 
+    private final String role_user;
 
-    public CommentRequest(String idProduct, String idReviewer, String idReply, Boolean isReply, String content) {
+
+    public CommentRequest(String idProduct, String idReviewer, String idReply,
+                          Boolean isReply, String content, String role_user) {
         this.idProduct = idProduct;
         this.idReviewer = idReviewer;
         this.idReply = idReply;
         this.isReply = isReply;
         this.content = content;
+        this.role_user = role_user;
     }
 
     public String getIdProduct() {
@@ -43,4 +47,7 @@ public class CommentRequest {
         return content;
     }
 
+    public String getRole_user() {
+        return role_user;
+    }
 }

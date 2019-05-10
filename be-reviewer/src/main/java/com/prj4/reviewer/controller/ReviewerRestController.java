@@ -44,13 +44,6 @@ public class ReviewerRestController {
     @Autowired
     UserService userService;
 
-    @PostMapping(BASE_POST_LINK + "createComment")
-    public CommentResponse postComment(@RequestBody @Valid CommentRequest commentRequest) {
-        CommentResponse commentResponse = postService.addComment(commentRequest);
-        return commentResponse;
-    }
-
-
     @PostMapping(BASE_POST_LINK + "feedbackCompany")
     public FeedbackCompanyResponse feedbackCompany(@RequestBody @Valid FeedbackCompanyRequest feedbackCompanyRequest) {
         FeedbackCompanyResponse feedbackCompanyResponse = reviewerService.feedbackCompany(feedbackCompanyRequest);
