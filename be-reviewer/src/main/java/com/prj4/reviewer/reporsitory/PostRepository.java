@@ -10,4 +10,5 @@ import java.util.List;
 public interface PostRepository extends CrudRepository<Post, String>{
     List<Post> findAllByOrderByDtCreatedDesc();
     List<Post> findByIdCompanyOrderByDtCreatedDesc(String idCompany);
+    Post findByIdProduct(String idCompany);
 }

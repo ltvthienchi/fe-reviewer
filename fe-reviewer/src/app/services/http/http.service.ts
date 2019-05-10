@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {getHeader} from './header';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {URL_SERVER} from '../../../environments/environment';
-import { FeedbackWebsite } from '../../model/feedbackWebsite.model';
-import { Admin } from '../../model/admin.model';
 
 @Injectable()
 export class HttpService {
@@ -146,9 +144,17 @@ export class HttpService {
     return this.http.post(URL_SERVER.company + 'getCompanyById', idCompany, getHeader());
 }
 
- public editAdmin(data:any){
-   return this.http.post(URL_SERVER.admin + 'editAdmin',data, getHeader())
+ public editAdmin(data: any) {
+   return this.http.post(URL_SERVER.admin + 'editAdmin', data, getHeader());
  }
 
-
+ public search (query) {
+    if (query) {
+      return this.http.post(URL_SERVER.searchProduct + 'searchProduct', query, getHeader());
+    }
+    return ;
+ }
+ public getInforLogin(idUser) {
+   return this.http.post(URL_SERVER.admin + 'getInforLogin', idUser, getHeader());
+ }
 }

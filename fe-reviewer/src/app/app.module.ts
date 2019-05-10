@@ -59,6 +59,7 @@ import {DataService} from './services/data-service/data.service';
 import { FloatFixedPipe } from './services/pipe/float-fixed.pipe';
 import { HomeCompanyComponent } from './component/company/home-company/home-company.component';
 import { CreateProductComponent } from './component/company/create-product/create-product.component';
+import { SearchComponent } from './component/search/search.component';
 import {TopRatingService} from './services/data-global/top-rating.service';
 import { CommentPostComponent } from './component/home/comment-post/comment-post.component';
 
@@ -157,6 +158,7 @@ export function tokenGetter() {
     FloatFixedPipe,
     HomeCompanyComponent,
     CreateProductComponent,
+    SearchComponent,
     CommentPostComponent,
   ],
   imports: [

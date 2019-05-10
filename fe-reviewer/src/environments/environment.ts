@@ -19,4 +19,6 @@ export const URL_SERVER = {
   product: rootUrl + '/data/product/',
   admin: rootUrl + '/data/admin/',
   changePass : rootUrl + '/data/user/',
+  searchProduct: rootUrl + '/data/main/',
+  getInforLogin: rootUrl + '/data/main/',
 };

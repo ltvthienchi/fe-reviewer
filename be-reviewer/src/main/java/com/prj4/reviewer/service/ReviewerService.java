@@ -81,7 +81,6 @@ public class ReviewerService {
         reviewer.setFirstName(firstName);
         reviewer.setLastName(lastName);
         reviewer.setFullName(firstName + " " + lastName);
-        reviewerRepository.save(reviewer);
         if (avaReviewer != null) {
             Images images = imageRepository.findByIdImage(reviewer.getImgAvatar());
             String fileName =  fileStorageService.storeFile(avaReviewer, images.getIdImage(), Constants.IMAGE_AVA);
@@ -94,7 +93,7 @@ public class ReviewerService {
             String fileDownloadUri = "http://localhost/img/reviewer/" + fileName;
             images.setImgPath(fileDownloadUri);
         }
-
+        reviewerRepository.save(reviewer);
     }
 
 }

@@ -5,10 +5,7 @@ import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Admin;
 import com.prj4.reviewer.request.LoginUser;
 import com.prj4.reviewer.entity.User;
-import com.prj4.reviewer.service.AdminService;
-import com.prj4.reviewer.service.CompanyService;
-import com.prj4.reviewer.service.ReviewerService;
-import com.prj4.reviewer.service.UserService;
+import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.AuthenticationException;
@@ -37,6 +34,9 @@ public class AuthenticationController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private ImageService imageService;
 
     @RequestMapping(value = "/generate-token", method = RequestMethod.POST)
     public JsonResponse<String> register(@RequestBody LoginUser loginUser) throws AuthenticationException {

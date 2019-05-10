@@ -29,7 +29,7 @@ public class Comment {
 	private Boolean isReply;
 
 	@Column(name = "CONTENT_COMMENT")
-    private String content;
+	private String content;
 
 	@Column(name = "DT_CREATED")
     private Date dateCreate;
