@@ -202,6 +202,7 @@ export class ContentPostComponent implements OnInit {
           idReviewer: this.item.idReviewer,
           idReply: null,
           isReply: false,
+          role: localStorage.getItem('role'),
           content: this.valueComment,
           dateCreate: new Date()
         };

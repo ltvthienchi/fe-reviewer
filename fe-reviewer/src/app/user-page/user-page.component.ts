@@ -3,7 +3,7 @@ import {HttpService} from '../services/http/http.service';
 
 import {
   validatorConfirmPassword,
-  validatorName,
+  validatorName, validatorOldPassword,
   validatorPassword,
   validatorRequired
 } from '../services/validator/validator';
@@ -24,6 +24,7 @@ export class UserPageComponent implements OnInit {
   private notifier: NotifierService;
   updateInfoProfile: FormGroup;
   ChangePassForm: FormGroup;
+  userInfo;
   private emailReviewer: string;
   private firstName: string;
   private fullName: string;
@@ -45,7 +46,7 @@ export class UserPageComponent implements OnInit {
     this.emailReviewer = localStorage.getItem('email');
     this.fullName = localStorage.getItem('fullName');
     this.ChangePassForm = this.formBuilder.group({
-      oldPass: ['', [validatorPassword]],
+      oldPass: ['', [validatorOldPassword]],
       password: ['', [validatorPassword]],
       confirmPassword: ['', [validatorConfirmPassword]],
     });
@@ -60,6 +61,8 @@ export class UserPageComponent implements OnInit {
 
   ngOnInit() {
     this.httpService.getReviewerInfo(this.emailReviewer).subscribe( (data: any) => {
+      console.log(data);
+      this.userInfo = data;
       const dob = new Date(data.dateOfBirth);
       const year = dob.getFullYear();
       const month = dob.getMonth() + 1 <= 9 ? `0${dob.getMonth() + 1}` : dob.getMonth() + 1;
@@ -73,6 +76,17 @@ export class UserPageComponent implements OnInit {
       this.updateInfoProfile.controls['genderReviewer'].setValue(gender);
     });
   }
+
+  reloadData() {
+    this.httpService.getReviewerInfo(this.emailReviewer).subscribe( (data: any) => {
+      this.userInfo = data;
+      const dob = new Date(data.dateOfBirth);
+      const year = dob.getFullYear();
+      const month = dob.getMonth() + 1 <= 9 ? `0${dob.getMonth() + 1}` : dob.getMonth() + 1;
+      const date = dob.getDate() <= 9 ? `0${dob.getDate()}` : dob.getDate();
+      const parseDob = `${year}-${month}-${date}`;
+      this.dobReviewer = parseDob;
+    });  }
 
   submitUpdateInfo() {
     console.log(this.updateInfoProfile);
@@ -92,6 +106,7 @@ export class UserPageComponent implements OnInit {
       this.lastName = this.updateInfoProfile.value.lastName;
       this.httpService.updateInfoPro(updateInPro).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
+          this.reloadData();
           this.showNotification( 'success', 'Update Profile successfully' );
           localStorage.setItem('fullName', this.firstName + ' ' + this.lastName);
         } else {

@@ -14,6 +14,15 @@ export function validatorRequired(c: AbstractControl) {
   return null;
 }
 
+export function validatorOldPassword(c: AbstractControl) {
+  const regex = /^$|\s+/;
+  const myRe = regex.exec(c.value);
+  if (!c.value) return { oldPass: 'Field is required' };
+  if (myRe) return { oldPass: 'Please no enter white space' };
+  if (c.value.length < 6 || c.value.label > 20) return { oldPass: 'Password has be length from 6 to 20' };
+  return null;
+}
+
 export function validatorPassword(c: AbstractControl) {
   const regex = /^$|\s+/;
   const myRe = regex.exec(c.value);

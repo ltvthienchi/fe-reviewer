@@ -53,6 +53,7 @@ export class CommentPostComponent implements OnInit {
         idReviewer: item.idReviewer,
         idReply: item.idComment,
         isReply: true,
+        role: localStorage.getItem('role'),
         content: this.valueComment,
         dateCreate: new Date()
       };

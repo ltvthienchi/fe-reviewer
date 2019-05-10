@@ -1,13 +1,13 @@
 <div class="row p-main">
   <div class="profile clearfix">
     <div class="image">
-      <img src="../../../../assets/wallpaper/banner.jpg" class="img-cover">
+      <img [src]="this.userInfo.imgPanel" class="img-cover">
     </div>
     <div class="user clearfix">
       <div class="avatar">
-        <img src="../../../../assets/wallpaper/avatar2.png" class="img-thumbnail img-profile">
+        <img [src]="this.userInfo.imgAvatar" class="img-thumbnail img-profile">
       </div>
-      <h2>{{fullName}}</h2>
+      <h2 class="pl-3">{{fullName}}</h2>
       <br>
       <div class="list-details">
       </div>
@@ -36,8 +36,7 @@
                   <i class="fas fa-venus-mars"></i>
                 </div>
                 <div class="list-details">
-                  <div *ngIf="checkGender(); else elseBlock"><span>Male</span></div>
-                  <ng-template #elseBlock><span>Female</span></ng-template>
+                  <div><span>{{this.userInfo.gender ? 'Male' : 'Female'}}</span></div>
                   <small>Gender</small>
                 </div>
               </li>
@@ -55,7 +54,7 @@
                   <i class="fas fa-calendar-alt"></i>
                 </div>
                 <div class="list-details">
-                  <span>{{dobReviewer}}</span>
+                  <span>{{dobReviewer | ddmmyyyy}}</span>
                   <small>Day of Birth</small>
                 </div>
               </li>
