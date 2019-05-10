@@ -1,8 +1,11 @@
 package com.prj4.reviewer.service;
 
 import com.prj4.reviewer.entity.Comment;
+import com.prj4.reviewer.entity.Company;
 import com.prj4.reviewer.entity.Reviewer;
+import com.prj4.reviewer.reporsitory.AdminRepository;
 import com.prj4.reviewer.reporsitory.CommentRepository;
+import com.prj4.reviewer.reporsitory.CompanyRepository;
 import com.prj4.reviewer.reporsitory.ReviewerRepository;
 import com.prj4.reviewer.response.CommentResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,11 @@ public class CommentService {
     @Autowired
     ReviewerRepository reviewerRepository;
     @Autowired
+    CompanyRepository companyRepository;
+    @Autowired
+    AdminRepository adminRepository;
+
+    @Autowired
     ImageService imageService;
 
     public void createComment(Comment comment) {
@@ -28,11 +36,23 @@ public class CommentService {
     public List<CommentResponse> getCommentByProductId(String idProduct){
         List<Comment> lstOriginalComment = commentRepository.findByIdProduct(idProduct);
         List<CommentResponse> lstResult = new ArrayList<>();
+        String fullName = null;
+        String imgAvar = null;
         for(Comment c: lstOriginalComment) {
-            Reviewer reviewer = reviewerRepository.findByIdReviewer(c.getIdReviewer());
-            String imgAvatar = imageService.getImagePathById(reviewer.getImgAvatar());
+            if (c.getRoleUser().equals("ROLE_NORMAL")) {
+                fullName = reviewerRepository.findByIdReviewer(c.getIdReviewer()).getFullName();
+                String imageId = reviewerRepository.findByIdReviewer(c.getIdReviewer()).getImgAvatar();
+                imgAvar = imageService.getImagePathById(imageId);
+            } else if (c.getRoleUser().equals("ROLE_COMPANY")) {
+                fullName = companyRepository.findByIdCompany(c.getIdReviewer()).getNameCompany();
+                String imageId = companyRepository.findByIdCompany(c.getIdReviewer()).getImgAvatarCompany();
+                imgAvar = imageService.getImagePathById(imageId);
+            } else {
+                fullName = adminRepository.findByIdAdmin(c.getIdReviewer()).getFullNameAdmin();
+                imgAvar = "http://localhost/img/reviewer/avar-pay.png";
+            }
             CommentResponse commentResponse = new CommentResponse(c.getContent(), c.getDateCreate(), c.getIdComment(),
-                    idProduct, c.getIdReply(), c.getIdReviewer(), c.getReply(), imgAvatar, reviewer.getFullName());
+                    idProduct, c.getIdReply(), c.getIdReviewer(), c.getReply(), imgAvar, fullName);
             lstResult.add(commentResponse);
         }
         return lstResult;

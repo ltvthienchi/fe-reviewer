@@ -34,9 +34,13 @@ public class Comment {
 	@Column(name = "DT_CREATED")
     private Date dateCreate;
 
+	@Column(name="ROLE_USER")
+	private String roleUser;
+
 	public Comment(){}
 
-	public Comment(String idComment, String idProduct, String idReviewer, String idReply, Boolean isReply, String content, Date dateCreate) {
+	public Comment(String idComment, String idProduct, String idReviewer, String idReply, Boolean isReply,
+				   String content, Date dateCreate, String roleUser) {
 		this.idComment = idComment;
 		this.idProduct = idProduct;
 		this.idReviewer = idReviewer;
@@ -44,6 +48,7 @@ public class Comment {
 		this.isReply = isReply;
 		this.content = content;
 		this.dateCreate = dateCreate;
+		this.roleUser = roleUser;
 	}
 
 	public String getIdComment() {
@@ -100,6 +105,14 @@ public class Comment {
 
 	public void setDateCreate(Date dateCreate) {
 		this.dateCreate = dateCreate;
+	}
+
+	public String getRoleUser() {
+		return roleUser;
+	}
+
+	public void setRoleUser(String roleUser) {
+		this.roleUser = roleUser;
 	}
 
 	@Override
