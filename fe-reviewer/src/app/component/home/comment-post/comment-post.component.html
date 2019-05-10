@@ -1,0 +1,39 @@
+<div class="view-comment" *ngFor="let item of dataComment">
+  <div class="pb-2">
+    <div class="clearfix">
+      <div class="avatar-comment">
+        <div class="m-0 item-avatar">
+          <img [src]="'http://localhost/img/reviewer/avar-pay.png'" alt="image"/>
+        </div>
+      </div>
+      <div class="input-comment">
+        <p class="m-0">
+          <span class="username">{{item.idComment}}</span>
+          <span class="content">{{item.content}}</span>
+        </p>
+        <p class="m-0">
+          <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span>
+        </p>
+      </div>
+    </div>
+
+    <div *ngIf="item.children.length > 0">
+      <div class="view-comment" style="padding-left: 50px; margin-top: 15px"  *ngFor="let itemTwo of item.children">
+        <div class="clearfix">
+          <div class="avatar-comment">
+            <div class="m-0 item-avatar">
+              <img [src]="'http://localhost/img/reviewer/avar-pay.png'" alt="image"/>
+            </div>
+          </div>
+          <div class="input-comment">
+            <p class="m-0">
+              <span class="username">{{itemTwo.idComment}}</span>
+              <span class="content">{{itemTwo.content}}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

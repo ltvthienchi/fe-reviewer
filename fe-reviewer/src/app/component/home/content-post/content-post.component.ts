@@ -8,6 +8,7 @@ import {Product} from '../../../model/product.model';
 import {DataService} from '../../../services/data-service/data.service';
 import {HttpService} from '../../../services/http/http.service';
 import {rating} from '../../../model/rating.model';
+import {TopRatingService} from '../../../services/data-global/top-rating.service';
 
 @Component({
   selector: 'app-content-post',
@@ -17,16 +18,8 @@ import {rating} from '../../../model/rating.model';
 export class ContentPostComponent implements OnInit {
 
   @Input() item;
-  private notifier: NotifierService;
-  toggleButton = false;
-  toggleRating = true;
-
-  invert = false;
-  max = 10;
-  min = 1;
-  step = 1;
-  thumbLabel = true;
-  value = 1;
+  valueComment = '';
+  curItemReply;
   dataDetail = {
     infoBattery: {
       capacity: '',
@@ -66,35 +59,35 @@ export class ContentPostComponent implements OnInit {
       }
     }
   };
-  newItem = {
-    idPostProduct: null,
-    idProduct: null,
-    idCompany: null,
-    nameCompany: null,
-    content: null,
-    imgPost: '',
-    avatarCompany: '',
-    avgDisplay: 1,
-    avgPerformance: 1,
-    avgCamera: 1,
-    avgBattery: 1,
-    avgDesign: 1,
-    totalComment: 1,
-    infoBattery: '',
-    infoDisplay: '',
-    infoPerformance: '',
-    infoDesign: '',
-    infoCamera: '',
-    dtCreated: null,
-    idReviewer: ''
-  };
+  // newItem = {
+  //   idPostProduct: null,
+  //   idProduct: null,
+  //   idCompany: null,
+  //   nameCompany: null,
+  //   content: null,
+  //   imgPost: '',
+  //   avatarCompany: '',
+  //   avgDisplay: 1,
+  //   avgPerformance: 1,
+  //   avgCamera: 1,
+  //   avgBattery: 1,
+  //   avgDesign: 1,
+  //   totalComment: 1,
+  //   infoBattery: '',
+  //   infoDisplay: '',
+  //   infoPerformance: '',
+  //   infoDesign: '',
+  //   infoCamera: '',
+  //   dtCreated: null,
+  //   idReviewer: ''
+  // };
 
-  constructor(private authGuard: AuthGuardService, public dialog: MatDialog,
-              notifier: NotifierService, private data: DataService, private http: HttpService) {
-    this.notifier = notifier;
+  constructor(private authGuard: AuthGuardService, public dialog: MatDialog, private topRating: TopRatingService,
+              private notifier: NotifierService, private data: DataService, private http: HttpService) {
   }
 
   ngOnInit() {
+
   }
 
   checkAuthGuard() {
@@ -130,6 +123,7 @@ export class ContentPostComponent implements OnInit {
               this.item.avgDisplay = myProduct.avgDisplay;
               this.item.avgPerformance = myProduct.avgPerformance;
               this.showNotification('success', 'Thank you for your rating!');
+              this.topRating.fire();
             });
           } else {
             this.showNotification('error', 'Your rating error, please try again!');
@@ -177,11 +171,11 @@ export class ContentPostComponent implements OnInit {
     // sessionStorage.setItem('countProduct', this.count.toString());
   }
 
-  public showNotification(type: string, message: string): void {
+  showNotification(type: string, message: string): void {
     this.notifier.notify(type, message);
   }
 
-  public checkExistProductId(lstJson, idPostProduct) {
+  checkExistProductId(lstJson, idPostProduct) {
     for (const i in lstJson) {
       if (lstJson[i].idPostProduct === idPostProduct) {
         return true;
@@ -190,7 +184,7 @@ export class ContentPostComponent implements OnInit {
     return false;
   }
 
-  public detailProduct(item) {
+  detailProduct(item) {
     console.log(item);
     this.dataDetail = {
       infoBattery: JSON.parse(item.infoBattery),
@@ -199,5 +193,38 @@ export class ContentPostComponent implements OnInit {
       infoDesign: JSON.parse(item.infoDesign),
       infoCamera: JSON.parse(item.infoCamera)
     };
+  }
+
+  postComment(e) {
+    if (e.key === "Enter") {
+      let newComment = {
+        idProduct: this.item.idProduct,
+        idReviewer: this.item.idReviewer,
+        idReply: null,
+        isReply: false,
+        content: this.valueComment,
+        dateCreate: new Date()
+      };
+      const isCheckReply = this.valueComment.split('@')[1].split('.')[0];
+      console.log(isCheckReply === this.curItemReply.idComment);
+      if (isCheckReply === this.curItemReply.idComment) {
+        newComment.isReply = true;
+        newComment.idReply = this.curItemReply.idComment;
+      }
+
+      this.http.createComment(newComment).subscribe(res => {
+        console.log(res);
+        this.valueComment = '';
+      });
+    }
+  }
+
+  getItemReply(itemReply) {
+    this.valueComment = '';
+    this.curItemReply = itemReply;
+    this.valueComment = '@'+this.curItemReply.idComment + '. ';
+    const idInput = '#label'+this.item.idProduct;
+    $(idInput).click();
+    console.log(itemReply);
   }
 }

@@ -20,7 +20,7 @@ public class CommentService {
     }
 
     public List<CommentResponse> getCommentByProductId(String idProduct){
-        List<Comment> lstOriginalComment = commentRepository.findByIdPost(idProduct);
+        List<Comment> lstOriginalComment = commentRepository.findByIdProduct(idProduct);
         for(Comment c: lstOriginalComment) {
 //            CommentResponse commentResponse = new CommentResponse(c.getContent(), c.getDateCreate(), c.getIdComment(),
 //                    idProduct, c.getIdReply(), c.getIdReviewer(), c);
