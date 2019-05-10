@@ -17,17 +17,22 @@ import {HttpService} from '../../services/http/http.service';
 export class MenuComponent implements OnInit {
 
   private fullName: string;
-  private idCompany: string;
+  private avatar: string;
+  private idUser: string;
   results: any[] = [];
   queryField: FormControl = new FormControl();
   count: number;
   constructor(private authGuard: AuthGuardService, private router: Router,
               private data: DataService, private http: HttpService ) {
-    this.fullName = localStorage.getItem('fullName');
-    this.idCompany = localStorage.getItem('idUser');
+    this.idUser = localStorage.getItem('idUser');
   }
 
   ngOnInit() {
+    this.http.getInforLogin(this.idUser).subscribe((data: any) => {
+      this.fullName = data.fullName;
+      this.avatar = data.avatar;
+    })
+
     this.data.change.subscribe(count => {
       this.count = count;
     });

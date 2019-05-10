@@ -1,5 +1,6 @@
 package com.prj4.reviewer.controller;
 
+import com.prj4.reviewer.response.LoginInfo;
 import com.prj4.reviewer.response.SearchReponse;
 import com.prj4.reviewer.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,5 @@ public class MainController {
     List<SearchReponse> getReviewerInfo(@RequestBody String query) {
         return productService.searchProduct(query);
     }
+
 }

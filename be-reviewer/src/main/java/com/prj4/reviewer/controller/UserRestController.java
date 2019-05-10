@@ -128,14 +128,8 @@ public class UserRestController {
     }
 
     @PostMapping(BASE_POST_LINK + "getCommentByProductId")
-<<<<<<< HEAD
     public List<CommentResponse> getCommentByProductId(@RequestBody String idProduct) {
         return commentService.getCommentByProductId(idProduct);
-=======
-    public List<Comment> getCommentByProductId(@RequestBody String idProduct) {
-        return commentService.getCommentByProductId(idProduct);
-//        return null;
->>>>>>> master
     }
 }
 

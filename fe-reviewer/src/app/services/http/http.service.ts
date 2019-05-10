@@ -154,4 +154,7 @@ export class HttpService {
     }
     return ;
  }
+ public getInforLogin(idUser) {
+   return this.http.post(URL_SERVER.admin + 'getInforLogin', idUser, getHeader());
+ }
 }
