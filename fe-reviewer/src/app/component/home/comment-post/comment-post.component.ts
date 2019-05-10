@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {HttpService} from '../../../services/http/http.service';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-comment-post',
   templateUrl: './comment-post.component.html',
@@ -9,13 +9,17 @@ import {HttpService} from '../../../services/http/http.service';
 export class CommentPostComponent implements OnInit {
 
   @Input() idProduct;
-  @Output() itemReply = new EventEmitter();
   arrTest:any = [];
   dataComment:any = [];
+  valueComment:any;
 
   constructor(private http: HttpService) { }
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData() {
     this.http.getCommentByProduct(this.idProduct).subscribe(res => {
       this.arrTest = res;
       const arr = [];
@@ -33,12 +37,31 @@ export class CommentPostComponent implements OnInit {
 
       });
       this.dataComment = arr;
-      console.log(this.dataComment);
     })
   }
 
   replyComment(item) {
-    this.itemReply.emit(item);
+    const id = '#reply-'+item.idComment;
+    $('.reply-comment').hide();
+    $(id).css('display', 'block');
+  }
+
+  postComment(item) {
+    if (this.valueComment) {
+      let newComment = {
+        idProduct: item.idProduct,
+        idReviewer: item.idReviewer,
+        idReply: item.idComment,
+        isReply: true,
+        content: this.valueComment,
+        dateCreate: new Date()
+      };
+      this.http.createComment(newComment).subscribe(res => {
+        this.valueComment = '';
+        $('.reply-comment').hide();
+        this.getData();
+      });
+    }
   }
 
 }

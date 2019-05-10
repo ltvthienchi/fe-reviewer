@@ -68,12 +68,11 @@
     <div class="footer">
       <div class="group-button">
         <div class="row">
-
           <div class="col-3">
             <p class="btn-post" (click)="toggleRatings(item.idProduct, item.idReviewer)">Ratings</p>
           </div>
           <div class="col-3">
-            <p class="btn-post">Comments</p>
+            <p class="btn-post" (click)="showComment(item.idProduct)">Comments</p>
           </div>
           <div class="col-3">
             <p class="btn-post" (click)="compareProduct(item)">Compare</p>
@@ -82,18 +81,13 @@
             <p class="btn-post" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="detailProduct(item)">Detail</p>
           </div>
         </div>
-        <!--<p>-->
-        <!--<span class="title">Nguyen Van A</span>-->
-        <!--<span class="context">Lorem ipsum dolor sit amet</span>-->
-        <!--</p>-->
       </div>
-      <!--<div class="input">-->
-      <!--<textarea placeholder="Them binh luan"></textarea>-->
-      <!--</div>-->
     </div>
 
-    <div class="comment">
-      <app-comment-post [idProduct]="item.idProduct" (itemReply)="getItemReply($event)" ></app-comment-post>
+    <div class="container-comment" [id]="'container-comment-'+item.idProduct">
+      <div class="comment">
+        <app-comment-post [idProduct]="item.idProduct"></app-comment-post>
+      </div>
     </div>
     
     <div class="comment clearfix">
@@ -103,9 +97,10 @@
         </label>
       </div>
       <div class="input-comment">
-        <input [id]="'inputComment'+item.idProduct" class="form-control" type="text" [(ngModel)]="valueComment" (keydown)="postComment($event)"/>
+        <input [id]="'inputComment'+item.idProduct" class="form-control" type="text" [(ngModel)]="valueComment" (keydown.enter)="postComment($event)"/>
       </div>
     </div>
+
   </div>
 </div>
 

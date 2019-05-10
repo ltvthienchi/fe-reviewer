@@ -47,3 +47,17 @@
   font-weight: bold;
   margin-right: 10px;
 }
+
+
+.view-comment .input-comment input {
+  outline: none;
+  border-radius: 90px !important;
+}
+
+.view-comment .input-comment input:focus {
+  box-shadow: none;
+}
+
+.reply-comment {
+  display: none;
+}

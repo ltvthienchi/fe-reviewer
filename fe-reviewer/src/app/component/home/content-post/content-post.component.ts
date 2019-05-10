@@ -195,36 +195,29 @@ export class ContentPostComponent implements OnInit {
     };
   }
 
-  postComment(e) {
-    if (e.key === "Enter") {
-      let newComment = {
-        idProduct: this.item.idProduct,
-        idReviewer: this.item.idReviewer,
-        idReply: null,
-        isReply: false,
-        content: this.valueComment,
-        dateCreate: new Date()
-      };
-      const isCheckReply = this.valueComment.split('@')[1].split('.')[0];
-      console.log(isCheckReply === this.curItemReply.idComment);
-      if (isCheckReply === this.curItemReply.idComment) {
-        newComment.isReply = true;
-        newComment.idReply = this.curItemReply.idComment;
-      }
+  postComment() {
+      if (this.valueComment) {
+        let newComment = {
+          idProduct: this.item.idProduct,
+          idReviewer: this.item.idReviewer,
+          idReply: null,
+          isReply: false,
+          content: this.valueComment,
+          dateCreate: new Date()
+        };
 
-      this.http.createComment(newComment).subscribe(res => {
-        console.log(res);
-        this.valueComment = '';
-      });
-    }
+        this.http.createComment(newComment).subscribe(res => {
+          console.log(res);
+          const id = '#reload_'+this.item.idProduct;
+          $(id).click();
+          this.valueComment = '';
+        });
+      }
   }
 
-  getItemReply(itemReply) {
-    this.valueComment = '';
-    this.curItemReply = itemReply;
-    this.valueComment = '@'+this.curItemReply.idComment + '. ';
-    const idInput = '#label'+this.item.idProduct;
-    $(idInput).click();
-    console.log(itemReply);
+  showComment(idProduct) {
+    const id = '#container-comment-'+idProduct;
+    $('.container-comment').hide();
+    $(id).show();
   }
 }
