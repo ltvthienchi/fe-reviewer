@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "COMMENT_PRODUCT")// This tells Hibernate to make a table out of this class
@@ -28,7 +29,7 @@ public class Comment {
 	private Boolean isReply;
 
 	@Column(name = "CONTENT_COMMENT")
-    private String content;
+	private String content;
 
 	@Column(name = "DT_CREATED")
     private Date dateCreate;
@@ -99,5 +100,24 @@ public class Comment {
 
 	public void setDateCreate(Date dateCreate) {
 		this.dateCreate = dateCreate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Comment comment = (Comment) o;
+		return Objects.equals(idComment, comment.idComment) &&
+				Objects.equals(idPost, comment.idPost) &&
+				Objects.equals(idReviewer, comment.idReviewer) &&
+				Objects.equals(idReply, comment.idReply) &&
+				Objects.equals(isReply, comment.isReply) &&
+				Objects.equals(content, comment.content) &&
+				Objects.equals(dateCreate, comment.dateCreate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idComment, idPost, idReviewer, idReply, isReply, content, dateCreate);
 	}
 }

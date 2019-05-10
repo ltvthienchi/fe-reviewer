@@ -8,6 +8,7 @@ import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.request.ChangePasswordRequest;
 import com.prj4.reviewer.request.CommentRequest;
 import com.prj4.reviewer.request.UseRequest;
+import com.prj4.reviewer.response.CommentResponse;
 import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -20,6 +21,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -126,9 +128,8 @@ public class UserRestController {
     }
 
     @PostMapping(BASE_POST_LINK + "getCommentByProductId")
-    public JsonResponse<String> getCommentByProductId(@RequestBody String idProduct) {
-        commentService.getCommentByProductId(idProduct);
-        return null;
+    public List<CommentResponse> getCommentByProductId(@RequestBody String idProduct) {
+        return commentService.getCommentByProductId(idProduct);
     }
 }
 

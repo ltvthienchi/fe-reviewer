@@ -59,6 +59,7 @@ import {DataService} from './services/data-service/data.service';
 import { FloatFixedPipe } from './services/pipe/float-fixed.pipe';
 import { HomeCompanyComponent } from './component/company/home-company/home-company.component';
 import { CreateProductComponent } from './component/company/create-product/create-product.component';
+import { SearchComponent } from './component/search/search.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -155,6 +156,7 @@ export function tokenGetter() {
     FloatFixedPipe,
     HomeCompanyComponent,
     CreateProductComponent,
+    SearchComponent,
   ],
   imports: [
     HttpClientModule,

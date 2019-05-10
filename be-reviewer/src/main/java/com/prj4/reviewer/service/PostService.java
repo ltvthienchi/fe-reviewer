@@ -24,26 +24,6 @@ public class PostService {
     ImageRepository imageRepository;
 
 
-
-    /**
-     * Add Comment to Post
-     *
-     * */
-    public CommentResponse addComment(CommentRequest commentRequest) {
-
-        // Function Generate ID
-        String idCommment = "Generate Code";
-
-//        Comment comment= new Comment(idCommment,commentRequest.getIdPost(), commentRequest.getIdReviewer(),
-//                commentRequest.getIdReply(), commentRequest.getReply(), commentRequest.getContent(),
-//                commentRequest.getDateCreate(), commentRequest.getDateUpdate());
-//        commentRepository.save(comment);
-
-        // Return Comment Response
-        // Need map with UI
-        return new CommentResponse();
-    }
-
     public List<Post> getAllPostByDtCreated() {
         return postRepository.findAllByOrderByDtCreatedDesc();
     }
@@ -55,6 +35,11 @@ public class PostService {
 
     public void createPost(Post post) {
         postRepository.save(post);
+    }
+
+    public String getImagePostFromIdProduct(String idProduct) {
+        String idImage = postRepository.findByIdProduct(idProduct).getIdImage();
+        return imageRepository.findByIdImage(idImage).getImgPath();
     }
 
     public String getImagePost(String idImage) {
