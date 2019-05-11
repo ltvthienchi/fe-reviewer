@@ -21,78 +21,93 @@ export class ManageAdminComponent implements OnInit {
   private dataEdit = {
     fullNameAdmin: ''
   };
-  
-  listAdmin : Admin[] ;
+
+  listAdmin: Admin[];
   adminForm: FormGroup;
   validatorForm = {
     adminForm: true
   };
 
   constructor(private formBuilder: FormBuilder, private httpService: HttpService, notifier: NotifierService) {
-    this.notifier = notifier;}
+    this.notifier = notifier;
+  }
 
   ngOnInit() {
 
 
 
     this.adminForm = this.formBuilder.group({
-      idAdmin:[],
-      dtCreated:[],
-      active:[],
-      fullNameAdmin: ['', [validatorRequired]],
+      idAdmin: [],
+      dtCreated: [],
+      active: [],
+      fullNameAdmin: ['', [validatorRequired, validatorName]],
       dobAdmin: ['', [validatorRequired]],
-      emailAdmin: ['', [validatorRequired]],
+      emailAdmin: ['', [validatorRequired, validatorEmail]],
       addressAdmin: ['', [validatorRequired]],
-      phoneAdmin: ['', [validatorRequired]],
+      phoneAdmin: ['', [validatorRequired, validatorPhone]],
       passAdmin: ['', [validatorRequired]]
-      
+
     });
     this.loadData();
-    
+
   }
 
   public showNotification(type: string, message: string): void {
     this.notifier.notify(type, message);
   }
 
-  public editAdmin(admin : any) {
-    
+  public editAdmin(admin: any) {
+
     const dob = new Date(admin.dobAdmin);
-      const year = dob.getFullYear();
-      const month = dob.getMonth() + 1 <= 9 ? `0${dob.getMonth() + 1}` : dob.getMonth() + 1;
-      const date = dob.getDate() <= 9 ? `0${dob.getDate()}` : dob.getDate();
-      const parseDob = `${year}-${month}-${date}`;
+    const year = dob.getFullYear();
+    const month = dob.getMonth() + 1 <= 9 ? `0${dob.getMonth() + 1}` : dob.getMonth() + 1;
+    const date = dob.getDate() <= 9 ? `0${dob.getDate()}` : dob.getDate();
+    const parseDob = `${year}-${month}-${date}`;
 
-    this.adminForm.setValue(admin);
-   
+    //this.adminForm.setValue(admin);
+    this.adminForm.controls['idAdmin'].setValue(admin.idAdmin);
+    this.adminForm.controls['dtCreated'].setValue(admin.dtCreated);
+    this.adminForm.controls['active'].setValue(admin.active);
+    this.adminForm.controls['passAdmin'].setValue(admin.passAdmin);
+    this.adminForm.controls['fullNameAdmin'].setValue(admin.fullNameAdmin);
+    this.adminForm.controls['emailAdmin'].setValue(admin.emailAdmin);
+    this.adminForm.controls['addressAdmin'].setValue(admin.addressAdmin);
+    this.adminForm.controls['phoneAdmin'].setValue(admin.phoneAdmin);
     this.adminForm.controls['dobAdmin'].setValue(parseDob);
-
-    this.dataEdit = admin;
-    console.log(this.adminForm);
+    
+    // console.log("parseDob");
+    //  console.log(this.adminForm.value['dobAdmin']);
+    //this.dataEdit = admin;
+    //console.log(this.adminForm);
     //console.log(this.dataEdit);
   }
 
-   submitEdit(){
-    const item = this.adminForm.value;
-    console.log(item);
-    this.httpService.editAdmin(item).subscribe((data: any) => {
-      if (data.status === 'SUCCESS') {
-        this.showNotification( 'success', 'Update Admin successfully' );
-        this.loadData();
-        
-      } else {
-        this.showNotification( 'error', data.result );
-      }
-    });
+  submitEdit() {
+    if (this.adminForm.status === 'INVALID') {
+      this.validatorForm.adminForm = false;
+    } else {
+      const item = this.adminForm.value;
+      console.log(item);
+      this.httpService.editAdmin(item).subscribe((data: any) => {
+        if (data.status === 'SUCCESS') {
+          this.showNotification('success', 'Update Admin successfully');
+          this.loadData();
+
+        } else {
+          this.showNotification('error', data.result);
+        }
+      });
+    };
+
   }
-  public loadData(){
+  public loadData() {
     this.httpService.getAllAdmin().subscribe((data: any) => {
-      
+
       // console.log(data);
-       this.listAdmin = data;
+      this.listAdmin = data;
       // console.log(this.listAdmin);
-       
-     });
+
+    });
   }
 
 }
