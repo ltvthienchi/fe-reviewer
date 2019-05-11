@@ -1,24 +1,46 @@
-<div class="view-comment" *ngFor="let item of dataComment">
-  <div class="pb-2">
-    <div class="clearfix">
-      <div class="avatar-comment">
-        <div class="m-0 item-avatar">
-          <img [src]="'http://localhost/img/reviewer/avar-pay.png'" alt="image"/>
+<div [id]="'container-comment-'+idProduct" [class]="!isCheck ? 'none comment' : 'block comment'">
+  <div class="view-comment" *ngFor="let item of dataComment">
+    <div class="pb-2">
+      <div class="clearfix">
+        <div class="avatar-comment">
+          <div class="m-0 item-avatar">
+            <img [src]="item.imgAvatar" alt="image"/>
+          </div>
+        </div>
+        <div class="input-comment">
+          <p class="m-0">
+            <span class="username">{{item.fullName}}
+              <i class="fas fa-check-circle txt-main" *ngIf="item.idReviewer.split('_')[0] !== 'REVIEWER'" ></i>
+            </span>
+            <span class="content">{{item.content}}</span>
+          </p>
+          <p class="m-0">
+            <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span>
+          </p>
         </div>
       </div>
-      <div class="input-comment">
-        <p class="m-0">
-          <span class="username">{{item.idComment}}</span>
-          <span class="content">{{item.content}}</span>
-        </p>
-        <p class="m-0">
-          <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span>
-        </p>
-      </div>
-    </div>
 
-    <div *ngIf="item.children.length > 0">
-      <div class="view-comment" style="padding-left: 50px; margin-top: 15px"  *ngFor="let itemTwo of item.children">
+      <div *ngIf="item.children.length > 0">
+        <div class="view-comment" style="padding-left: 50px; margin-top: 15px"  *ngFor="let itemTwo of item.children">
+          <div class="clearfix">
+            <div class="avatar-comment">
+              <div class="m-0 item-avatar">
+                <img [src]="itemTwo.imgAvatar" alt="image"/>
+              </div>
+            </div>
+            <div class="input-comment">
+              <p class="m-0">
+                <span class="username">{{itemTwo.fullName}}
+                  <i class="fas fa-check-circle txt-main" *ngIf="itemTwo.idReviewer.split('_')[0] !== 'REVIEWER'" ></i>
+                </span>
+                <span class="content">{{itemTwo.content}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-comment reply-comment" style="padding-left: 50px; margin-top: 15px" [id]="'reply-'+item.idComment">
         <div class="clearfix">
           <div class="avatar-comment">
             <div class="m-0 item-avatar">
@@ -26,30 +48,12 @@
             </div>
           </div>
           <div class="input-comment">
-            <p class="m-0">
-              <span class="username">{{itemTwo.idComment}}</span>
-              <span class="content">{{itemTwo.content}}</span>
-            </p>
+            <input [id]="'inputComment'+item.idProduct" class="form-control" type="text" [(ngModel)]="valueComment" (keydown.enter)="postComment(item)"/>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="view-comment reply-comment" style="padding-left: 50px; margin-top: 15px" [id]="'reply-'+item.idComment">
-      <div class="clearfix">
-        <div class="avatar-comment">
-          <div class="m-0 item-avatar">
-            <img [src]="'http://localhost/img/reviewer/avar-pay.png'" alt="image"/>
-          </div>
-        </div>
-        <div class="input-comment">
-          <input [id]="'inputComment'+item.idProduct" class="form-control" type="text" [(ngModel)]="valueComment" (keydown.enter)="postComment(item)"/>
-        </div>
-      </div>
-    </div>
-    <button type="button" style="display: none;" (click)="getData()" [id]="'reload_'+item.idProduct"></button>
   </div>
-
-
-
 </div>
+<p class="show-all-comment txt-main" *ngIf="!isCheck" (click)="showAllComment()">Click here show all comment</p>
+<button type="button" style="display: none;" (click)="getData()" [id]="'reload_'+idProduct"></button>

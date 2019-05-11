@@ -8,6 +8,10 @@ export class DataService {
   @Output() change: EventEmitter<number> = new EventEmitter();
 
   constructor() {
+    const localCount = JSON.parse(JSON.stringify(sessionStorage.getItem('numbProduct')));
+    if (localCount) {
+      this.count = localCount;
+    }
   }
 
   increaseProduct() {

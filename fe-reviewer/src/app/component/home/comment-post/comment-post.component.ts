@@ -9,6 +9,7 @@ import * as $ from 'jquery';
 export class CommentPostComponent implements OnInit {
 
   @Input() idProduct;
+  isCheck:boolean;
   arrTest:any = [];
   dataComment:any = [];
   valueComment:any;
@@ -37,6 +38,11 @@ export class CommentPostComponent implements OnInit {
 
       });
       this.dataComment = arr;
+      if (this.dataComment.length < 3) {
+        this.isCheck = true;
+      } else {
+        this.isCheck = false;
+      }
     })
   }
 
@@ -50,19 +56,26 @@ export class CommentPostComponent implements OnInit {
     if (this.valueComment) {
       let newComment = {
         idProduct: item.idProduct,
-        idReviewer: item.idReviewer,
+        idReviewer: localStorage.getItem('idUser'),
         idReply: item.idComment,
         isReply: true,
-        role: localStorage.getItem('role'),
+        role_user: localStorage.getItem('role'),
         content: this.valueComment,
         dateCreate: new Date()
       };
+      console.log(newComment);
       this.http.createComment(newComment).subscribe(res => {
         this.valueComment = '';
         $('.reply-comment').hide();
         this.getData();
       });
     }
+  }
+
+  showAllComment() {
+    const id = '#btnShowAllComment'+this.idProduct;
+    $(id).click();
+    this.isCheck = true;
   }
 
 }

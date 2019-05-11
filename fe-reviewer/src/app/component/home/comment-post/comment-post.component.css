@@ -1,3 +1,26 @@
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+
+.comment {
+  padding: 10px;
+  border-top: 1px solid silver;
+}
+
+.show-all-comment {
+  text-align: right;
+  font-size: 12px;
+  padding: 5px;
+  margin: 0;
+  cursor: pointer;
+  border-top: 1px solid silver;
+}
+
 .view-comment {
   margin-top: 15px;
   font-size: 14px;

@@ -24,6 +24,10 @@ export class MenuComponent implements OnInit {
   count: number;
   constructor(private authGuard: AuthGuardService, private router: Router,
               private data: DataService, private http: HttpService ) {
+    const localCount = JSON.parse(JSON.stringify(sessionStorage.getItem('numbProduct')));
+    if (localCount) {
+      this.count = localCount;
+    }
     this.idUser = localStorage.getItem('idUser');
   }
 
@@ -31,20 +35,12 @@ export class MenuComponent implements OnInit {
     this.http.getInforLogin(this.idUser).subscribe((data: any) => {
       this.fullName = data.fullName;
       this.avatar = data.avatar;
-    })
+    });
 
     this.data.change.subscribe(count => {
       this.count = count;
     });
-    // this.queryField.valueChanges
-    //   .debounceTime(200)
-    //   .distinctUntilChanged()
-    //   .switchMap((query) =>  this.http.search(query))
-    //   .subscribe(result => {
-    //   if (result) {
-    //     console.log(result);
-    //   }
-    // });
+
     this.queryField.valueChanges
       .debounceTime(200)
       .distinctUntilChanged()

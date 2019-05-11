@@ -87,7 +87,7 @@ export class ContentPostComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log(this.item);
   }
 
   checkAuthGuard() {
@@ -134,17 +134,23 @@ export class ContentPostComponent implements OnInit {
   }
 
   compareProduct(item: any) {
-    const product: Product = {
-      idPostProduct: item.idPostProduct,
-      imageProduct: item.image,
-      avgDisplay: item.avgDisplay,
-      avgPerformance: item.avgPerformance,
-      avgCamera: item.avgCamera,
-      avgBattery: item.avgBattery,
-      avgDesign: 0
+    item.infoBattery = JSON.parse(item.infoBattery);
+    item.infoDisplay = JSON.parse(item.infoDisplay);
+    item.infoPerformance = JSON.parse(item.infoPerformance);
+    item.infoDesign = JSON.parse(item.infoDesign);
+    item.infoCamera = JSON.parse(item.infoCamera);
+    const content = {
+      'Sub-1': '',
+      productName: item.productName,
+      imgPost: item.imgPost,
+      content: item.content,
+      'Sub-2': '',
     };
-    type ProductArrayType = Array<Product>;
-    const lstPost: ProductArrayType = [];
+    const product = {
+      idPostProduct: item.idPostProduct,
+      content: content
+    };
+    const lstPost = [];
     const sessionString = sessionStorage.getItem('lstProduct');
     const lstJson = JSON.parse(sessionString);
     if (lstJson === null) {
@@ -199,14 +205,14 @@ export class ContentPostComponent implements OnInit {
       if (this.valueComment) {
         let newComment = {
           idProduct: this.item.idProduct,
-          idReviewer: this.item.idReviewer,
+          idReviewer: localStorage.getItem('idUser'),
           idReply: null,
           isReply: false,
-          role: localStorage.getItem('role'),
+          role_user: localStorage.getItem('role'),
           content: this.valueComment,
           dateCreate: new Date()
         };
-
+        console.log(newComment);
         this.http.createComment(newComment).subscribe(res => {
           console.log(res);
           const id = '#reload_'+this.item.idProduct;
@@ -218,7 +224,6 @@ export class ContentPostComponent implements OnInit {
 
   showComment(idProduct) {
     const id = '#container-comment-'+idProduct;
-    $('.container-comment').hide();
-    $(id).show();
+    $(id).toggle();
   }
 }
