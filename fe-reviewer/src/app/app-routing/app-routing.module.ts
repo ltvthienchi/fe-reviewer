@@ -27,6 +27,7 @@ import {ComfirmCompanyComponent} from '../component/admin/comfirm-company/comfir
 import {FeedbackAdminComponent} from '../component/admin/feedback-admin/feedback-admin.component';
 import {LockReviewerComponent} from '../component/admin/lock-reviewer/lock-reviewer.component';
 import {RegisterConfirmationComponent} from '../component/register-confirmation/register-confirmation.component';
+import {SearchComponent} from '../component/search/search.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,8 @@ const routes: Routes = [
       { path: 'feedback', component: FeedbackReviewerComponent, canActivate: [AuthGuard]},
       { path: 'user-page', component: UserPageComponent, canActivate: [AuthGuard]},
       { path: 'compare', component: CompareComponent, canActivate: [AuthGuard]},
-      { path: 'register-confirmation', component: RegisterConfirmationComponent}
+      { path: 'register-confirmation', component: RegisterConfirmationComponent},
+      { path: 'detail-product/:id', component: SearchComponent}
     ]
   },
   {

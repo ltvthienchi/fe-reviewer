@@ -96,4 +96,13 @@ public class ReviewerService {
         reviewerRepository.save(reviewer);
     }
 
+    public Reviewer getReviewerByIdReviewer(String idReviewer) {
+        return reviewerRepository.findByIdReviewer(idReviewer);
+    }
+
+    public String getImageAvatarByIdReviewer(String idReviewer) {
+        String idImage = reviewerRepository.findByIdReviewer(idReviewer).getImgAvatar();
+        return imageService.getImagePathById(idImage);
+    }
+
 }

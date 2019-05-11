@@ -62,6 +62,7 @@ import { CreateProductComponent } from './component/company/create-product/creat
 import { SearchComponent } from './component/search/search.component';
 import {TopRatingService} from './services/data-global/top-rating.service';
 import { CommentPostComponent } from './component/home/comment-post/comment-post.component';
+import {AvatarService} from './services/avatar-service/avatar.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -192,7 +193,8 @@ export function tokenGetter() {
     AuthAfterLoginService,
     HttpService,
     DataService,
-    TopRatingService
+    TopRatingService,
+    AvatarService
   ],
   bootstrap: [AppComponent]
 })

@@ -2,13 +2,12 @@ package com.prj4.reviewer.service;
 
 import com.prj4.reviewer.entity.Product;
 import com.prj4.reviewer.reporsitory.ProductReporsitory;
-import com.prj4.reviewer.response.SearchReponse;
+import com.prj4.reviewer.response.SearchResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -48,14 +47,26 @@ public class ProductService {
         return lstResutl;
     }
 
-    public List<SearchReponse> searchProduct(String query) {
+    public List<SearchResponse> searchProduct(String query) {
         List<Product> lstProduct = productReporsitory.searchProduct(query);
-        List<SearchReponse> lstSearch = new ArrayList<>();
+        List<SearchResponse> lstSearch = new ArrayList<>();
         for (Product product : lstProduct) {
             String imgProduct = postService.getImagePostFromIdProduct(product.getIdProduct());
             String nameProduct = product.getNameProduct();
-            SearchReponse searchReponse = new SearchReponse(imgProduct, nameProduct);
-            lstSearch.add(searchReponse);
+            SearchResponse searchResponse = new SearchResponse(product.getIdProduct(), imgProduct, nameProduct);
+            lstSearch.add(searchResponse);
+        }
+        return lstSearch;
+    }
+    public List<SearchResponse> searchAllProduct() {
+        List<Product> lstProduct = productReporsitory.findAllByOrderByDtCreatedDesc();
+        List<SearchResponse> lstSearch = new ArrayList<>();
+        int length = lstProduct.size() < 4 ? lstProduct.size(): 4 ;
+        for (int i = 0; i < length; i++ ) {
+            String imgProduct = postService.getImagePostFromIdProduct(lstProduct.get(i).getIdProduct());
+            String nameProduct = lstProduct.get(i).getNameProduct();
+            SearchResponse searchResponse = new SearchResponse(lstProduct.get(i).getIdProduct(),    imgProduct, nameProduct);
+            lstSearch.add(searchResponse);
         }
         return lstSearch;
     }

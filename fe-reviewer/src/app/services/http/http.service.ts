@@ -94,7 +94,7 @@ export class HttpService {
 
   public changePass(cp): Observable<any> {
     const data = JSON.stringify(cp);
-    return this.http.post(URL_SERVER.changePass + 'updatePassword', data, getHeader());
+    return this.http.post(URL_SERVER.infoReviewer + 'updatePassword', data, getHeader());
   }
 
   public getAllAdmin(): Observable<any>{
@@ -149,12 +149,14 @@ export class HttpService {
  }
 
  public search (query) {
+    let data = 'ALL';
     if (query) {
-      return this.http.post(URL_SERVER.searchProduct + 'searchProduct', query, getHeader());
+      data = query;
     }
-    return ;
+   return this.http.post(URL_SERVER.searchProduct + 'searchProduct', data, getHeader());
  }
- public getInforLogin(idUser) {
-   return this.http.post(URL_SERVER.admin + 'getInforLogin', idUser, getHeader());
+ public getLoginInfo(loginRequest) {
+   const data = JSON.stringify(loginRequest);
+   return this.http.post(URL_SERVER.getLoginInfo + 'getLoginInfo', loginRequest, getHeader());
  }
 }
