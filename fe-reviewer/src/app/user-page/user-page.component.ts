@@ -11,6 +11,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NotifierService} from 'angular-notifier';
 import {UpdateInfoProfile} from '../model/updateInfoProfile.model';
 import {ChangePass} from '../model/changePass.model';
+import {AvatarService} from '../services/avatar-service/avatar.service';
 
 
 
@@ -38,7 +39,8 @@ export class UserPageComponent implements OnInit {
     updateInfoProfile: true
   };
 
-  constructor(private formBuilder: FormBuilder, notifier: NotifierService, private httpService: HttpService) {
+  constructor(private formBuilder: FormBuilder, notifier: NotifierService, private httpService: HttpService,
+              private avatarService: AvatarService) {
     this.notifier = notifier;
     this.firstName = '';
     this.lastName = '';
@@ -107,6 +109,8 @@ export class UserPageComponent implements OnInit {
       this.httpService.updateInfoPro(updateInPro).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
           this.reloadData();
+          const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
+          this.avatarService.changeAvaImage(avatar);
           this.showNotification( 'success', 'Update Profile successfully' );
           localStorage.setItem('fullName', this.firstName + ' ' + this.lastName);
         } else {

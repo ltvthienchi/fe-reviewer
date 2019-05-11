@@ -1,6 +1,6 @@
 <!--<div class="container-fuild bg-main">-->
   <!--<div class="menu">-->
-    <nav class="menu bg-main navbar fixed-top navbar-expand-lg navbar-light ">
+    <nav class="menu bg-main navbar fixed-top navbar-expand-lg navbar-light " >
       <a class="navbar-brand" routerLink="/" >
         <img style="width: 180px; height: 55px" src="../../../assets/wallpaper/logo.png" />
       </a>
@@ -12,7 +12,18 @@
       <div class="collapse navbar-collapse row" id="navbarSupportedContent">
 
         <form class="form-inline my-2 my-lg-0 col-6">
-          <input [formControl]="queryField" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" autofocus>
+          <input [formControl]="queryField" class="form-control mr-sm-2 searhcBox" type="search" placeholder="Search"
+                                            autofocus>
+          <div *ngFor="let result of results" >
+            <div class="autocomplete-items my-2 my-lg-0 col-12" tabindex="0" (blur)="focusOutFunction()">
+              <a style="text-decoration: none">
+                <div class="autocomplete-items-div">
+                  <img src="{{result.imgProduct}}" alt="{{result.nameProduct}}" height="42" width="42">
+                  {{result.nameProduct}}
+                </div>
+              </a>
+            </div>
+          </div>
         </form>
 
         <ul class="col-1"></ul>
@@ -45,7 +56,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
-                <img class="menu-avar" src="../../../assets/image/avar-pay.png"/>
+                <img class="menu-avar" src="{{avatar}}"/>
                 {{fullName}}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
