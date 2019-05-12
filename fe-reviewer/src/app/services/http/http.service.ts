@@ -66,6 +66,10 @@ export class HttpService {
     return this.http.post(URL_SERVER.infoReviewer + 'getReviewerInfo', email, getHeader());
   }
 
+  public getReviewerInfoById(idReviewer): Observable<any> {
+    return this.http.post(URL_SERVER.infoReviewer + 'getReviewerInfoById', idReviewer, getHeader());
+  }
+
 
   public updateInfoPro(data): Observable<any> {
     let input = new FormData();

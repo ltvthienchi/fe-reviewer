@@ -68,6 +68,16 @@ public class ReviewerService {
         return reviewerResponse;
     }
 
+    public ReviewerResponse getReviewerInfoById(String idReviewer) {
+        Reviewer reviewer = reviewerRepository.findByIdReviewer(idReviewer);
+        String imgAvatar = imageService.getImagePathById(reviewer.getImgAvatar());
+        String imgPanel = imageService.getImagePathById(reviewer.getImgPanel());
+        return new ReviewerResponse(reviewer.getIdReviewer(), reviewer.getFullName(),
+                reviewer.getFirstName(), reviewer.getLastName(),reviewer.getEmail(),reviewer.getDateOfBirth(),
+                imgAvatar, imgPanel, reviewer.getGender());
+//        return reviewerResponse;
+    }
+
     public String getReviewerIdByEmail(String email){
         //reviewerRepository.findByEmail(email);
         return reviewerRepository.findByEmail(email).getIdReviewer();

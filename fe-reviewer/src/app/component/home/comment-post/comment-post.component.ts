@@ -81,4 +81,13 @@ export class CommentPostComponent implements OnInit {
     this.isCheck = true;
   }
 
+  isRouterName(id) {
+    const checkRole = id.split('_')[0] !== 'REVIEWER';
+    if (checkRole) {
+      return '/company/' + id;
+    } else {
+      return '/user-page/' + id;
+    }
+  }
+
 }

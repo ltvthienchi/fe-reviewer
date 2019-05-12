@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../services/http/http.service';
-
+import * as $ from 'jquery';
 import {
   validatorConfirmPassword,
   validatorName, validatorOldPassword,
@@ -12,6 +12,7 @@ import {NotifierService} from 'angular-notifier';
 import {UpdateInfoProfile} from '../model/updateInfoProfile.model';
 import {ChangePass} from '../model/changePass.model';
 import {AvatarService} from '../services/avatar-service/avatar.service';
+import {ActivatedRoute} from '@angular/router';
 
 
 
@@ -26,9 +27,10 @@ export class UserPageComponent implements OnInit {
   updateInfoProfile: FormGroup;
   ChangePassForm: FormGroup;
   userInfo;
+  idReviewer;
+  localId;
   private emailReviewer: string;
   private firstName: string;
-  private fullName: string;
   private lastName: string;
   private genderReviewer: number;
   private dobReviewer = '01-01-2019';
@@ -40,13 +42,15 @@ export class UserPageComponent implements OnInit {
   };
 
   constructor(private formBuilder: FormBuilder, notifier: NotifierService, private httpService: HttpService,
-              private avatarService: AvatarService) {
+              private avatarService: AvatarService, private activatedRoute: ActivatedRoute) {
+    $(document).ready(function () {
+      $('html,body').animate({ scrollTop: 0 }, 'normal');
+    });
     this.notifier = notifier;
     this.firstName = '';
     this.lastName = '';
     this.dobReviewer = '';
     this.emailReviewer = localStorage.getItem('email');
-    this.fullName = localStorage.getItem('fullName');
     this.ChangePassForm = this.formBuilder.group({
       oldPass: ['', [validatorOldPassword]],
       password: ['', [validatorPassword]],
@@ -58,11 +62,13 @@ export class UserPageComponent implements OnInit {
       dobReviewer: [''],
       genderReviewer: [true],
     });
+    this.localId = localStorage.getItem('idUser');
   }
 
 
   ngOnInit() {
-    this.httpService.getReviewerInfo(this.emailReviewer).subscribe( (data: any) => {
+    this.idReviewer = this.activatedRoute.snapshot.paramMap.get('id');
+    this.httpService.getReviewerInfoById(this.idReviewer).subscribe( (data: any) => {
       console.log(data);
       this.userInfo = data;
       const dob = new Date(data.dateOfBirth);
@@ -80,7 +86,7 @@ export class UserPageComponent implements OnInit {
   }
 
   reloadData() {
-    this.httpService.getReviewerInfo(this.emailReviewer).subscribe( (data: any) => {
+    this.httpService.getReviewerInfoById(this.idReviewer).subscribe( (data: any) => {
       this.userInfo = data;
       const dob = new Date(data.dateOfBirth);
       const year = dob.getFullYear();
@@ -112,7 +118,6 @@ export class UserPageComponent implements OnInit {
           const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
           this.avatarService.changeAvaImage(avatar);
           this.showNotification( 'success', 'Update Profile successfully' );
-          localStorage.setItem('fullName', this.firstName + ' ' + this.lastName);
         } else {
           this.showNotification( 'error', data.result );
         }

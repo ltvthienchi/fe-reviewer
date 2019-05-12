@@ -60,10 +60,8 @@
                 {{fullName}}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<!--                <a class="dropdown-item" href="#">Action</a>-->
-<!--                <a class="dropdown-item" href="#">Another action</a>-->
-                <a class="dropdown-item" *ngIf="!isCompany()" routerLink="/user-page">Your Page</a>
-                <a class="dropdown-item" *ngIf="isCompany()" [routerLink]="'/company/' + idCompany">Company Page</a>
+                <a class="dropdown-item" *ngIf="!isCompany()" [routerLink]="'/user-page/' + idUser">Your Page</a>
+                <a class="dropdown-item" *ngIf="isCompany()" [routerLink]="'/company/' + idUser">Company Page</a>
                 <a class="dropdown-item" routerLink="/feedback">Feedback Website</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" style="cursor: pointer" (click)="removeToken()">Sign Out</a>
