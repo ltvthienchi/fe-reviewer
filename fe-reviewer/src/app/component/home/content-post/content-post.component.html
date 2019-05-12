@@ -91,7 +91,7 @@
     <div class="comment clearfix">
       <div class="avatar-comment">
         <label [id]="'label'+item.idProduct" [for]="'inputComment'+item.idProduct" class="m-0">
-          <img [src]="item.avatarCompany"/>
+          <img *ngIf="userInfo" [src]="userInfo.imgAvatar" alt="avatar image"/>
         </label>
       </div>
       <div class="input-comment">

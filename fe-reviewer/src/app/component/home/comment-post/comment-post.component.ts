@@ -13,11 +13,14 @@ export class CommentPostComponent implements OnInit {
   arrTest:any = [];
   dataComment:any = [];
   valueComment:any;
-
+  userInfo:any;
   constructor(private http: HttpService) { }
 
   ngOnInit() {
     this.getData();
+    this.http.getReviewerInfo(localStorage.getItem('email')).subscribe(res => {
+      this.userInfo = res;
+    });
   }
 
   getData() {

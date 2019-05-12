@@ -72,14 +72,27 @@
   padding: 12px;
   background: #f2f2f2;
   color: #c0392b;
+  /*background: #17a2b8;*/
+  /*color: white;*/
   margin: 0;
   font-weight: bold;
   min-height: 50px;
 }
 
+.progress {
+  background: white !important;
+}
+
 .my-col-compare {
   padding: 0;
-  min-width: 30%;
+}
+
+.my-col-compare.no-2 {
+  width: 41%;
+}
+
+.my-col-compare.no-3 {
+  width: 27.333%;
 }
 
 .none {

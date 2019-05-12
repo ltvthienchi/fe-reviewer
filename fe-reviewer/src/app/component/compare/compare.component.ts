@@ -12,8 +12,17 @@ export class CompareComponent implements OnInit {
 
   private lstPost: any;
   private arrayOfKeys: any;
-  private arrName = ['General', 'Name', 'Image', 'Content', 'Main'];
-  private arrNameSub = ['General', 'Main']
+  private arrName = [
+    'General', 'Name', 'Image',
+    'FlatForm', 'OS', 'Chip', 'CPU', 'GPU',
+    'Memory', 'Card', 'Internal',
+    'Design', 'Dimensions', 'Weight',
+    'Display', 'Type', 'Size', 'Resolution',
+    'Battery', 'Capacity', 'Type',
+    'Camera Main', 'Modules', 'Features', 'Video',
+    'Camera Selfie', 'Modules', 'Features', 'Video',
+  ];
+  private arrNameSub = ['General', 'FlatForm', 'Memory', 'Design', 'Display', 'Battery', 'Camera Main', 'Camera Selfie'];
   constructor(private data: DataService) { }
 
   ngOnInit() {
@@ -23,7 +32,6 @@ export class CompareComponent implements OnInit {
     } else {
       this.lstPost = JSON.parse(stringlistPro);
       this.arrayOfKeys = Object.keys(this.lstPost[0].content);
-      console.log(this.arrayOfKeys);
     }
   }
 
@@ -51,11 +59,51 @@ export class CompareComponent implements OnInit {
     return this.arrNameSub.indexOf(nameTh) === - 1;
   }
 
-  isCheckTd(nameTd) {
-    console.log(nameTd);
+  isCheckTd(nameTd, idxPost) {
     const isCheck = nameTd.split('-')[0] !== 'Sub';
+    if (idxPost === 1) return 'name';
     if(nameTd === 'imgPost') return 'image';
     return isCheck ? 'text' : 'sub';
+  }
+
+  isCheckPer(key, data) {
+    let total = data.avgCamera + data.avgBattery + data.avgDesign + data.avgPerformance + data.avgDisplay;
+    if (key === 'FlatForm' || key === 'Memory') return (data.avgPerformance * 10) + '%';
+    if (key === 'Design') return (data.avgDesign * 10) + '%';
+    if (key === 'Display') return (data.avgDisplay * 10) + '%';
+    if (key === 'Battery') return (data.avgBattery * 10) + '%';
+    if (key === 'Camera Main' || key === 'Camera Selfie') return (data.avgCamera * 10) + '%';
+    if (key === 'General') return ((total / 5) * 10) + '%';
+  }
+
+  isCheckNumber(key, data) {
+    let total = data.avgCamera + data.avgBattery + data.avgDesign + data.avgPerformance + data.avgDisplay;
+    if (key === 'FlatForm' || key === 'Memory') return data.avgPerformance;
+    if (key === 'Design') return data.avgDesign;
+    if (key === 'Display') return data.avgDisplay;
+    if (key === 'Battery') return data.avgBattery;
+    if (key === 'Camera Main' || key === 'Camera Selfie') return data.avgCamera;
+    if (key === 'General') return (total / 5);
+  }
+
+  isCheckClass(key, data) {
+    let defaultClass = 'progress-bar progress-bar-striped progress-bar-animated';
+    let total = data.avgCamera + data.avgBattery + data.avgDesign + data.avgPerformance + data.avgDisplay;
+
+    if (key === 'FlatForm' || key === 'Memory') return checkClass(data.avgPerformance);
+    if (key === 'Design') return checkClass(data.avgDesign);
+    if (key === 'Display') return checkClass(data.avgDisplay);
+    if (key === 'Battery') return checkClass(data.avgBattery);
+    if (key === 'Camera Main' || key === 'Camera Selfie') return checkClass(data.avgCamera);
+    if (key === 'General') return checkClass((total / 5));
+
+    function checkClass(value) {
+      if (value <=2) return defaultClass + ' bg-danger';
+      if (value > 2 && value <= 4) return defaultClass + ' bg-warning';
+      if (value > 4 && value <= 6) return defaultClass;
+      if (value > 6 && value <= 8) return defaultClass + ' bg-info';
+      if (value > 8) return defaultClass + ' bg-success';
+    }
   }
 }
 

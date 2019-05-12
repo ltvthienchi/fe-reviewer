@@ -44,7 +44,7 @@
         <div class="clearfix">
           <div class="avatar-comment">
             <div class="m-0 item-avatar">
-              <img [src]="'http://localhost/img/reviewer/avar-pay.png'" alt="image"/>
+              <img *ngIf="userInfo" [src]="userInfo.imgAvatar" alt="avatar image"/>
             </div>
           </div>
           <div class="input-comment">
