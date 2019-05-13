@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from '../../model/product.model';
 import {forEach} from '@angular/router/src/utils/collection';
 import {DataService} from '../../services/data-service/data.service';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-compare',
   templateUrl: './compare.component.html',
@@ -26,6 +26,9 @@ export class CompareComponent implements OnInit {
   constructor(private data: DataService) { }
 
   ngOnInit() {
+    $(document).ready(function () {
+      $('html,body').animate({ scrollTop: 0 }, 'normal');
+    });
     const stringlistPro = sessionStorage.getItem('lstProduct');
     if (stringlistPro === null) {
       this.lstPost = null;
