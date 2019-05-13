@@ -174,7 +174,7 @@ export class HttpService {
   public getProducts(products) {
     return this.http.post(URL_SERVER.postProduct + 'getPostToCompare', products, getHeader());
 
-    return;
+    
   }
   public getInforLogin(idUser) {
     return this.http.post(URL_SERVER.admin + 'getInforLogin', idUser, getHeader());
