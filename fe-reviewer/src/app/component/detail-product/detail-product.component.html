@@ -3,7 +3,7 @@
 <!--    <app-top-company></app-top-company>-->
   </div>
 
-  <div class="col-sm-6">
+  <div class="col-sm-6" *ngIf="myData">
       <app-content-post [item]="myData"></app-content-post>
   </div>
 

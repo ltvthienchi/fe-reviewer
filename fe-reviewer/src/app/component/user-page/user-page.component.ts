@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpService} from '../services/http/http.service';
+import {HttpService} from '../../services/http/http.service';
 import * as $ from 'jquery';
 import {
   validatorConfirmPassword,
   validatorName, validatorOldPassword,
   validatorPassword,
   validatorRequired
-} from '../services/validator/validator';
+} from '../../services/validator/validator';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NotifierService} from 'angular-notifier';
-import {UpdateInfoProfile} from '../model/updateInfoProfile.model';
-import {ChangePass} from '../model/changePass.model';
-import {AvatarService} from '../services/avatar-service/avatar.service';
+import {UpdateInfoProfile} from '../../model/updateInfoProfile.model';
+import {ChangePass} from '../../model/changePass.model';
+import {AvatarService} from '../../services/avatar-service/avatar.service';
 import {ActivatedRoute} from '@angular/router';
 
 

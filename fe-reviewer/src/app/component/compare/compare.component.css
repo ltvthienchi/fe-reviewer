@@ -19,6 +19,10 @@
   object-fit:cover;
 }
 
+.table-compare .bg-info {
+  background-color: orange !important
+}
+
 .size-img .text{
   position: absolute;
   z-index: 999;
@@ -70,10 +74,10 @@
 
 .detail-table-header {
   padding: 12px;
-  background: #f2f2f2;
-  color: #c0392b;
-  /*background: #17a2b8;*/
-  /*color: white;*/
+  /*background: #f2f2f2;*/
+  /*color: #c0392b;*/
+  background: #17a2b8;
+  color: white;
   margin: 0;
   font-weight: bold;
   min-height: 50px;
