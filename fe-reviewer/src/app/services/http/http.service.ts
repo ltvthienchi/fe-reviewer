@@ -159,4 +159,7 @@ export class HttpService {
    const data = JSON.stringify(loginRequest);
    return this.http.post(URL_SERVER.getLoginInfo + 'getLoginInfo', loginRequest, getHeader());
  }
+ public getDetailPost(idProduct) {
+    return this.http.post(URL_SERVER.postProduct + 'getDetailPost', idProduct, getHeader());
+ }
 }

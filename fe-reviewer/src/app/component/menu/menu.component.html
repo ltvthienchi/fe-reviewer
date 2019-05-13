@@ -15,8 +15,8 @@
           <input [formControl]="queryField" class="form-control mr-sm-2 searhcBox" type="search" placeholder="Search"
                                             autofocus>
           <div *ngFor="let result of results" >
-            <div class="autocomplete-items my-2 my-lg-0 col-12" tabindex="0" (blur)="focusOutFunction()">
-              <a style="text-decoration: none">
+            <div class="autocomplete-items my-2 my-lg-0 col-12" tabindex="0">
+              <a style="text-decoration: none" [routerLink]="'/detail-product/' + result.idProduct">
                 <div class="autocomplete-items-div">
                   <img src="{{result.imgProduct}}" alt="{{result.nameProduct}}" height="42" width="42">
                   {{result.nameProduct}}

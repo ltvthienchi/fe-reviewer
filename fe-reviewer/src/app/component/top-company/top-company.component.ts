@@ -20,7 +20,7 @@ export class TopCompanyComponent implements OnInit {
   getDataRating() {
     this.topRating.on().subscribe(res => {
       this.lstData = res;
-    })
+    });
   }
 
 }

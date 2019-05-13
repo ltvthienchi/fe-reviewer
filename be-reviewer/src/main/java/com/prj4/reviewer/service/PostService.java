@@ -46,4 +46,17 @@ public class PostService {
         return imageRepository.findByIdImage(idImage).getImgPath();
     }
 
+    public Post getPostByIdProduct(String idProduct) {
+        return postRepository.findByIdProduct(idProduct);
+    }
+
+    public List<Post> getPostToCompare(List<String> lstIdProduct) {
+        List<Post> lstPost = new ArrayList<>();
+        for (String idProduct: lstIdProduct) {
+            Post post = getPostByIdProduct(idProduct);
+            lstPost.add(post);
+        }
+        return lstPost;
+    }
+
 }

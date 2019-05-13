@@ -45,7 +45,7 @@ import { CompareComponent } from './component/compare/compare.component';
 import { TopCompanyComponent } from './component/top-company/top-company.component';
 import { DdmmyyyyPipe } from './services/pipe/ddmmyyyy.pipe';
 import { ContentPostComponent } from './component/home/content-post/content-post.component';
-import { UserPageComponent } from './user-page/user-page.component';
+import { UserPageComponent } from './component/user-page/user-page.component';
 import { LoginAdminComponent } from './component/admin/login-admin/login-admin.component';
 import {UserService} from './services/user-service/user.service';
 import { TextAlertComponent } from './services/validator/text-alert/text-alert.component';
@@ -63,6 +63,8 @@ import { SearchComponent } from './component/search/search.component';
 import {TopRatingService} from './services/data-global/top-rating.service';
 import { CommentPostComponent } from './component/home/comment-post/comment-post.component';
 import {AvatarService} from './services/avatar-service/avatar.service';
+import { DetailProductComponent } from './component/detail-product/detail-product.component';
+import { ActivityHistoryComponent } from './component/activity-history/activity-history.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -161,6 +163,8 @@ export function tokenGetter() {
     CreateProductComponent,
     SearchComponent,
     CommentPostComponent,
+    DetailProductComponent,
+    ActivityHistoryComponent,
   ],
   imports: [
     HttpClientModule,
