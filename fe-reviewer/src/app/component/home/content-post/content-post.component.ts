@@ -17,7 +17,7 @@ import {TopRatingService} from '../../../services/data-global/top-rating.service
 })
 export class ContentPostComponent implements OnInit {
 
-  @Input() item;
+  @Input() item: any;
   valueComment = '';
   curItemReply;
   dataDetail = {

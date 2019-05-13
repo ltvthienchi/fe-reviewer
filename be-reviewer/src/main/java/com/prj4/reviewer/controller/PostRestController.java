@@ -98,5 +98,26 @@ public class PostRestController {
         return createPostResponseService.createListPostReponse(lstPost);
     }
 
+    @PostMapping(BASE_POST_LINK + "getDetailPost")
+    public  PostResponse getDetailPost(@RequestBody String idProduct) {
+        Post p = postService.getPostByIdProduct(idProduct);
+        Product product = productService.getProductById(idProduct);
+        String imgPost = postService.getImagePost(p.getIdImage());
+        String nameCompany = companyService.getNameCompanyById(p.getIdCompany());
+        String avatarCompany = companyService.getImageAvaComp(p.getIdCompany());
+        PostResponse postResponse= new PostResponse(p.getIdPostProduct(), p.getIdProduct(), p.getIdCompany(), nameCompany,
+                p.getContentPost(), avatarCompany, imgPost, product.getAvgDisplay(), product.getAvgPerformance(),
+                product.getAvgCamera(),product.getAvgBattery(), product.getAvgDesign(), 0,
+                product.getInfoBattery(), product.getInfoDisplay(), product.getInfoPerformance(),
+                product.getInfoDesign(),product.getInfoCamera(), p.getDtCreated(), product.getNameProduct());
+        return postResponse;
+    }
+
+    @PostMapping(BASE_POST_LINK + "getPostToCompare")
+    public List<PostResponse> getPostToCompare(@RequestBody List<String> lstIdProduct) {
+        List<Post> lstPost = postService.getPostToCompare(lstIdProduct);
+        return createPostResponseService.createListPostReponse(lstPost);
+    }
+
 
 }

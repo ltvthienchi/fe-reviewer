@@ -31,6 +31,7 @@ export class UserPageComponent implements OnInit {
   localId;
   private emailReviewer: string;
   private firstName: string;
+  private fullName: string;
   private lastName: string;
   private genderReviewer: number;
   private dobReviewer = '01-01-2019';

@@ -4,7 +4,7 @@
       <p class="title">Top Rating</p>
       <p class="content" *ngFor="let product of lstData; let i = index">
         <span class="stt">{{i + 1}}</span>
-        <span class="name">{{product.nameProduct}}</span>
+        <a [routerLink]="'/detail-product/' + product.idProduct"><span class="name">{{product.nameProduct}}</span></a>
         <span class="">{{product.numberRating}} rates</span>
       </p>
     </div>
