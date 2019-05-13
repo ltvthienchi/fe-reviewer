@@ -166,4 +166,8 @@ export class HttpService {
  public getDetailPost(idProduct) {
     return this.http.post(URL_SERVER.postProduct + 'getDetailPost', idProduct, getHeader());
  }
+
+  public getProducts(products) {
+    return this.http.post(URL_SERVER.postProduct + 'getPostToCompare', products, getHeader());
+  }
 }

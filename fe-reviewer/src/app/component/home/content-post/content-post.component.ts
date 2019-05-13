@@ -180,6 +180,7 @@ export class ContentPostComponent implements OnInit {
       avgDesign: item.avgDesign,
       avgDisplay: item.avgDisplay,
       avgPerformance: item.avgPerformance,
+      idProduct: item.idProduct,
       content: content
     };
     const lstPost = [];

@@ -3,6 +3,7 @@ import {Product} from '../../model/product.model';
 import {forEach} from '@angular/router/src/utils/collection';
 import {DataService} from '../../services/data-service/data.service';
 import * as $ from 'jquery';
+import {HttpService} from '../../services/http/http.service';
 @Component({
   selector: 'app-compare',
   templateUrl: './compare.component.html',
@@ -10,8 +11,9 @@ import * as $ from 'jquery';
 })
 export class CompareComponent implements OnInit {
 
-  private lstPost: any;
+  private lstPost: any = [];
   private arrayOfKeys: any;
+  private newArr: any;
   private arrName = [
     'General', 'Name', 'Image',
     'FlatForm', 'OS', 'Chip', 'CPU', 'GPU',
@@ -23,7 +25,7 @@ export class CompareComponent implements OnInit {
     'Camera Selfie', 'Modules', 'Features', 'Video',
   ];
   private arrNameSub = ['General', 'FlatForm', 'Memory', 'Design', 'Display', 'Battery', 'Camera Main', 'Camera Selfie'];
-  constructor(private data: DataService) { }
+  constructor(private data: DataService, private http: HttpService) { }
 
   ngOnInit() {
     $(document).ready(function () {
@@ -33,8 +35,66 @@ export class CompareComponent implements OnInit {
     if (stringlistPro === null) {
       this.lstPost = null;
     } else {
-      this.lstPost = JSON.parse(stringlistPro);
-      this.arrayOfKeys = Object.keys(this.lstPost[0].content);
+      const arrId = [];
+      const arrLst = JSON.parse(stringlistPro);
+      arrLst.map(item => {
+        console.log(item);
+        arrId.push(item.idProduct);
+      });
+      console.log(arrId);
+      this.http.getProducts(arrId).subscribe(res => {
+        console.log(res);
+        this.newArr = res;
+        this.newArr.map(item => {
+          item.infoBattery = JSON.parse(item.infoBattery);
+          item.infoDisplay = JSON.parse(item.infoDisplay);
+          item.infoPerformance = JSON.parse(item.infoPerformance);
+          item.infoDesign = JSON.parse(item.infoDesign);
+          item.infoCamera = JSON.parse(item.infoCamera);
+          const content = {
+            'Sub-1': '',
+            productName: item.productName,
+            imgPost: item.imgPost,
+            'Sub-2': '',
+            platformOne: item.infoPerformance.platform.os,
+            platformTwo: item.infoPerformance.platform.chip,
+            platformThree: item.infoPerformance.platform.cpu,
+            platformFour: item.infoPerformance.platform.gpu,
+            'Sub-3': '',
+            memoryOne: item.infoPerformance.memory.card,
+            memoryTwo: item.infoPerformance.memory.internal,
+            'Sub-4': '',
+            designOne: item.infoDesign.dimensions,
+            designTwo: item.infoDesign.weight,
+            'Sub-5': '',
+            displayOne: item.infoDisplay.type,
+            displayTwo: item.infoDisplay.size,
+            displayThree: item.infoDisplay.resolution,
+            'Sub-6': '',
+            batteryOne: item.infoBattery.capacity,
+            batteryTwo: item.infoBattery.type,
+            'Sub-7': '',
+            cameraMainOne: item.infoCamera.main.modules,
+            cameraMainTwo: item.infoCamera.main.features,
+            cameraMainThree: item.infoCamera.main.video,
+            'Sub-8': '',
+            cameraSelfOne: item.infoCamera.self.modules,
+            cameraSelfTwo: item.infoCamera.self.features,
+            cameraSelfThree: item.infoCamera.self.video
+          };
+          const product = {
+            idPostProduct: item.idPostProduct,
+            avgBattery: item.avgBattery,
+            avgCamera: item.avgCamera,
+            avgDesign: item.avgDesign,
+            avgDisplay: item.avgDisplay,
+            avgPerformance: item.avgPerformance,
+            content: content
+          };
+          this.lstPost.push(product);
+        });
+        this.arrayOfKeys = Object.keys(this.lstPost[0].content);
+      });
     }
   }
 
