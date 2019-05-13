@@ -155,16 +155,12 @@ export class HttpService {
     return this.http.post(URL_SERVER.admin + 'editAdmin', data, getHeader());
   }
 
-<<<<<<< HEAD
  public search (query) {
     let data = 'ALL';
-=======
-  public search(query) {
->>>>>>> DamNH
     if (query) {
       data = query;
     }
-<<<<<<< HEAD
+
    return this.http.post(URL_SERVER.searchProduct + 'searchProduct', data, getHeader());
  }
  public getLoginInfo(loginRequest) {
@@ -177,7 +173,7 @@ export class HttpService {
 
   public getProducts(products) {
     return this.http.post(URL_SERVER.postProduct + 'getPostToCompare', products, getHeader());
-=======
+
     return;
   }
   public getInforLogin(idUser) {
@@ -190,6 +186,6 @@ export class HttpService {
 
   public getRoleAdmin(data: any){
     return this.http.post(URL_SERVER.admin + 'getRole', data, getHeader());
->>>>>>> DamNH
+
   }
 }
