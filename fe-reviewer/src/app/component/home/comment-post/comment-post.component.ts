@@ -13,11 +13,14 @@ export class CommentPostComponent implements OnInit {
   arrTest:any = [];
   dataComment:any = [];
   valueComment:any;
-
+  userInfo:any;
   constructor(private http: HttpService) { }
 
   ngOnInit() {
     this.getData();
+    this.http.getReviewerInfo(localStorage.getItem('email')).subscribe(res => {
+      this.userInfo = res;
+    });
   }
 
   getData() {
@@ -76,6 +79,15 @@ export class CommentPostComponent implements OnInit {
     const id = '#btnShowAllComment'+this.idProduct;
     $(id).click();
     this.isCheck = true;
+  }
+
+  isRouterName(id) {
+    const checkRole = id.split('_')[0] !== 'REVIEWER';
+    if (checkRole) {
+      return '/company/' + id;
+    } else {
+      return '/user-page/' + id;
+    }
   }
 
 }

@@ -41,7 +41,7 @@ const routes: Routes = [
       { path: 'company/view-history', component: ViewHistoryCompanyComponent},
       { path: 'user-update-page', component: UserUpdatePageComponent, canActivate: [AuthGuard]},
       { path: 'feedback', component: FeedbackReviewerComponent, canActivate: [AuthGuard]},
-      { path: 'user-page', component: UserPageComponent, canActivate: [AuthGuard]},
+      { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard]},
       { path: 'compare', component: CompareComponent, canActivate: [AuthGuard]},
       { path: 'register-confirmation', component: RegisterConfirmationComponent},
       { path: 'detail-product/:id', component: DetailProductComponent}

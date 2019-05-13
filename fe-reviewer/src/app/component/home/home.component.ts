@@ -39,6 +39,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    $(document).ready(function () {
+      $('html,body').animate({ scrollTop: 0 }, 'normal');
+    });
     Promise.all([
       this.getAllPost(),
     ]).then(res => {

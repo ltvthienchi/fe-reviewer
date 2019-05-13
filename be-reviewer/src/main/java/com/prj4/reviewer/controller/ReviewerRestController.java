@@ -76,6 +76,11 @@ public class ReviewerRestController {
         }
     }
 
+    @PostMapping(BASE_POST_LINK + "getReviewerInfoById")
+    ReviewerResponse getReviewerInfoById(@RequestBody String idReviewer) {
+        return reviewerService.getReviewerInfoById(idReviewer);
+    }
+
     @PostMapping(BASE_POST_LINK + "getReviewerInfo")
     ReviewerResponse getReviewerInfo(@RequestBody String email) {
         return reviewerService.getReviewerInfo(email);

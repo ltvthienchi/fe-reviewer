@@ -3,7 +3,7 @@ import { arrPostProduct } from '../../services/local_database/post-product';
 import {AuthGuardService} from '../../services/auth/auth-guard.service';
 import {HttpService} from '../../services/http/http.service';
 import {ActivatedRoute} from '@angular/router';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -24,6 +24,9 @@ export class CompanyComponent implements OnInit {
   constructor(private authGuard: AuthGuardService, private http: HttpService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    $(document).ready(function () {
+      $('html,body').animate({ scrollTop: 0 }, 'normal');
+    });
     this.detailCompany = {
       idCompany: '',
       nameCompany: '',

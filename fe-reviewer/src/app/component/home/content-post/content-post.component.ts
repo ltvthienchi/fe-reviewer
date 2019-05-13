@@ -59,6 +59,7 @@ export class ContentPostComponent implements OnInit {
       }
     }
   };
+  userInfo;
   // newItem = {
   //   idPostProduct: null,
   //   idProduct: null,
@@ -87,7 +88,9 @@ export class ContentPostComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.item);
+    this.http.getReviewerInfo(localStorage.getItem('email')).subscribe(res => {
+      this.userInfo = res;
+    });
   }
 
   checkAuthGuard() {
@@ -143,11 +146,40 @@ export class ContentPostComponent implements OnInit {
       'Sub-1': '',
       productName: item.productName,
       imgPost: item.imgPost,
-      content: item.content,
       'Sub-2': '',
+      platformOne: item.infoPerformance.platform.os,
+      platformTwo: item.infoPerformance.platform.chip,
+      platformThree: item.infoPerformance.platform.cpu,
+      platformFour: item.infoPerformance.platform.gpu,
+      'Sub-3': '',
+      memoryOne: item.infoPerformance.memory.card,
+      memoryTwo: item.infoPerformance.memory.internal,
+      'Sub-4': '',
+      designOne: item.infoDesign.dimensions,
+      designTwo: item.infoDesign.weight,
+      'Sub-5': '',
+      displayOne: item.infoDisplay.type,
+      displayTwo: item.infoDisplay.size,
+      displayThree: item.infoDisplay.resolution,
+      'Sub-6': '',
+      batteryOne: item.infoBattery.capacity,
+      batteryTwo: item.infoBattery.type,
+      'Sub-7': '',
+      cameraMainOne: item.infoCamera.main.modules,
+      cameraMainTwo: item.infoCamera.main.features,
+      cameraMainThree: item.infoCamera.main.video,
+      'Sub-8': '',
+      cameraSelfOne: item.infoCamera.self.modules,
+      cameraSelfTwo: item.infoCamera.self.features,
+      cameraSelfThree: item.infoCamera.self.video
     };
     const product = {
       idPostProduct: item.idPostProduct,
+      avgBattery: item.avgBattery,
+      avgCamera: item.avgCamera,
+      avgDesign: item.avgDesign,
+      avgDisplay: item.avgDisplay,
+      avgPerformance: item.avgPerformance,
       content: content
     };
     const lstPost = [];

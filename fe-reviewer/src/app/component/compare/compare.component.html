@@ -15,12 +15,27 @@
   <table class="table table-compare" style="background: white">
     <tr *ngFor="let key of arrName; let idx = index">
       <th *ngIf="isCheckTh(key)" style="border: 1px solid silver; width: 10%;">{{key}}</th>
-      <th *ngIf="!isCheckTh(key) && lstPost.length === 2" colspan="3" class="detail-table-header text-uppercase">{{key}}</th>
-      <th *ngIf="!isCheckTh(key) && lstPost.length === 3" colspan="4" class="detail-table-header text-uppercase">{{key}}</th>
-      <td *ngFor="let data of lstPost" style="border-right: 1px solid" [class]="!isCheckTh(key) ? 'my-col-compare d-none' : 'my-col-compare'">
-        <p *ngIf="isCheckTd(arrayOfKeys[idx]) === 'sub'" class="detail-table-header"></p>
-        <p *ngIf="isCheckTd(arrayOfKeys[idx]) === 'text'" class="my-margin">{{data.content[arrayOfKeys[idx]]}}</p>
-        <img *ngIf="isCheckTd(arrayOfKeys[idx]) === 'image'" [src]="data.content[arrayOfKeys[idx]]"  alt="image product" class="image-compare"/>
+<!--      <th *ngIf="!isCheckTh(key) && lstPost.length === 2" colspan="3" class="detail-table-header text-uppercase">{{key}}</th>-->
+<!--      <th *ngIf="!isCheckTh(key) && lstPost.length === 3" colspan="4" class="detail-table-header text-uppercase">{{key}}</th>-->
+      <th *ngIf="!isCheckTh(key)" class="detail-table-header text-uppercase">{{key}}</th>
+      <td *ngFor="let data of lstPost" style="border-right: 1px solid" class="my-col-compare no-3">
+<!--      <td *ngFor="let data of lstPost" style="border-right: 1px solid" [class]="lstPost.length === 2 ? (!isCheckTh(key) ? 'my-col-compare no-2 d-none' : 'my-col-compare no-2') :(!isCheckTh(key) ? 'my-col-compare no-3 d-none' : 'my-col-compare no-3')">-->
+        <div *ngIf="isCheckTd(arrayOfKeys[idx], idx) === 'sub'" class="detail-table-header">
+            <div class="progress" style="width: 85%; float: left; margin-top: 4px">
+              <div [class]="isCheckClass(key, data)" role="progressbar"
+                   [style.width]="isCheckPer(key, data)" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <span style="float: right">{{isCheckNumber(key, data) | floatFixed}}</span>
+        </div>
+        <p *ngIf="isCheckTd(arrayOfKeys[idx], idx) === 'text'" class="my-margin">{{data.content[arrayOfKeys[idx]]}}</p>
+        <img *ngIf="isCheckTd(arrayOfKeys[idx], idx) === 'image'" [src]="data.content[arrayOfKeys[idx]]"  alt="image product" class="image-compare"/>
+        <p *ngIf="isCheckTd(arrayOfKeys[idx], idx) === 'name'" class="my-margin">
+          {{data.content[arrayOfKeys[idx]]}}
+<!--          *ngIf="lstPost.length > 1"-->
+          <button type="button" class="float-right" aria-label="Close" title="Remove Product" (click) ="removeProduct(data.idPostProduct)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </p>
       </td>
     </tr>
   </table>

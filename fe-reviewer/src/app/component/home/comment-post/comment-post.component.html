@@ -9,7 +9,8 @@
         </div>
         <div class="input-comment">
           <p class="m-0">
-            <span class="username">{{item.fullName}}
+            <span class="username">
+              <a [routerLink]="isRouterName(item.idReviewer)">{{item.fullName}}</a>
               <i class="fas fa-check-circle txt-main" *ngIf="item.idReviewer.split('_')[0] !== 'REVIEWER'" ></i>
             </span>
             <span class="content">{{item.content}}</span>
@@ -30,7 +31,8 @@
             </div>
             <div class="input-comment">
               <p class="m-0">
-                <span class="username">{{itemTwo.fullName}}
+                <span class="username">
+                  <a [routerLink]="isRouterName(itemTwo.idReviewer)">{{itemTwo.fullName}}</a>
                   <i class="fas fa-check-circle txt-main" *ngIf="itemTwo.idReviewer.split('_')[0] !== 'REVIEWER'" ></i>
                 </span>
                 <span class="content">{{itemTwo.content}}</span>
@@ -44,7 +46,7 @@
         <div class="clearfix">
           <div class="avatar-comment">
             <div class="m-0 item-avatar">
-              <img [src]="'http://localhost/img/reviewer/avar-pay.png'" alt="image"/>
+              <img *ngIf="userInfo" [src]="userInfo.imgAvatar" alt="avatar image"/>
             </div>
           </div>
           <div class="input-comment">

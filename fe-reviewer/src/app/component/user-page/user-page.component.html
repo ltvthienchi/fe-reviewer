@@ -1,13 +1,13 @@
 <div class="row p-main">
   <div class="profile clearfix">
     <div class="image">
-      <img [src]="this.userInfo.imgPanel" class="img-cover">
+      <img *ngIf="userInfo" [src]="userInfo.imgPanel" class="img-cover">
     </div>
     <div class="user clearfix">
       <div class="avatar">
-        <img [src]="this.userInfo.imgAvatar" class="img-thumbnail img-profile">
+        <img *ngIf="userInfo" [src]="userInfo.imgAvatar" class="img-thumbnail img-profile">
       </div>
-      <h2 class="pl-3">{{fullName}}</h2>
+      <h2 class="pl-3" *ngIf="userInfo">{{userInfo.fullName}}</h2>
       <br>
       <div class="list-details">
       </div>
@@ -35,7 +35,7 @@
                   <i class="fas fa-venus-mars"></i>
                 </div>
                 <div class="list-details">
-                  <div><span>{{this.userInfo.gender ? 'Male' : 'Female'}}</span></div>
+                  <div><span *ngIf="userInfo">{{userInfo.gender ? 'Male' : 'Female'}}</span></div>
                   <small>Gender</small>
                 </div>
               </li>
@@ -71,11 +71,11 @@
                 class="icon-user"></i> <span class="hidden-xs">Activity History</span></a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="idReviewer === localId">
               <a href="#" data-target="#edit" data-toggle="pill" class="nav-link"><i
                 class="icon-note"></i> <span class="hidden-xs">Edit Profile</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="idReviewer === localId">
               <a href="#" data-target="#changepassword" data-toggle="pill" class="nav-link"><i
                 class="icon-note"></i> <span class="hidden-xs">Change Password</span></a>
             </li>
@@ -98,7 +98,7 @@
               <!--/row-->
             </div>
 
-            <div class="tab-pane" id="edit">
+            <div class="tab-pane" id="edit" *ngIf="idReviewer === localId">
               <form [formGroup]="updateInfoProfile">
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">First name</label>
@@ -144,14 +144,14 @@
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Change Avatar</label>
                   <div class="col-lg-9">
-                    <input type="file" (change)="handleFileInput($event.target.files, 'avatar')">
+                    <input type="file" (change)="handleFileInput($event.target['files'], 'avatar')">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Change Background</label>
                   <div class="col-lg-9">
-                    <input type="file" (change)="handleFileInput($event.target.files, 'background')">
+                    <input type="file" (change)="handleFileInput($event.target['files'], 'background')">
                   </div>
                 </div>
 
@@ -165,7 +165,7 @@
               </form>
             </div>
 
-            <div class="tab-pane" id="changepassword">
+            <div class="tab-pane" id="changepassword" *ngIf="idReviewer === localId">
               <form [formGroup]="ChangePassForm" (submit)="submitChangePass()">
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Your Current Password</label>
