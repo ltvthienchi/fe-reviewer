@@ -11,6 +11,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpService } from '../../../services/http/http.service';
 import { Admin } from '../../../model/admin.model';
 import { parse } from 'url';
+import { error } from 'protractor';
+import { AdminBlock } from '../../../model/AdminBlock.model';
+import * as $ from 'jquery';
 @Component({
   selector: 'app-manage-admin',
   templateUrl: './manage-admin.component.html',
@@ -24,6 +27,8 @@ export class ManageAdminComponent implements OnInit {
 
   listAdmin: Admin[];
   adminForm: FormGroup;
+  role;
+  check:boolean;
   validatorForm = {
     adminForm: true
   };
@@ -35,28 +40,42 @@ export class ManageAdminComponent implements OnInit {
   ngOnInit() {
 
 
-
+    this.check=false;
     this.adminForm = this.formBuilder.group({
       idAdmin: [],
       dtCreated: [],
       active: [],
-      fullNameAdmin: ['', [validatorRequired, validatorName]],
+      name: ['', [validatorRequired, validatorName]],
       dobAdmin: ['', [validatorRequired]],
-      emailAdmin: ['', [validatorRequired, validatorEmail]],
+      email: ['', [validatorRequired, validatorEmail]],
       addressAdmin: ['', [validatorRequired]],
-      phoneAdmin: ['', [validatorRequired, validatorPhone]],
-      passAdmin: ['', [validatorRequired]]
+      phone: ['', [validatorRequired, validatorPhone]],
+      password: ['', [validatorRequired, validatorPassword]]
 
     });
+    
+    const item:AdminBlock={
+      idAdmin:localStorage.getItem('idUser'),
+      isActive:true
+  
+    }
+    this.httpService.getRoleAdmin(item).subscribe((data: any) => {
+      console.log(data);
+      this.role = data;
+      if(this.role == '0') this.check=true; else this.check=false;
+      
+    });
+    console.log(this.role);
     this.loadData();
+    
 
   }
 
-  public showNotification(type: string, message: string): void {
+   showNotification(type: string, message: string): void {
     this.notifier.notify(type, message);
   }
 
-  public editAdmin(admin: any) {
+   editAdmin(admin: any) {
 
     const dob = new Date(admin.dobAdmin);
     const year = dob.getFullYear();
@@ -68,13 +87,13 @@ export class ManageAdminComponent implements OnInit {
     this.adminForm.controls['idAdmin'].setValue(admin.idAdmin);
     this.adminForm.controls['dtCreated'].setValue(admin.dtCreated);
     this.adminForm.controls['active'].setValue(admin.active);
-    this.adminForm.controls['passAdmin'].setValue(admin.passAdmin);
-    this.adminForm.controls['fullNameAdmin'].setValue(admin.fullNameAdmin);
-    this.adminForm.controls['emailAdmin'].setValue(admin.emailAdmin);
+    this.adminForm.controls['password'].setValue(admin.passAdmin);
+    this.adminForm.controls['name'].setValue(admin.fullNameAdmin);
+    this.adminForm.controls['email'].setValue(admin.emailAdmin);
     this.adminForm.controls['addressAdmin'].setValue(admin.addressAdmin);
-    this.adminForm.controls['phoneAdmin'].setValue(admin.phoneAdmin);
+    this.adminForm.controls['phone'].setValue(admin.phoneAdmin);
     this.adminForm.controls['dobAdmin'].setValue(parseDob);
-    
+
     // console.log("parseDob");
     //  console.log(this.adminForm.value['dobAdmin']);
     //this.dataEdit = admin;
@@ -86,8 +105,22 @@ export class ManageAdminComponent implements OnInit {
     if (this.adminForm.status === 'INVALID') {
       this.validatorForm.adminForm = false;
     } else {
-      const item = this.adminForm.value;
-      console.log(item);
+      const item: Admin = {
+        idAdmin: this.adminForm.value.idAdmin,
+        dtCreated: this.adminForm.value.dtCreated,
+        isActive: this.adminForm.value.active,
+        passAdmin: this.adminForm.value.password,
+        fullNameAdmin: this.adminForm.value.name,
+        emailAdmin: this.adminForm.value.email,
+        addressAdmin: this.adminForm.value.addressAdmin,
+        phoneAdmin: this.adminForm.value.phone,
+        dobAdmin: this.adminForm.value.dobAdmin
+      }
+
+
+
+
+      // console.log(item);
       this.httpService.editAdmin(item).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
           this.showNotification('success', 'Update Admin successfully');
@@ -95,19 +128,75 @@ export class ManageAdminComponent implements OnInit {
 
         } else {
           this.showNotification('error', data.result);
-        }
+        };
       });
     };
 
   }
-  public loadData() {
+   loadData() {
     this.httpService.getAllAdmin().subscribe((data: any) => {
 
       // console.log(data);
-      this.listAdmin = data;
+      const arr = data;
+     // console.log(arr);
+      this.listAdmin = arr.filter(item => item.roleAdmin == 1);
+     // console.log(this.listAdmin);
       // console.log(this.listAdmin);
 
     });
   }
+
+   addAdmin() {
+    this.adminForm = this.formBuilder.group({
+      idAdmin: [],
+      dtCreated: [],
+      active: [],
+      name: ['', [validatorRequired, validatorName]],
+      dobAdmin: ['', [validatorRequired]],
+      email: ['', [validatorRequired, validatorEmail]],
+      addressAdmin: ['', [validatorRequired]],
+      phone: ['', [validatorRequired, validatorPhone]],
+      password: ['', [validatorRequired, validatorPassword]]
+    });
+    
+  }
+
+  submitAdd() {
+    if (this.adminForm.status === 'INVALID') {
+      //console.log(this.adminForm);
+      this.validatorForm.adminForm = false;
+    } else {
+     // console.log(this.adminForm);
+      const item: Admin = {
+        idAdmin: this.adminForm.value.idAdmin,
+        dtCreated: this.adminForm.value.dtCreated,
+        isActive: this.adminForm.value.active,
+        passAdmin: this.adminForm.value.password,
+        fullNameAdmin: this.adminForm.value.name,
+        emailAdmin: this.adminForm.value.email,
+        addressAdmin: this.adminForm.value.addressAdmin,
+        phoneAdmin: this.adminForm.value.phone,
+        dobAdmin: this.adminForm.value.dobAdmin
+      }
+
+
+
+
+      // console.log(item);
+      this.httpService.addAdmin(item).subscribe((data: any) => {
+        if (data.status === 'SUCCESS') {
+          this.showNotification('success', 'Add Admin successfully');
+          this.loadData();
+          $('#close-button-1').click();
+        } else {
+          this.showNotification('error', data.result);
+        };
+      });
+    };
+  }
+
+
+
+
 
 }

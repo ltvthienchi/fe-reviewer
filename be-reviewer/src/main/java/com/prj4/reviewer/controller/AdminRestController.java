@@ -28,14 +28,14 @@ public class AdminRestController {
 
         String idAdmin = generateId.generateId("ADMIN_", new Date());
         String encodedPass = new BCryptPasswordEncoder().encode(adminRequest.getPassAdmin());
-        Admin admin = new Admin(idAdmin,adminRequest.getEmailAdmin(),encodedPass,adminRequest.getDobAdmin(),
-                new Date(),true,adminRequest.getAddressAdmin(),adminRequest.getPhoneAdmin());
+        Admin admin = new Admin(idAdmin,adminRequest.getFullNameAdmin(),adminRequest.getEmailAdmin(),encodedPass,adminRequest.getDobAdmin(),new Date(),true,adminRequest.getAddressAdmin(),adminRequest.getPhoneAdmin(),"1");
         adminService.save(admin);
         return JsonResponse.accept("");
     }
 
     @GetMapping(BASE_POST_LINK + "getAllAdmin")
     public List<Admin> getAllAdmin(){
+        //List<Admin> list = adminService.findAllAdmin();
 
         return adminService.findAllAdmin();
     }
@@ -63,6 +63,12 @@ public class AdminRestController {
         Admin admin = adminService.findByIdAdmin(adminBlockRequest.getIdAdmin());
         admin.setActive(adminBlockRequest.isActive());
         return JsonResponse.accept("");
+    }
+
+    @PostMapping(BASE_POST_LINK + "getRole")
+    public String getRole(@RequestBody @Valid AdminBlockRequest adminBlockRequest){
+        Admin admin = adminService.findByIdAdmin(adminBlockRequest.getIdAdmin());
+        return admin.getRoleAdmin();
     }
 
 
