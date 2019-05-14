@@ -2,15 +2,20 @@ package com.prj4.reviewer.controller;
 
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Admin;
+import com.prj4.reviewer.entity.Comment;
+import com.prj4.reviewer.entity.Post;
 import com.prj4.reviewer.request.AdminBlockRequest;
 import com.prj4.reviewer.request.AdminRequest;
-import com.prj4.reviewer.service.AdminService;
-import com.prj4.reviewer.service.GenerateId;
+import com.prj4.reviewer.response.CommentReported;
+import com.prj4.reviewer.response.CommentResponse;
+import com.prj4.reviewer.response.PostResponse;
+import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +27,12 @@ public class AdminRestController {
     AdminService adminService;
     @Autowired
     GenerateId generateId;
+    @Autowired
+    PostService postService;
+    @Autowired
+    CreatePostResponseService createPostResponseService;
+    @Autowired
+    CommentService commentService;
 
     @PostMapping(BASE_POST_LINK + "createAdmin")
     public JsonResponse<String> createAdmin(@RequestBody @Valid AdminRequest adminRequest) {
@@ -65,6 +76,29 @@ public class AdminRestController {
         return JsonResponse.accept("");
     }
 
+
+    @GetMapping(BASE_POST_LINK + "getAllProduct")
+    public List<PostResponse> getAllProduct() {
+        List<Post> lstPost = postService.getAllPostByDtCreated();
+        return createPostResponseService.createListPostReponse(lstPost);
+    }
+
+    @GetMapping(BASE_POST_LINK + "getAllCommentReported")
+    public List<CommentReported> getAllCommentReported() {
+        List<CommentReported> lstCommentReported = new ArrayList<>();
+        return commentService.getAllCommentReported();
+    }
+
+    @PostMapping(BASE_POST_LINK + "deleteComment")
+    public JsonResponse<String> deleteComment(@RequestBody String idComment) {
+        try {
+            commentService.deleteComment(idComment);
+            return JsonResponse.accept("success");
+        } catch(Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+
+    }
 
 
 }

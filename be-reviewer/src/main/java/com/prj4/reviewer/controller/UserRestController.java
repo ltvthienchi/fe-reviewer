@@ -118,7 +118,7 @@ public class UserRestController {
         String idComment = generateId.generateId("COMMENT_", new Date());
         boolean isReply = commentRequest.getIdReply() != null ? true : false;
         Comment comment = new Comment(idComment, commentRequest.getIdProduct(), commentRequest.getIdReviewer(),
-                commentRequest.getIdReply(), isReply, commentRequest.getContent(), new Date(), commentRequest.getRole_user());
+                commentRequest.getIdReply(), isReply, commentRequest.getContent(), new Date(), commentRequest.getRole_user(), false);
         try {
             commentService.createComment(comment);
             return JsonResponse.accept("Success");

@@ -29,6 +29,8 @@ import {LockReviewerComponent} from '../component/admin/lock-reviewer/lock-revie
 import {RegisterConfirmationComponent} from '../component/register-confirmation/register-confirmation.component';
 import {SearchComponent} from '../component/search/search.component';
 import {DetailProductComponent} from '../component/detail-product/detail-product.component';
+import {ReportAdminComponent} from '../component/admin/report-admin/report-admin.component';
+import {ReportedCommentComponent} from '../component/admin/reported-comment/reported-comment.component';
 
 const routes: Routes = [
   {
@@ -66,7 +68,8 @@ const routes: Routes = [
       { path: 'admin/manage-admin', component: ManageAdminComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/verify', component: ComfirmCompanyComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/manage-user/:userType', component: LockReviewerComponent, canActivate: [AuthGuardAdmin] },
-      { path: 'admin/feedback', component: FeedbackAdminComponent, canActivate: [AuthGuardAdmin] }
+      { path: 'admin/feedback', component: FeedbackAdminComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'admin/reported-comment', component: ReportedCommentComponent, canActivate: [AuthGuardAdmin] }
     ]
   },
   { path: 'admin/login', component: LoginAdminComponent },

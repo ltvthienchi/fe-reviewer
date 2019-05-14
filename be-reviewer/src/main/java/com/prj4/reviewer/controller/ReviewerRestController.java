@@ -5,12 +5,10 @@ import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Reviewer;
 import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.reporsitory.ReviewerRepository;
-import com.prj4.reviewer.request.ChangePasswordRequest;
-import com.prj4.reviewer.request.CommentRequest;
-import com.prj4.reviewer.request.FeedbackCompanyRequest;
-import com.prj4.reviewer.request.ReviewerRequest;
+import com.prj4.reviewer.request.*;
 import com.prj4.reviewer.response.CommentResponse;
 import com.prj4.reviewer.response.FeedbackCompanyResponse;
+import com.prj4.reviewer.response.ReviewerInfoResponse;
 import com.prj4.reviewer.response.ReviewerResponse;
 import com.prj4.reviewer.service.FileStorageService;
 import com.prj4.reviewer.service.PostService;
@@ -82,8 +80,8 @@ public class ReviewerRestController {
     }
 
     @PostMapping(BASE_POST_LINK + "getReviewerInfo")
-    ReviewerResponse getReviewerInfo(@RequestBody String email) {
-        return reviewerService.getReviewerInfo(email);
+    ReviewerInfoResponse getReviewerInfo(@RequestBody ReviewerInfoRequest reviewerInfoRequest) {
+        return reviewerService.getReviewerInfo(reviewerInfoRequest.getEmail(), reviewerInfoRequest.getRole());
     }
 
     @PostMapping(BASE_POST_LINK + "updatePassword")

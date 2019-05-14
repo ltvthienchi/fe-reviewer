@@ -65,6 +65,7 @@ import { CommentPostComponent } from './component/home/comment-post/comment-post
 import {AvatarService} from './services/avatar-service/avatar.service';
 import { DetailProductComponent } from './component/detail-product/detail-product.component';
 import { ActivityHistoryComponent } from './component/activity-history/activity-history.component';
+import { ReportedCommentComponent } from './component/admin/reported-comment/reported-comment.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -165,6 +166,7 @@ export function tokenGetter() {
     CommentPostComponent,
     DetailProductComponent,
     ActivityHistoryComponent,
+    ReportedCommentComponent,
   ],
   imports: [
     HttpClientModule,

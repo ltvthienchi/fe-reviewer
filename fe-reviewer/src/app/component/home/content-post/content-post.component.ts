@@ -88,7 +88,12 @@ export class ContentPostComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.getReviewerInfo(localStorage.getItem('email')).subscribe(res => {
+    const data = {
+      email: localStorage.getItem('email'),
+      role: localStorage.getItem('role')
+    };
+    const userInfo = JSON.stringify(data);
+    this.http.getReviewerInfo(userInfo).subscribe(res => {
       this.userInfo = res;
     });
   }

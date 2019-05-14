@@ -166,4 +166,12 @@ export class HttpService {
  public getDetailPost(idProduct) {
     return this.http.post(URL_SERVER.postProduct + 'getDetailPost', idProduct, getHeader());
  }
+
+ public getAllReported() {
+   return this.http.get(URL_SERVER.admin + 'getAllCommentReported', getHeader());
+ }
+
+  public deleteComment(idComment) {
+    return this.http.post(URL_SERVER.admin + 'deleteComment', idComment, getHeader());
+  }
 }

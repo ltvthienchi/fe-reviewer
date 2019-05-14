@@ -7,6 +7,7 @@ import com.prj4.reviewer.reporsitory.AdminRepository;
 import com.prj4.reviewer.reporsitory.CommentRepository;
 import com.prj4.reviewer.reporsitory.CompanyRepository;
 import com.prj4.reviewer.reporsitory.ReviewerRepository;
+import com.prj4.reviewer.response.CommentReported;
 import com.prj4.reviewer.response.CommentResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,9 @@ public class CommentService {
     CompanyRepository companyRepository;
     @Autowired
     AdminRepository adminRepository;
+
+    @Autowired
+    ReviewerService reviewerService;
 
     @Autowired
     ImageService imageService;
@@ -56,5 +60,20 @@ public class CommentService {
             lstResult.add(commentResponse);
         }
         return lstResult;
+    }
+
+    public List<CommentReported> getAllCommentReported() {
+        List<CommentReported> lstCommentReporteds = new ArrayList<>();
+        List<Comment> lstComment = commentRepository.getAllCommentReported();
+        for (Comment c: lstComment) {
+            String fullName = reviewerService.getReviewerInfoById(c.getIdReviewer()).getFullName();
+            CommentReported cmt = new CommentReported(c.getIdComment(), fullName, c.getContent(), c.getDateCreate());
+            lstCommentReporteds.add(cmt);
+        }
+        return lstCommentReporteds;
+    }
+
+    public void deleteComment(String idComment) {
+        commentRepository.getAllCommentReported(idComment);
     }
 }

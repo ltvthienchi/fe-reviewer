@@ -1,14 +1,14 @@
 package com.prj4.reviewer.service;
 
 import com.prj4.reviewer.core.Constants;
+import com.prj4.reviewer.entity.Admin;
+import com.prj4.reviewer.entity.Company;
 import com.prj4.reviewer.entity.Images;
 import com.prj4.reviewer.entity.Reviewer;
-import com.prj4.reviewer.reporsitory.FeedbackCompanyRepository;
-import com.prj4.reviewer.reporsitory.ImageRepository;
-import com.prj4.reviewer.reporsitory.ReviewerRepository;
-import com.prj4.reviewer.reporsitory.UserRepository;
+import com.prj4.reviewer.reporsitory.*;
 import com.prj4.reviewer.request.FeedbackCompanyRequest;
 import com.prj4.reviewer.response.FeedbackCompanyResponse;
+import com.prj4.reviewer.response.ReviewerInfoResponse;
 import com.prj4.reviewer.response.ReviewerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +39,12 @@ public class ReviewerService {
     @Autowired
     FileStorageService fileStorageService;
 
+    @Autowired
+    CompanyRepository companyRepository;
+
+    @Autowired
+    AdminRepository adminRepository;
+
     public FeedbackCompanyResponse feedbackCompany(FeedbackCompanyRequest feedbackCompanyRequest) {
         return null;
     }
@@ -58,14 +64,25 @@ public class ReviewerService {
         }
     }
 
-    public ReviewerResponse getReviewerInfo(String email) {
-        Reviewer reviewer = reviewerRepository.findByEmail(email);
-        String imgAvatar = imageService.getImagePathById(reviewer.getImgAvatar());
-        String imgPanel = imageService.getImagePathById(reviewer.getImgPanel());
-        ReviewerResponse reviewerResponse = new ReviewerResponse(reviewer.getIdReviewer(), reviewer.getFullName(),
-                reviewer.getFirstName(), reviewer.getLastName(),reviewer.getEmail(),reviewer.getDateOfBirth(),
-                imgAvatar, imgPanel, reviewer.getGender());
-        return reviewerResponse;
+    public ReviewerInfoResponse getReviewerInfo(String email, String role) {
+        ReviewerInfoResponse reviewerResponse = null;
+        String fullName = null;
+        String imgAvatar = null;
+        if (role.equals("ROLE_NORMAL")) {
+            Reviewer reviewer = reviewerRepository.findByEmail(email);
+            fullName = reviewer.getFullName();
+            imgAvatar = imageService.getImagePathById(reviewer.getImgAvatar());
+        } else if (role.equals("ROLE_COMPANY")) {
+            Company company = companyRepository.findByEmailCompany(email);
+            fullName = company.getNameCompany();
+            imgAvatar = imageService.getImagePathById(company.getImgAvatarCompany());
+        } else {
+            Admin admin = adminRepository.findByEmailAdmin(email);
+            fullName = admin.getFullNameAdmin();
+            imgAvatar = "http://localhost/img/reviewer/avar-pay.png";
+        }
+
+        return new ReviewerInfoResponse(imgAvatar, fullName);
     }
 
     public ReviewerResponse getReviewerInfoById(String idReviewer) {
