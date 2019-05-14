@@ -16,15 +16,15 @@ export class CompareComponent implements OnInit {
   private newArr: any;
   private arrName = [
     'General', 'Name', 'Image',
-    'FlatForm', 'OS', 'Chip', 'CPU', 'GPU',
+    'Performance', 'PlatForm', 'OS', 'Chip', 'CPU', 'GPU',
     'Memory', 'Card', 'Internal',
     'Design', 'Dimensions', 'Weight',
     'Display', 'Type', 'Size', 'Resolution',
     'Battery', 'Capacity', 'Type',
-    'Camera Main', 'Modules', 'Features', 'Video',
+    'Camera', 'Camera Main', 'Modules', 'Features', 'Video',
     'Camera Selfie', 'Modules', 'Features', 'Video',
   ];
-  private arrNameSub = ['General', 'FlatForm', 'Memory', 'Design', 'Display', 'Battery', 'Camera Main', 'Camera Selfie'];
+  private arrNameSub = ['General', 'Performance', 'Design', 'Display', 'Battery', 'Camera'];
   constructor(private data: DataService, private http: HttpService) { }
 
   ngOnInit() {
@@ -38,12 +38,9 @@ export class CompareComponent implements OnInit {
       const arrId = [];
       const arrLst = JSON.parse(stringlistPro);
       arrLst.map(item => {
-        console.log(item);
         arrId.push(item.idProduct);
       });
-      console.log(arrId);
       this.http.getProducts(arrId).subscribe(res => {
-        console.log(res);
         this.newArr = res;
         this.newArr.map(item => {
           item.infoBattery = JSON.parse(item.infoBattery);
@@ -56,28 +53,30 @@ export class CompareComponent implements OnInit {
             productName: item.productName,
             imgPost: item.imgPost,
             'Sub-2': '',
+            'title-1': '',
             platformOne: item.infoPerformance.platform.os,
             platformTwo: item.infoPerformance.platform.chip,
             platformThree: item.infoPerformance.platform.cpu,
             platformFour: item.infoPerformance.platform.gpu,
-            'Sub-3': '',
+            'title-2': '',
             memoryOne: item.infoPerformance.memory.card,
             memoryTwo: item.infoPerformance.memory.internal,
-            'Sub-4': '',
+            'Sub-3': '',
             designOne: item.infoDesign.dimensions,
             designTwo: item.infoDesign.weight,
-            'Sub-5': '',
+            'Sub-4': '',
             displayOne: item.infoDisplay.type,
             displayTwo: item.infoDisplay.size,
             displayThree: item.infoDisplay.resolution,
-            'Sub-6': '',
+            'Sub-5': '',
             batteryOne: item.infoBattery.capacity,
             batteryTwo: item.infoBattery.type,
-            'Sub-7': '',
+            'Sub-6': '',
+            'title-3': '',
             cameraMainOne: item.infoCamera.main.modules,
             cameraMainTwo: item.infoCamera.main.features,
             cameraMainThree: item.infoCamera.main.video,
-            'Sub-8': '',
+            'title-4': '',
             cameraSelfOne: item.infoCamera.self.modules,
             cameraSelfTwo: item.infoCamera.self.features,
             cameraSelfThree: item.infoCamera.self.video
@@ -126,26 +125,26 @@ export class CompareComponent implements OnInit {
     const isCheck = nameTd.split('-')[0] !== 'Sub';
     if (idxPost === 1) return 'name';
     if(nameTd === 'imgPost') return 'image';
-    return isCheck ? 'text' : 'sub';
+    return (isCheck) ? 'text' : 'sub';
   }
 
   isCheckPer(key, data) {
     let total = data.avgCamera + data.avgBattery + data.avgDesign + data.avgPerformance + data.avgDisplay;
-    if (key === 'FlatForm' || key === 'Memory') return (data.avgPerformance * 10) + '%';
+    if (key === 'Performance') return (data.avgPerformance * 10) + '%';
     if (key === 'Design') return (data.avgDesign * 10) + '%';
     if (key === 'Display') return (data.avgDisplay * 10) + '%';
     if (key === 'Battery') return (data.avgBattery * 10) + '%';
-    if (key === 'Camera Main' || key === 'Camera Selfie') return (data.avgCamera * 10) + '%';
+    if (key === 'Camera') return (data.avgCamera * 10) + '%';
     if (key === 'General') return ((total / 5) * 10) + '%';
   }
 
   isCheckNumber(key, data) {
     let total = data.avgCamera + data.avgBattery + data.avgDesign + data.avgPerformance + data.avgDisplay;
-    if (key === 'FlatForm' || key === 'Memory') return data.avgPerformance;
+    if (key === 'Performance') return data.avgPerformance;
     if (key === 'Design') return data.avgDesign;
     if (key === 'Display') return data.avgDisplay;
     if (key === 'Battery') return data.avgBattery;
-    if (key === 'Camera Main' || key === 'Camera Selfie') return data.avgCamera;
+    if (key === 'Camera') return data.avgCamera;
     if (key === 'General') return (total / 5);
   }
 
@@ -153,11 +152,11 @@ export class CompareComponent implements OnInit {
     let defaultClass = 'progress-bar progress-bar-striped progress-bar-animated';
     let total = data.avgCamera + data.avgBattery + data.avgDesign + data.avgPerformance + data.avgDisplay;
 
-    if (key === 'FlatForm' || key === 'Memory') return checkClass(data.avgPerformance);
+    if (key === 'Performance') return checkClass(data.avgPerformance);
     if (key === 'Design') return checkClass(data.avgDesign);
     if (key === 'Display') return checkClass(data.avgDisplay);
     if (key === 'Battery') return checkClass(data.avgBattery);
-    if (key === 'Camera Main' || key === 'Camera Selfie') return checkClass(data.avgCamera);
+    if (key === 'Camera') return checkClass(data.avgCamera);
     if (key === 'General') return checkClass((total / 5));
 
     function checkClass(value) {
@@ -169,25 +168,3 @@ export class CompareComponent implements OnInit {
     }
   }
 }
-
-// avatarCompany: "http://localhost/img/reviewer/Avatar-none.png"
-// avgBattery: 1
-// avgCamera: 1
-// avgDesign: 1
-// avgDisplay: 1
-// avgPerformance: 1
-// content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non excepturi eum ab commodi eius accusantium modi ullam, ' +     'nisi sint, iusto quis inventore quae eos molestias. Iure eaque, mollitia molestias maxime!"
-// dtCreated: "2019-05-08T16:54:40.463+0000"
-// idCompany: "COMPANY_1556616033479"
-// idPostProduct: "POST_1557334480454"
-// idProduct: "PRODUCT_1557334480454"
-// idReviewer: "COMPANY_1556616033479"
-// imgPost: "http://localhost/img/reviewer/222.PNG"
-// infoBattery: "{"capacity":"My test","type":"My test"}"
-// infoCamera: "{"main":{"modules":"My test","features":"My test","video":"My test"},"self":{"modules":"My test","features":"My test","video":"My test"}}"
-// infoDesign: "{"dimensions":"My test","weight":"My test"}"
-// infoDisplay: "{"type":"My test","size":"My test","resolution":"My test"}"
-// infoPerformance: "{"platform":{"os":"My test","chip":"My test","cpu":"My test","gpu":"My test"},"memory":{"card":"My test","internal":"My test"}}"
-// nameCompany: "Google"
-// productName: "Product No.1"
-// totalComment: 0
