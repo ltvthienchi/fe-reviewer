@@ -65,6 +65,8 @@ import { CommentPostComponent } from './component/home/comment-post/comment-post
 import {AvatarService} from './services/avatar-service/avatar.service';
 import { DetailProductComponent } from './component/detail-product/detail-product.component';
 import { ActivityHistoryComponent } from './component/activity-history/activity-history.component';
+import { ManageProductComponent } from './component/admin/manage-product/manage-product.component';
+import { ModalDetailComponent } from './component/admin/manage-product/modal-detail/modal-detail.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -165,6 +167,8 @@ export function tokenGetter() {
     CommentPostComponent,
     DetailProductComponent,
     ActivityHistoryComponent,
+    ManageProductComponent,
+    ModalDetailComponent,
   ],
   imports: [
     HttpClientModule,
@@ -184,7 +188,7 @@ export function tokenGetter() {
   exports: [
     MatSliderModule,
   ],
-  entryComponents: [ModalRatingComponent],
+  entryComponents: [ModalRatingComponent, ModalDetailComponent],
   providers: [
     Broadcaster,
     EventMessage,

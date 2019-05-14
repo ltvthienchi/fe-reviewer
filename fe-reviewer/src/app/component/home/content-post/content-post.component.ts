@@ -224,7 +224,13 @@ export class ContentPostComponent implements OnInit {
   }
 
   detailProduct(item) {
-    console.log(item);
+    if (item.status === 'detail') {
+      $(document).ready(function () {
+        $('.modal-backdrop.fade.show').css('z-index', '-1');
+        $('.cdk-overlay-container').next().remove();
+        $('html').css('overflow', 'hidden');
+      });
+    }
     this.dataDetail = {
       infoBattery: JSON.parse(item.infoBattery),
       infoDisplay: JSON.parse(item.infoDisplay),

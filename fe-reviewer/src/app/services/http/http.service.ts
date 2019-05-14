@@ -57,6 +57,10 @@ export class HttpService {
     return this.http.post(URL_SERVER.product + 'getById', data, getHeader());
   }
 
+  public changeActive(data): Observable<any> {
+    return this.http.post(URL_SERVER.product + 'changeActive', data, getHeader());
+  }
+
   //
 
   public feedbackWebsite(fb): Observable<any> {

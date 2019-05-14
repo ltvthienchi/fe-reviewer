@@ -32,7 +32,7 @@ public class CreatePostResponseService {
                     p.getContentPost(), avatarCompany, imgPost, product.getAvgDisplay(), product.getAvgPerformance(),
                     product.getAvgCamera(),product.getAvgBattery(), product.getAvgDesign(), 0,
                     product.getInfoBattery(), product.getInfoDisplay(), product.getInfoPerformance(),
-                    product.getInfoDesign(),product.getInfoCamera(), p.getDtCreated(), product.getNameProduct());
+                    product.getInfoDesign(),product.getInfoCamera(), p.getDtCreated(), product.getNameProduct(), product.getIsActive());
             lstPostResponse.add(postResponse);
 
         }

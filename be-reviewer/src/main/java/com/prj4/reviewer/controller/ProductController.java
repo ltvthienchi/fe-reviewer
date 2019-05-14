@@ -1,6 +1,8 @@
 package com.prj4.reviewer.controller;
 
+import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Product;
+import com.prj4.reviewer.request.ChangeActiveRequest;
 import com.prj4.reviewer.request.ProductRequest;
 import com.prj4.reviewer.response.PostResponse;
 import com.prj4.reviewer.service.GenerateId;
@@ -31,6 +33,18 @@ public class ProductController {
     @PostMapping(BASE_POST_LINK + "getById")
     public Product getById(@RequestBody ProductRequest productRequest) {
         return productService.getProductById(productRequest.getIdProduct());
+    }
+
+    @PostMapping(BASE_POST_LINK + "changeActive")
+    public JsonResponse changeActive(@RequestBody ChangeActiveRequest changeActiveRequest) {
+        Product curProduct = productService.getProductById(changeActiveRequest.getIdProduct());
+        curProduct.setIsActive(changeActiveRequest.getIsActive());
+        try {
+            productService.saveProduct(curProduct);
+        } catch (Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+        return JsonResponse.accept("Success");
     }
 
 }
