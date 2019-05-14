@@ -4,16 +4,13 @@ import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Images;
 import com.prj4.reviewer.entity.Product;
-import com.prj4.reviewer.request.PostProductRequest;
 import com.prj4.reviewer.response.PostResponse;
 import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.prj4.reviewer.entity.Post;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -117,6 +114,70 @@ public class PostRestController {
     public List<PostResponse> getPostToCompare(@RequestBody List<String> lstIdProduct) {
         List<Post> lstPost = postService.getPostToCompare(lstIdProduct);
         return createPostResponseService.createListPostReponse(lstPost);
+    }
+
+    @PostMapping(BASE_POST_LINK + "updateProduct")
+    public JsonResponse<String> update(@RequestParam(value = "file", required = false) MultipartFile file,
+                                       @RequestParam("nameProduct") String nameProduct,
+                                       @RequestParam("contentPost") String contentPost,
+                                       @RequestParam("infoBattery") String infoBattery,
+                                       @RequestParam("infoDisplay") String infoDisplay,
+                                       @RequestParam("infoPerformance") String infoPerformance,
+                                       @RequestParam("infoDesign") String infoDesign,
+                                       @RequestParam("infoCamera") String infoCamera,
+                                       @RequestParam("idProduct") String idProduct) {
+        Product product = productService.getProductById(idProduct);
+        Post post = postService.getPostByIdProduct(idProduct);
+        String idImage = post.getIdImage();
+        Images images = imageService.getImagesById(idImage);
+        if (contentPost != null) {
+            post.setContentPost(contentPost);
+        }
+        if (nameProduct != null) {
+            product.setNameProduct(nameProduct);
+        }
+        if (infoBattery != null) {
+            product.setInfoBattery(infoBattery);
+        }
+        if (infoDisplay != null) {
+            product.setInfoDisplay(infoDisplay);
+        }
+        if (infoPerformance != null) {
+            product.setInfoPerformance(infoPerformance);
+        }
+        if (infoDesign != null) {
+            product.setInfoDesign(infoDesign);
+        }
+        if (infoCamera != null) {
+            product.setInfoCamera(infoCamera);
+        }
+        if (file != null) {
+            String fileName =  fileStorageService.storeFile(file, null, Constants.POST_IMG);
+            String fileDownloadUri = "http://localhost/img/reviewer/" + fileName;
+            images.setImgPath(fileDownloadUri);
+        }
+        try {
+            postService.updatePost(post);
+            productService.updateProduct(product);
+            imageService.saveImage(images);
+            return JsonResponse.accept("success");
+        }catch (Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+    }
+
+    @PostMapping(BASE_POST_LINK + "deleteProduct")
+    public JsonResponse<String> deleteProduct(@RequestBody String idProduct) {
+        try {
+            postService.deletePost(idProduct);
+            productService.deleteProduct(idProduct);
+            String idImage = postService.getPostByIdProduct(idProduct).getIdImage();
+            imageService.deleteImage(idImage);
+            return JsonResponse.accept("success");
+        } catch(Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+
     }
 
 

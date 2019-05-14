@@ -15,4 +15,6 @@ public interface ProductReporsitory extends CrudRepository<Product, String> {
 
     @Query("Select c from Product c where c.nameProduct like %:query%")
     List<Product> searchProduct(String query);
+
+    void deleteProductByIdProduct(String idProduct);
 }
