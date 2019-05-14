@@ -44,7 +44,9 @@ public class Admin {
 	public Admin() {
 	}
 
-	public Admin(String idAdmin, String fullNameAdmin, String emailAdmin, String passAdmin, Date dobAdmin, Date dtCreated, boolean isActive, String addressAdmin, String phoneAdmin, String roleAdmin) {
+	public Admin(String idAdmin, String fullNameAdmin, String emailAdmin, String passAdmin,
+				 Date dobAdmin, Date dtCreated, boolean isActive, String addressAdmin,
+				 String phoneAdmin, String roleAdmin) {
 		this.idAdmin = idAdmin;
 		this.fullNameAdmin = fullNameAdmin;
 		this.emailAdmin = emailAdmin;

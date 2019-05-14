@@ -23,7 +23,7 @@ export class ReportedCommentComponent implements OnInit {
     this.loadData();
   }
 
-  loadData() {
+  loadData() {createAdmin
     this.httpService.getAllReported().subscribe((data: any) => {
       if (data) {
         this.listReported = data;

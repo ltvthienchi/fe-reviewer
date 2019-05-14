@@ -42,8 +42,8 @@ public class AdminRestController {
 
         String idAdmin = generateId.generateId("ADMIN_", new Date());
         String encodedPass = new BCryptPasswordEncoder().encode(adminRequest.getPassAdmin());
-        Admin admin = new Admin(idAdmin,adminRequest.getEmailAdmin(),encodedPass,adminRequest.getDobAdmin(),
-                new Date(),true,adminRequest.getAddressAdmin(),adminRequest.getPhoneAdmin());
+        Admin admin = new Admin(idAdmin, adminRequest.getFullNameAdmin() ,adminRequest.getEmailAdmin(),encodedPass,adminRequest.getDobAdmin(),
+                new Date(),true,adminRequest.getAddressAdmin(),adminRequest.getPhoneAdmin(), "1");
         adminService.save(admin);
         return JsonResponse.accept("");
     }

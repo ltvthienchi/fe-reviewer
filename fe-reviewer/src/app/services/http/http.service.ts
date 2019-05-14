@@ -181,9 +181,6 @@ export class HttpService {
 
 
   }
-  public getInforLogin(idUser) {
-    return this.http.post(URL_SERVER.admin + 'getInforLogin', idUser, getHeader());
-  }
 
   public addAdmin(data: any) {
     return this.http.post(URL_SERVER.admin + 'createAdmin', data, getHeader());
