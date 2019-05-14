@@ -38,10 +38,14 @@ public class Admin {
 	@Column(name = "PHONE")
 	private String phoneAdmin;
 
+	@Column(name = "ROLE_ADMIN")
+	private String roleAdmin;
+
 	public Admin() {
 	}
 
-	public Admin(String fullNameAdmin, String emailAdmin, String passAdmin, Date dobAdmin, Date dtCreated, boolean isActive, String addressAdmin, String phoneAdmin) {
+	public Admin(String idAdmin, String fullNameAdmin, String emailAdmin, String passAdmin, Date dobAdmin, Date dtCreated, boolean isActive, String addressAdmin, String phoneAdmin, String roleAdmin) {
+		this.idAdmin = idAdmin;
 		this.fullNameAdmin = fullNameAdmin;
 		this.emailAdmin = emailAdmin;
 		this.passAdmin = passAdmin;
@@ -50,6 +54,7 @@ public class Admin {
 		this.isActive = isActive;
 		this.addressAdmin = addressAdmin;
 		this.phoneAdmin = phoneAdmin;
+		this.roleAdmin = roleAdmin;
 	}
 
 	public String getAddressAdmin() {
@@ -122,5 +127,13 @@ public class Admin {
 
 	public void setActive(boolean active) {
 		isActive = active;
+	}
+
+	public String getRoleAdmin() {
+		return roleAdmin;
+	}
+
+	public void setRoleAdmin(String roleAdmin) {
+		this.roleAdmin = roleAdmin;
 	}
 }

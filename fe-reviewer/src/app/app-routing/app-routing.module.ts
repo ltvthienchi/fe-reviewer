@@ -31,6 +31,8 @@ import {SearchComponent} from '../component/search/search.component';
 import {DetailProductComponent} from '../component/detail-product/detail-product.component';
 import {ReportAdminComponent} from '../component/admin/report-admin/report-admin.component';
 import {ReportedCommentComponent} from '../component/admin/reported-comment/reported-comment.component';
+import {ManageProductComponent} from '../component/admin/manage-product/manage-product.component';
+
 
 const routes: Routes = [
   {
@@ -66,6 +68,7 @@ const routes: Routes = [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
       { path: 'admin', component: ManageAdminComponent, canActivate: [AuthGuardAdmin]  },
       { path: 'admin/manage-admin', component: ManageAdminComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'admin/manage-product', component: ManageProductComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/verify', component: ComfirmCompanyComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/manage-user/:userType', component: LockReviewerComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/feedback', component: FeedbackAdminComponent, canActivate: [AuthGuardAdmin] },

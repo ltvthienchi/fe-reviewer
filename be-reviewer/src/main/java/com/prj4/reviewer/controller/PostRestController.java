@@ -74,7 +74,7 @@ public class PostRestController {
         Product product = new Product(idProduct, nameProduct, null,
                 new Date(), 0 ,0,
                 0, 0,0,0,
-                infoBattery , infoDisplay, infoPerformance, infoDesign,infoCamera );
+                infoBattery , infoDisplay, infoPerformance, infoDesign,infoCamera, true );
         Post post = new Post(idPost, idProduct, idCompany,
                 contentPost, new Date(), idImage);
 
@@ -109,7 +109,7 @@ public class PostRestController {
                 p.getContentPost(), avatarCompany, imgPost, product.getAvgDisplay(), product.getAvgPerformance(),
                 product.getAvgCamera(),product.getAvgBattery(), product.getAvgDesign(), 0,
                 product.getInfoBattery(), product.getInfoDisplay(), product.getInfoPerformance(),
-                product.getInfoDesign(),product.getInfoCamera(), p.getDtCreated(), product.getNameProduct());
+                product.getInfoDesign(),product.getInfoCamera(), p.getDtCreated(), product.getNameProduct(), product.getIsActive());
         return postResponse;
     }
 

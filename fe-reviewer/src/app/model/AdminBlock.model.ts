@@ -1,4 +1,4 @@
-export class Company {
+export class AdminBlock {
     idAdmin: string;
-    isActive: boolean;
+    isActive: string;
 }

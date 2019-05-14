@@ -11,20 +11,44 @@
 
       <div class="collapse navbar-collapse row" id="navbarSupportedContent">
 
-        <form class="form-inline my-2 my-lg-0 col-6">
-          <input [formControl]="queryField" class="form-control mr-sm-2 searhcBox" type="search" placeholder="Search"
-                                            autofocus>
-          <div *ngFor="let result of results" >
-            <div class="autocomplete-items my-2 my-lg-0 col-12" tabindex="0">
-              <a style="text-decoration: none" [routerLink]="'/detail-product/' + result.idProduct">
-                <div class="autocomplete-items-div">
-                  <img src="{{result.imgProduct}}" alt="{{result.nameProduct}}" height="42" width="42">
-                  {{result.nameProduct}}
-                </div>
-              </a>
+<!--        <form class="form-inline my-2 my-lg-0 col-6">-->
+<!--          <label for="searchProduct"></label>-->
+<!--          <input type="text" [formControl]="queryField" id="searchProduct" class="form-control mr-sm-2 searhcBox" placeholder="Search" autofocus>-->
+<!--          -->
+<!--          <div *ngFor="let result of results" >-->
+<!--            <div class="autocomplete-items my-2 my-lg-0 col-12" tabindex="0">-->
+<!--              <div style="text-decoration: none" (click)="findProduct(result.idProduct)">-->
+<!--                <div class="autocomplete-items-div">-->
+<!--                  <img src="{{result.imgProduct}}" alt="{{result.nameProduct}}" height="42" width="42">-->
+<!--                  {{result.nameProduct}}-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          -->
+<!--        </form>-->
+
+
+        <li class="nav-item dropdown col-6">
+          <form class="form-inline my-2 my-lg-0" style="width: 100%">
+            <label for="searchProduct"></label>
+            <input type="text" (click)="search()" [formControl]="queryField" id="searchProduct" data-toggle="dropdown"
+                   class="form-control mr-sm-2 searhcBox" placeholder="Search" autofocus>
+
+            <div id="dropdownProduct" class="dropdown-menu" aria-labelledby="navbarDropdown" style="left: 12px; width: 94%; top: 84%; padding: 0">
+              <div *ngFor="let result of results" >
+                  <div style="text-decoration: none" (click)="findProduct(result.idProduct)">
+                    <div class="autocomplete-items-div">
+                      <img src="{{result.imgProduct}}" alt="{{result.nameProduct}}" height="42" width="42">
+                      {{result.nameProduct}}
+                    </div>
+                  </div>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+
+        </li>
+
 
         <ul class="col-1"></ul>
         <div *ngIf="checkAuthGuard(); else elseBlock">

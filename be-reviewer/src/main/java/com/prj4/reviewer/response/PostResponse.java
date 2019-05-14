@@ -23,14 +23,11 @@ public class PostResponse implements Serializable {
     private String infoCamera;
     private Date dtCreated;
     private String productName;
+    private Boolean isActive;
 
-  public PostResponse() {}
+    public PostResponse() {}
 
-    public PostResponse(String idPostProduct, String idProduct, String idCompany, String nameCompany, String content,
-                        String avatarCompany, String imgPost, float avgDisplay, float avgPerformance,
-                        float avgCamera, float avgBattery, float avgDesign, int totalComment,
-                        String infoBattery, String infoDisplay, String infoPerformance, String infoDesign,
-                        String infoCamera, Date dtCreated, String productName) {
+    public PostResponse(String idPostProduct, String idProduct, String idCompany, String nameCompany, String content, String avatarCompany, String imgPost, float avgDisplay, float avgPerformance, float avgCamera, float avgBattery, float avgDesign, int totalComment, String infoBattery, String infoDisplay, String infoPerformance, String infoDesign, String infoCamera, Date dtCreated, String productName, Boolean isActive) {
         this.idPostProduct = idPostProduct;
         this.idProduct = idProduct;
         this.idCompany = idCompany;
@@ -51,6 +48,7 @@ public class PostResponse implements Serializable {
         this.infoCamera = infoCamera;
         this.dtCreated = dtCreated;
         this.productName = productName;
+        this.isActive = isActive;
     }
 
     public String getIdPostProduct() {
@@ -211,5 +209,13 @@ public class PostResponse implements Serializable {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
     }
 }

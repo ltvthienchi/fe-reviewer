@@ -55,11 +55,12 @@ public class Product {
     @Column(name = "INFO_CAMERA")
     private String infoCamera;
 
+    @Column(name = "IS_ACTIVE")
+    private Boolean isActive;
+
     public Product() {}
 
-    public Product(String idProduct, String nameProduct, String tagProduct, Date dtCreated, float avgBattery,
-                   float avgDisplay, float avgPerformance, float avgDesign, float avgCamera, int numRating,
-                   String infoBattery, String infoDisplay, String infoPerformance, String infoDesign, String infoCamera) {
+    public Product(String idProduct, String nameProduct, String tagProduct, Date dtCreated, float avgBattery, float avgDisplay, float avgPerformance, float avgDesign, float avgCamera, int numRating, String infoBattery, String infoDisplay, String infoPerformance, String infoDesign, String infoCamera, Boolean isActive) {
         this.idProduct = idProduct;
         this.nameProduct = nameProduct;
         this.tagProduct = tagProduct;
@@ -75,6 +76,7 @@ public class Product {
         this.infoPerformance = infoPerformance;
         this.infoDesign = infoDesign;
         this.infoCamera = infoCamera;
+        this.isActive = isActive;
     }
 
     public String getIdProduct() {
@@ -195,5 +197,13 @@ public class Product {
 
     public void setInfoCamera(String infoCamera) {
         this.infoCamera = infoCamera;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 }

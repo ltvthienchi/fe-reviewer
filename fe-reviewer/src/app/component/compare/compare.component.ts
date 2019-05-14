@@ -3,6 +3,7 @@ import {Product} from '../../model/product.model';
 import {forEach} from '@angular/router/src/utils/collection';
 import {DataService} from '../../services/data-service/data.service';
 import * as $ from 'jquery';
+import {HttpService} from '../../services/http/http.service';
 @Component({
   selector: 'app-compare',
   templateUrl: './compare.component.html',
@@ -10,20 +11,21 @@ import * as $ from 'jquery';
 })
 export class CompareComponent implements OnInit {
 
-  private lstPost: any;
+  private lstPost: any = [];
   private arrayOfKeys: any;
+  private newArr: any;
   private arrName = [
     'General', 'Name', 'Image',
-    'FlatForm', 'OS', 'Chip', 'CPU', 'GPU',
+    'Performance', 'PlatForm', 'OS', 'Chip', 'CPU', 'GPU',
     'Memory', 'Card', 'Internal',
     'Design', 'Dimensions', 'Weight',
     'Display', 'Type', 'Size', 'Resolution',
     'Battery', 'Capacity', 'Type',
-    'Camera Main', 'Modules', 'Features', 'Video',
+    'Camera', 'Camera Main', 'Modules', 'Features', 'Video',
     'Camera Selfie', 'Modules', 'Features', 'Video',
   ];
-  private arrNameSub = ['General', 'FlatForm', 'Memory', 'Design', 'Display', 'Battery', 'Camera Main', 'Camera Selfie'];
-  constructor(private data: DataService) { }
+  private arrNameSub = ['General', 'Performance', 'Design', 'Display', 'Battery', 'Camera'];
+  constructor(private data: DataService, private http: HttpService) { }
 
   ngOnInit() {
     $(document).ready(function () {
@@ -33,8 +35,65 @@ export class CompareComponent implements OnInit {
     if (stringlistPro === null) {
       this.lstPost = null;
     } else {
-      this.lstPost = JSON.parse(stringlistPro);
-      this.arrayOfKeys = Object.keys(this.lstPost[0].content);
+      const arrId = [];
+      const arrLst = JSON.parse(stringlistPro);
+      arrLst.map(item => {
+        arrId.push(item.idProduct);
+      });
+      this.http.getProducts(arrId).subscribe(res => {
+        this.newArr = res;
+        this.newArr.map(item => {
+          item.infoBattery = JSON.parse(item.infoBattery);
+          item.infoDisplay = JSON.parse(item.infoDisplay);
+          item.infoPerformance = JSON.parse(item.infoPerformance);
+          item.infoDesign = JSON.parse(item.infoDesign);
+          item.infoCamera = JSON.parse(item.infoCamera);
+          const content = {
+            'Sub-1': '',
+            productName: item.productName,
+            imgPost: item.imgPost,
+            'Sub-2': '',
+            'title-1': '',
+            platformOne: item.infoPerformance.platform.os,
+            platformTwo: item.infoPerformance.platform.chip,
+            platformThree: item.infoPerformance.platform.cpu,
+            platformFour: item.infoPerformance.platform.gpu,
+            'title-2': '',
+            memoryOne: item.infoPerformance.memory.card,
+            memoryTwo: item.infoPerformance.memory.internal,
+            'Sub-3': '',
+            designOne: item.infoDesign.dimensions,
+            designTwo: item.infoDesign.weight,
+            'Sub-4': '',
+            displayOne: item.infoDisplay.type,
+            displayTwo: item.infoDisplay.size,
+            displayThree: item.infoDisplay.resolution,
+            'Sub-5': '',
+            batteryOne: item.infoBattery.capacity,
+            batteryTwo: item.infoBattery.type,
+            'Sub-6': '',
+            'title-3': '',
+            cameraMainOne: item.infoCamera.main.modules,
+            cameraMainTwo: item.infoCamera.main.features,
+            cameraMainThree: item.infoCamera.main.video,
+            'title-4': '',
+            cameraSelfOne: item.infoCamera.self.modules,
+            cameraSelfTwo: item.infoCamera.self.features,
+            cameraSelfThree: item.infoCamera.self.video
+          };
+          const product = {
+            idPostProduct: item.idPostProduct,
+            avgBattery: item.avgBattery,
+            avgCamera: item.avgCamera,
+            avgDesign: item.avgDesign,
+            avgDisplay: item.avgDisplay,
+            avgPerformance: item.avgPerformance,
+            content: content
+          };
+          this.lstPost.push(product);
+        });
+        this.arrayOfKeys = Object.keys(this.lstPost[0].content);
+      });
     }
   }
 
@@ -66,26 +125,26 @@ export class CompareComponent implements OnInit {
     const isCheck = nameTd.split('-')[0] !== 'Sub';
     if (idxPost === 1) return 'name';
     if(nameTd === 'imgPost') return 'image';
-    return isCheck ? 'text' : 'sub';
+    return (isCheck) ? 'text' : 'sub';
   }
 
   isCheckPer(key, data) {
     let total = data.avgCamera + data.avgBattery + data.avgDesign + data.avgPerformance + data.avgDisplay;
-    if (key === 'FlatForm' || key === 'Memory') return (data.avgPerformance * 10) + '%';
+    if (key === 'Performance') return (data.avgPerformance * 10) + '%';
     if (key === 'Design') return (data.avgDesign * 10) + '%';
     if (key === 'Display') return (data.avgDisplay * 10) + '%';
     if (key === 'Battery') return (data.avgBattery * 10) + '%';
-    if (key === 'Camera Main' || key === 'Camera Selfie') return (data.avgCamera * 10) + '%';
+    if (key === 'Camera') return (data.avgCamera * 10) + '%';
     if (key === 'General') return ((total / 5) * 10) + '%';
   }
 
   isCheckNumber(key, data) {
     let total = data.avgCamera + data.avgBattery + data.avgDesign + data.avgPerformance + data.avgDisplay;
-    if (key === 'FlatForm' || key === 'Memory') return data.avgPerformance;
+    if (key === 'Performance') return data.avgPerformance;
     if (key === 'Design') return data.avgDesign;
     if (key === 'Display') return data.avgDisplay;
     if (key === 'Battery') return data.avgBattery;
-    if (key === 'Camera Main' || key === 'Camera Selfie') return data.avgCamera;
+    if (key === 'Camera') return data.avgCamera;
     if (key === 'General') return (total / 5);
   }
 
@@ -93,11 +152,11 @@ export class CompareComponent implements OnInit {
     let defaultClass = 'progress-bar progress-bar-striped progress-bar-animated';
     let total = data.avgCamera + data.avgBattery + data.avgDesign + data.avgPerformance + data.avgDisplay;
 
-    if (key === 'FlatForm' || key === 'Memory') return checkClass(data.avgPerformance);
+    if (key === 'Performance') return checkClass(data.avgPerformance);
     if (key === 'Design') return checkClass(data.avgDesign);
     if (key === 'Display') return checkClass(data.avgDisplay);
     if (key === 'Battery') return checkClass(data.avgBattery);
-    if (key === 'Camera Main' || key === 'Camera Selfie') return checkClass(data.avgCamera);
+    if (key === 'Camera') return checkClass(data.avgCamera);
     if (key === 'General') return checkClass((total / 5));
 
     function checkClass(value) {
@@ -109,25 +168,3 @@ export class CompareComponent implements OnInit {
     }
   }
 }
-
-// avatarCompany: "http://localhost/img/reviewer/Avatar-none.png"
-// avgBattery: 1
-// avgCamera: 1
-// avgDesign: 1
-// avgDisplay: 1
-// avgPerformance: 1
-// content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non excepturi eum ab commodi eius accusantium modi ullam, ' +     'nisi sint, iusto quis inventore quae eos molestias. Iure eaque, mollitia molestias maxime!"
-// dtCreated: "2019-05-08T16:54:40.463+0000"
-// idCompany: "COMPANY_1556616033479"
-// idPostProduct: "POST_1557334480454"
-// idProduct: "PRODUCT_1557334480454"
-// idReviewer: "COMPANY_1556616033479"
-// imgPost: "http://localhost/img/reviewer/222.PNG"
-// infoBattery: "{"capacity":"My test","type":"My test"}"
-// infoCamera: "{"main":{"modules":"My test","features":"My test","video":"My test"},"self":{"modules":"My test","features":"My test","video":"My test"}}"
-// infoDesign: "{"dimensions":"My test","weight":"My test"}"
-// infoDisplay: "{"type":"My test","size":"My test","resolution":"My test"}"
-// infoPerformance: "{"platform":{"os":"My test","chip":"My test","cpu":"My test","gpu":"My test"},"memory":{"card":"My test","internal":"My test"}}"
-// nameCompany: "Google"
-// productName: "Product No.1"
-// totalComment: 0

@@ -1,4 +1,4 @@
-<div class="container-post" >
+<div class="container-post" *ngIf="item.active">
   <div class="header clearfix">
     <div class="avatar">
       <img [src]="item.avatarCompany" alt="avatar"/>
@@ -68,16 +68,16 @@
     <div class="footer">
       <div class="group-button">
         <div class="row">
-          <div class="col-3">
+          <div [class]="!item.status ? 'col-3' : 'col-4'">
             <p class="btn-post" (click)="toggleRatings(item.idProduct, item.idReviewer)">Ratings</p>
           </div>
-          <div class="col-3">
+          <div [class]="!item.status ? 'col-3' : 'col-4'">
             <p class="btn-post" (click)="showComment(item.idProduct)" [id]="'btnShowAllComment'+item.idProduct">Comments</p>
           </div>
-          <div class="col-3">
-            <p class="btn-post" (click)="compareProduct(item)">Compare</p>
+          <div [class]="!item.status ? 'col-3' : 'col-0'">
+            <p class="btn-post" *ngIf="item.status !== 'detail'" (click)="compareProduct(item)">Compare</p>
           </div>
-          <div class="col-3">
+          <div [class]="!item.status ? 'col-3' : 'col-4'">
             <p class="btn-post" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="detailProduct(item)">Detail</p>
           </div>
         </div>

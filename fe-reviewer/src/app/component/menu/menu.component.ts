@@ -8,7 +8,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import {HttpService} from '../../services/http/http.service';
 import {AvatarService} from '../../services/avatar-service/avatar.service';
-
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-menu',
@@ -26,6 +26,7 @@ export class MenuComponent implements OnInit {
   queryField: FormControl = new FormControl();
   count: number;
   isCheckOut = false;
+  firstClick = true;
   constructor(private authGuard: AuthGuardService, private router: Router,
               private data: DataService, private http: HttpService,private avatarService: AvatarService,
               private elementRef: ElementRef) {
@@ -64,6 +65,21 @@ export class MenuComponent implements OnInit {
       });
   }
 
+  search() {
+    if(this.firstClick) {
+      this.queryField.valueChanges
+        .debounceTime(200)
+        .distinctUntilChanged()
+        .switchMap((query) =>  this.http.search(query))
+        .subscribe((result: any) => {
+          if (result) {
+            this.results = result;
+            this.firstClick = false;
+          }
+        });
+    }
+  }
+
   checkAuthGuard() {
     return this.authGuard.checkLogin();
   }
@@ -88,6 +104,17 @@ export class MenuComponent implements OnInit {
   focusOnFunction(e) {
     let link = 'detail-product/:' + e;
     this.router.navigate([link]);
+  }
+
+  findProduct(idProduct) {
+    // [routerLink]="'/detail-product/' + result.idProduct"
+    if($('#dropdownProduct').hasClass('show')) {
+      $('#dropdownProduct').removeClass('show');
+    }
+    const url = '/detail-product/' + idProduct;
+    this.router.navigateByUrl(url);
+    // console.log(url);
+    // this.router.url(url);
   }
 
 }

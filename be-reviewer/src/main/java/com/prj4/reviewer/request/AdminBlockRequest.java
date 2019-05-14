@@ -4,13 +4,13 @@ public class AdminBlockRequest {
 
     private String idAdmin;
 
-    private boolean isActive;
+    private Boolean isActive;
 
 
     public AdminBlockRequest() {
     }
 
-    public AdminBlockRequest(String idAdmin, boolean isActive) {
+    public AdminBlockRequest(String idAdmin, Boolean isActive) {
         this.idAdmin = idAdmin;
         this.isActive = isActive;
     }
@@ -23,11 +23,11 @@ public class AdminBlockRequest {
         this.idAdmin = idAdmin;
     }
 
-    public boolean isActive() {
+    public Boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 }
