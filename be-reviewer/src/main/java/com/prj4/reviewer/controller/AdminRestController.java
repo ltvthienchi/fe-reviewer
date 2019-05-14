@@ -4,6 +4,7 @@ import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Admin;
 import com.prj4.reviewer.request.AdminBlockRequest;
 import com.prj4.reviewer.request.AdminRequest;
+import com.prj4.reviewer.request.AdminResetPass;
 import com.prj4.reviewer.service.AdminService;
 import com.prj4.reviewer.service.GenerateId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,10 +59,12 @@ public class AdminRestController {
         return JsonResponse.accept("");
     }
 
-    @PostMapping(BASE_POST_LINK + "block")
-    public JsonResponse<String> blockAdmin(AdminBlockRequest adminBlockRequest){
+    @PostMapping(BASE_POST_LINK + "lockAdmin")
+    public JsonResponse<String> lockAdmin(@RequestBody @Valid AdminBlockRequest adminBlockRequest){
         Admin admin = adminService.findByIdAdmin(adminBlockRequest.getIdAdmin());
-        admin.setActive(adminBlockRequest.isActive());
+        Boolean a = Boolean.valueOf(adminBlockRequest.getIsActive());
+        admin.setActive(!a);
+        adminService.save(admin);
         return JsonResponse.accept("");
     }
 
@@ -69,6 +72,15 @@ public class AdminRestController {
     public String getRole(@RequestBody @Valid AdminBlockRequest adminBlockRequest){
         Admin admin = adminService.findByIdAdmin(adminBlockRequest.getIdAdmin());
         return admin.getRoleAdmin();
+    }
+
+    @PostMapping(BASE_POST_LINK + "resetPassAdmin")
+    public JsonResponse<String> resetPassAdmin(@RequestBody @Valid AdminResetPass adminResetPass){
+        Admin admin = adminService.findByIdAdmin(adminResetPass.getIdAdmin());
+        String encodedPass = new BCryptPasswordEncoder().encode(adminResetPass.getPassAdmin());
+        admin.setPassAdmin(encodedPass);
+        adminService.save(admin);
+        return JsonResponse.accept("");
     }
 
 

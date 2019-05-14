@@ -34,10 +34,7 @@ public class AdminService {
         adminRepository.save(admin);
     }
 
-    public void blockAdmin(AdminBlockRequest adminBlockRequest){
-        Admin admin = adminRepository.findByIdAdmin(adminBlockRequest.getIdAdmin());
-        admin.setActive(adminBlockRequest.isActive());
-    }
+
 
     public void save(Admin admin){
         adminRepository.save(admin);

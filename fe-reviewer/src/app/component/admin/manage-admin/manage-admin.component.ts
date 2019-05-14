@@ -14,6 +14,7 @@ import { parse } from 'url';
 import { error } from 'protractor';
 import { AdminBlock } from '../../../model/AdminBlock.model';
 import * as $ from 'jquery';
+import { ResetPassAdmin } from '../../../model/ResetPassAdmin.model';
 @Component({
   selector: 'app-manage-admin',
   templateUrl: './manage-admin.component.html',
@@ -27,9 +28,12 @@ export class ManageAdminComponent implements OnInit {
 
   listAdmin: Admin[];
   adminForm: FormGroup;
+  passForm:FormGroup;
   role;
   check:boolean;
+  name;
   validatorForm = {
+    passForm: true,
     adminForm: true
   };
 
@@ -53,19 +57,24 @@ export class ManageAdminComponent implements OnInit {
       password: ['', [validatorRequired, validatorPassword]]
 
     });
+    this.passForm = this.formBuilder.group({
+      idAdmin:[],
+      password: ['', [validatorPassword]],
+      confirmPassword: ['', [validatorConfirmPassword]],
+    });
     
     const item:AdminBlock={
       idAdmin:localStorage.getItem('idUser'),
-      isActive:true
+      isActive:'true'
   
     }
     this.httpService.getRoleAdmin(item).subscribe((data: any) => {
-      console.log(data);
+     // console.log(data);
       this.role = data;
       if(this.role == '0') this.check=true; else this.check=false;
       
     });
-    console.log(this.role);
+   // console.log(this.role);
     this.loadData();
     
 
@@ -116,16 +125,12 @@ export class ManageAdminComponent implements OnInit {
         phoneAdmin: this.adminForm.value.phone,
         dobAdmin: this.adminForm.value.dobAdmin
       }
-
-
-
-
       // console.log(item);
       this.httpService.editAdmin(item).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
           this.showNotification('success', 'Update Admin successfully');
           this.loadData();
-
+          $('#close-button-edit').click();
         } else {
           this.showNotification('error', data.result);
         };
@@ -140,7 +145,7 @@ export class ManageAdminComponent implements OnInit {
       const arr = data;
      // console.log(arr);
       this.listAdmin = arr.filter(item => item.roleAdmin == 1);
-     // console.log(this.listAdmin);
+     //console.log(this.listAdmin);
       // console.log(this.listAdmin);
 
     });
@@ -178,21 +183,68 @@ export class ManageAdminComponent implements OnInit {
         phoneAdmin: this.adminForm.value.phone,
         dobAdmin: this.adminForm.value.dobAdmin
       }
-
-
-
-
       // console.log(item);
       this.httpService.addAdmin(item).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
           this.showNotification('success', 'Add Admin successfully');
           this.loadData();
-          $('#close-button-1').click();
+          $('#close-button-add').click();
         } else {
           this.showNotification('error', data.result);
         };
       });
     };
+  }
+
+  resetPassword(admin :any){
+    this.passForm = this.formBuilder.group({
+      idAdmin:[],
+      password: ['', [validatorPassword]],
+      confirmPassword: ['', [validatorConfirmPassword]],
+    });
+    this.name =admin.fullNameAdmin;
+    const id = admin.idAdmin;
+    this.passForm.controls['idAdmin'].setValue(admin.idAdmin);
+    //this.adminForm.setValue(admin);
+
+  }
+    
+  submitResetPass(){
+
+    if (this.passForm.status === 'INVALID') {
+      //console.log(this.adminForm);
+      this.validatorForm.passForm = false;
+    } else {
+     // console.log(this.adminForm);
+      const item: ResetPassAdmin = {
+        idAdmin: this.passForm.value.idAdmin,
+        passAdmin: this.passForm.value.password,
+      }
+
+      // console.log(item);
+      this.httpService.resetPassAdmin(item).subscribe((data: any) => {
+        if (data.status === 'SUCCESS') {
+          this.showNotification('success', 'Change pass successfully');
+          this.loadData();
+          $('#close-button-reset').click();
+        } else {
+          this.showNotification('error', data.result);
+        };
+      });
+    };
+
+  }
+
+  lockAdmin(admin){
+    let item = {
+      idAdmin: admin.idAdmin,
+      isActive: admin.active
+    };
+    console.log(item);
+    this.httpService.lockAdmin(item).subscribe((data: any) => {
+      this.loadData();
+    });
+
   }
 
 

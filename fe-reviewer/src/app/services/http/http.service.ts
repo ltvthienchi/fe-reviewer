@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { getHeader } from './header';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { URL_SERVER } from '../../../environments/environment';
+import { AdminBlock } from '../../model/AdminBlock.model';
 
 @Injectable()
 export class HttpService {
@@ -190,6 +191,15 @@ export class HttpService {
 
   public getRoleAdmin(data: any){
     return this.http.post(URL_SERVER.admin + 'getRole', data, getHeader());
+
+  }
+
+  public resetPassAdmin(data: any){
+    return this.http.post(URL_SERVER.admin + 'resetPassAdmin', data, getHeader());
+
+  }
+  public lockAdmin(data: any){
+    return this.http.post(URL_SERVER.admin + 'lockAdmin', data, getHeader());
 
   }
 }
