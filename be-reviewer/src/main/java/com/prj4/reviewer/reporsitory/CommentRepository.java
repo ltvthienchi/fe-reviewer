@@ -20,4 +20,6 @@ public interface CommentRepository extends CrudRepository<Comment, String> {
     @Modifying
     @Query("DELETE from Comment c where c.idComment = :idComment or c.idReply = :idComment")
     void getAllCommentReported(String idComment);
+
+    Comment findByIdComment(String idComment);
 }

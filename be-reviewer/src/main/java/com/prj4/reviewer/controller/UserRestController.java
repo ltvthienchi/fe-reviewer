@@ -131,6 +131,16 @@ public class UserRestController {
     public List<CommentResponse> getCommentByProductId(@RequestBody String idProduct) {
         return commentService.getCommentByProductId(idProduct);
     }
+
+    @PostMapping(BASE_POST_LINK + "reportComment")
+    public JsonResponse<String> reportComment(@RequestBody String idComment) {
+        try {
+            commentService.reportComment(idComment);
+            return JsonResponse.accept("success");
+        } catch(Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+    }
 }
 
 

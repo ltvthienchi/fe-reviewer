@@ -76,4 +76,10 @@ public class CommentService {
     public void deleteComment(String idComment) {
         commentRepository.getAllCommentReported(idComment);
     }
+
+    public void reportComment(String idComment) {
+        Comment comment= commentRepository.findByIdComment(idComment);
+        comment.setReport(true);
+        commentRepository.save(comment);
+    }
 }
