@@ -3,6 +3,10 @@
   /*font-size: 14px;*/
 }
 
+.dropdown-item {
+  cursor: pointer;
+}
+
 html, body {
   background: #e9ebee;
   height: 100%;

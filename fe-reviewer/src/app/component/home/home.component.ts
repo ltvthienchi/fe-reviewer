@@ -7,6 +7,7 @@ import * as $ from 'jquery';
 import { arrPostProduct } from '../../services/local_database/post-product';
 import {CompanyService} from '../../services/company-service/company.service';
 import {HttpService} from '../../services/http/http.service';
+import {IdUserService} from '../../services/data-global/id-user.service';
 
 @Component({
   selector: 'app-home',
@@ -20,21 +21,12 @@ export class HomeComponent implements OnInit {
   private notifier: NotifierService;
   toggleButton: boolean = false;
   toggleRating = true;
-
-  invert = false;
-  max = 10;
-  min = 1;
-  step = 1;
-  thumbLabel = true;
-  value = 1;
-
   myData = [];
   dataPost = [];
-  dataCompany = [];
-  dataProduct = [];
+  idUser;
 
   public constructor(notifier: NotifierService, private broad: Broadcaster,
-                     private eventMessage: EventMessage, private httpService: HttpService) {
+                     private eventMessage: EventMessage, private httpService: HttpService, private idUserSer: IdUserService) {
       this.notifier = notifier;
   }
 
@@ -42,15 +34,22 @@ export class HomeComponent implements OnInit {
     $(document).ready(function () {
       $('html,body').animate({ scrollTop: 0 }, 'normal');
     });
+    this.getIdUser();
     Promise.all([
       this.getAllPost(),
     ]).then(res => {
       this.dataPost.map(item => {
-        item.idReviewer = localStorage.getItem('idUser');
+        item.idReviewer = this.idUser;
         this.myData.push(item);
       });
     });
 
+  }
+
+  getIdUser() {
+    this.idUserSer.on().subscribe(res => {
+      this.idUser = res;
+    })
   }
 
   getAllPost() {

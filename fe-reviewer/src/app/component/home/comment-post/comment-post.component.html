@@ -8,13 +8,23 @@
           </div>
         </div>
         <div class="input-comment">
-          <p class="m-0">
-            <span class="username">
-              <a [routerLink]="isRouterName(item.idReviewer)">{{item.fullName}}</a>
-              <i class="fas fa-check-circle txt-main" *ngIf="item.idReviewer.split('_')[0] !== 'REVIEWER'" ></i>
-            </span>
-            <span class="content">{{item.content}}</span>
-          </p>
+          <div class="clearfix">
+            <p class="mb-0 content-comment">
+              <span class="username">
+                <a [routerLink]="isRouterName(item.idReviewer)">{{item.fullName}}</a>
+                <i class="fas fa-check-circle txt-main" *ngIf="item.idReviewer.split('_')[0] !== 'REVIEWER'" ></i>
+              </span>
+              <span class="content">{{item.content}}</span>
+            </p>
+
+            <div class="dropdown">
+              <button  (click)="addLabel('dropdown_'+idProduct)" class="mb-0 button-comment" role="button" type="button" [id]="'dropdown_'+idProduct" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">. . .</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" *ngIf="item.idReviewer !== idUser">Report this comment</a>
+                <a class="dropdown-item" *ngIf="item.idReviewer === idUser">Edit</a>
+              </div>
+            </div>
+          </div>
           <p class="m-0">
             <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span>
           </p>
@@ -54,6 +64,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@ import {AuthGuardService} from '../../services/auth/auth-guard.service';
 import {HttpService} from '../../services/http/http.service';
 import {ActivatedRoute} from '@angular/router';
 import * as $ from 'jquery';
+import {IdUserService} from '../../services/data-global/id-user.service';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -11,42 +12,50 @@ import * as $ from 'jquery';
 })
 export class CompanyComponent implements OnInit {
 
-  value = 5;
-  max = 5;
-  min = 0.5;
-  step = 0.5;
+  private idUser;
   private idCompany: string;
-  private detailCompany: any;
+  private detailCompany: any = {
+    idCompany: '',
+    nameCompany: '',
+    addrCompany: '',
+    webCompany: '',
+    telCompany: '',
+    imgAvatarCompany: '',
+    imgPanelCompany: '',
+    emailCompany: '',
+    avgRatingComp: 0
+  };
   private lstPost = [];
   isPostProduct = false;
   txtPostProduct = 'Post Product';
 
-  constructor(private authGuard: AuthGuardService, private http: HttpService, private activatedRoute: ActivatedRoute) { }
+  constructor(private authGuard: AuthGuardService, private http: HttpService, private activatedRoute: ActivatedRoute,
+              private idUserSer: IdUserService) { }
 
   ngOnInit() {
     $(document).ready(function () {
       $('html,body').animate({ scrollTop: 0 }, 'normal');
     });
-    this.detailCompany = {
-      idCompany: '',
-      nameCompany: '',
-      addrCompany: '',
-      webCompany: '',
-      telCompany: '',
-      imgAvatarCompany: '',
-      imgPanelCompany: '',
-      emailCompany: '',
-      avgRatingComp: 0
-    };
     this.idCompany = this.activatedRoute.snapshot.paramMap.get('id');
+    this.getIdUser();
+    this.getData();
+  }
+
+  getData() {
     this.http.getDetailCompany(this.idCompany).subscribe( (data: any) => {
       if (data) {
         this.detailCompany = data.company;
         data.lstPost.map(item => {
-          item.idReviewer = localStorage.getItem('idUser');
+          item.idReviewer = this.idUser;
           this.lstPost.push(item);
         });
       }
+    });
+  }
+
+  getIdUser() {
+    this.idUserSer.on().subscribe(res => {
+      this.idUser = res;
     });
   }
 
@@ -70,7 +79,7 @@ export class CompanyComponent implements OnInit {
         if (data) {
           this.detailCompany = data.company;
           data.lstPost.map(item => {
-            item.idReviewer = localStorage.getItem('idUser');
+            item.idReviewer = this.idUser;
             this.lstPost.push(item);
           });
         }

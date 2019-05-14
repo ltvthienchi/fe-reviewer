@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpService} from '../../../services/http/http.service';
 import * as $ from 'jquery';
+import {IdUserService} from '../../../services/data-global/id-user.service';
 @Component({
   selector: 'app-comment-post',
   templateUrl: './comment-post.component.html',
@@ -14,10 +15,12 @@ export class CommentPostComponent implements OnInit {
   dataComment:any = [];
   valueComment:any;
   userInfo:any;
-  constructor(private http: HttpService) { }
+  idUser;
+  constructor(private http: HttpService, private idUserSer: IdUserService) { }
 
   ngOnInit() {
     this.getData();
+    this.getIdUser();
     const data = {
       email: localStorage.getItem('email'),
       role: localStorage.getItem('role')
@@ -26,6 +29,12 @@ export class CommentPostComponent implements OnInit {
     this.http.getReviewerInfo(userInfo).subscribe(res => {
       this.userInfo = res;
     });
+  }
+
+  getIdUser() {
+    this.idUserSer.on().subscribe(res => {
+      this.idUser = res;
+    })
   }
 
   getData() {
@@ -64,7 +73,7 @@ export class CommentPostComponent implements OnInit {
     if (this.valueComment) {
       let newComment = {
         idProduct: item.idProduct,
-        idReviewer: localStorage.getItem('idUser'),
+        idReviewer: this.idUser,
         idReply: item.idComment,
         isReply: true,
         role_user: localStorage.getItem('role'),
@@ -93,6 +102,11 @@ export class CommentPostComponent implements OnInit {
     } else {
       return '/user-page/' + id;
     }
+  }
+
+  addLabel(idLabel) {
+    const id = '#' + idLabel;
+    $(id).next().attr('aria-labelledby', id);
   }
 
 }

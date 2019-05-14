@@ -68,6 +68,7 @@ import { ActivityHistoryComponent } from './component/activity-history/activity-
 import { ReportedCommentComponent } from './component/admin/reported-comment/reported-comment.component';
 import { ManageProductComponent } from './component/admin/manage-product/manage-product.component';
 import { ModalDetailComponent } from './component/admin/manage-product/modal-detail/modal-detail.component';
+import {IdUserService} from './services/data-global/id-user.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -204,7 +205,8 @@ export function tokenGetter() {
     HttpService,
     DataService,
     TopRatingService,
-    AvatarService
+    AvatarService,
+    IdUserService
   ],
   bootstrap: [AppComponent]
 })

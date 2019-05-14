@@ -26,4 +26,35 @@ export class DetailProductComponent implements OnInit {
       this.myData.idReviewer = localStorage.getItem('idUser');
     });
   }
+
+  // ngOnInit() {
+  //   let self = this;
+  //   this.route.params.subscribe(params => {
+  //     this.idUserSer.on().subscribe(res => {
+  //       this.idUser = res;
+  //     });
+  //     this.idProduct = params['id'];
+  //     self.initialiseState();
+  //   });
+  // }
+  //
+  // initialiseState() {
+  //   this.http.getDetailPost(this.idProduct).subscribe((data: any) => {
+  //     this.myData = data;
+  //     this.setIdUser();
+  //     // this.myData.idReviewer = localStorage.getItem('idUser');
+  //   });
+  // }
+  //
+  // setIdUser() {
+  //   let self = this;
+  //   if(this.idUser) {
+  //     console.log('id', this.idUser);
+  //     this.myData.idReviewer = localStorage.getItem('idUser');
+  //   } else {
+  //     setTimeout(function () {
+  //       self.setIdUser();
+  //     }, 500);
+  //   }
+  // }
 }

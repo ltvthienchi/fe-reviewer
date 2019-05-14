@@ -41,7 +41,7 @@
 
 
 .view-comment .input-comment {
-  width: 88%;
+  width: 91%;
   float: left;
 }
 
@@ -83,4 +83,19 @@
 
 .reply-comment {
   display: none;
+}
+
+.content-comment {
+  width: 92%;
+  float: left;
+}
+
+.button-comment {
+  width: 7%;
+  border: 1px solid black;
+  float: right;
+  min-height: 38px;
+  cursor: pointer;
+  text-align: center;
+  background-color: white;
 }

@@ -10,6 +10,7 @@ import {
 } from '../../services/validator/validator';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {HttpService} from '../../services/http/http.service';
+import {IdUserService} from '../../services/data-global/id-user.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
     signInForm: true
   };
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router,
-              notifier: NotifierService, jwtHelper: JwtHelperService, private http: HttpService) {
+              notifier: NotifierService, jwtHelper: JwtHelperService, private http: HttpService,
+              private idUser: IdUserService) {
     this.notifier = notifier;
     this.jwtHelper = jwtHelper;
   }
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   OnSubmit() {
+    const self = this;
     if (this.signInForm.status === 'INVALID') {
       this.validatorForm.signInForm = false;
     } else {
