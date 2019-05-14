@@ -2,18 +2,27 @@ package com.prj4.reviewer.request;
 
 public class FollowCompanyRequest {
 
-    private final String idReviewer;
+    private final String idFollower;
 
     private final String idCompany;
 
-    private final Boolean isFollow;
+    private final boolean isFollow;
 
-    private final Boolean isActive;
-
-    public FollowCompanyRequest(String idReviewer, String idCompany, Boolean isFollow, Boolean isActive) {
-        this.idReviewer = idReviewer;
+    public FollowCompanyRequest(String idFollower, String idCompany, boolean isFollow) {
+        this.idFollower = idFollower;
         this.idCompany = idCompany;
         this.isFollow = isFollow;
-        this.isActive = isActive;
+    }
+
+    public String getIdFollower() {
+        return idFollower;
+    }
+
+    public String getIdCompany() {
+        return idCompany;
+    }
+
+    public boolean isFollow() {
+        return isFollow;
     }
 }

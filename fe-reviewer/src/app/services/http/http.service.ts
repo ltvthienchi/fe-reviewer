@@ -207,4 +207,12 @@ export class HttpService {
   public deleteComment(idComment) {
     return this.http.post(URL_SERVER.admin + 'deleteComment', idComment, getHeader());
   }
+
+  public checkIsFollow(data) {
+    return this.http.post(URL_SERVER.company + 'checkIsFollow', data, getHeader());
+  }
+
+  public followCompany(data) {
+    return this.http.post(URL_SERVER.company + 'followCompany', data, getHeader());
+  }
 }

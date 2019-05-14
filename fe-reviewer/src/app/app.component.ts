@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     console.log(this.router.url);
     console.log(window.location.toString());
     this.registerTypeBroadcast();
-    this.setIdUser();
+    // this.setIdUser();
     // $('button').click(() => {
     //   this.eventMessage.fire(true);
     //   setTimeout(() => {
