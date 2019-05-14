@@ -218,7 +218,7 @@ export class ManageAdminComponent implements OnInit {
      // console.log(this.adminForm);
       const item: ResetPassAdmin = {
         idAdmin: this.passForm.value.idAdmin,
-        passAdmin: this.passForm.value.password,
+        passAdmin: this.passForm.value.password
       }
 
       // console.log(item);

@@ -3,7 +3,7 @@ export class Admin {
     fullNameAdmin: string;
     emailAdmin: string;
     passAdmin: string;
-    dobAdmin: Date;;
+    dobAdmin: Date;
     isActive: boolean;
     addressAdmin: string;
     phoneAdmin: string;
