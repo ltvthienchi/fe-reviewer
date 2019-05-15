@@ -26,6 +26,8 @@ public class CommentService {
     CompanyRepository companyRepository;
     @Autowired
     AdminRepository adminRepository;
+    @Autowired
+    CompanyService companyService;
 
     @Autowired
     ReviewerService reviewerService;
@@ -65,8 +67,14 @@ public class CommentService {
     public List<CommentReported> getAllCommentReported() {
         List<CommentReported> lstCommentReporteds = new ArrayList<>();
         List<Comment> lstComment = commentRepository.getAllCommentReported();
+        String fullName = null;
         for (Comment c: lstComment) {
-            String fullName = reviewerService.getReviewerInfoById(c.getIdReviewer()).getFullName();
+            if (reviewerService.getReviewerInfoById(c.getIdReviewer()) == null) {
+                fullName = reviewerService.getReviewerInfoById(c.getIdReviewer()).getFullName();
+            } else {
+                fullName = companyService.getNameCompanyById(c.getIdReviewer());
+            }
+
             CommentReported cmt = new CommentReported(c.getIdComment(), fullName, c.getContent(), c.getDateCreate());
             lstCommentReporteds.add(cmt);
         }
