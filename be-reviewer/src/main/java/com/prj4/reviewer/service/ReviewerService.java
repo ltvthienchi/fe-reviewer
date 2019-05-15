@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ReviewerService {
@@ -130,6 +131,9 @@ public class ReviewerService {
     public String getImageAvatarByIdReviewer(String idReviewer) {
         String idImage = reviewerRepository.findByIdReviewer(idReviewer).getImgAvatar();
         return imageService.getImagePathById(idImage);
+    }
+    public List<Reviewer> getAll(){
+        return (List<Reviewer>)reviewerRepository.findAll();
     }
 
 }

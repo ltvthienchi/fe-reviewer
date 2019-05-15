@@ -19,4 +19,8 @@ public interface UserService {
     boolean isExistingAccount(String userName);
 
     void updateActiveAcc(String idAccount);
+
+    List<User> getAll();
+
+    void changActive(String idAccount, Boolean active);
 }
