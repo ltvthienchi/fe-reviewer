@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FollowCompanyRepository extends CrudRepository<FollowCompany, String>{
-
+    FollowCompany findByIdCompanyAndIdReviewer(String idCompany, String idReviewer);
 }

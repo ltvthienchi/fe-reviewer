@@ -59,4 +59,12 @@ public class PostService {
         return lstPost;
     }
 
+    public void deletePost(String idProduct) {
+        postRepository.deletePostByIdProduct(idProduct);
+    }
+
+    public void updatePost(Post post) {
+        postRepository.save(post);
+    }
+
 }

@@ -6,6 +6,8 @@ import com.prj4.reviewer.entity.Company;
 import com.prj4.reviewer.entity.Post;
 import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.request.CompanyRequest;
+import com.prj4.reviewer.request.FollowCompanyRequest;
+import com.prj4.reviewer.request.RequestCheckFollow;
 import com.prj4.reviewer.response.CompanyResponse;
 import com.prj4.reviewer.response.DetailCompanyReponse;
 import com.prj4.reviewer.response.PostResponse;
@@ -21,7 +23,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class CompanyRestController {
 
     private final static String BASE_POST_LINK = "/data/company/";
@@ -44,6 +46,9 @@ public class CompanyRestController {
 
     @Autowired
     ImageService imageService;
+
+    @Autowired
+    FollowCompanyService followCompanyService;
 
     @Autowired
     CreatePostResponseService createPostResponseService;
@@ -97,6 +102,24 @@ public class CompanyRestController {
         DetailCompanyReponse detailCompanyReponse = new DetailCompanyReponse(companyResponse, lstPost);
         return detailCompanyReponse;
     }
+
+    @PostMapping(BASE_POST_LINK + "checkIsFollow")
+    public boolean checkIsFollow(@RequestBody RequestCheckFollow requestCheckFollow) {
+        return followCompanyService.checkIsFollow(requestCheckFollow);
+    }
+
+    @PostMapping(BASE_POST_LINK + "followCompany")
+    public JsonResponse<String> followCompany(@RequestBody FollowCompanyRequest followCompanyRequest) {
+        try {
+            followCompanyService.followCompany(followCompanyRequest);
+            return JsonResponse.accept("success");
+        } catch (Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+
+    }
+
+
 
 
 }

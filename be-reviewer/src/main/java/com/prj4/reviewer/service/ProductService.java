@@ -70,4 +70,12 @@ public class ProductService {
         }
         return lstSearch;
     }
+
+    public void deleteProduct(String idProduct) {
+        productReporsitory.deleteProductByIdProduct(idProduct);
+    }
+
+    public void updateProduct(Product product) {
+        productReporsitory.save(product);
+    }
 }

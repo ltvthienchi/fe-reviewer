@@ -15,6 +15,7 @@ export class CompanyComponent implements OnInit {
 
   private idUser;
   private idCompany: string;
+  private isFollowed: boolean;
   private detailCompany: any = {
     idCompany: '',
     nameCompany: '',
@@ -40,6 +41,7 @@ export class CompanyComponent implements OnInit {
     this.idCompany = this.activatedRoute.snapshot.paramMap.get('id');
     this.idUser = this.idUserSer.getId();
     this.getData();
+    this.checkIsFollow(this.idCompany);
   }
 
   getData() {
@@ -80,5 +82,37 @@ export class CompanyComponent implements OnInit {
         }
       });
     }
+  }
+
+  checkIsFollow(idCompany) {
+    const requestObj = {
+      idCompany: this.idCompany,
+      idUser: localStorage.getItem('idUser');
+    };
+    const request = JSON.stringify(requestObj);
+    this.http.checkIsFollow(request).subscribe( (data: any) => {
+        this.isFollowed = data;
+    });
+  }
+  followCompany(idCompany, type) {
+    let isFollow: boolean;
+    if (type === 'follow') {
+      isFollow = true;
+    } else {
+      isFollow = false;
+    }
+    const requestData = {
+      idCompany: idCompany,
+      idFollower: localStorage.getItem('idUser'),
+      isFollow: isFollow
+    };
+    const requestString = JSON.stringify(requestData);
+    this.http.followCompany(requestString).subscribe( (data: any) => {
+      if (data.status === 'SUCCESS') {
+        this.isFollowed = isFollow;
+      }
+    });
+
+
   }
 }

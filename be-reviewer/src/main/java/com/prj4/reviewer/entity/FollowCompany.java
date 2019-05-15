@@ -22,6 +22,15 @@ public class FollowCompany {
 	@Column(name = "IS_FOLLOW")
     private boolean isFollow;
 
+	FollowCompany(){}
+
+	public FollowCompany(String idFollowCompany, String idReviewer, String idCompany, boolean isFollow) {
+		this.idFollowCompany = idFollowCompany;
+		this.idReviewer = idReviewer;
+		this.idCompany = idCompany;
+		this.isFollow = isFollow;
+	}
+
 	public String getIdFollowCompany() {
 		return idFollowCompany;
 	}
