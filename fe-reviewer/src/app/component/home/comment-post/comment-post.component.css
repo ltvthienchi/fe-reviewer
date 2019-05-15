@@ -41,8 +41,9 @@
 
 
 .view-comment .input-comment {
-  width: 91%;
+  width: 90%;
   float: left;
+/*  */
 }
 
 .view-comment .input-comment p:first-child {
@@ -90,12 +91,54 @@
   float: left;
 }
 
+.input-comment.sub {
+  /*width: 86% !important;*/
+}
+
+/*.myEditComment:hover .button-comment {*/
+/*  display: block;*/
+/*}*/
+
 .button-comment {
-  width: 7%;
-  border: 1px solid black;
+  /*display: none;*/
+  /*width: 7%;*/
+  /*border: 1px solid black;*/
+  border: none;
   float: right;
   min-height: 38px;
   cursor: pointer;
   text-align: center;
   background-color: white;
+  font-weight: bold;
+  color: silver;
+  letter-spacing: 2px;
+  font-size: 16px;
+}
+
+.content-comment.sub {
+  /*width: 94%;*/
+}
+
+.button-comment.sub {
+  width: 8% !important;
+}
+
+.input-comment.sub-2 {
+  width: 88% !important;
+}
+
+.input-comment .button-comment {
+  display: none;
+}
+
+.input-comment:hover .button-comment {
+  display: block;
+}
+
+button:focus {
+  outline: none;
+}
+
+.time-ago span {
+  font-size: 12px;
 }

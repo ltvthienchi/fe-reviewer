@@ -8,6 +8,7 @@ import { arrPostProduct } from '../../services/local_database/post-product';
 import {CompanyService} from '../../services/company-service/company.service';
 import {HttpService} from '../../services/http/http.service';
 import {IdUserService} from '../../services/data-global/id-user.service';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +35,7 @@ export class HomeComponent implements OnInit {
     $(document).ready(function () {
       $('html,body').animate({ scrollTop: 0 }, 'normal');
     });
-    this.getIdUser();
+    this.idUser = this.idUserSer.getId();
     Promise.all([
       this.getAllPost(),
     ]).then(res => {
@@ -44,12 +45,6 @@ export class HomeComponent implements OnInit {
       });
     });
 
-  }
-
-  getIdUser() {
-    this.idUserSer.on().subscribe(res => {
-      this.idUser = res;
-    })
   }
 
   getAllPost() {

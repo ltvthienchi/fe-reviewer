@@ -5,6 +5,7 @@ import {HttpService} from '../../services/http/http.service';
 import {ActivatedRoute} from '@angular/router';
 import * as $ from 'jquery';
 import {IdUserService} from '../../services/data-global/id-user.service';
+import {JwtHelperService} from '@auth0/angular-jwt';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -38,7 +39,7 @@ export class CompanyComponent implements OnInit {
       $('html,body').animate({ scrollTop: 0 }, 'normal');
     });
     this.idCompany = this.activatedRoute.snapshot.paramMap.get('id');
-    this.getIdUser();
+    this.idUser = this.idUserSer.getId();
     this.getData();
     this.checkIsFollow(this.idCompany);
   }
@@ -52,12 +53,6 @@ export class CompanyComponent implements OnInit {
           this.lstPost.push(item);
         });
       }
-    });
-  }
-
-  getIdUser() {
-    this.idUserSer.on().subscribe(res => {
-      this.idUser = res;
     });
   }
 

@@ -14,6 +14,7 @@ import {ChangePass} from '../../model/changePass.model';
 import {AvatarService} from '../../services/avatar-service/avatar.service';
 import {ActivatedRoute} from '@angular/router';
 import {IdUserService} from '../../services/data-global/id-user.service';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 
 
@@ -48,7 +49,7 @@ export class UserPageComponent implements OnInit {
     $(document).ready(function () {
       $('html,body').animate({ scrollTop: 0 }, 'normal');
     });
-    this.getIdUser();
+
     this.notifier = notifier;
     this.firstName = '';
     this.lastName = '';
@@ -69,6 +70,7 @@ export class UserPageComponent implements OnInit {
 
 
   ngOnInit() {
+    this.localId = this.idUserSer.getId();
     this.idReviewer = this.activatedRoute.snapshot.paramMap.get('id');
     this.httpService.getReviewerInfoById(this.idReviewer).subscribe( (data: any) => {
       console.log(data);
@@ -85,12 +87,6 @@ export class UserPageComponent implements OnInit {
       this.updateInfoProfile.controls['dobReviewer'].setValue(parseDob);
       this.updateInfoProfile.controls['genderReviewer'].setValue(gender);
     });
-  }
-
-  getIdUser() {
-    this.idUserSer.on().subscribe(res => {
-      this.localId = res;
-    })
   }
 
   reloadData() {

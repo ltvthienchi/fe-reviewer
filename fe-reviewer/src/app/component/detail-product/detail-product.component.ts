@@ -1,6 +1,8 @@
 import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpService} from '../../services/http/http.service';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {IdUserService} from '../../services/data-global/id-user.service';
 
 @Component({
   selector: 'app-detail-product',
@@ -10,11 +12,13 @@ import {HttpService} from '../../services/http/http.service';
 export class DetailProductComponent implements OnInit {
 
   idProduct: string;
+  idUser: string;
   myData: any;
-  constructor(private route: ActivatedRoute, private http: HttpService) { }
+  constructor(private route: ActivatedRoute, private http: HttpService, private idUserSer: IdUserService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      this.idUser = this.idUserSer.getId();
       this.idProduct = params['id'];
       this.initialiseState(); // reset and set based on new parameter this time
     });
@@ -22,39 +26,10 @@ export class DetailProductComponent implements OnInit {
 
   initialiseState() {
     this.http.getDetailPost(this.idProduct).subscribe((data: any) => {
+      console.log('end');
       this.myData = data;
-      this.myData.idReviewer = localStorage.getItem('idUser');
+      this.myData.idReviewer = this.idUser;
     });
   }
 
-  // ngOnInit() {
-  //   let self = this;
-  //   this.route.params.subscribe(params => {
-  //     this.idUserSer.on().subscribe(res => {
-  //       this.idUser = res;
-  //     });
-  //     this.idProduct = params['id'];
-  //     self.initialiseState();
-  //   });
-  // }
-  //
-  // initialiseState() {
-  //   this.http.getDetailPost(this.idProduct).subscribe((data: any) => {
-  //     this.myData = data;
-  //     this.setIdUser();
-  //     // this.myData.idReviewer = localStorage.getItem('idUser');
-  //   });
-  // }
-  //
-  // setIdUser() {
-  //   let self = this;
-  //   if(this.idUser) {
-  //     console.log('id', this.idUser);
-  //     this.myData.idReviewer = localStorage.getItem('idUser');
-  //   } else {
-  //     setTimeout(function () {
-  //       self.setIdUser();
-  //     }, 500);
-  //   }
-  // }
 }

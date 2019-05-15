@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {HttpService} from '../../../services/http/http.service';
 import * as $ from 'jquery';
 import {IdUserService} from '../../../services/data-global/id-user.service';
+import {NotificationService} from '../../../services/notification/notification.service';
+import {NotifierService} from 'angular-notifier';
+import {JwtHelperService} from '@auth0/angular-jwt';
 @Component({
   selector: 'app-comment-post',
   templateUrl: './comment-post.component.html',
@@ -16,11 +19,12 @@ export class CommentPostComponent implements OnInit {
   valueComment:any;
   userInfo:any;
   idUser;
-  constructor(private http: HttpService, private idUserSer: IdUserService) { }
+  constructor(private http: HttpService, private notifier: NotifierService,
+              private idUserSer: IdUserService) { }
 
   ngOnInit() {
+    this.idUser = this.idUserSer.getId();
     this.getData();
-    this.getIdUser();
     const data = {
       email: localStorage.getItem('email'),
       role: localStorage.getItem('role')
@@ -29,12 +33,6 @@ export class CommentPostComponent implements OnInit {
     this.http.getReviewerInfo(userInfo).subscribe(res => {
       this.userInfo = res;
     });
-  }
-
-  getIdUser() {
-    this.idUserSer.on().subscribe(res => {
-      this.idUser = res;
-    })
   }
 
   getData() {
@@ -107,6 +105,16 @@ export class CommentPostComponent implements OnInit {
   addLabel(idLabel) {
     const id = '#' + idLabel;
     $(id).next().attr('aria-labelledby', id);
+  }
+
+  reportComment(idComment) {
+    this.http.reportComment(idComment).subscribe(res => {
+      if(res['result'] === "success") {
+        this.notifier.notify('success', 'Thanks you for report');
+      } else {
+        this.notifier.notify('error', 'Reporting had error, please try again');
+      }
+    })
   }
 
 }

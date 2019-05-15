@@ -69,6 +69,7 @@ import { ReportedCommentComponent } from './component/admin/reported-comment/rep
 import { ManageProductComponent } from './component/admin/manage-product/manage-product.component';
 import { ModalDetailComponent } from './component/admin/manage-product/modal-detail/modal-detail.component';
 import {IdUserService} from './services/data-global/id-user.service';
+import { TimeAgoPipe } from './services/pipe/time-ago.pipe';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -172,6 +173,7 @@ export function tokenGetter() {
     ReportedCommentComponent,
     ManageProductComponent,
     ModalDetailComponent,
+    TimeAgoPipe,
   ],
   imports: [
     HttpClientModule,
