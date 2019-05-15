@@ -17,7 +17,7 @@ public class ImageService {
         return imagesRepository.findByIdImage(idImage).getImgPath();
     }
     public void deleteImage(String idImage) {
-        imagesRepository.deleteImagesByIdImage(idImage);
+        imagesRepository.removeByIdImage(idImage);
     }
     public Images getImagesById(String idImage) {
         return imagesRepository.findByIdImage(idImage);

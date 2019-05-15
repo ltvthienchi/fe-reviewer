@@ -168,10 +168,10 @@ public class PostRestController {
 
     @PostMapping(BASE_POST_LINK + "deleteProduct")
     public JsonResponse<String> deleteProduct(@RequestBody String idProduct) {
+        String idImage = postService.getPostByIdProduct(idProduct).getIdImage();
         try {
             postService.deletePost(idProduct);
             productService.deleteProduct(idProduct);
-            String idImage = postService.getPostByIdProduct(idProduct).getIdImage();
             imageService.deleteImage(idImage);
             return JsonResponse.accept("success");
         } catch(Exception ex) {
