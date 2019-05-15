@@ -21,6 +21,7 @@ import {AlertMessageComponent} from '../../message/alert-message/alert-message.c
 export class ContentPostComponent implements OnInit {
 
   @Input() item: any;
+  @Output() eventAction: EventEmitter<any> = new EventEmitter();
   valueComment = '';
   dataDetail = {
     infoBattery: {
@@ -269,10 +270,11 @@ export class ContentPostComponent implements OnInit {
       if(isCheck) {
         this.http.deletePostProduct(idProduct).subscribe(res => {
           if(res['status'].toUpperCase() === 'SUCCESS') {
-            this.notifier.notify('success', 'delete success!');
+            this.notifier.notify('success', 'Delete product success!');
+            this.eventAction.emit({code: 'delete', data: null});
           } else {
             console.log(res);
-            this.notifier.notify('error', 'delete error, please try again!');
+            this.notifier.notify('error', 'Delete product error, please try again!');
           }
         })
       }
@@ -280,6 +282,6 @@ export class ContentPostComponent implements OnInit {
   }
 
   editProduct(item) {
-    console.log(item);
+    this.eventAction.emit({code: 'edit', data: item});
   }
 }

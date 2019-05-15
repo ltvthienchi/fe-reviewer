@@ -5,7 +5,7 @@
 
   <div class="col-sm-6">
     <div *ngFor="let item of myData">
-      <app-content-post [item]="item"></app-content-post>
+      <app-content-post [item]="item" (eventAction)="eventAction($event)" ></app-content-post>
     </div>
   </div>
 

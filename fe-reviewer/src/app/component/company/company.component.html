@@ -39,7 +39,7 @@
             <ng-template #elseBlock>
               <button class="btn btn-outline-info btnmargin margin-left"
                       (click)="followCompany(detailCompany.idCompany, 'unfollow')">
-                <i class="fas fa-check"> Subscribed</i>
+                <i class="fas fa-check">Subscribed</i>
               </button>
             </ng-template>
 
@@ -59,11 +59,10 @@
 
       <!--Content-->
       <div>
-        <app-create-product *ngIf="isPostProduct"></app-create-product>
-        <app-home-company [items]="lstPost" *ngIf="!isPostProduct"></app-home-company>
+        <app-create-product [idProduct]="idProduct" *ngIf="isPostProduct"></app-create-product>
+        <app-home-company (eventAction)="checkEventAction($event)" [items]="lstPost"
+                          [idCompany]="idCompany"  *ngIf="!isPostProduct"></app-home-company>
       </div>
     </div>
   </div>
-
-
 </div>

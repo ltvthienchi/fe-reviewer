@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { arrPostProduct } from '../../services/local_database/post-product';
 import {AuthGuardService} from '../../services/auth/auth-guard.service';
 import {HttpService} from '../../services/http/http.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import * as $ from 'jquery';
 import {IdUserService} from '../../services/data-global/id-user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
@@ -16,6 +16,7 @@ export class CompanyComponent implements OnInit {
   private idUser;
   private idCompany: string;
   private isFollowed: boolean;
+  private idProduct: string;
   private detailCompany: any = {
     idCompany: '',
     nameCompany: '',
@@ -32,21 +33,32 @@ export class CompanyComponent implements OnInit {
   txtPostProduct = 'Post Product';
 
   constructor(private authGuard: AuthGuardService, private http: HttpService, private activatedRoute: ActivatedRoute,
-              private idUserSer: IdUserService) { }
+              private idUserSer: IdUserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    $(document).ready(function () {
-      $('html,body').animate({ scrollTop: 0 }, 'normal');
+    this.route.params.subscribe(params => {
+      this.idCompany = params['id'];
+      this.idProduct = params['idProduct'];
+      this.idUser = this.idUserSer.getId();
+      this.initialiseState(); // reset and set based on new parameter this time
     });
-    this.idCompany = this.activatedRoute.snapshot.paramMap.get('id');
-    this.idUser = this.idUserSer.getId();
+
+  }
+
+  initialiseState() {
+    const self = this;
     this.getData();
     this.checkIsFollow(this.idCompany);
+    $(document).ready(function () {
+      $('html,body').animate({ scrollTop: 0 }, 'normal');
+      if(self.idProduct) $('#changeCreateProduct').click();
+    });
   }
 
   getData() {
     this.http.getDetailCompany(this.idCompany).subscribe( (data: any) => {
       if (data) {
+        this.lstPost = [];
         this.detailCompany = data.company;
         data.lstPost.map(item => {
           item.idReviewer = this.idUser;
@@ -61,7 +73,7 @@ export class CompanyComponent implements OnInit {
   }
 
   isCompanyAccount() {
-    return localStorage.getItem('role') === 'ROLE_COMPANY';
+    return localStorage.getItem('role') === 'ROLE_COMPANY' && this.idCompany === this.idUser;
   }
 
   changeIsPostProduct() {
@@ -69,18 +81,10 @@ export class CompanyComponent implements OnInit {
       this.isPostProduct = true;
       this.txtPostProduct = 'Show timeline';
     } else {
+      this.router.navigateByUrl('/company/'+this.idCompany);
       this.isPostProduct = false;
       this.txtPostProduct = 'Post Product';
-      this.http.getDetailCompany(this.idCompany).subscribe( (data: any) => {
-        this.lstPost = [];
-        if (data) {
-          this.detailCompany = data.company;
-          data.lstPost.map(item => {
-            item.idReviewer = this.idUser;
-            this.lstPost.push(item);
-          });
-        }
-      });
+      this.getData();
     }
   }
 
@@ -94,6 +98,7 @@ export class CompanyComponent implements OnInit {
         this.isFollowed = data;
     });
   }
+
   followCompany(idCompany, type) {
     let isFollow: boolean;
     if (type === 'follow') {
@@ -115,4 +120,9 @@ export class CompanyComponent implements OnInit {
 
 
   }
+
+  checkEventAction(e) {
+    if(e.code === 'delete') this.getData();
+  }
+
 }
