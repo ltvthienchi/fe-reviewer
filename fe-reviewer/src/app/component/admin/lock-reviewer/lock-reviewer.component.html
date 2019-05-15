@@ -24,14 +24,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let item of data; let idx = index">
+            <tr *ngFor="let item of listCompany; let idx = index">
               <td class="font-weight-bold">{{idx + 1}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.address}}</td>
-              <td>{{item.website}}</td>
-              <td>{{item.zipCode}}</td>
-              <td>{{item.dateCreate | ddmmyyyy}}</td>
-              <td>{{item.telPhone}}</td>
+              <td>{{item.nameCompany}}</td>
+              <td>{{item.addrCompany}}</td>
+              <td>{{item.webCompany}}</td>
+              <td>{{item.zipCompany}}</td>
+              <td>{{item.dtCreated | ddmmyyyy}}</td>
+              <td>{{item.telCompany}}</td>
               <td>
                 <a [class]="item.isBlock ? 'accept' : 'delete'"><i [class]="item.isBlock ? 'fas fa-unlock' : 'fas fa-lock'"></i></a>
               </td>
@@ -82,13 +82,13 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let item of data; let idx = index">
+              <tr *ngFor="let item of listReviewer; let idx = index">
                 <td class="font-weight-bold">{{idx + 1}}</td>
-                <td>{{item.name}}</td>
+                <td>{{item.fullName}}</td>
                 <td>{{item.gender ? 'man' : 'woman'}}</td>
                 <td>{{item.email}}</td>
-                <td>{{item.birthDay | ddmmyyyy}}</td>
-                <td>{{item.dateCreate | ddmmyyyy}}</td>
+                <td>{{item.dateOfBirth | ddmmyyyy}}</td>
+                <td>{{item.dateCreated | ddmmyyyy}}</td>
                 <td>
                   <a [class]="item.isBlock ? 'accept' : 'delete'">
                     <i [class]="item.isBlock ? 'fas fa-unlock' : 'fas fa-lock'"></i>

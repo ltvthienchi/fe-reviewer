@@ -79,6 +79,18 @@ public class UserServiceImp implements UserDetailsService, UserService {
     }
 
     @Override
+    public List<User> getAll() {
+        return (List<User>) userRepository.findAll();
+    }
+
+    @Override
+    public void changActive(String idAccount, Boolean active) {
+        User user = userRepository.findByIdAccount(idAccount);
+        user.setActive(active);
+        userRepository.save(user);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return null;
     }

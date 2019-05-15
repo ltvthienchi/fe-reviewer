@@ -1,16 +1,14 @@
 package com.prj4.reviewer.controller;
 
 import com.prj4.reviewer.core.JsonResponse;
-import com.prj4.reviewer.entity.Admin;
-import com.prj4.reviewer.entity.Comment;
-import com.prj4.reviewer.entity.Post;
+import com.prj4.reviewer.entity.*;
 import com.prj4.reviewer.request.AdminBlockRequest;
 import com.prj4.reviewer.request.AdminRequest;
 import com.prj4.reviewer.request.AdminResetPass;
+import com.prj4.reviewer.request.UserActiveRequest;
 import com.prj4.reviewer.service.AdminService;
 import com.prj4.reviewer.service.GenerateId;
 import com.prj4.reviewer.response.CommentReported;
-import com.prj4.reviewer.response.CommentResponse;
 import com.prj4.reviewer.response.PostResponse;
 import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +26,12 @@ public class AdminRestController {
     private final static String BASE_POST_LINK = "/data/admin/";
     @Autowired
     AdminService adminService;
+    @Autowired
+    CompanyService companyService;
+    @Autowired
+    UserService userService;
+    @Autowired
+    ReviewerService reviewerService;
     @Autowired
     GenerateId generateId;
     @Autowired
@@ -119,6 +123,28 @@ public class AdminRestController {
         }
 
     }
+
+
+
+    @GetMapping(BASE_POST_LINK + "getAllReviewer")
+    public List<Reviewer> getAllReviewer(){
+
+        return reviewerService.getAll();
+    }
+
+    @GetMapping(BASE_POST_LINK + "getAllUser")
+    public List<User> getAllUser(){
+
+        return userService.getAll();
+    }
+
+    @PostMapping(BASE_POST_LINK + "changeActive")
+    public JsonResponse changeActive(@RequestBody UserActiveRequest userActiveRequest) {
+        userService.changActive(userActiveRequest.getIdUser(),userActiveRequest.getIsActive());
+        return JsonResponse.accept("Success");
+    }
+
+
 
 
 }
