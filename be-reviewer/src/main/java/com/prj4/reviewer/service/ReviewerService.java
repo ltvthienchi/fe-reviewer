@@ -88,11 +88,14 @@ public class ReviewerService {
 
     public ReviewerResponse getReviewerInfoById(String idReviewer) {
         Reviewer reviewer = reviewerRepository.findByIdReviewer(idReviewer);
-        String imgAvatar = imageService.getImagePathById(reviewer.getImgAvatar());
-        String imgPanel = imageService.getImagePathById(reviewer.getImgPanel());
-        return new ReviewerResponse(reviewer.getIdReviewer(), reviewer.getFullName(),
-                reviewer.getFirstName(), reviewer.getLastName(),reviewer.getEmail(),reviewer.getDateOfBirth(),
-                imgAvatar, imgPanel, reviewer.getGender());
+        if (reviewer != null) {
+            String imgAvatar = imageService.getImagePathById(reviewer.getImgAvatar());
+            String imgPanel = imageService.getImagePathById(reviewer.getImgPanel());
+            return new ReviewerResponse(reviewer.getIdReviewer(), reviewer.getFullName(),
+                    reviewer.getFirstName(), reviewer.getLastName(),reviewer.getEmail(),reviewer.getDateOfBirth(),
+                    imgAvatar, imgPanel, reviewer.getGender());
+        }
+        return null;
 //        return reviewerResponse;
     }
 

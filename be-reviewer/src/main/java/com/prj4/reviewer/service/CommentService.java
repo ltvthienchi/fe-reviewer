@@ -69,7 +69,7 @@ public class CommentService {
         List<Comment> lstComment = commentRepository.getAllCommentReported();
         String fullName = null;
         for (Comment c: lstComment) {
-            if (reviewerService.getReviewerInfoById(c.getIdReviewer()) == null) {
+            if (reviewerService.getReviewerInfoById(c.getIdReviewer()) != null) {
                 fullName = reviewerService.getReviewerInfoById(c.getIdReviewer()).getFullName();
             } else {
                 fullName = companyService.getNameCompanyById(c.getIdReviewer());
