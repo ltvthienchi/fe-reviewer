@@ -2,11 +2,13 @@
   <div class="view-comment" *ngFor="let item of dataComment">
     <div class="pb-2">
       <div class="clearfix">
+
         <div class="avatar-comment">
           <div class="m-0 item-avatar">
             <img [src]="item.imgAvatar" alt="image"/>
           </div>
         </div>
+
         <div class="input-comment">
           <div class="clearfix">
             <p class="mb-0 content-comment">
@@ -16,17 +18,21 @@
               </span>
               <span class="content">{{item.content}}</span>
             </p>
-
             <div class="dropdown">
-              <button  (click)="addLabel('dropdown_'+idProduct)" class="mb-0 button-comment" role="button" type="button" [id]="'dropdown_'+idProduct" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">. . .</button>
+              <button  (click)="addLabel('dropdown_'+item.idComment)" class="mb-0 button-comment" role="button"
+                       type="button" [id]="'dropdown_'+idProduct" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">...</button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" *ngIf="item.idReviewer !== idUser">Report this comment</a>
+                <a class="dropdown-item" *ngIf="item.idReviewer !== idUser" (click)="reportComment(item.idComment)">
+                  Report this comment
+                </a>
                 <a class="dropdown-item" *ngIf="item.idReviewer === idUser">Edit</a>
               </div>
             </div>
           </div>
-          <p class="m-0">
-            <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span>
+
+          <p class="m-0 mt-1 time-ago">
+            <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span> · <span> {{item.dateCreate | timeAgo }} </span>
           </p>
         </div>
       </div>
@@ -39,16 +45,35 @@
                 <img [src]="itemTwo.imgAvatar" alt="image"/>
               </div>
             </div>
-            <div class="input-comment">
-              <p class="m-0">
-                <span class="username">
-                  <a [routerLink]="isRouterName(itemTwo.idReviewer)">{{itemTwo.fullName}}</a>
-                  <i class="fas fa-check-circle txt-main" *ngIf="itemTwo.idReviewer.split('_')[0] !== 'REVIEWER'" ></i>
-                </span>
-                <span class="content">{{itemTwo.content}}</span>
+            <div class="input-comment sub">
+              <div class="clearfix">
+                <p class="mb-0 content-comment sub">
+                  <span class="username">
+                    <a [routerLink]="isRouterName(itemTwo.idReviewer)">{{itemTwo.fullName}}</a>
+                    <i class="fas fa-check-circle txt-main" *ngIf="itemTwo.idReviewer.split('_')[0] !== 'REVIEWER'" ></i>
+                  </span>
+                  <span class="content">{{itemTwo.content}}</span>
+                </p>
+                <div class="myEditComment dropdown">
+                  <button  (click)="addLabel('dropdown_'+itemTwo.idComment)" class="mb-0 button-comment sub" role="button"
+                           type="button" [id]="'dropdown_'+idProduct" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">...</button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" *ngIf="itemTwo.idReviewer !== idUser"
+                       (click)="reportComment(itemTwo.idComment)">Report this comment</a>
+                    <a class="dropdown-item" *ngIf="itemTwo.idReviewer === idUser">Edit</a>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-1 ml-0 mb-0 mr-0 time-ago">
+                <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span> · <span> {{itemTwo.dateCreate | timeAgo }} </span>
               </p>
             </div>
           </div>
+
+
+
+
         </div>
       </div>
 
@@ -59,7 +84,7 @@
               <img *ngIf="userInfo" [src]="userInfo.imgAvatar" alt="avatar image"/>
             </div>
           </div>
-          <div class="input-comment">
+          <div class="input-comment sub-2">
             <input [id]="'inputComment'+item.idProduct" class="form-control" type="text" [(ngModel)]="valueComment" (keydown.enter)="postComment(item)"/>
           </div>
         </div>

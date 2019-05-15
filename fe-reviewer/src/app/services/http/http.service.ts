@@ -20,11 +20,11 @@ export class HttpService {
   }
 
   public createComment(data) {
-    return this.http.post(URL_SERVER.changePass + 'createComment', data, getHeader());
+    return this.http.post(URL_SERVER.user + 'createComment', data, getHeader());
   }
 
   public getCommentByProduct(data) {
-    return this.http.post(URL_SERVER.changePass + 'getCommentByProductId', data, getHeader());
+    return this.http.post(URL_SERVER.user + 'getCommentByProductId', data, getHeader());
   }
 
   // RATING
@@ -60,6 +60,10 @@ export class HttpService {
 
   public changeActive(data): Observable<any> {
     return this.http.post(URL_SERVER.product + 'changeActive', data, getHeader());
+  }
+  
+  public reportComment(idComment) {
+    return this.http.post(URL_SERVER.user + 'reportComment', idComment, getHeader());
   }
 
   //

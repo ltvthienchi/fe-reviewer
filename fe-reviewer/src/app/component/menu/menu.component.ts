@@ -10,6 +10,7 @@ import {HttpService} from '../../services/http/http.service';
 import {AvatarService} from '../../services/avatar-service/avatar.service';
 import * as $ from 'jquery';
 import {IdUserService} from '../../services/data-global/id-user.service';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-menu',
@@ -30,14 +31,22 @@ export class MenuComponent implements OnInit {
   firstClick = true;
   constructor(private authGuard: AuthGuardService, private router: Router,
               private data: DataService, private http: HttpService,private avatarService: AvatarService,
-              private elementRef: ElementRef, private idUserSer: IdUserService) {
+              private elementRef: ElementRef,private idUserSer: IdUserService) {
       const localCount = JSON.parse(JSON.stringify(sessionStorage.getItem('numbProduct')));
       if (localCount) { this.count = localCount; }
       this.role_user = localStorage.getItem('role');
   }
 
   ngOnInit() {
-    this.getIdUser();
+    this.idUser = this.idUserSer.getId();
+    const loginRequest = {
+      idUser : this.idUser,
+      role_user : this.role_user
+    };
+    this.http.getLoginInfo(loginRequest).subscribe((data: any) => {
+      this.fullName = data.fullName;
+      this.avatar = data.avatar;
+    });
     this.data.change.subscribe(count => {
       this.count = count;
     });
@@ -54,20 +63,6 @@ export class MenuComponent implements OnInit {
           this.results = result;
         }
       });
-  }
-
-  getIdUser() {
-    this.idUserSer.on().subscribe(res => {
-      this.idUser = res;
-      const loginRequest = {
-        idUser : this.idUser,
-        role_user : this.role_user
-      };
-      this.http.getLoginInfo(loginRequest).subscribe((data: any) => {
-        this.fullName = data.fullName;
-        this.avatar = data.avatar;
-      });
-    })
   }
 
   search() {
