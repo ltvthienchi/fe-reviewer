@@ -71,6 +71,7 @@ import { ModalDetailComponent } from './component/admin/manage-product/modal-det
 import {IdUserService} from './services/data-global/id-user.service';
 import { TimeAgoPipe } from './services/pipe/time-ago.pipe';
 import { PostDetailProductComponent } from './component/home/post-detail-product/post-detail-product.component';
+import { AlertMessageComponent } from './component/message/alert-message/alert-message.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -176,6 +177,7 @@ export function tokenGetter() {
     ModalDetailComponent,
     TimeAgoPipe,
     PostDetailProductComponent,
+    AlertMessageComponent,
 
   ],
   imports: [
@@ -196,7 +198,7 @@ export function tokenGetter() {
   exports: [
     MatSliderModule,
   ],
-  entryComponents: [ModalRatingComponent, ModalDetailComponent, PostDetailProductComponent],
+  entryComponents: [ModalRatingComponent, ModalDetailComponent, PostDetailProductComponent, AlertMessageComponent],
   providers: [
     Broadcaster,
     EventMessage,

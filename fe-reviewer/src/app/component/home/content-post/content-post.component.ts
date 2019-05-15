@@ -11,6 +11,7 @@ import {rating} from '../../../model/rating.model';
 import {TopRatingService} from '../../../services/data-global/top-rating.service';
 import {IdUserService} from '../../../services/data-global/id-user.service';
 import {PostDetailProductComponent} from '../post-detail-product/post-detail-product.component';
+import {AlertMessageComponent} from '../../message/alert-message/alert-message.component';
 
 @Component({
   selector: 'app-content-post',
@@ -261,12 +262,19 @@ export class ContentPostComponent implements OnInit {
   }
 
   deleteProduct(idProduct) {
-    this.http.deletePostProduct(idProduct).subscribe(res => {
-      if(res['status'].toUpperCase() === 'SUCCESS') {
-        this.notifier.notify('success', 'delete success!');
-      } else {
-        console.log(res);
-        this.notifier.notify('error', 'delete error, please try again!');
+    const modal = this.dialog.open(AlertMessageComponent, {
+      width: '540px'
+    });
+    modal.afterClosed().subscribe(isCheck => {
+      if(isCheck) {
+        this.http.deletePostProduct(idProduct).subscribe(res => {
+          if(res['status'].toUpperCase() === 'SUCCESS') {
+            this.notifier.notify('success', 'delete success!');
+          } else {
+            console.log(res);
+            this.notifier.notify('error', 'delete error, please try again!');
+          }
+        })
       }
     })
   }
