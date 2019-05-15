@@ -60,7 +60,7 @@ public class PostService {
     }
 
     public void deletePost(String idProduct) {
-        postRepository.deletePostByIdProduct(idProduct);
+        postRepository.removeByIdProduct(idProduct);
     }
 
     public void updatePost(Post post) {

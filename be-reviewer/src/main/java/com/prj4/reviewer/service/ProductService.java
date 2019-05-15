@@ -72,7 +72,7 @@ public class ProductService {
     }
 
     public void deleteProduct(String idProduct) {
-        productReporsitory.deleteProductByIdProduct(idProduct);
+        productReporsitory.removeByIdProduct(idProduct);
     }
 
     public void updateProduct(Product product) {
