@@ -70,6 +70,7 @@ import { ManageProductComponent } from './component/admin/manage-product/manage-
 import { ModalDetailComponent } from './component/admin/manage-product/modal-detail/modal-detail.component';
 import {IdUserService} from './services/data-global/id-user.service';
 import { TimeAgoPipe } from './services/pipe/time-ago.pipe';
+import { PostDetailProductComponent } from './component/home/post-detail-product/post-detail-product.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -174,6 +175,8 @@ export function tokenGetter() {
     ManageProductComponent,
     ModalDetailComponent,
     TimeAgoPipe,
+    PostDetailProductComponent,
+
   ],
   imports: [
     HttpClientModule,
@@ -193,7 +196,7 @@ export function tokenGetter() {
   exports: [
     MatSliderModule,
   ],
-  entryComponents: [ModalRatingComponent, ModalDetailComponent],
+  entryComponents: [ModalRatingComponent, ModalDetailComponent, PostDetailProductComponent],
   providers: [
     Broadcaster,
     EventMessage,

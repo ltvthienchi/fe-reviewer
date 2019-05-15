@@ -1,0 +1,38 @@
+
+/*Detail*/
+
+.detail-table-header {
+  padding: 7px;
+  background: #f2f2f2;
+  color: #c0392b;
+  margin: 0;
+  font-weight: bold;
+  border-bottom: 1px solid silver;
+}
+
+.detail-table-content {
+  padding: 7px;
+  margin: 0;
+  border-bottom: 1px solid silver;
+}
+
+.detail-table-content span {
+  display: inline-block;
+}
+
+.detail-table-content span:first-child {
+  width: 30%;
+  font-weight: bold;
+}
+
+.detail-table-content span:last-child {
+  width: 69%;
+}
+
+.mat-dialog-content {
+  max-height: 550px;
+}
+
+button:focus {
+  outline: none;
+}

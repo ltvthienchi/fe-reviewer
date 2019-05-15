@@ -96,6 +96,10 @@ span:active {
   /*background-color: white;*/
 }
 
+.cdk-overlay-dark-backdrop {
+  background: #000000d9;
+}
+
 @media all and (max-width: 576px) {
   .p-main {
     margin: 15px 5px 0 5px;

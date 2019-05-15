@@ -27,6 +27,14 @@ export class HttpService {
     return this.http.post(URL_SERVER.user + 'getCommentByProductId', data, getHeader());
   }
 
+  public deletePostProduct(idProduct) {
+    return this.http.post(URL_SERVER.postProduct + 'deleteProduct', idProduct, getHeader());
+  }
+
+  public updatePostProduct(data) {
+    return this.http.post(URL_SERVER.postProduct + 'updateProduct', data, getHeader());
+  }
+
   // RATING
 
   public createRating(data): Observable<any> {

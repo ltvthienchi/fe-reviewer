@@ -293,21 +293,19 @@
   /*display: none;*/
 }
 
-/*.rating .number-rating.comment {*/
-/*  display: inline-block;*/
-/*}*/
+/* Menu product */
 
+.btn-menu-product {
+  font-weight: bold;
+  letter-spacing: 2px;
+  background: none;
+  border: none;
+  font-size: 20px;
+}
 
-/*.rating .number-rating.comment .point {*/
-/*  font-size: 20px;*/
-/*  color: black;*/
-/*  font-weight: normal;*/
-/*  text-align: center;*/
-/*}*/
-
-/*.rating .number-rating.comment .description {*/
-/*  text-align: center;*/
-/*}*/
+.btn-menu-product:focus {
+  outline: none;
+}
 
 /*Mobile device*/
 

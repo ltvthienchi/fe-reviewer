@@ -19,7 +19,7 @@ export class IdUserService {
 
   getId() {
     const tokenDecoded = this.jwtHelper.decodeToken(localStorage.getItem('userToken'));
-    return tokenDecoded.idUser;
+    return tokenDecoded ? tokenDecoded.idUser : '';
   }
 
 }

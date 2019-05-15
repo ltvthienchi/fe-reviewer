@@ -9,6 +9,8 @@ import {DataService} from '../../../services/data-service/data.service';
 import {HttpService} from '../../../services/http/http.service';
 import {rating} from '../../../model/rating.model';
 import {TopRatingService} from '../../../services/data-global/top-rating.service';
+import {IdUserService} from '../../../services/data-global/id-user.service';
+import {PostDetailProductComponent} from '../post-detail-product/post-detail-product.component';
 
 @Component({
   selector: 'app-content-post',
@@ -19,7 +21,6 @@ export class ContentPostComponent implements OnInit {
 
   @Input() item: any;
   valueComment = '';
-  curItemReply;
   dataDetail = {
     infoBattery: {
       capacity: '',
@@ -57,37 +58,19 @@ export class ContentPostComponent implements OnInit {
         features: '',
         video: ''
       }
-    }
+    },
+    productName: '',
+    imgPost: '',
   };
   userInfo;
-  // newItem = {
-  //   idPostProduct: null,
-  //   idProduct: null,
-  //   idCompany: null,
-  //   nameCompany: null,
-  //   content: null,
-  //   imgPost: '',
-  //   avatarCompany: '',
-  //   avgDisplay: 1,
-  //   avgPerformance: 1,
-  //   avgCamera: 1,
-  //   avgBattery: 1,
-  //   avgDesign: 1,
-  //   totalComment: 1,
-  //   infoBattery: '',
-  //   infoDisplay: '',
-  //   infoPerformance: '',
-  //   infoDesign: '',
-  //   infoCamera: '',
-  //   dtCreated: null,
-  //   idReviewer: ''
-  // };
+  idUser;
 
   constructor(private authGuard: AuthGuardService, public dialog: MatDialog, private topRating: TopRatingService,
-              private notifier: NotifierService, private data: DataService, private http: HttpService) {
+              private notifier: NotifierService, private data: DataService, private http: HttpService, private idUserSer: IdUserService) {
   }
 
   ngOnInit() {
+    this.idUser = this.idUserSer.getId();
     const data = {
       email: localStorage.getItem('email'),
       role: localStorage.getItem('role')
@@ -229,23 +212,24 @@ export class ContentPostComponent implements OnInit {
   }
 
   detailProduct(item) {
-    if (item.status === 'detail') {
-      $(document).ready(function () {
-        $('.modal-backdrop.fade.show').css('z-index', '-1');
-        $('.cdk-overlay-container').next().remove();
-        $('html').css('overflow', 'hidden');
-      });
-    }
+    this.dataDetail = null;
     this.dataDetail = {
       infoBattery: JSON.parse(item.infoBattery),
       infoDisplay: JSON.parse(item.infoDisplay),
       infoPerformance: JSON.parse(item.infoPerformance),
       infoDesign: JSON.parse(item.infoDesign),
-      infoCamera: JSON.parse(item.infoCamera)
+      infoCamera: JSON.parse(item.infoCamera),
+      productName: item.productName,
+      imgPost: item.imgPost
     };
+    const myModal = this.dialog.open(PostDetailProductComponent, {
+      width: '900px',
+      height: '600px',
+      data: this.dataDetail
+    })
   }
 
-  postComment() {
+  postComment(e) {
       if (this.valueComment) {
         let newComment = {
           idProduct: this.item.idProduct,
@@ -269,5 +253,25 @@ export class ContentPostComponent implements OnInit {
   showComment(idProduct) {
     const id = '#container-comment-'+idProduct;
     $(id).toggle();
+  }
+
+  addLabel(idLabel) {
+    const id = '#' + idLabel;
+    $(id).next().attr('aria-labelledby', id);
+  }
+
+  deleteProduct(idProduct) {
+    this.http.deletePostProduct(idProduct).subscribe(res => {
+      if(res['status'].toUpperCase() === 'SUCCESS') {
+        this.notifier.notify('success', 'delete success!');
+      } else {
+        console.log(res);
+        this.notifier.notify('error', 'delete error, please try again!');
+      }
+    })
+  }
+
+  editProduct(item) {
+    console.log(item);
   }
 }

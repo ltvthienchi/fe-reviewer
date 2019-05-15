@@ -87,7 +87,7 @@ export class CompanyComponent implements OnInit {
   checkIsFollow(idCompany) {
     const requestObj = {
       idCompany: this.idCompany,
-      idUser: localStorage.getItem('idUser');
+      idUser: localStorage.getItem('idUser')
     };
     const request = JSON.stringify(requestObj);
     this.http.checkIsFollow(request).subscribe( (data: any) => {

@@ -3,10 +3,21 @@
     <div class="avatar">
       <img [src]="item.avatarCompany" alt="avatar"/>
     </div>
-    <div class="info">
-      <p class="title"><a class="txt-main" [routerLink]="'/company/' + item.idCompany">{{item.nameCompany}}</a></p>
-      <p class="title-des">{{item.dtCreated | ddmmyyyy}}</p>
-      <!--<span class="badge badge-primary">Iphone</span> <span class="badge badge-secondary">viet nam vo dich</span>-->
+    <div class="info clearfix">
+      <div style="width: 80%" class="float-left">
+        <p class="title"><a class="txt-main" [routerLink]="'/company/' + item.idCompany">{{item.nameCompany}}</a></p>
+        <p class="title-des">{{item.dtCreated | ddmmyyyy}}</p>
+      </div>
+      <div style="width: 10%" class="float-right dropdown">
+
+        <button *ngIf="item.idCompany === idUser" class="btn-menu-product float-right" (click)="addLabel('dropdown_product_'+item.idProduct)" role="button"
+                type="button" [id]="'dropdown_product_'+item.idProduct" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">...</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)="deleteProduct(item.idProduct)">Delete</a>
+          <a class="dropdown-item" (click)="editProduct(item)">Edit</a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="body">
@@ -78,7 +89,7 @@
             <p class="btn-post" *ngIf="item.status !== 'detail'" (click)="compareProduct(item)">Compare</p>
           </div>
           <div [class]="!item.status ? 'col-3' : 'col-4'">
-            <p class="btn-post" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="detailProduct(item)">Detail</p>
+            <p class="btn-post" (click)="detailProduct(item)">Detail</p>
           </div>
         </div>
       </div>
@@ -99,112 +110,5 @@
       </div>
     </div>
 
-  </div>
-</div>
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Information Detail Of {{item.nameProduct}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-12 mb-4">
-            <img [src]="item.imgPost" style="width: 100%; max-width: 900px; margin: 0 auto"/>
-          </div>
-          <div class="col-sm-6">
-            <p class="detail-table-header">Platform</p>
-            <p class="detail-table-content">
-              <span>OS</span>
-              <span>{{dataDetail.infoPerformance.platform.os}}</span>
-            </p>
-            <p class="detail-table-content">
-              <span>Chip</span>
-              <span>{{dataDetail.infoPerformance.platform.chip}}</span>
-            </p>
-            <p class="detail-table-content">
-              <span>CPU</span>
-              <span>{{dataDetail.infoPerformance.platform.cpu}}</span>
-            </p>
-            <p class="detail-table-content">
-              <span>GPU</span>
-              <span>{{dataDetail.infoPerformance.platform.gpu}}</span>
-            </p>
-            <p class="detail-table-header">Display</p>
-            <p class="detail-table-content">
-              <span>Resolution</span>
-              <span>{{dataDetail.infoDisplay.resolution}}</span>
-            </p>
-            <p class="detail-table-content">
-              <span>Size</span>
-              <span>{{dataDetail.infoDisplay.size}}</span>
-            </p>
-            <p class="detail-table-content">
-              <span>Type</span>
-              <span>{{dataDetail.infoDisplay.type}}</span>
-            </p>
-            <p class="detail-table-header">Battery</p>
-            <p class="detail-table-content">
-              <span>Capacity</span>
-              <span>{{dataDetail.infoBattery.capacity}}</span>
-            </p>
-            <p class="detail-table-content">
-              <span>Type</span>
-              <span>{{dataDetail.infoBattery.type}}</span>
-            </p>
-          </div>
-          <div class="col-sm-6">
-            <p class="detail-table-header">Memory</p>
-            <p class="detail-table-content">
-              <span>Card</span>
-              <span>{{dataDetail.infoPerformance.memory.card}}</span>
-            </p>
-            <p class="detail-table-content">
-              <span>Internal</span>
-              <span>{{dataDetail.infoPerformance.memory.internal}}</span>
-            </p>
-            <p class="detail-table-header">Design</p>
-            <p class="detail-table-content">
-              <span>Dimensions</span>
-              <span>{{dataDetail.infoDesign.dimensions}}</span>
-            </p>
-            <p class="detail-table-content">
-              <span>Weight</span>
-              <span>{{dataDetail.infoDesign.weight}}</span>
-            </p>
-            <p class="detail-table-header">Camera Main</p>
-            <p class="detail-table-content">
-              <span>Modules</span>
-              <span>{{dataDetail.infoCamera.main.modules}}</span>
-            </p>
-            <p class="detail-table-content">
-              <span>Features</span>
-              <span>{{dataDetail.infoCamera.main.features}}</span>
-            </p>
-            <p class="detail-table-content">
-              <span>Video</span>
-              <span>{{dataDetail.infoCamera.main.video}}</span>
-            </p>
-            <p class="detail-table-header">Camera Selfie</p>
-            <p class="detail-table-content">
-              <span>Modules</span>
-              <span>{{dataDetail.infoCamera.self.modules}}</span>
-            </p>
-            <p class="detail-table-content">
-              <span>Features</span>
-              <span>{{dataDetail.infoCamera.self.features}}</span>
-            </p>
-            <p class="detail-table-content">
-              <span>Video</span>
-              <span>{{dataDetail.infoCamera.self.video}}</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

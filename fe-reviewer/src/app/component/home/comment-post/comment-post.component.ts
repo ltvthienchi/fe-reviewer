@@ -19,6 +19,7 @@ export class CommentPostComponent implements OnInit {
   valueComment:any;
   userInfo:any;
   idUser;
+  userRole = localStorage.getItem('role');
   constructor(private http: HttpService, private notifier: NotifierService,
               private idUserSer: IdUserService) { }
 
