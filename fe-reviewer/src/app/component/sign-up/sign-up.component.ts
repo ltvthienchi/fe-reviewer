@@ -12,6 +12,7 @@ import {UserService} from '../../services/user-service/user.service';
 import {User} from '../../model/user.model';
 import {NotifierService} from 'angular-notifier';
 import {CompanyService} from '../../services/company-service/company.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -28,7 +29,7 @@ export class SignUpComponent implements OnInit {
     businessUserForm: true
   };
   constructor(private formBuilder: FormBuilder, private userService: UserService, notifier: NotifierService,
-              private companyService: CompanyService) {
+              private companyService: CompanyService, public router: Router) {
     this.notifier = notifier;
   }
 
@@ -69,11 +70,13 @@ export class SignUpComponent implements OnInit {
       };
       this.userService.registerUser(user).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
-          this.showNotification( 'success', 'Create Successfully!! Please check your mail box to Active Account!' );
+          // this.showNotification( 'success', 'Create Successfully!! Please check your mail box to Active Account!' );
         } else {
           this.showNotification( 'error', data.result );
         }
       });
+      this.router.navigate(['login']);
+      this.showNotification( 'success', 'Create Successfully!! Please check your mail box to Active Account!' );
     }
   }
 
@@ -94,11 +97,12 @@ export class SignUpComponent implements OnInit {
       };
       this.companyService.createCompany(company).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
-          this.showNotification('success', 'Create Company Successfully!! Please wait admin approve to Active Account');
         } else {
           this.showNotification( 'error', data.result );
         }
       });
+      this.router.navigate(['login']);
+      this.showNotification('success', 'Create Company Successfully!! Please wait admin approve to Active Account');
     }
   }
 

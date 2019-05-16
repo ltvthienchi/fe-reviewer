@@ -9,14 +9,10 @@ public class Constants {
     public static final boolean IS_TEST_MODE = true;
 
     // Replace with your email here:
-    public static final String MY_EMAIL = "hohoanvu987@gmail.com";
+    public static final String MY_EMAIL = "bestchoicesmartcmp@gmail.com";
 
     // Replace password!!
-    public static final String MY_PASSWORD = "v1pk4i456";
-
-    // And receiver!
-    public static final String FRIEND_EMAIL = "hohoanvu1993@gmail.com";
-
+    public static final String MY_PASSWORD = "P@ssword123++";
 
     // Type IMAGE
     public static final String POST_IMG = "POST_IMG";
