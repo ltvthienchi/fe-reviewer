@@ -18,7 +18,6 @@ import { ViewHistoryReviewerComponent } from './component/reviewer/view-history-
 import { RegisterCompanyComponent } from './component/reviewer/register-company/register-company.component';
 import { DetailCompanyComponent } from './component/company/detail-company/detail-company.component';
 import { ViewHistoryCompanyComponent } from './component/company/view-history-company/view-history-company.component';
-import { StatsComponent } from './component/company/stats/stats.component';
 import { ReportAdminComponent } from './component/admin/report-admin/report-admin.component';
 import { FeedbackAdminComponent } from './component/admin/feedback-admin/feedback-admin.component';
 import { CustomerCareAdminComponent } from './component/admin/customer-care-admin/customer-care-admin.component';
@@ -74,6 +73,8 @@ import { PostDetailProductComponent } from './component/home/post-detail-product
 import { AlertMessageComponent } from './component/message/alert-message/alert-message.component';
 import { SubcriptionsComponent } from './component/subcriptions/subcriptions.component';
 import { AdvertismentComponent } from './component/advertisment/advertisment.component';
+import { ReviewCompanyComponent } from './component/company/review-company/review-company.component';
+import { NgbModule, NgbRating, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -144,7 +145,6 @@ export function tokenGetter() {
     RegisterCompanyComponent,
     DetailCompanyComponent,
     ViewHistoryCompanyComponent,
-    StatsComponent,
     ReportAdminComponent,
     FeedbackAdminComponent,
     CustomerCareAdminComponent,
@@ -182,6 +182,7 @@ export function tokenGetter() {
     AlertMessageComponent,
     SubcriptionsComponent,
     AdvertismentComponent,
+    ReviewCompanyComponent,
 
   ],
   imports: [
@@ -197,12 +198,16 @@ export function tokenGetter() {
     MatCheckboxModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    NgbModule.forRoot(),
+    NgbRatingModule
   ],
   exports: [
     MatSliderModule,
   ],
-  entryComponents: [ModalRatingComponent, ModalDetailComponent, PostDetailProductComponent, AlertMessageComponent],
+  entryComponents: [ModalRatingComponent, ModalDetailComponent, PostDetailProductComponent, AlertMessageComponent,
+  ReviewCompanyComponent
+  ],
   providers: [
     Broadcaster,
     EventMessage,

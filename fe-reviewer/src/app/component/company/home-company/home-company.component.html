@@ -7,71 +7,38 @@
       </div>
     </div>
   </div>
-  <div class="col-4 sticky-top">
+  <div class="col-4 sticky-top" style="z-index: 999;">
     <div class="bodercpn text-center">
-      <br>
-      <h3 class=" margintop">Rating</h3>
-      <p class="text-info"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span
-        class="badge badge-light">(4.5/5)</span>
-      </p>
+<!--      <br>-->
+      <h3 class="pt-3 mb-0"><span class="pt-1">Rating</span> <span class="mr-1 badge badge-info">(4.5/5)</span></h3>
 
-      <div *ngIf="checkAuthGuard() && !isCompanyAccount()">
-        <button class="btn btn-outline-info" data-toggle="modal" data-target="#review">Review this Company
+      <ng-template #t let-fill="fill">
+        <span class="star" [class.full]="fill === 100">
+          <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+        </span>
+      </ng-template>
+      <ngb-rating [(rate)]="currentRate" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+
+      <!--      <p class="text-info"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i-->
+<!--        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span-->
+<!--        class="badge badge-light">(4.5/5)</span>-->
+<!--      </p>-->
+
+      <div *ngIf="checkAuthGuard() && !isCompanyRole()">
+        <button class="btn btn-outline-info" (click)="showReview()">
+          Review this Company
         </button>
       </div>
 
     </div>
 
 
-    <div class="bodercpn margintop">
-      <h4 class="text-center">Address</h4>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3257176556144!2d106.66413881462262!3d10.786346192314788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed23ca5d8db%3A0x24d414f45e5a523!2zNTkwIEPDoWNoIE3huqFuZyBUaMOhbmcgOCwgUGjGsOG7nW5nIDExLCBRdeG6rW4gMywgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1555667078797!5m2!1svi!2s"
-        frameborder="0" style="border:0" allowfullscreen></iframe>
-    </div>
+<!--    <div class="bodercpn margintop">-->
+<!--      <h4 class="text-center">Address</h4>-->
+<!--      <iframe-->
+<!--        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3257176556144!2d106.66413881462262!3d10.786346192314788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed23ca5d8db%3A0x24d414f45e5a523!2zNTkwIEPDoWNoIE3huqFuZyBUaMOhbmcgOCwgUGjGsOG7nW5nIDExLCBRdeG6rW4gMywgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1555667078797!5m2!1svi!2s"-->
+<!--        frameborder="0" style="border:0" allowfullscreen></iframe>-->
+<!--    </div>-->
   </div>
 </div>
-
-<!-- modal-review -->
-<!--<div class="modal fade" id="review">-->
-<!--  <div class="modal-dialog modal-lg">-->
-<!--    <div class="modal-content">-->
-
-<!--      &lt;!&ndash; Modal Header &ndash;&gt;-->
-<!--      <div class="modal-header">-->
-<!--        <h4 class="modal-title text-info text-h4">Reivew company A</h4>-->
-<!--        <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-<!--      </div>-->
-
-<!--      &lt;!&ndash; Modal body &ndash;&gt;-->
-<!--      <div class="modal-body w-80">-->
-<!--        <div class="form-group row">-->
-<!--          <label for="rating" class="col-sm-2"><strong>Rating:</strong></label>-->
-<!--          <div class="col-10">-->
-<!--            <mat-slider [invert]="invert" [max]="5" [min]="0" [step]="1" [thumb-label]="true"-->
-<!--                        [tick-interval]="1" [(ngModel)]="value" style="width: 60%"></mat-slider>-->
-<!--            <span style="margin-left: 10px">{{value}}</span>-->
-<!--          </div>-->
-
-<!--        </div>-->
-<!--        <div class="form-group row">-->
-<!--          <label for="content" class="col-sm-2"><strong>Content:</strong></label>-->
-<!--          <textarea class="form-control col-sm-10" id="content" placeholder="Write what you think about your company"-->
-<!--                    name="content" rows="5" required></textarea>-->
-<!--        </div>-->
-
-
-<!--      </div>-->
-
-<!--      &lt;!&ndash; Modal footer &ndash;&gt;-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="submit" class="btn btn-outline-info">submit</button>-->
-<!--        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>-->
-<!--      </div>-->
-
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
 

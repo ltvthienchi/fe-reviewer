@@ -6,6 +6,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import * as $ from 'jquery';
 import {IdUserService} from '../../services/data-global/id-user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {MatDialog} from '@angular/material';
+import {ReviewCompanyComponent} from './review-company/review-company.component';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -74,6 +76,10 @@ export class CompanyComponent implements OnInit {
 
   isCompanyAccount() {
     return localStorage.getItem('role') === 'ROLE_COMPANY' && this.idCompany === this.idUser;
+  }
+
+  isCompanyRole() {
+    return localStorage.getItem('role') === 'ROLE_COMPANY';
   }
 
   changeIsPostProduct() {

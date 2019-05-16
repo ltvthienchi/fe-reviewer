@@ -8,7 +8,6 @@ import { AuthAfterLoginService as AuthAfterLogin } from '../services/auth/auth-a
 import {HomeComponent} from '../component/home/home.component';
 import {CompanyComponent} from '../component/company/company.component';
 import {DetailCompanyComponent} from '../component/company/detail-company/detail-company.component';
-import {StatsComponent} from '../component/company/stats/stats.component';
 import {ViewHistoryCompanyComponent} from '../component/company/view-history-company/view-history-company.component';
 import {LoginComponent} from '../component/login/login.component';
 import {MenuComponent} from '../component/menu/menu.component';
@@ -42,16 +41,16 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/home', pathMatch: 'full'},
       { path: 'home', component: HomeComponent},
-      { path: 'company/:id', component: CompanyComponent},
-      { path: 'company/:id/:idProduct', component: CompanyComponent},
-      { path: 'company/view-history', component: ViewHistoryCompanyComponent},
+      { path: 'company/:id', component: CompanyComponent, canActivate: [AuthGuard]},
+      { path: 'company/:id/:idProduct', component: CompanyComponent, canActivate: [AuthGuard]},
+      { path: 'company/view-history', component: ViewHistoryCompanyComponent, canActivate: [AuthGuard]},
       { path: 'user-update-page', component: UserUpdatePageComponent, canActivate: [AuthGuard]},
       { path: 'feedback', component: FeedbackReviewerComponent, canActivate: [AuthGuard]},
       { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard]},
       { path: 'compare', component: CompareComponent, canActivate: [AuthGuard]},
-      { path: 'register-confirmation', component: RegisterConfirmationComponent},
-      { path: 'detail-product/:id', component: DetailProductComponent},
-      { path: 'subscriptions', component: SubcriptionsComponent}
+      { path: 'register-confirmation', component: RegisterConfirmationComponent, canActivate: [AuthGuard]},
+      { path: 'detail-product/:id', component: DetailProductComponent, canActivate: [AuthGuard]},
+      { path: 'subscriptions', component: SubcriptionsComponent, canActivate: [AuthGuard]}
     ]
   },
   {

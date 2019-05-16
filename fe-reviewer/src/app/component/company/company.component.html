@@ -29,7 +29,7 @@
       <!-- menu company -->
       <div class="menucpn">
         <div class="row" style="padding-left: 5px">
-          <div *ngIf="checkAuthGuard() && !isCompanyAccount()">
+          <div *ngIf="checkAuthGuard() && !isCompanyRole()">
             <div *ngIf="!isFollowed; else elseBlock">
               <button class="btn btn-outline-info btnmargin margin-left"
                       (click)="followCompany(detailCompany.idCompany, 'follow')">
@@ -37,12 +37,11 @@
               </button>
             </div>
             <ng-template #elseBlock>
-              <button class="btn btn-outline-info btnmargin margin-left"
+              <button class="btn btn-info btnmargin margin-left"
                       (click)="followCompany(detailCompany.idCompany, 'unfollow')">
-                <i class="fas fa-check">Subscribed</i>
+                <i class="fas fa-check"> Subscribed</i>
               </button>
             </ng-template>
-
           </div>
           <div *ngIf="checkAuthGuard() && isCompanyAccount()">
             <button class="btn btn-outline-info btnmargin margin-left" id="changeCreateProduct" (click)="changeIsPostProduct()">
@@ -50,9 +49,10 @@
               <span style="padding-right: 8px">{{txtPostProduct}}</span>
             </button>
           </div>
-          <div style="padding-left: 5px" *ngIf="checkAuthGuard() && !isCompanyAccount()">
-            <button class="btn btn-outline-success btnmargin margin-right"><i class="fas fa-star">
-              View Review Company</i></button>
+          <div style="padding-left: 5px" *ngIf="checkAuthGuard() && !isCompanyRole()">
+            <button class="btn btn-outline-success btnmargin margin-right">
+              <i class="fas fa-star"> History Review Company</i>
+            </button>
           </div>
         </div>
       </div>
