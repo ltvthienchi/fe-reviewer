@@ -2,14 +2,12 @@ package com.prj4.reviewer.controller;
 
 import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
+import com.prj4.reviewer.core.SortByDate;
 import com.prj4.reviewer.entity.Reviewer;
 import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.reporsitory.ReviewerRepository;
 import com.prj4.reviewer.request.*;
-import com.prj4.reviewer.response.CommentResponse;
-import com.prj4.reviewer.response.FeedbackCompanyResponse;
-import com.prj4.reviewer.response.ReviewerInfoResponse;
-import com.prj4.reviewer.response.ReviewerResponse;
+import com.prj4.reviewer.response.*;
 import com.prj4.reviewer.service.FileStorageService;
 import com.prj4.reviewer.service.PostService;
 import com.prj4.reviewer.service.ReviewerService;
@@ -21,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -101,6 +101,14 @@ public class ReviewerRestController {
         } else {
             return JsonResponse.reject("Old password is wrong!!");
         }
+    }
+
+    @PostMapping(BASE_POST_LINK + "getAllPostIsFollow")
+    public List<PostResponse> getAllPostIsFollow(@RequestBody String idReviewer) {
+        List<PostResponse> lst = reviewerService.getAllPostIsFollowed(idReviewer);
+        Collections.sort(lst, new SortByDate());
+        Collections.sort(lst, Collections.reverseOrder());
+        return lst;
     }
 
 }

@@ -247,4 +247,8 @@ export class HttpService {
     return this.http.get(URL_SERVER.admin + 'getAllUser', getHeader());
 
   }
+
+  public getAllPostIsFollow(id): Observable<any> {
+    return this.http.post(URL_SERVER.infoReviewer + 'getAllPostIsFollow', id, getHeader());
+  }
 }

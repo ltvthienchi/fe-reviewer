@@ -72,6 +72,8 @@ import {IdUserService} from './services/data-global/id-user.service';
 import { TimeAgoPipe } from './services/pipe/time-ago.pipe';
 import { PostDetailProductComponent } from './component/home/post-detail-product/post-detail-product.component';
 import { AlertMessageComponent } from './component/message/alert-message/alert-message.component';
+import { SubcriptionsComponent } from './component/subcriptions/subcriptions.component';
+import { AdvertismentComponent } from './component/advertisment/advertisment.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -178,6 +180,8 @@ export function tokenGetter() {
     TimeAgoPipe,
     PostDetailProductComponent,
     AlertMessageComponent,
+    SubcriptionsComponent,
+    AdvertismentComponent,
 
   ],
   imports: [

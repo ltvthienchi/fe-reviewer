@@ -117,4 +117,13 @@ export class MenuComponent implements OnInit {
     // this.router.url(url);
   }
 
+  showSubcription() {
+    const role = localStorage.getItem('role');
+    if (role === 'ROLE_NORMAL') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }

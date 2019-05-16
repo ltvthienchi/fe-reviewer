@@ -1,19 +1,18 @@
 package com.prj4.reviewer.service;
 
 import com.prj4.reviewer.core.Constants;
-import com.prj4.reviewer.entity.Admin;
-import com.prj4.reviewer.entity.Company;
-import com.prj4.reviewer.entity.Images;
-import com.prj4.reviewer.entity.Reviewer;
+import com.prj4.reviewer.entity.*;
 import com.prj4.reviewer.reporsitory.*;
 import com.prj4.reviewer.request.FeedbackCompanyRequest;
 import com.prj4.reviewer.response.FeedbackCompanyResponse;
+import com.prj4.reviewer.response.PostResponse;
 import com.prj4.reviewer.response.ReviewerInfoResponse;
 import com.prj4.reviewer.response.ReviewerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,6 +44,15 @@ public class ReviewerService {
 
     @Autowired
     AdminRepository adminRepository;
+
+    @Autowired
+    CreatePostResponseService createPostResponseService;
+
+    @Autowired
+    PostService postService;
+
+    @Autowired
+    FollowCompanyService followCompanyService;
 
     public FeedbackCompanyResponse feedbackCompany(FeedbackCompanyRequest feedbackCompanyRequest) {
         return null;
@@ -137,6 +145,19 @@ public class ReviewerService {
     }
     public List<Reviewer> getAll(){
         return (List<Reviewer>)reviewerRepository.findAll();
+    }
+
+    public List<PostResponse> getAllPostIsFollowed(String idReviewer) {
+        List<PostResponse> lstResult = new ArrayList<>();
+        List<String> lstIdCompany = followCompanyService.getListCompanyIsFollowed(idReviewer);
+        if (lstIdCompany.size() > 0) {
+            for (String idCompany : lstIdCompany) {
+                List<Post> lstPost = postService.getAllPostByComId(idCompany);
+                List<PostResponse> lstPostRespose = createPostResponseService.createListPostReponse(lstPost);
+                lstResult.addAll(lstPostRespose);
+            }
+        }
+        return lstResult;
     }
 
 }

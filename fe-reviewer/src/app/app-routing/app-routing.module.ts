@@ -32,6 +32,7 @@ import {DetailProductComponent} from '../component/detail-product/detail-product
 import {ReportAdminComponent} from '../component/admin/report-admin/report-admin.component';
 import {ReportedCommentComponent} from '../component/admin/reported-comment/reported-comment.component';
 import {ManageProductComponent} from '../component/admin/manage-product/manage-product.component';
+import {SubcriptionsComponent} from '../component/subcriptions/subcriptions.component';
 
 
 const routes: Routes = [
@@ -49,7 +50,8 @@ const routes: Routes = [
       { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard]},
       { path: 'compare', component: CompareComponent, canActivate: [AuthGuard]},
       { path: 'register-confirmation', component: RegisterConfirmationComponent},
-      { path: 'detail-product/:id', component: DetailProductComponent}
+      { path: 'detail-product/:id', component: DetailProductComponent},
+      { path: 'subscriptions', component: SubcriptionsComponent}
     ]
   },
   {

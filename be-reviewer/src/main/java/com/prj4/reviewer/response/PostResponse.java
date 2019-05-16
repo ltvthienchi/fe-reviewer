@@ -1,8 +1,9 @@
 package com.prj4.reviewer.response;
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
 
-public class PostResponse implements Serializable {
+public class PostResponse implements Serializable, Comparable {
     private String idPostProduct;
     private String idProduct;
     private String idCompany;
@@ -217,5 +218,14 @@ public class PostResponse implements Serializable {
 
     public void setActive(Boolean active) {
         isActive = active;
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+        PostResponse postResponse = (PostResponse)o;
+        if (this.getDtCreated().after(postResponse.getDtCreated()))
+            return 1;
+        return -1;
     }
 }
