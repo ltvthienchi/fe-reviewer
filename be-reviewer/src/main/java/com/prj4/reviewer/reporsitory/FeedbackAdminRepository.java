@@ -4,8 +4,11 @@ import com.prj4.reviewer.entity.FeedbackAdmin;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 public interface FeedbackAdminRepository extends CrudRepository<FeedbackAdmin, String> {
+    List<FeedbackAdmin> findAllByOrderByDtCreatedDesc();
 
 }

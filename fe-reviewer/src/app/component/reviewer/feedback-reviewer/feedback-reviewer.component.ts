@@ -6,7 +6,7 @@ import {
   validatorPassword,
   validatorName, validatorPhone, validatorWebsite
 } from '../../../services/validator/validator';
-import {FeedbackWebsite} from '../../../model/feedbackWebsite.model';
+import { FeedbackWebsite } from '../../../model/feedbackWebsite.model';
 import { NotifierService } from 'angular-notifier';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpService } from '../../../services/http/http.service';
@@ -22,13 +22,14 @@ export class FeedbackReviewerComponent implements OnInit {
     feedbackForm: true
   };
   constructor(private formBuilder: FormBuilder, private httpService: HttpService, notifier: NotifierService) {
-this.notifier = notifier;}
+    this.notifier = notifier;
+  }
 
   ngOnInit() {
     this.feedbackForm = this.formBuilder.group({
       titleFeedback: ['', [validatorRequired]],
       contentFeedback: ['', [validatorRequired]],
-      
+
     });
   }
   submitFeedbackForm() {
@@ -43,14 +44,18 @@ this.notifier = notifier;}
         contentFeedback: this.feedbackForm.value.contentFeedback,
         email: localStorage.getItem('email'),
         role: localStorage.getItem('role')
-        
+
       };
       this.httpService.feedbackWebsite(feedback).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
-          this.showNotification( 'success', 'Send feedback successfully' );
-          this.feedbackForm.reset();
+          this.showNotification('success', 'Send feedback successfully');
+          this.feedbackForm = this.formBuilder.group({
+            titleFeedback: ['', [validatorRequired]],
+            contentFeedback: ['', [validatorRequired]],
+
+          });
         } else {
-          this.showNotification( 'error', data.result );
+          this.showNotification('error', data.result);
         }
       });
     }

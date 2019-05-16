@@ -19,8 +19,6 @@ export class LockReviewerComponent implements OnInit {
   listReviewer : any[];
   listCompany : any[];
   listAccount : any[];
-  listReviewerView : any[];
-  listCompanyView : any[];
 
 
   constructor(private route: ActivatedRoute,private httpService: HttpService, notifier: NotifierService) {
@@ -36,18 +34,23 @@ export class LockReviewerComponent implements OnInit {
   }
 
   getdata(){
-    this.httpService.getAllCompany().subscribe((data: any) => {
+    this.httpService.getAllBusiness().subscribe((data: any) => {
       this.listCompany = data;
+      console.log(this.listCompany);
     });
     this.httpService.getAllReviewer().subscribe((data: any) => {
       this.listReviewer = data;
+      console.log(this.listReviewer);
     });
-    this.httpService.getAllUser().subscribe((data: any) => {
-      this.listAccount = data;
-    });
-    
-
-
   }
 
+  lock(data){
+    const item = {
+      idUser: data.idAccount,
+      isActive: !data.active
+    }
+    this.httpService.changeActiveAccount(item).subscribe((data: any) => {
+      this.getdata();
+    });
+  }
 }

@@ -18,6 +18,6 @@ public class FeedbackAdminService {
     }
 
     public List<FeedbackAdmin> getAll(){
-       return (List<FeedbackAdmin>)feedbackAdminRepository.findAll();
+       return feedbackAdminRepository.findAllByOrderByDtCreatedDesc();
     }
 }

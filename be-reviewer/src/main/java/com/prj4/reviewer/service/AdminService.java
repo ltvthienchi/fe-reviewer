@@ -26,7 +26,7 @@ public class AdminService {
     }
 
     public List<Admin> findAllAdmin(){
-        return (List<Admin>) adminRepository.findAll();
+        return  adminRepository.findAllByOrderByDtCreatedDesc();
     }
 
     public void editAdmin(Admin admin){

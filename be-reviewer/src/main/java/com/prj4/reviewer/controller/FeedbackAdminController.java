@@ -10,10 +10,7 @@ import com.prj4.reviewer.service.FeedbackAdminService;
 import com.prj4.reviewer.service.GenerateId;
 import com.prj4.reviewer.service.ReviewerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -55,7 +52,7 @@ public class FeedbackAdminController {
         return JsonResponse.accept("");
     }
 
-    @PostMapping(BASE_POST_LINK + "getAllFeedback")
+    @GetMapping(BASE_POST_LINK + "getAllFeedback")
     public List<FeedbackAdmin> getAllFeedback(){
         return feedbackAdminService.getAll();
     }

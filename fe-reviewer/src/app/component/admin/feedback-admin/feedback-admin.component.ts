@@ -29,7 +29,7 @@ export class FeedbackAdminComponent implements OnInit {
       listFeedback: ['', [validatorRequired]],
     });
 
-    this.httpService.getAllAdmin().subscribe((data: any) => {
+    this.httpService.getAllFeedback().subscribe((data: any) => {
       console.log(data);
       this.listFeedback = data;
     });

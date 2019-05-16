@@ -13,17 +13,19 @@
           <thead>
           <tr>
             <th class="w-0-5">#</th>
-            <th class="w-2">Email</th>
-            <th class="w-6">Content</th>
-            <th class="w-1-5">Date Create</th>
+            <th class="w-2">titleFeedback</th>
+            <th class="w-5">contentFeedback</th>
+            <th class="w-1">dtCreated</th>
+            <th class="w-1-5">emailFeedback</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of data; let idx = index">
+          <tr *ngFor="let item of listFeedback; let idx = index">
             <td class="font-weight-bold">{{idx + 1}}</td>
-            <td>{{item.email}}</td>
-            <td>{{item.content}}</td>
-            <td>{{item.dateCreate | ddmmyyyy}}</td>
+            <td>{{item.titleFeedback}}</td>
+            <td>{{item.contentFeedback}}</td>
+            <td>{{item.dtCreated | ddmmyyyy}}</td>
+            <td>{{item.emailFeedback}}</td>
           </tr>
           </tbody>
         </table>

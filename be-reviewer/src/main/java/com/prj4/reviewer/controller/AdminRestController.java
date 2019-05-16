@@ -6,11 +6,14 @@ import com.prj4.reviewer.request.AdminBlockRequest;
 import com.prj4.reviewer.request.AdminRequest;
 import com.prj4.reviewer.request.AdminResetPass;
 import com.prj4.reviewer.request.UserActiveRequest;
+import com.prj4.reviewer.response.CompanyActiveResponse;
+import com.prj4.reviewer.response.ReviewerActiveResponse;
 import com.prj4.reviewer.service.AdminService;
 import com.prj4.reviewer.service.GenerateId;
 import com.prj4.reviewer.response.CommentReported;
 import com.prj4.reviewer.response.PostResponse;
 import com.prj4.reviewer.service.*;
+import jdk.nashorn.internal.runtime.events.RecompilationEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -127,21 +130,46 @@ public class AdminRestController {
 
 
     @GetMapping(BASE_POST_LINK + "getAllReviewer")
-    public List<Reviewer> getAllReviewer(){
+    public List<ReviewerActiveResponse> getAllReviewer(){
+        List <Reviewer> lstReviewer = reviewerService.getAll();
+        List<ReviewerActiveResponse> lstRe = new ArrayList<>();
+        for(Reviewer r : lstReviewer) {
+            String idAccount = r.getIdAccount();
+            User user = userService.findById(idAccount);
+            ReviewerActiveResponse reviewerActiveResponse = new ReviewerActiveResponse(r.getIdReviewer(),r.getFullName(),
+                    r.getFirstName(),r.getLastName(),r.getEmail(),r.getDateOfBirth(),r.getDateCreated(),
+                    r.getGender(),r.getIdAccount(),user.isActive());
+            lstRe.add(reviewerActiveResponse);
 
-        return reviewerService.getAll();
+        }
+
+
+        return lstRe;
     }
 
-    @GetMapping(BASE_POST_LINK + "getAllUser")
-    public List<User> getAllUser(){
+    @GetMapping(BASE_POST_LINK + "getAllBusiness")
+    public List<CompanyActiveResponse> getAllBusiness(){
 
-        return userService.getAll();
+        List <Company> lstCompany = companyService.getAll();
+        List<CompanyActiveResponse> lstCpn = new ArrayList<>();
+        for(Company c : lstCompany) {
+            String idAccount = c.getIdAccount();
+            User user = userService.findById(idAccount);
+            CompanyActiveResponse companyActiveResponse = new CompanyActiveResponse(c.getIdCompany(),c.getNameCompany(),
+                    c.getAddrCompany(),c.getWebCompany(),c.getZipCompany(),c.getTelCompany(),c.getDtCreated(),
+                    c.getIdAccount(),c.getEmailCompany(),c.getAvgRatingComp(),user.isActive());
+            lstCpn.add(companyActiveResponse);
+
+        }
+
+
+        return lstCpn;
     }
 
     @PostMapping(BASE_POST_LINK + "changeActive")
     public JsonResponse changeActive(@RequestBody UserActiveRequest userActiveRequest) {
         userService.changActive(userActiveRequest.getIdUser(),userActiveRequest.getIsActive());
-        return JsonResponse.accept("Success");
+        return JsonResponse.accept("");
     }
 
 

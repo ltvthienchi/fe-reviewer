@@ -12,7 +12,7 @@ public interface UserService {
 
     User findOne(String username);
 
-    User findById(int id);
+    User findById(String id);
 
     //UserDto update(UserDto userDto);
 

@@ -58,8 +58,8 @@ public class UserServiceImp implements UserDetailsService, UserService {
     }
 
     @Override
-    public User findById(int id) {
-        return null;
+    public User findById(String idAccount) {
+        return userRepository.findByIdAccount(idAccount);
     }
 
     @Override

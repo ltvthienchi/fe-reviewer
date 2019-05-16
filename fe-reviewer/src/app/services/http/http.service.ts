@@ -237,4 +237,18 @@ export class HttpService {
     return this.http.get(URL_SERVER.admin + 'getAllUser', getHeader());
 
   }
+
+  public getAllFeedback(): Observable<any> {
+    return this.http.get(URL_SERVER.feedbackWebsite + 'getAllFeedback', getHeader());
+
+  }
+  public getAllBusiness(): Observable<any> {
+    return this.http.get(URL_SERVER.admin + 'getAllBusiness', getHeader());
+
+  }
+
+  public changeActiveAccount(data: any){
+    return this.http.post(URL_SERVER.admin + 'changeActive', data, getHeader());
+
+  }
 }

@@ -22,9 +22,7 @@ import { ResetPassAdmin } from '../../../model/ResetPassAdmin.model';
 })
 export class ManageAdminComponent implements OnInit {
   private notifier: NotifierService;
-  private dataEdit = {
-    fullNameAdmin: ''
-  };
+ 
 
   listAdmin: Admin[];
   adminForm: FormGroup;
@@ -240,7 +238,7 @@ export class ManageAdminComponent implements OnInit {
       idAdmin: admin.idAdmin,
       isActive: admin.active
     };
-    console.log(item);
+   // console.log(item);
     this.httpService.lockAdmin(item).subscribe((data: any) => {
       this.loadData();
     });
