@@ -18,13 +18,13 @@
               </span>
               <span class="content">{{item.content}}</span>
             </p>
-            <div class="dropdown">
-              <button  (click)="addLabel('dropdown_'+item.idComment)" class="mb-0 button-comment" role="button"
+            <div class="dropdown" *ngIf="item.idReviewer.split('_')[0] !== 'ADMIN' || userRole === 'ROLE_ADMIN'">
+              <button (click)="addLabel('dropdown_'+item.idComment)" class="mb-0 button-comment" role="button"
                        type="button" [id]="'dropdown_'+idProduct" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false">...</button>
+                       aria-expanded="false" >...</button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" *ngIf="userRole === 'ROLE_ADMIN'" (click)="reportComment(item.idComment)">
-                  <span *ngIf="item.idReviewer !== idUser">Report this comment</span>
+                <a class="dropdown-item" *ngIf="item.idReviewer !== idUser" (click)="reportComment(item.idComment)">
+                  Report this comment
                 </a>
                 <a class="dropdown-item" *ngIf="item.idReviewer === idUser">Edit</a>
               </div>
@@ -58,9 +58,9 @@
                   <button  (click)="addLabel('dropdown_'+itemTwo.idComment)" class="mb-0 button-comment sub" role="button"
                            type="button" [id]="'dropdown_'+idProduct" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false">...</button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" *ngIf="userRole === 'ROLE_ADMIN'" (click)="reportComment(itemTwo.idComment)">
-                      <span *ngIf="itemTwo.idReviewer !== idUser">Report this comment</span>
+                  <div class="dropdown-menu" *ngIf="item.idReviewer.split('_')[0] !== 'ADMIN' || userRole === 'ROLE_ADMIN'">
+                    <a class="dropdown-item" *ngIf="itemTwo.idReviewer !== idUser" (click)="reportComment(itemTwo.idComment)">
+                      Report this comment
                     </a>
                     <a class="dropdown-item" *ngIf="itemTwo.idReviewer === idUser">Edit</a>
                   </div>

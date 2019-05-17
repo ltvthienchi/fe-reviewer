@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {arrPostProduct} from '../../../services/local_database/post-product';
 import {AuthGuardService} from '../../../services/auth/auth-guard.service';
 import {HttpService} from '../../../services/http/http.service';
@@ -6,6 +6,7 @@ import {NotifierService} from 'angular-notifier';
 import {EventMessage} from '../../../services/event_message/event-message.service';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
+import {IdUserService} from '../../../services/data-global/id-user.service';
 
 @Component({
   selector: 'app-create-product',
@@ -13,13 +14,9 @@ import * as $ from 'jquery';
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent implements OnInit {
-  value = 5;
-  max = 5;
-  min = 0.5;
-  step = 0.5;
 
-  myData = arrPostProduct;
-  newPost = {
+  @Input() idProduct;
+  newPost:any = {
     fileImage: null,
     nameProduct: 'My test',
     contentPost: 'My test',
@@ -63,18 +60,28 @@ export class CreateProductComponent implements OnInit {
     }
   };
   fileToUpload: File = null;
-  constructor(private authGuard: AuthGuardService, private http: HttpService,
+  idUser;
+  constructor(private authGuard: AuthGuardService, private http: HttpService, private idUserSer: IdUserService,
               private notifier: NotifierService, private router: Router) { }
 
   ngOnInit() {
+    this.idUser = this.idUserSer.getId();
+    if(this.idProduct) this.getDetailPost();
   }
 
-  checkAuthGuard() {
-    return this.authGuard.checkLogin();
-  }
-
-  isCompanyAccount() {
-    return localStorage.getItem('role') === 'ROLE_COMPANY';
+  getDetailPost() {
+    this.http.getDetailPost(this.idProduct).subscribe((data: any) => {
+      this.fileToUpload = data.imgPost;
+      this.newPost.nameProduct = data.productName;
+      this.newPost.contentPost = data.content;
+      this.newPost.emailCompany = data.emailCompany;
+      this.newPost.infoBattery = JSON.parse(data.infoBattery);
+      this.newPost.infoDisplay = JSON.parse(data.infoDisplay);
+      this.newPost.infoPerformance = JSON.parse(data.infoPerformance);
+      this.newPost.infoDesign = JSON.parse(data.infoDesign);
+      this.newPost.infoCamera = JSON.parse(data.infoCamera);
+      this.newPost.idProduct = data.idProduct;
+    });
   }
 
   uploadContent(): void {
@@ -83,9 +90,20 @@ export class CreateProductComponent implements OnInit {
       if (data.status === 'SUCCESS') {
         $('#changeCreateProduct').click();
         this.notifier.notify('success', 'New product create success');
-        this.router.navigate(['/company/' + localStorage.getItem('idUser')]);
+        // this.router.navigate(['/company/' + this.idUser]);
       }
     });
+  }
+
+  editContent(): void {
+    this.newPost.fileImage = this.fileToUpload;
+    this.http.uploadProduct(this.newPost).subscribe((data:any) => {
+      if (data.status === 'SUCCESS') {
+        $('#changeCreateProduct').click();
+        this.notifier.notify('success', 'Edit product success');
+        // this.router.navigateByUrl('/company/' + this.idUser);
+      }
+    })
   }
 
   handleFileInput(files: FileList) {

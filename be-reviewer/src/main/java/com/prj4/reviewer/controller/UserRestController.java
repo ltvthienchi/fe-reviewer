@@ -67,7 +67,7 @@ public class UserRestController {
                 userService.save(userAccount);
                 reviewerService.saveReviewer(reviewer);
                 if (!Constants.IS_TEST_MODE) {
-                    sendHtmlEmail(idAccount);
+                    sendHtmlEmail(idAccount, userRequest.getUserName());
                 }
 
                 return JsonResponse.accept("Success");
@@ -91,7 +91,7 @@ public class UserRestController {
 
     }
 
-    public void sendHtmlEmail(String idAccount) throws MessagingException {
+    public void sendHtmlEmail(String idAccount, String email) throws MessagingException {
 
         MimeMessage message = emailSender.createMimeMessage();
 
@@ -99,14 +99,15 @@ public class UserRestController {
 
         MimeMessageHelper helper = new MimeMessageHelper(message, multipart, "utf-8");
 
+        String linkConf = "http://localhost:4200/register-confirmation?idAccount=" + idAccount;
         String htmlMsg = "<h3>Your Register is successfully !!!</h3>"
-                +"<a src='http://localhost:4200/register-confirmation?idAccount="+ idAccount +"></a>";
+                +"<a href=\'"+ linkConf +"\'>Link To Confirm</a>";
 
         message.setContent(htmlMsg, "text/html");
 
-        helper.setTo(Constants.FRIEND_EMAIL);
+        helper.setTo(email);
 
-        helper.setSubject("Test send HTML email");
+        helper.setSubject("Register Confirmation Email");
 
         this.emailSender.send(message);
 

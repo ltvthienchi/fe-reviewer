@@ -127,15 +127,6 @@ export class HttpService {
 
   public uploadImage(data: any) {
     let input = new FormData();
-    // file
-    // nameProduct
-    // contentPost
-    // infoBattery
-    // infoDisplay
-    // infoPerformance
-    // infoDesign
-    // infoCamera
-    // emailCompany
     console.log(data.fileImage, data.fileImage.name);
     input.append('file', data.fileImage, data.fileImage.name);
     input.append('nameProduct', data.nameProduct);
@@ -151,9 +142,28 @@ export class HttpService {
     const reqHeader = new HttpHeaders({
       'Authorization': 'Bearer ' + auth_token
     });
-    // return {headers: reqHeader};
-
     return this.http.post(URL_SERVER.postProduct + 'postProduct', input, { headers: reqHeader });
+  }
+
+  public uploadProduct(data: any) {
+    let input = new FormData();
+    console.log(data.fileImage, data.fileImage.name);
+    input.append('file', data.fileImage, data.fileImage.name);
+    input.append('nameProduct', data.nameProduct);
+    input.append('contentPost', data.contentPost);
+    input.append('idProduct', data.idProduct);
+    input.append('emailCompany', localStorage.getItem('email'));
+    input.append('infoBattery', JSON.stringify(data.infoBattery));
+    input.append('infoDisplay', JSON.stringify(data.infoDisplay));
+    input.append('infoPerformance', JSON.stringify(data.infoPerformance));
+    input.append('infoDesign', JSON.stringify(data.infoDesign));
+    input.append('infoCamera', JSON.stringify(data.infoCamera));
+
+    const auth_token = localStorage.getItem('userToken');
+    const reqHeader = new HttpHeaders({
+      'Authorization': 'Bearer ' + auth_token
+    });
+    return this.http.post(URL_SERVER.postProduct + 'updateProduct', input, { headers: reqHeader });
   }
 
   public getListTopRating() {
@@ -238,6 +248,7 @@ export class HttpService {
 
   }
 
+
   public getAllFeedback(): Observable<any> {
     return this.http.get(URL_SERVER.feedbackWebsite + 'getAllFeedback', getHeader());
 
@@ -249,6 +260,10 @@ export class HttpService {
 
   public changeActiveAccount(data: any){
     return this.http.post(URL_SERVER.admin + 'changeActive', data, getHeader());
+  }
+
+  public getAllPostIsFollow(id): Observable<any> {
+    return this.http.post(URL_SERVER.infoReviewer + 'getAllPostIsFollow', id, getHeader());
 
   }
 }

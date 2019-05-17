@@ -5,16 +5,12 @@
 
   <div class="col-sm-6">
     <div *ngFor="let item of myData">
-      <app-content-post [item]="item"></app-content-post>
+      <app-content-post [item]="item" (eventAction)="eventAction($event)" ></app-content-post>
     </div>
   </div>
 
   <div class="col-sm-3">
-    <div class="container-rank" id="quang-cao">
-      <div class="top-company">
-        <p class="title">Quang cao</p>
-      </div>
-    </div>
+    <app-advertisment></app-advertisment>
   </div>
 </div>
 

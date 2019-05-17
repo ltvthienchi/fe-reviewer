@@ -167,9 +167,9 @@
 /* Top company */
 
 .top-company {
-  height: 100%;
-  padding: 10px;
-}
+   height: 100%;
+   padding: 10px;
+ }
 
 .top-company .title, .hot-tag .title {
   font-size: 18px;

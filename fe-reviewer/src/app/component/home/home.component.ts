@@ -9,6 +9,7 @@ import {CompanyService} from '../../services/company-service/company.service';
 import {HttpService} from '../../services/http/http.service';
 import {IdUserService} from '../../services/data-global/id-user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -20,13 +21,11 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 export class HomeComponent implements OnInit {
 
   private notifier: NotifierService;
-  toggleButton: boolean = false;
-  toggleRating = true;
   myData = [];
   dataPost = [];
   idUser;
 
-  public constructor(notifier: NotifierService, private broad: Broadcaster,
+  public constructor(notifier: NotifierService, private broad: Broadcaster,private router: Router,
                      private eventMessage: EventMessage, private httpService: HttpService, private idUserSer: IdUserService) {
       this.notifier = notifier;
   }
@@ -36,93 +35,28 @@ export class HomeComponent implements OnInit {
       $('html,body').animate({ scrollTop: 0 }, 'normal');
     });
     this.idUser = this.idUserSer.getId();
-    Promise.all([
-      this.getAllPost(),
-    ]).then(res => {
-      this.dataPost.map(item => {
-        item.idReviewer = this.idUser;
-        this.myData.push(item);
-      });
-    });
+    return this.getAllPost();
 
   }
 
   getAllPost() {
     return new Promise(resolve => {
       this.httpService.getAllPost().subscribe(res => {
-        if (res) { this.dataPost = res; }
+        if (res) {
+          this.dataPost = res;
+          this.myData = [];
+          this.dataPost.map(item => {
+            item.idReviewer = this.idUser;
+            this.myData.push(item);
+          });
+        }
         resolve();
       });
     });
   }
 
-  // getCompany() {
-  //   return new Promise(resolve => {
-  //     this.httpService.getAllCompany().subscribe(res => {
-  //       if (res) {
-  //         this.dataCompany = res;
-  //       }
-  //       resolve();
-  //     });
-  //   });
-  // }
-
-  // getProduct() {
-  //   return new Promise(resolve => {
-  //     this.httpService.getAllProduct().subscribe(res => {
-  //       if (res) {
-  //         this.dataProduct = res;
-  //       }
-  //       resolve();
-  //     });
-  //   });
-  // }
-
-  toggleRatings(id) {
-    console.log(id);
-    if (this.toggleRating) {
-      let idItem = '#' + id;
-      $('.container-ratting').css('display', 'inline');
-      let offsetLeft = $('#quang-cao').offset()['left'] - 30;
-      let offsetTop = $(idItem).offset()['top'] ;
-      let width = $('#quang-cao').width();
-      $('.container-ratting').offset({top: offsetTop, left: offsetLeft}).width(width + 30);
-      console.log(offsetLeft, offsetTop);
-    } else {
-      $('.container-ratting').css('display', 'none');
-    }
-    this.toggleRating = !this.toggleRating
+  eventAction(e) {
+    if(e.code === 'delete') { return this.getAllPost(); }
+    if(e.code === 'edit') this.router.navigateByUrl('company/' + e.data.idCompany + '/' + e.data.idProduct);
   }
-
-  sendMess() {
-    this.toggleButton = !this.toggleButton;
-    let arr = this.toggleButton ? [1,2,3,4,5] : [];
-    this.eventMessage.fire(this.toggleButton);
-  }
-
-  public showNotification(type: string, message: string): void {
-    this.notifier.notify(type, message);
-  }
-
-
-  public hideOldestNotification(): void {
-    this.notifier.hideOldest();
-  }
-
-  public hideNewestNotification(): void {
-    this.notifier.hideNewest();
-  }
-
-  public hideAllNotifications(): void {
-    this.notifier.hideAll();
-  }
-
-  public showSpecificNotification(type: string, message: string, id: string): void {
-    this.notifier.show({id, message, type});
-  }
-
-  public hideSpecificNotification(id: string): void {
-    this.notifier.hide(id);
-  }
-
 }

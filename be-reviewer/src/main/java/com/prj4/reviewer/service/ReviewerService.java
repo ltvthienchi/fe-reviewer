@@ -1,19 +1,16 @@
 package com.prj4.reviewer.service;
 
 import com.prj4.reviewer.core.Constants;
-import com.prj4.reviewer.entity.Admin;
-import com.prj4.reviewer.entity.Company;
-import com.prj4.reviewer.entity.Images;
-import com.prj4.reviewer.entity.Reviewer;
+import com.prj4.reviewer.entity.*;
 import com.prj4.reviewer.reporsitory.*;
 import com.prj4.reviewer.request.FeedbackCompanyRequest;
-import com.prj4.reviewer.response.FeedbackCompanyResponse;
-import com.prj4.reviewer.response.ReviewerInfoResponse;
-import com.prj4.reviewer.response.ReviewerResponse;
+import com.prj4.reviewer.request.ReviewCompRequest;
+import com.prj4.reviewer.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,6 +42,21 @@ public class ReviewerService {
 
     @Autowired
     AdminRepository adminRepository;
+
+    @Autowired
+    CreatePostResponseService createPostResponseService;
+
+    @Autowired
+    PostService postService;
+
+    @Autowired
+    FollowCompanyService followCompanyService;
+
+    @Autowired
+    ReviewCompanyRepository reviewCompanyRepository;
+
+    @Autowired
+    CompanyService companyService;
 
     public FeedbackCompanyResponse feedbackCompany(FeedbackCompanyRequest feedbackCompanyRequest) {
         return null;
@@ -137,6 +149,55 @@ public class ReviewerService {
     }
     public List<Reviewer> getAll(){
         return (List<Reviewer>)reviewerRepository.findAll();
+    }
+
+    public List<PostResponse> getAllPostIsFollowed(String idReviewer) {
+        List<PostResponse> lstResult = new ArrayList<>();
+        List<String> lstIdCompany = followCompanyService.getListCompanyIsFollowed(idReviewer);
+        if (lstIdCompany.size() > 0) {
+            for (String idCompany : lstIdCompany) {
+                List<Post> lstPost = postService.getAllPostByComId(idCompany);
+                List<PostResponse> lstPostRespose = createPostResponseService.createListPostReponse(lstPost);
+                lstResult.addAll(lstPostRespose);
+            }
+        }
+        return lstResult;
+    }
+
+    public void createRatingComp(ReviewCompRequest reviewCompRequest) {
+        ReviewCompany reviewCompany = reviewCompanyRepository.findByIdReviewer(reviewCompRequest.getIdReviewer());
+        Company company = companyService.getCompanyById(reviewCompRequest.getIdCompany());
+        int numbRating = company.getNumbRating();
+        if (reviewCompany != null) {
+            reviewCompany.setRatingComp(reviewCompRequest.getRatingComp());
+            reviewCompany.setCommentContent(reviewCompRequest.getContentComment());
+            reviewCompanyRepository.save(reviewCompany);
+        } else {
+            String reviewCompId = generateId.generateId("REVIEWCOMP_", new Date());
+            reviewCompany = new ReviewCompany(reviewCompId, reviewCompRequest.getIdReviewer(), reviewCompRequest.getIdCompany(),
+                    reviewCompRequest.getRatingComp(), reviewCompRequest.getContentComment());
+            reviewCompanyRepository.save(reviewCompany);
+            company.setNumbRating(numbRating + 1);
+        }
+        float avgRating = reviewCompanyRepository.getAvgIdCompany(reviewCompRequest.getIdCompany());
+        company.setAvgRatingComp(avgRating);
+        companyService.saveCompany(company);
+
+    }
+
+    public List<ReviewCompanyResponse> getListReviewComp(String idCompany) {
+        List<ReviewCompany> lstReviewComp = reviewCompanyRepository.findByIdCompany(idCompany);
+        List<ReviewCompanyResponse> lstResult = new ArrayList<>();
+        for (ReviewCompany re : lstReviewComp) {
+            String idReviewer = re.getIdReviewer();
+            Reviewer reviewer = reviewerRepository.findByIdReviewer(idReviewer);
+            String imgAva = imageService.getImagePathById(reviewer.getImgAvatar());
+            ReviewCompanyResponse reviewCompanyResponse = new ReviewCompanyResponse(reviewer.getFullName(), idReviewer,
+                    imgAva, re.getRatingComp(), re.getCommentContent());
+            lstResult.add(reviewCompanyResponse);
+        }
+        return lstResult;
+
     }
 
 }

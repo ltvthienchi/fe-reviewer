@@ -7,7 +7,9 @@ import com.prj4.reviewer.request.RequestCheckFollow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class FollowCompanyService {
@@ -37,5 +39,14 @@ public class FollowCompanyService {
                     followCompanyRequest.getIdCompany(), followCompanyRequest.isFollow());
         }
         followCompanyRepository.save(followCompany);
+    }
+
+    public List<String> getListCompanyIsFollowed(String idReviewer) {
+        List<String> lstIdCompany = new ArrayList<>();
+        List<FollowCompany> lst = followCompanyRepository.getListCompanyIsFollowed(idReviewer);
+        for (FollowCompany c : lst) {
+            lstIdCompany.add(c.getIdCompany());
+        }
+        return lstIdCompany;
     }
 }

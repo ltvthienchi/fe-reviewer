@@ -17,7 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -69,7 +68,7 @@ public class CompanyRestController {
         Company comp = new Company(idCompany,companyRequest.getNameCompany(),companyRequest.getAddrCompany(),
                 companyRequest.getWebCompany(), null, companyRequest.getTelCompany(),
                 new Date(), idAccount, "9999",
-                "8888", companyRequest.getEmailCompany(), 0);
+                "8888", companyRequest.getEmailCompany(), 0, 0);
 
         User userAccount = new User(idAccount, companyRequest.getEmailCompany(), encodedPass,
                 companyRequest.getTypeAccount(), Constants.IS_TEST_MODE ? true : false);

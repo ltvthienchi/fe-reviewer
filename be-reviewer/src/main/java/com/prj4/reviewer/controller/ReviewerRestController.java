@@ -2,18 +2,14 @@ package com.prj4.reviewer.controller;
 
 import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
+import com.prj4.reviewer.core.SortByDate;
+import com.prj4.reviewer.entity.Company;
 import com.prj4.reviewer.entity.Reviewer;
 import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.reporsitory.ReviewerRepository;
 import com.prj4.reviewer.request.*;
-import com.prj4.reviewer.response.CommentResponse;
-import com.prj4.reviewer.response.FeedbackCompanyResponse;
-import com.prj4.reviewer.response.ReviewerInfoResponse;
-import com.prj4.reviewer.response.ReviewerResponse;
-import com.prj4.reviewer.service.FileStorageService;
-import com.prj4.reviewer.service.PostService;
-import com.prj4.reviewer.service.ReviewerService;
-import com.prj4.reviewer.service.UserService;
+import com.prj4.reviewer.response.*;
+import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -41,6 +39,9 @@ public class ReviewerRestController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    CompanyService companyService;
 
     @PostMapping(BASE_POST_LINK + "feedbackCompany")
     public FeedbackCompanyResponse feedbackCompany(@RequestBody @Valid FeedbackCompanyRequest feedbackCompanyRequest) {
@@ -101,6 +102,30 @@ public class ReviewerRestController {
         } else {
             return JsonResponse.reject("Old password is wrong!!");
         }
+    }
+
+    @PostMapping(BASE_POST_LINK + "getAllPostIsFollow")
+    public List<PostResponse> getAllPostIsFollow(@RequestBody String idReviewer) {
+        List<PostResponse> lst = reviewerService.getAllPostIsFollowed(idReviewer);
+        Collections.sort(lst, new SortByDate());
+        Collections.sort(lst, Collections.reverseOrder());
+        return lst;
+    }
+
+    @PostMapping(BASE_POST_LINK + "reviewComp")
+    public JsonResponse<String> reviewerComp(@RequestBody ReviewCompRequest reviewCompRequest) {
+        try {
+            reviewerService.createRatingComp(reviewCompRequest);
+            return JsonResponse.accept("success");
+        } catch (Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+    }
+
+    @PostMapping(BASE_POST_LINK + "getReviewComp")
+    public List<ReviewCompanyResponse> getReviewComp(@RequestBody String idCompany) {
+        return reviewerService.getListReviewComp(idCompany);
+
     }
 
 }
