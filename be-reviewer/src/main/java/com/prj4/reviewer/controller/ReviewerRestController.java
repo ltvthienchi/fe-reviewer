@@ -3,15 +3,13 @@ package com.prj4.reviewer.controller;
 import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.core.SortByDate;
+import com.prj4.reviewer.entity.Company;
 import com.prj4.reviewer.entity.Reviewer;
 import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.reporsitory.ReviewerRepository;
 import com.prj4.reviewer.request.*;
 import com.prj4.reviewer.response.*;
-import com.prj4.reviewer.service.FileStorageService;
-import com.prj4.reviewer.service.PostService;
-import com.prj4.reviewer.service.ReviewerService;
-import com.prj4.reviewer.service.UserService;
+import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +39,9 @@ public class ReviewerRestController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    CompanyService companyService;
 
     @PostMapping(BASE_POST_LINK + "feedbackCompany")
     public FeedbackCompanyResponse feedbackCompany(@RequestBody @Valid FeedbackCompanyRequest feedbackCompanyRequest) {
@@ -109,6 +110,22 @@ public class ReviewerRestController {
         Collections.sort(lst, new SortByDate());
         Collections.sort(lst, Collections.reverseOrder());
         return lst;
+    }
+
+    @PostMapping(BASE_POST_LINK + "reviewComp")
+    public JsonResponse<String> reviewerComp(@RequestBody ReviewCompRequest reviewCompRequest) {
+        try {
+            reviewerService.createRatingComp(reviewCompRequest);
+            return JsonResponse.accept("success");
+        } catch (Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+    }
+
+    @PostMapping(BASE_POST_LINK + "getReviewComp")
+    public List<ReviewCompanyResponse> getReviewComp(@RequestBody String idCompany) {
+        return reviewerService.getListReviewComp(idCompany);
+
     }
 
 }

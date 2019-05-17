@@ -49,12 +49,15 @@ public class Company {
 	@Column(name = "AVG_RATING_COMP")
 	private float avgRatingComp;
 
+	@Column(name = "NUMB_RATING")
+	private int numbRating;
+
 	public Company() {}
 
 	public Company(String idCompany, String nameCompany, String addrCompany,
 				   String webCompany, String zipCompany, String telCompany,
 				   Date dtCreated, String idAccount, String imgAvatarCompany,
-				   String imgPanelCompany, String emailCompany, float avgRatingComp) {
+				   String imgPanelCompany, String emailCompany, float avgRatingComp, int numbRating) {
 		this.idCompany = idCompany;
 		this.nameCompany = nameCompany;
 		this.addrCompany = addrCompany;
@@ -67,6 +70,7 @@ public class Company {
 		this.imgPanelCompany = imgPanelCompany;
 		this.emailCompany = emailCompany;
 		this.avgRatingComp = avgRatingComp;
+		this.numbRating = numbRating;
 	}
 
 	public String getIdCompany() {
@@ -163,5 +167,13 @@ public class Company {
 
 	public void setAvgRatingComp(float avgRatingComp) {
 		this.avgRatingComp = avgRatingComp;
+	}
+
+	public int getNumbRating() {
+		return numbRating;
+	}
+
+	public void setNumbRating(int numbRating) {
+		this.numbRating = numbRating;
 	}
 }
