@@ -9,20 +9,27 @@
   </div>
   <div class="col-4 sticky-top" style="z-index: 999;">
     <div class="bodercpn text-center">
-<!--      <br>-->
-      <h3 class="pt-3 mb-0"><span class="pt-1">Rating</span> <span class="mr-1 badge badge-info">(4.5/5)</span></h3>
 
-      <ng-template #t let-fill="fill">
+      <h4 class="pt-3 mb-0">
+        <span class="pt-1">Rating Review</span>
+      </h4>
+
+      <div *ngIf="curTotalReview !== 0">
+        <p class="text-center mt-3 m-0">
+          <span class="mr-1 badge badge-info">({{currentRate}}/5)</span> in {{curTotalReview}} review
+        </p>
+
+        <ng-template #t let-fill="fill">
         <span class="star" [class.full]="fill === 100">
           <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
         </span>
-      </ng-template>
-      <ngb-rating [(rate)]="currentRate" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+        </ng-template>
+        <ngb-rating [(rate)]="currentRate" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+      </div>
 
-      <!--      <p class="text-info"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i-->
-<!--        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span-->
-<!--        class="badge badge-light">(4.5/5)</span>-->
-<!--      </p>-->
+      <div *ngIf="curTotalReview === 0">
+        <h4 class="text-center mt-3 mb-3">This company has no reviews</h4>
+      </div>
 
       <div *ngIf="checkAuthGuard() && !isCompanyRole()">
         <button class="btn btn-outline-info" (click)="showReview()">

@@ -1,8 +1,8 @@
 <h5 class="m-0">You Rate Review Company</h5>
 <hr>
 
-<pre class="m-0">Rate: <b>{{dataReview.rate}}</b></pre>
-<ngb-rating [(rate)]="dataReview.rate" max="5">
+<pre class="m-0">Rate: <b>{{dataReview.ratingComp}}</b></pre>
+<ngb-rating [(rate)]="dataReview.ratingComp" max="5">
   <ng-template let-fill="fill" let-index="index">
     <span class="star" [class.filled]="fill === 100">&#9733;</span>
 <!--    <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>-->
@@ -11,7 +11,7 @@
 
 <pre class="mt-2">Content:</pre>
 <label class="mt-1" style="width: 100%">
-  <textarea class="form-control" rows="4" style="width: 100%;" [(ngModel)]="dataReview.content"></textarea>
+  <textarea class="form-control" rows="4" style="width: 100%;" [(ngModel)]="dataReview.contentComment"></textarea>
 </label>
 
 <div class="btn-group-review clearfix">

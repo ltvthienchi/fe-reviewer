@@ -129,6 +129,7 @@ export class CompanyComponent implements OnInit {
 
   checkEventAction(e) {
     if(e.code === 'delete') this.getData();
+    if(e.code === 'update') this.getData();
   }
 
 }

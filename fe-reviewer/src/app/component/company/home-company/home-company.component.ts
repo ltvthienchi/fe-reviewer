@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {IdUserService} from '../../../services/data-global/id-user.service';
 import {ReviewCompanyComponent} from '../review-company/review-company.component';
 import {MatDialog} from '@angular/material';
+import {HttpService} from '../../../services/http/http.service';
 
 @Component({
   selector: 'app-home-company',
@@ -16,13 +17,29 @@ export class HomeCompanyComponent implements OnInit {
   @Input() idCompany: any;
   @Output() eventAction: EventEmitter<any> = new EventEmitter();
   idUser;
-  currentRate:number = 4.30;
+  currentRate:number = 0;
+  curTotalReview: number = 0;
 
   constructor(private authGuard: AuthGuardService, private router: Router, private userService: IdUserService,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog, private http: HttpService) { }
 
   ngOnInit() {
     this.idUser = this.userService.getId();
+    this.getData();
+  }
+
+  getData() {
+    this.http.getReviewCompanyById(this.idCompany).subscribe(res => {
+      console.log(res);
+      if(res.length > 0) {
+        let temp = 0;
+        res.map(item => {
+          temp += item.numbRating;
+        });
+        this.currentRate = temp / res.length;
+        this.curTotalReview = res.length;
+      }
+    })
   }
 
   checkAuthGuard() {
@@ -54,7 +71,10 @@ export class HomeCompanyComponent implements OnInit {
     });
 
     myDialog.afterClosed().subscribe(res => {
-      console.log(res);
+      if(res) {
+        this.getData();
+        this.eventAction.emit({code: 'update'});
+      }
     })
   }
 }
