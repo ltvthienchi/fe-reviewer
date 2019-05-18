@@ -130,8 +130,9 @@ public class ReviewerRestController {
     }
 
     @PostMapping(BASE_POST_LINK + "getReviewCompByIdReviewer")
-    public ReviewCompany getReviewCompByIdReviewer(@RequestBody String idReviewer) {
-        return reviewerService.getReviewCompByIdReviewer(idReviewer);
+    public ReviewCompany getReviewCompByIdReviewer(@RequestBody ReviewCompanyRequest reviewCompanyRequest) {
+        return reviewerService.getReviewCompByIdReviewer(reviewCompanyRequest.getIdReviewer(),
+                reviewCompanyRequest.getIdCompany());
     }
 
 }

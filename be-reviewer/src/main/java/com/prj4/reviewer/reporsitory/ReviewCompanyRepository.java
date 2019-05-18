@@ -15,4 +15,6 @@ public interface ReviewCompanyRepository extends CrudRepository<ReviewCompany, S
     float getAvgIdCompany(String idCompany);
 
     List<ReviewCompany> findByIdCompany(String idCompany);
+
+    ReviewCompany findByIdReviewerAndIdCompany(String idReviewer, String idCompany);
 }
