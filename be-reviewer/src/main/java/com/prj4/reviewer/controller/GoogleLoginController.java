@@ -91,7 +91,7 @@ public class GoogleLoginController {
                     Images images = new Images(idImage, pictureUrl, Constants.IMAGE_AVA);
 
                     User userAccount = new User(idAccount, email, "",
-                            3, true);
+                            4, true);
 
                     Reviewer reviewer = new Reviewer(idReviewer, fullName, email, null, new Date(),
                             idAccount, idImage, "6666", 1, firstName , lastName, 2);

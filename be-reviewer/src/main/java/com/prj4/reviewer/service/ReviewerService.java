@@ -175,7 +175,7 @@ public class ReviewerService {
         } else {
             String reviewCompId = generateId.generateId("REVIEWCOMP_", new Date());
             reviewCompany = new ReviewCompany(reviewCompId, reviewCompRequest.getIdReviewer(), reviewCompRequest.getIdCompany(),
-                    reviewCompRequest.getRatingComp(), reviewCompRequest.getContentComment());
+                    reviewCompRequest.getRatingComp(), reviewCompRequest.getContentComment(), new Date());
             reviewCompanyRepository.save(reviewCompany);
             company.setNumbRating(numbRating + 1);
         }
@@ -197,6 +197,12 @@ public class ReviewerService {
             lstResult.add(reviewCompanyResponse);
         }
         return lstResult;
+
+    }
+
+    public ReviewCompany getReviewCompByIdReviewer(String idReviewer) {
+        ReviewCompany reviewComp = reviewCompanyRepository.findByIdReviewer(idReviewer);
+        return reviewComp;
 
     }
 

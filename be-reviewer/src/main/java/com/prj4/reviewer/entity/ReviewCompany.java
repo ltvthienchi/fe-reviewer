@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table(name="REVIEW_COMPANY")
@@ -25,15 +26,19 @@ public class ReviewCompany {
     @Column(name = "COMMENT_CONTENT")
     private String commentContent;
 
+    @Column(name = "DT_CREATED")
+    private Date dtCreated;
+
     public ReviewCompany() {
     }
 
-    public ReviewCompany(String idReviewCompany, String idReviewer, String idCompany, float ratingComp, String commentContent) {
+    public ReviewCompany(String idReviewCompany, String idReviewer, String idCompany, float ratingComp, String commentContent, Date dtCreated) {
         this.idReviewCompany = idReviewCompany;
         this.idReviewer = idReviewer;
         this.idCompany = idCompany;
         this.ratingComp = ratingComp;
         this.commentContent = commentContent;
+        this.dtCreated = dtCreated;
     }
 
     public String getIdFollowCompany() {
@@ -74,5 +79,21 @@ public class ReviewCompany {
 
     public void setCommentContent(String commentContent) {
         this.commentContent = commentContent;
+    }
+
+    public String getIdReviewCompany() {
+        return idReviewCompany;
+    }
+
+    public void setIdReviewCompany(String idReviewCompany) {
+        this.idReviewCompany = idReviewCompany;
+    }
+
+    public Date getDtCreated() {
+        return dtCreated;
+    }
+
+    public void setDtCreated(Date dtCreated) {
+        this.dtCreated = dtCreated;
     }
 }
