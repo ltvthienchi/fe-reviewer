@@ -43,8 +43,8 @@ public class UserRestController {
     @Autowired
     public JavaMailSender emailSender;
 
-//    @Autowired
-//    private Md5PasswordEncoder md5PasswordEncoder;
+    @Autowired
+    HistoryService historyService;
 
 
     @PostMapping(SIGN_UP_LINK + "createUser")
@@ -114,13 +114,15 @@ public class UserRestController {
     }
 
     @PostMapping(BASE_POST_LINK + "createComment")
-    public JsonResponse<String> createUser(@RequestBody CommentRequest commentRequest) {
+    public JsonResponse<String> createComment(@RequestBody CommentRequest commentRequest) {
         String idComment = generateId.generateId("COMMENT_", new Date());
         boolean isReply = commentRequest.getIdReply() != null ? true : false;
         Comment comment = new Comment(idComment, commentRequest.getIdProduct(), commentRequest.getIdReviewer(),
                 commentRequest.getIdReply(), isReply, commentRequest.getContent(), new Date(), commentRequest.getRole_user(), false);
         try {
             commentService.createComment(comment);
+            historyService.createCommentHistory(commentRequest.getIdReviewer(),
+                    commentRequest.getContent(), commentRequest.getIdProduct());
             return JsonResponse.accept("Success");
         } catch (Exception ex) {
             return JsonResponse.reject(ex.getMessage());

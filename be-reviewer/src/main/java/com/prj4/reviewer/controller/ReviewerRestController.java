@@ -3,10 +3,7 @@ package com.prj4.reviewer.controller;
 import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.core.SortByDate;
-import com.prj4.reviewer.entity.Company;
-import com.prj4.reviewer.entity.ReviewCompany;
-import com.prj4.reviewer.entity.Reviewer;
-import com.prj4.reviewer.entity.User;
+import com.prj4.reviewer.entity.*;
 import com.prj4.reviewer.reporsitory.ReviewerRepository;
 import com.prj4.reviewer.request.*;
 import com.prj4.reviewer.response.*;
@@ -43,6 +40,9 @@ public class ReviewerRestController {
 
     @Autowired
     CompanyService companyService;
+
+    @Autowired
+    HistoryService historyService;
 
     @PostMapping(BASE_POST_LINK + "feedbackCompany")
     public FeedbackCompanyResponse feedbackCompany(@RequestBody @Valid FeedbackCompanyRequest feedbackCompanyRequest) {
@@ -117,6 +117,7 @@ public class ReviewerRestController {
     public JsonResponse<String> reviewerComp(@RequestBody ReviewCompRequest reviewCompRequest) {
         try {
             reviewerService.createRatingComp(reviewCompRequest);
+            historyService.createReviewCompHistory(reviewCompRequest.getIdReviewer(), reviewCompRequest.getIdCompany(), 1);
             return JsonResponse.accept("success");
         } catch (Exception ex) {
             return JsonResponse.reject(ex.getMessage());
@@ -134,5 +135,12 @@ public class ReviewerRestController {
         return reviewerService.getReviewCompByIdReviewer(reviewCompanyRequest.getIdReviewer(),
                 reviewCompanyRequest.getIdCompany());
     }
+
+    @PostMapping(BASE_POST_LINK + "getHistoryActivity")
+    public List<ActivityHistory> getHistoryActivity(@RequestBody String idReviewer) {
+
+        return historyService.getActivityHistory(idReviewer);
+    }
+
 
 }

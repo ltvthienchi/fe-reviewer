@@ -286,4 +286,8 @@ export class HttpService {
     });
     return this.http.post(URL_SERVER.token_unAu + 'google-generate-token', id, { headers: reqHeader });
   }
+
+  public getActivityHistory(id): Observable<any> {
+    return this.http.post(URL_SERVER.infoReviewer + 'getHistoryActivity', id, getHeader());
+  }
 }

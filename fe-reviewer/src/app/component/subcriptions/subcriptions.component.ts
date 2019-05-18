@@ -10,7 +10,7 @@ export class SubcriptionsComponent implements OnInit {
 
   private idReviewer: string;
   dataPost = [];
-  myData: any;
+  myData = [];
 
   constructor(private http: HttpService) {
   }

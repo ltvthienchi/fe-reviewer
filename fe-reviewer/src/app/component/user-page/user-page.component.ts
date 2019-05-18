@@ -31,6 +31,7 @@ export class UserPageComponent implements OnInit {
   userInfo;
   idReviewer;
   localId;
+  avatarHistory;
   private emailReviewer: string;
   private firstName: string;
   private fullName: string;
@@ -88,6 +89,7 @@ export class UserPageComponent implements OnInit {
       this.updateInfoProfile.controls['dobReviewer'].setValue(parseDob);
       this.updateInfoProfile.controls['genderReviewer'].setValue(gender);
       this.typeReviewer = data.typeReviewer;
+      this.avatarHistory = this.userInfo.imgAvatar;
     });
   }
 
@@ -100,6 +102,7 @@ export class UserPageComponent implements OnInit {
       const date = dob.getDate() <= 9 ? `0${dob.getDate()}` : dob.getDate();
       const parseDob = `${year}-${month}-${date}`;
       this.dobReviewer = parseDob;
+      this.avatarHistory = this.userInfo.imgAvatar;
     });  }
 
   submitUpdateInfo() {
@@ -124,6 +127,7 @@ export class UserPageComponent implements OnInit {
           if (updateInPro.avaReviewer != null) {
             const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
             this.avatarService.changeAvaImage(avatar);
+            this.avatarHistory = avatar;
           }
           this.showNotification( 'success', 'Update Profile successfully' );
         } else {
