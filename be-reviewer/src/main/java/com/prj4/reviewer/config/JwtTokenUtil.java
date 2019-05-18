@@ -57,7 +57,7 @@ public class JwtTokenUtil implements Serializable {
 
     public String generateToken(Object object, int typeAccount, boolean isActive, String fullName, String idUser) {
         String typeAccountRole = null;
-        if (typeAccount == 1 || typeAccount == 2) {
+        if (typeAccount == 1 || typeAccount == 2 || typeAccount == 3) {
             typeAccountRole = typeAccount == 1 ? "ROLE_COMPANY" : "ROLE_NORMAL";
             User user = (User) object;
             return doGenerateToken(user.getUserName(), typeAccountRole, isActive, fullName, idUser);

@@ -75,7 +75,7 @@
               <a href="#" data-target="#edit" data-toggle="pill" class="nav-link"><i
                 class="icon-note"></i> <span class="hidden-xs">Edit Profile</span></a>
             </li>
-            <li class="nav-item" *ngIf="idReviewer === localId">
+            <li class="nav-item" *ngIf="idReviewer === localId && (typeReviewer === 1)">
               <a href="#" data-target="#changepassword" data-toggle="pill" class="nav-link"><i
                 class="icon-note"></i> <span class="hidden-xs">Change Password</span></a>
             </li>
@@ -158,14 +158,13 @@
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label"></label>
                   <div class="col-lg-9">
-                    <input type="reset" class="btn btn-secondary" value="Cancel">
                     <input type="button" class="btn btn-primary" (click)="submitUpdateInfo()" value="Save Changes">
                   </div>
                 </div>
               </form>
             </div>
 
-            <div class="tab-pane" id="changepassword" *ngIf="idReviewer === localId">
+            <div class="tab-pane" id="changepassword" *ngIf="(idReviewer === localId) && (typeReviewer === 1)">
               <form [formGroup]="ChangePassForm" (submit)="submitChangePass()">
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Your Current Password</label>

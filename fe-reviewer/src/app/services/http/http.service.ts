@@ -266,4 +266,12 @@ export class HttpService {
     return this.http.post(URL_SERVER.infoReviewer + 'getAllPostIsFollow', id, getHeader());
 
   }
+
+  public signInGoogle(id): Observable<any> {
+    const reqHeader = new HttpHeaders({
+      'No-Auth': 'True',
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(URL_SERVER.token_unAu + 'google-generate-token', id, { headers: reqHeader });
+  }
 }

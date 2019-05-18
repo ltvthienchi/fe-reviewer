@@ -26,14 +26,7 @@ export class CommentPostComponent implements OnInit {
   ngOnInit() {
     this.idUser = this.idUserSer.getId();
     this.getData();
-    const data = {
-      email: localStorage.getItem('email'),
-      role: localStorage.getItem('role')
-    };
-    const userInfo = JSON.stringify(data);
-    this.http.getReviewerInfo(userInfo).subscribe(res => {
-      this.userInfo = res;
-    });
+    this.getInfo();
   }
 
   getData() {
@@ -116,6 +109,19 @@ export class CommentPostComponent implements OnInit {
         this.notifier.notify('error', 'Reporting had error, please try again');
       }
     })
+  }
+
+  getInfo() {
+    const data = {
+      email: localStorage.getItem('email'),
+      role: localStorage.getItem('role')
+    };
+    if (localStorage.getItem('email') != null && localStorage.getItem('email') !== '') {
+      const userInfo = JSON.stringify(data);
+      this.http.getReviewerInfo(userInfo).subscribe(res => {
+        this.userInfo = res;
+      });
+    }
   }
 
 }

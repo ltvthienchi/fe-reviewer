@@ -66,7 +66,7 @@ public class ReviewerRestController {
             ) {
 
         try {
-            Date newDob = new SimpleDateFormat("yyyy-mm-dd").parse(dob);
+            Date newDob = new SimpleDateFormat("yyyy-MM-dd").parse(dob);
             int genderReviewer = gender.equals("true") ? 1 : 0;
             reviewerService.updateInfo(idReviewer, firstName, lastName, newDob, genderReviewer, avaReviewer, panelReviewer);
             return JsonResponse.accept("Success");

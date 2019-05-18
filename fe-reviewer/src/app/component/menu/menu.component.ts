@@ -39,14 +39,16 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.idUser = this.idUserSer.getId();
-    const loginRequest = {
-      idUser : this.idUser,
-      role_user : this.role_user
-    };
-    this.http.getLoginInfo(loginRequest).subscribe((data: any) => {
-      this.fullName = data.fullName;
-      this.avatar = data.avatar;
-    });
+    if (this.idUser != null && this.idUser !== '') {
+      const loginRequest = {
+        idUser : this.idUser,
+        role_user : this.role_user
+      };
+      this.http.getLoginInfo(loginRequest).subscribe((data: any) => {
+        this.fullName = data.fullName;
+        this.avatar = data.avatar;
+      });
+    }
     this.data.change.subscribe(count => {
       this.count = count;
     });
@@ -91,6 +93,7 @@ export class MenuComponent implements OnInit {
     localStorage.removeItem('isActive');
     localStorage.removeItem('idUser');
     localStorage.removeItem('email');
+    this.router.navigate(['/login']);
   }
 
   isCompany() {

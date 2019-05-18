@@ -105,7 +105,7 @@ public class ReviewerService {
             String imgPanel = imageService.getImagePathById(reviewer.getImgPanel());
             return new ReviewerResponse(reviewer.getIdReviewer(), reviewer.getFullName(),
                     reviewer.getFirstName(), reviewer.getLastName(),reviewer.getEmail(),reviewer.getDateOfBirth(),
-                    imgAvatar, imgPanel, reviewer.getGender());
+                    imgAvatar, imgPanel, reviewer.getGender(), reviewer.getTypeReviewer());
         }
         return null;
 //        return reviewerResponse;

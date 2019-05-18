@@ -73,14 +73,7 @@ export class ContentPostComponent implements OnInit {
 
   ngOnInit() {
     this.idUser = this.idUserSer.getId();
-    const data = {
-      email: localStorage.getItem('email'),
-      role: localStorage.getItem('role')
-    };
-    const userInfo = JSON.stringify(data);
-    this.http.getReviewerInfo(userInfo).subscribe(res => {
-      this.userInfo = res;
-    });
+    this.getDataInfo();
   }
 
   checkAuthGuard() {
@@ -283,5 +276,17 @@ export class ContentPostComponent implements OnInit {
 
   editProduct(item) {
     this.eventAction.emit({code: 'edit', data: item});
+  }
+  getDataInfo() {
+    const data = {
+      email: localStorage.getItem('email'),
+      role: localStorage.getItem('role')
+    };
+    if (localStorage.getItem('email') != null && localStorage.getItem('email') !== '') {
+      const userInfo = JSON.stringify(data);
+      this.http.getReviewerInfo(userInfo).subscribe(res => {
+        this.userInfo = res;
+      });
+    }
   }
 }

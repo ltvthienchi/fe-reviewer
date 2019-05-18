@@ -14,9 +14,11 @@ public class ReviewerResponse implements Serializable {
     private String imgAvatar;
     private String imgPanel;
     private int gender;
+    private int typeAccount;
+    private int typeReviewer;
 
     public ReviewerResponse(String idReviewer, String fullName, String firstName, String lastName, String email,
-                            Date dateOfBirth, String imgAvatar, String imgPanel, int gender) {
+                            Date dateOfBirth, String imgAvatar, String imgPanel, int gender, int typeReviewer) {
         this.idReviewer = idReviewer;
         this.fullName = fullName;
         this.firstName = firstName;
@@ -26,6 +28,7 @@ public class ReviewerResponse implements Serializable {
         this.imgAvatar = imgAvatar;
         this.imgPanel = imgPanel;
         this.gender = gender;
+        this.typeReviewer = typeReviewer;
     }
 
     public String getIdReviewer() {
@@ -99,5 +102,21 @@ public class ReviewerResponse implements Serializable {
 
     public void setGender(int gender) {
         this.gender = gender;
+    }
+
+    public int getTypeAccount() {
+        return typeAccount;
+    }
+
+    public void setTypeAccount(int typeAccount) {
+        this.typeAccount = typeAccount;
+    }
+
+    public int getTypeReviewer() {
+        return typeReviewer;
+    }
+
+    public void setTypeReviewer(int typeReviewer) {
+        this.typeReviewer = typeReviewer;
     }
 }

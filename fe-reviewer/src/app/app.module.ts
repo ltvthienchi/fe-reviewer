@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
-//
+import {SocialLoginModule, AuthServiceConfig, GoogleLoginProvider} from 'angular5-social-auth';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
@@ -117,6 +117,18 @@ const customNotifierOptions: NotifierOptions = {
   }
 };
 
+export function getAuthServiceConfigs() {
+  const config = new AuthServiceConfig(
+    [
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('968467163137-dtdndh85b47p1qul44rlf8gpk1ehekct.apps.googleusercontent.com')
+      }
+    ]
+);
+  return config;
+}
+
 const JWT_Module_Options: JwtModuleOptions = {
   config: {
     tokenGetter: tokenGetter,
@@ -200,7 +212,8 @@ export function tokenGetter() {
     ReactiveFormsModule,
     MatDialogModule,
     NgbModule.forRoot(),
-    NgbRatingModule
+    NgbRatingModule,
+    SocialLoginModule
   ],
   exports: [
     MatSliderModule,
@@ -222,7 +235,11 @@ export function tokenGetter() {
     DataService,
     TopRatingService,
     AvatarService,
-    IdUserService
+    IdUserService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }
   ],
   bootstrap: [AppComponent]
 })

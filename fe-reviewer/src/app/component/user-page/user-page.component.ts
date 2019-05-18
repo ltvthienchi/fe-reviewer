@@ -39,6 +39,7 @@ export class UserPageComponent implements OnInit {
   private dobReviewer = '01-01-2019';
   private changeAvar;
   private changeBackground;
+  private typeReviewer;
   validatorForm = {
     ChangePassForm: true,
     updateInfoProfile: true
@@ -86,6 +87,7 @@ export class UserPageComponent implements OnInit {
       this.updateInfoProfile.controls['lastName'].setValue(data.lastName);
       this.updateInfoProfile.controls['dobReviewer'].setValue(parseDob);
       this.updateInfoProfile.controls['genderReviewer'].setValue(gender);
+      this.typeReviewer = data.typeReviewer;
     });
   }
 
@@ -111,16 +113,18 @@ export class UserPageComponent implements OnInit {
         lastName: this.updateInfoProfile.value.lastName,
         dob: this.updateInfoProfile.value.dobReviewer,
         gender: this.updateInfoProfile.value.genderReviewer,
-        avaReviewer: this.changeAvar,
-        panelReviewer: this.changeBackground
+        avaReviewer: this.changeAvar !== undefined ? this.changeAvar : null,
+        panelReviewer: this.changeBackground !== undefined ? this.changeBackground : null
       };
       this.firstName = this.updateInfoProfile.value.firstName;
       this.lastName = this.updateInfoProfile.value.lastName;
       this.httpService.updateInfoPro(updateInPro).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
           this.reloadData();
-          const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
-          this.avatarService.changeAvaImage(avatar);
+          if (updateInPro.avaReviewer != null) {
+            const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
+            this.avatarService.changeAvaImage(avatar);
+          }
           this.showNotification( 'success', 'Update Profile successfully' );
         } else {
           this.showNotification( 'error', data.result );

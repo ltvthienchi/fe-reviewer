@@ -5,7 +5,6 @@ import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Comment;
 import com.prj4.reviewer.entity.Reviewer;
 import com.prj4.reviewer.entity.User;
-import com.prj4.reviewer.request.ChangePasswordRequest;
 import com.prj4.reviewer.request.CommentRequest;
 import com.prj4.reviewer.request.UseRequest;
 import com.prj4.reviewer.response.CommentResponse;
@@ -59,7 +58,7 @@ public class UserRestController {
                 userRequest.getTypeAccount(), Constants.IS_TEST_MODE ? true : userRequest.isActive());
 
         Reviewer reviewer = new Reviewer(idReviewer, userRequest.getNameAccount(), userRequest.getUserName(), null, new Date(),
-                idAccount, "7777", "6666", 1, userRequest.getFirstName() , userRequest.getLastName());
+                idAccount, "7777", "6666", 1, userRequest.getFirstName() , userRequest.getLastName(), 1);
 
         if (!userService.isExistingAccount(userRequest.getUserName()) &&
                 !reviewerService.isExistingReviewer(userRequest.getUserName())) {
