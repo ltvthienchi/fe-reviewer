@@ -193,7 +193,7 @@ public class ReviewerService {
             Reviewer reviewer = reviewerRepository.findByIdReviewer(idReviewer);
             String imgAva = imageService.getImagePathById(reviewer.getImgAvatar());
             ReviewCompanyResponse reviewCompanyResponse = new ReviewCompanyResponse(reviewer.getFullName(), idReviewer,
-                    imgAva, re.getRatingComp(), re.getCommentContent());
+                    imgAva, re.getRatingComp(), re.getCommentContent(), re.getDtCreated());
             lstResult.add(reviewCompanyResponse);
         }
         return lstResult;

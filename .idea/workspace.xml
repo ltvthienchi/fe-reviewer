@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1f653907-2a8b-4c36-aea2-72f3def65cbe" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/be-reviewer/src/main/java/com/prj4/reviewer/response/ReviewCompanyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/be-reviewer/src/main/java/com/prj4/reviewer/response/ReviewCompanyResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/be-reviewer/src/main/java/com/prj4/reviewer/service/ReviewerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/be-reviewer/src/main/java/com/prj4/reviewer/service/ReviewerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-company/review-company.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-company/review-company.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-company/review-company.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-company/review-company.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-company/review-company.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-company/review-company.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/services/http/http.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/services/http/http.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-reviewer/src/app/services/pipe/time-ago.pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-reviewer/src/app/services/pipe/time-ago.pipe.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/home-company/home-company.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" />
+                <element signature="n#ng-template#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="463">
+              <caret line="52" column="91" lean-forward="true" selection-start-line="52" selection-start-column="91" selection-end-line="52" selection-end-column="91" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#ng-template#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#button#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="117">
+              <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+              <folding>
+                <element signature="e#613#727#0" />
+                <element signature="e#918#1118#0" />
+                <element signature="n#!!block;n#ngOnInit#0;n#CompanyComponent#0" />
+                <element signature="e#1512#1724#0" />
+                <element signature="n#!!block;n#initialiseState#0;n#CompanyComponent#0" />
+                <element signature="e#1872#1997#0" />
+                <element signature="n#!!block;n#getData#0;n#CompanyComponent#0" />
+                <element signature="e#2092#2318#0" />
+                <element signature="e#2110#2312#0" />
+                <element signature="e#2215#2302#0" />
+                <element signature="n#!!block;n#checkAuthGuard#0;n#CompanyComponent#0" />
+                <element signature="n#!!block;n#isCompanyAccount#0;n#CompanyComponent#0" />
+                <element signature="n#!!block;n#isCompanyRole#0;n#CompanyComponent#0" />
+                <element signature="n#!!block;n#changeIsPostProduct#0;n#CompanyComponent#0" />
+                <element signature="e#2654#2739#0" />
+                <element signature="e#2745#2913#0" />
+                <element signature="n#!!block;n#checkIsFollow#0;n#CompanyComponent#0" />
+                <element signature="e#3045#3130#0" />
+                <element signature="e#3243#3282#0" />
+                <element signature="n#!!block;n#followCompany#0;n#CompanyComponent#0" />
+                <element signature="e#3379#3409#0" />
+                <element signature="e#3415#3446#0" />
+                <element signature="e#3471#3581#0" />
+                <element signature="e#3707#3797#0" />
+                <element signature="e#3746#3791#0" />
+                <element signature="n#!!block;n#checkEventAction#0;n#CompanyComponent#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-company/review-company.component.html" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/services/pipe/time-ago.pipe.ts" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-list-company/review-list-company.component.css" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-list-company/review-list-company.component.html" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-list-company/review-list-company.component.ts" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/services/http/http.service.ts" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-company/review-company.component.ts" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-company/review-company.component.css" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.html" />
+        <option value="$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.ts" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="P4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P4" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P4" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P4" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P4" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P4" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
+              <item name="company" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P4" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
+              <item name="company" type="462c0819:PsiDirectoryNode" />
+              <item name="home-company" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P4" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P4" type="462c0819:PsiDirectoryNode" />
+              <item name="fe-reviewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="validator" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="editor.config.ad.shown" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5806000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-6" y="-6" width="1453" height="873" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24982357" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="TypeScript" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32974428" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32974428" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/services/validator/validator.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-305" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-company/review-company.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#h5#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/environments/environment.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/home-company/home-company.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1581">
+          <caret selection-end-line="241" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/home-company/home-company.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="17" selection-end-column="64" />
+          <folding>
+            <element signature="e#492#621#0" />
+            <element signature="n#!!block;n#ngOnInit#0;n#HomeCompanyComponent#0" />
+            <element signature="n#!!block;n#getData#0;n#HomeCompanyComponent#0" />
+            <element signature="e#1217#1466#0" />
+            <element signature="e#1268#1460#0" />
+            <element signature="e#1316#1362#0" />
+            <element signature="n#!!block;n#checkAuthGuard#0;n#HomeCompanyComponent#0" />
+            <element signature="n#!!block;n#isCompanyAccount#0;n#HomeCompanyComponent#0" />
+            <element signature="n#!!block;n#isCompanyRole#0;n#HomeCompanyComponent#0" />
+            <element signature="n#!!block;n#checkEventAction#0;n#HomeCompanyComponent#0" />
+            <element signature="n#!!block;n#showReview#0;n#HomeCompanyComponent#0" />
+            <element signature="e#2004#2043#0" />
+            <element signature="e#2107#2153#0" />
+            <element signature="e#2201#2305#0" />
+            <element signature="e#2217#2299#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/services/pipe/time-ago.pipe.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-list-company/review-list-company.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="30" column="16" lean-forward="true" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#0;n#!!top" />
+            <element signature="n#h4#0;n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#button#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/services/http/http.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-list-company/review-list-company.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="n#!!block;n#ngOnInit#0;n#ReviewListCompanyComponent#0" />
+            <element signature="e#1280#1500#0" />
+            <element signature="n#!!block;n#checkAuthGuard#0;n#ReviewListCompanyComponent#0" />
+            <element signature="n#!!block;n#isCompanyRole#0;n#ReviewListCompanyComponent#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-list-company/review-list-company.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="239" column="16" selection-start-line="239" selection-start-column="10" selection-end-line="239" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-company/review-company.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/review-company/review-company.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/home-company/home-company.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#ng-template#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="52" column="91" lean-forward="true" selection-start-line="52" selection-start-column="91" selection-end-line="52" selection-end-column="91" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#ng-template#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#button#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fe-reviewer/src/app/component/company/company.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+          <folding>
+            <element signature="e#613#727#0" />
+            <element signature="e#918#1118#0" />
+            <element signature="n#!!block;n#ngOnInit#0;n#CompanyComponent#0" />
+            <element signature="e#1512#1724#0" />
+            <element signature="n#!!block;n#initialiseState#0;n#CompanyComponent#0" />
+            <element signature="e#1872#1997#0" />
+            <element signature="n#!!block;n#getData#0;n#CompanyComponent#0" />
+            <element signature="e#2092#2318#0" />
+            <element signature="e#2110#2312#0" />
+            <element signature="e#2215#2302#0" />
+            <element signature="n#!!block;n#checkAuthGuard#0;n#CompanyComponent#0" />
+            <element signature="n#!!block;n#isCompanyAccount#0;n#CompanyComponent#0" />
+            <element signature="n#!!block;n#isCompanyRole#0;n#CompanyComponent#0" />
+            <element signature="n#!!block;n#changeIsPostProduct#0;n#CompanyComponent#0" />
+            <element signature="e#2654#2739#0" />
+            <element signature="e#2745#2913#0" />
+            <element signature="n#!!block;n#checkIsFollow#0;n#CompanyComponent#0" />
+            <element signature="e#3045#3130#0" />
+            <element signature="e#3243#3282#0" />
+            <element signature="n#!!block;n#followCompany#0;n#CompanyComponent#0" />
+            <element signature="e#3379#3409#0" />
+            <element signature="e#3415#3446#0" />
+            <element signature="e#3471#3581#0" />
+            <element signature="e#3707#3797#0" />
+            <element signature="e#3746#3791#0" />
+            <element signature="n#!!block;n#checkEventAction#0;n#CompanyComponent#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

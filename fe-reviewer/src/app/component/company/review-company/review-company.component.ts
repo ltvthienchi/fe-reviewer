@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {HttpService} from '../../../services/http/http.service';
 import {IdUserService} from '../../../services/data-global/id-user.service';
@@ -14,18 +14,37 @@ export class ReviewCompanyComponent implements OnInit {
     ratingComp: 1,
     contentComment: '',
     idCompany: '',
-    idReviewer: ''
+    idReviewer: '',
   };
+
+  dtCreated:any;
+
+  idUser;
 
   constructor(private dialogRef: MatDialogRef<ReviewCompanyComponent>, @Inject(MAT_DIALOG_DATA) public data,
               private http: HttpService, private userSer: IdUserService) {
-    const idUser = this.userSer.getId();
+    this.idUser = this.userSer.getId();
     this.dataReview.idCompany = data.idCompany;
-    this.dataReview.idReviewer = idUser;
+    this.dataReview.idReviewer = this.idUser;
   }
 
   ngOnInit() {
-    console.log(this.data);
+    this.getData();
+  }
+
+  getData() {
+    let data = {
+      idUser: this.idUser,
+      idCompany: this.data.idCompany,
+    };
+    this.http.getReviewCompByIdReviewer(data).subscribe(res => {
+      if(res) {
+        console.log(res);
+        this.dataReview.ratingComp = res.ratingComp;
+        this.dataReview.contentComment = res.commentContent;
+        this.dtCreated = res.dtCreated;
+      }
+    })
   }
 
   closeModal(): void {

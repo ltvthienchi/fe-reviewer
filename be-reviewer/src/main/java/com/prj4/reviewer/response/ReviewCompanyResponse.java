@@ -1,6 +1,7 @@
 package com.prj4.reviewer.response;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class ReviewCompanyResponse implements Serializable {
 
@@ -9,13 +10,15 @@ public class ReviewCompanyResponse implements Serializable {
     private String imgAvatar;
     private float numbRating;
     private String contentComment;
+    private Date dtCreate;
 
-    public ReviewCompanyResponse(String fullName, String idReviewer, String imgAvatar, float numbRating, String contentComment) {
+    public ReviewCompanyResponse(String fullName, String idReviewer, String imgAvatar, float numbRating, String contentComment, Date dtCreate) {
         this.fullName = fullName;
         this.idReviewer = idReviewer;
         this.imgAvatar = imgAvatar;
         this.numbRating = numbRating;
         this.contentComment = contentComment;
+        this.dtCreate = dtCreate;
     }
 
     public String getFullName() {
@@ -56,5 +59,13 @@ public class ReviewCompanyResponse implements Serializable {
 
     public void setContentComment(String contentComment) {
         this.contentComment = contentComment;
+    }
+
+    public Date getDtCreate() {
+        return dtCreate;
+    }
+
+    public void setDtCreate(Date dtCreate) {
+        this.dtCreate = dtCreate;
     }
 }

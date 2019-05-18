@@ -1,11 +1,12 @@
-<h5 class="m-0">You Rate Review Company</h5>
+<h5 class="m-0">You Rate Review Company
+  <span class="float-right" style="font-size: 14px; color: silver; font-weight: normal" *ngIf="dtCreated">{{dtCreated | timeAgo}}</span>
+</h5>
 <hr>
 
 <pre class="m-0">Rate: <b>{{dataReview.ratingComp}}</b></pre>
 <ngb-rating [(rate)]="dataReview.ratingComp" max="5">
   <ng-template let-fill="fill" let-index="index">
     <span class="star" [class.filled]="fill === 100">&#9733;</span>
-<!--    <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>-->
   </ng-template>
 </ngb-rating>
 

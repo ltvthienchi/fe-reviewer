@@ -32,7 +32,9 @@ export class CompanyComponent implements OnInit {
   };
   private lstPost = [];
   isPostProduct = false;
+  isViewReview = false;
   txtPostProduct = 'Post Product';
+  txtViewReview = ' History Review Company';
 
   constructor(private authGuard: AuthGuardService, private http: HttpService, private activatedRoute: ActivatedRoute,
               private idUserSer: IdUserService, private router: Router, private route: ActivatedRoute) { }
@@ -94,6 +96,11 @@ export class CompanyComponent implements OnInit {
     }
   }
 
+  changeViewReviewer() {
+    this.isViewReview = !this.isViewReview;
+    this.isViewReview ? this.txtViewReview = ' View Product' : this.txtViewReview = ' History Review Company';
+  }
+
   checkIsFollow(idCompany) {
     const requestObj = {
       idCompany: this.idCompany,
@@ -123,8 +130,6 @@ export class CompanyComponent implements OnInit {
         this.isFollowed = isFollow;
       }
     });
-
-
   }
 
   checkEventAction(e) {

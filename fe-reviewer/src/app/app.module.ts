@@ -75,6 +75,7 @@ import { SubcriptionsComponent } from './component/subcriptions/subcriptions.com
 import { AdvertismentComponent } from './component/advertisment/advertisment.component';
 import { ReviewCompanyComponent } from './component/company/review-company/review-company.component';
 import { NgbModule, NgbRating, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReviewListCompanyComponent } from './component/company/review-list-company/review-list-company.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -195,6 +196,7 @@ export function tokenGetter() {
     SubcriptionsComponent,
     AdvertismentComponent,
     ReviewCompanyComponent,
+    ReviewListCompanyComponent,
 
   ],
   imports: [

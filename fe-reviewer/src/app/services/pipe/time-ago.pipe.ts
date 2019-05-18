@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TimeAgoPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    return this.timeSince(value);
+    return this.timeSince(value) + ' ago';
   }
 
   timeSince(date) {

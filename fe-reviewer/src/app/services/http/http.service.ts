@@ -59,6 +59,10 @@ export class HttpService {
     return this.http.post(URL_SERVER.infoReviewer + 'getReviewComp', idCompany, getHeader());
   }
 
+  public getReviewCompByIdReviewer(data): Observable<any> {
+    return this.http.post(URL_SERVER.infoReviewer + 'getReviewCompByIdReviewer', data, getHeader());
+  }
+
   // PRODUCT
 
   public getAllProduct(): Observable<any> {
