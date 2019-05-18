@@ -200,8 +200,8 @@ public class ReviewerService {
 
     }
 
-    public ReviewCompany getReviewCompByIdReviewer(String idReviewer) {
-        ReviewCompany reviewComp = reviewCompanyRepository.findByIdReviewer(idReviewer);
+    public ReviewCompany getReviewCompByIdReviewer(String idReviewer, String idCompany) {
+        ReviewCompany reviewComp = reviewCompanyRepository.findByIdReviewerAndIdCompany(idReviewer, idCompany);
         return reviewComp;
 
     }
