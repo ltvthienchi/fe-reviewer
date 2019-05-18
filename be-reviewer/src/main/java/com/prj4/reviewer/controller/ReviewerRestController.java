@@ -4,6 +4,7 @@ import com.prj4.reviewer.core.Constants;
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.core.SortByDate;
 import com.prj4.reviewer.entity.Company;
+import com.prj4.reviewer.entity.ReviewCompany;
 import com.prj4.reviewer.entity.Reviewer;
 import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.reporsitory.ReviewerRepository;
@@ -126,6 +127,11 @@ public class ReviewerRestController {
     public List<ReviewCompanyResponse> getReviewComp(@RequestBody String idCompany) {
         return reviewerService.getListReviewComp(idCompany);
 
+    }
+
+    @PostMapping(BASE_POST_LINK + "getReviewCompByIdReviewer")
+    public ReviewCompany getReviewCompByIdReviewer(@RequestBody String idReviewer) {
+        return reviewerService.getReviewCompByIdReviewer(idReviewer);
     }
 
 }
