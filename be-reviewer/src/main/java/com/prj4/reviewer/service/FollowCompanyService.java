@@ -60,4 +60,8 @@ public class FollowCompanyService {
         }
         return lstIdCompany;
     }
+
+    public int getCountSubscribe(String idCompany) {
+        return followCompanyRepository.countAllByIdCompany(idCompany);
+    }
 }

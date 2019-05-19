@@ -12,10 +12,11 @@ public class CompanyResponse implements Serializable {
     private String imgPanelCompany;
     private String emailCompany;
     private float avgRatingComp;
+    private int numbSubscribed;
 
     public CompanyResponse(String idCompany, String nameCompany, String addrCompany, String webCompany, String telCompany,
                            String imgAvatarCompany, String imgPanelCompany,
-                           String emailCompany, float avgRatingComp) {
+                           String emailCompany, float avgRatingComp, int numbSubscribed) {
         this.idCompany = idCompany;
         this.nameCompany = nameCompany;
         this.addrCompany = addrCompany;
@@ -25,6 +26,7 @@ public class CompanyResponse implements Serializable {
         this.imgPanelCompany = imgPanelCompany;
         this.emailCompany = emailCompany;
         this.avgRatingComp = avgRatingComp;
+        this.numbSubscribed = numbSubscribed;
     }
 
     public String getIdCompany() {
@@ -97,5 +99,13 @@ public class CompanyResponse implements Serializable {
 
     public void setAvgRatingComp(float avgRatingComp) {
         this.avgRatingComp = avgRatingComp;
+    }
+
+    public int getNumbSubscribed() {
+        return numbSubscribed;
+    }
+
+    public void setNumbSubscribed(int numbSubscribed) {
+        this.numbSubscribed = numbSubscribed;
     }
 }

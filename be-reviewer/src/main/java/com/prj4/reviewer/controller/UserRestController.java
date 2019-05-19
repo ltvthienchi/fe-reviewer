@@ -6,6 +6,7 @@ import com.prj4.reviewer.entity.Comment;
 import com.prj4.reviewer.entity.Reviewer;
 import com.prj4.reviewer.entity.User;
 import com.prj4.reviewer.request.CommentRequest;
+import com.prj4.reviewer.request.EditCommentRequest;
 import com.prj4.reviewer.request.UseRequest;
 import com.prj4.reviewer.response.CommentResponse;
 import com.prj4.reviewer.service.*;
@@ -138,6 +139,18 @@ public class UserRestController {
     public JsonResponse<String> reportComment(@RequestBody String idComment) {
         try {
             commentService.reportComment(idComment);
+            return JsonResponse.accept("success");
+        } catch(Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+    }
+
+    @PostMapping(BASE_POST_LINK + "editComment")
+    public JsonResponse<String> editComment(@RequestBody EditCommentRequest editCommentRequest) {
+        try {
+            Comment comment = commentService.getCommentByIdComment(editCommentRequest.getIdComment());
+            comment.setContent(editCommentRequest.getContentComment());
+            commentService.createComment(comment);
             return JsonResponse.accept("success");
         } catch(Exception ex) {
             return JsonResponse.reject(ex.getMessage());
