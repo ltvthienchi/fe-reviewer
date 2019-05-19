@@ -22,4 +22,7 @@ public interface CommentRepository extends CrudRepository<Comment, String> {
     void getAllCommentReported(String idComment);
 
     Comment findByIdComment(String idComment);
+
+    @Query("Select count(c) from Comment c")
+    int getCountComments();
 }

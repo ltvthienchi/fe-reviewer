@@ -67,4 +67,8 @@ public class PostService {
         postRepository.save(post);
     }
 
+    public int getNumbProductByIdCompany(String idCompany) {
+        return postRepository.countAllByIdCompany(idCompany);
+    }
+
 }

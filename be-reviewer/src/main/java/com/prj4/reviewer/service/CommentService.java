@@ -94,4 +94,8 @@ public class CommentService {
     public Comment getCommentByIdComment(String idComment) {
         return commentRepository.findByIdComment(idComment);
     }
+
+    public int getCountComments() {
+        return commentRepository.getCountComments();
+    }
 }

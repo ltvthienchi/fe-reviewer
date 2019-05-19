@@ -215,4 +215,8 @@ public class ReviewerService {
 
     }
 
+    public int getCountReviewers() {
+        return reviewerRepository.getCountReviewers();
+    }
+
 }

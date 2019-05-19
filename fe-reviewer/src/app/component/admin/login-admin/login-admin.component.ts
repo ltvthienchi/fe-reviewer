@@ -52,7 +52,7 @@ export class LoginAdminComponent implements OnInit {
           if (tokenDecoded.isActive !== true) {
             this.showNotification('error', 'Account is not active!!');
           } else {
-            this.router.navigate(['/admin/manage-admin']);
+            this.router.navigate(['/admin/home']);
           }
 
         }

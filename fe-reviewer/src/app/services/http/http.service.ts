@@ -323,4 +323,15 @@ export class HttpService {
     return this.http.post(URL_SERVER.admin + 'sendMail', data, getHeader());
 
   }
+
+  public getColumnChart(): Observable<any> {
+    return this.http.get(URL_SERVER.admin + 'getColumnChart', getHeader());
+  }
+
+  public getCircleChart(): Observable<any> {
+    return this.http.get(URL_SERVER.admin + 'getCircleChart', getHeader());
+  }
+  public getAllCounts(): Observable<any> {
+    return this.http.get(URL_SERVER.admin + 'getAllCounts', getHeader());
+  }
 }

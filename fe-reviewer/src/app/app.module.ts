@@ -79,6 +79,8 @@ import { ReviewListCompanyComponent } from './component/company/review-list-comp
 import { UpdateProfileComponent } from './component/company/update-profile/update-profile.component';
 import { ChangePasswordComponent } from './component/company/change-password/change-password.component';
 import { TableReviewComponent } from './component/company/table-review/table-review.component';
+import { HomeAdminComponent } from './component/admin/home-admin/home-admin.component';
+import { ChartHomeComponent } from './component/admin/home-admin/chart-home/chart-home.component';
 import { ModalUploadAvtComponent } from './component/company/modal-upload-avt/modal-upload-avt.component';
 import { ModalUploadPanelComponent } from './component/company/modal-upload-panel/modal-upload-panel.component';
 import { FileDropModule } from 'ngx-file-drop';
@@ -208,6 +210,8 @@ export function tokenGetter() {
     TableReviewComponent,
     ModalUploadAvtComponent,
     ModalUploadPanelComponent,
+    HomeAdminComponent,
+    ChartHomeComponent,
   ],
   imports: [
     HttpClientModule,

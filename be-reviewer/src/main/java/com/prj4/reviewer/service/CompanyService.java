@@ -101,5 +101,8 @@ public class CompanyService {
         }
         companyRepository.save(company);
     }
+    public int getCountCompanies() {
+        return companyRepository.getCountCompanies();
+    }
 }
 

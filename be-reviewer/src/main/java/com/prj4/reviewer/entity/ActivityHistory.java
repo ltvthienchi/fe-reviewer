@@ -23,13 +23,18 @@ public class ActivityHistory {
     @Column(name = "DT_CREATED")
     private Date dtCreated;
 
+    @Column(name = "TYPE_HISTORY")
+    private String typeHistory;
+
     public ActivityHistory(){}
 
-    public ActivityHistory(String idHistory, String idReviewer, String contentActivity, Date dtCreated) {
+    public ActivityHistory(String idHistory, String idReviewer, String contentActivity,
+                           Date dtCreated, String typeHistory) {
         this.idHistory = idHistory;
         this.idReviewer = idReviewer;
         this.contentActivity = contentActivity;
         this.dtCreated = dtCreated;
+        this.typeHistory = typeHistory;
     }
 
     public String getIdHistory() {
@@ -62,5 +67,13 @@ public class ActivityHistory {
 
     public void setDtCreated(Date dtCreated) {
         this.dtCreated = dtCreated;
+    }
+
+    public String getTypeHistory() {
+        return typeHistory;
+    }
+
+    public void setTypeHistory(String typeHistory) {
+        this.typeHistory = typeHistory;
     }
 }

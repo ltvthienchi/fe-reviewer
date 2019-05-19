@@ -3,12 +3,9 @@ package com.prj4.reviewer.controller;
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.*;
 import com.prj4.reviewer.request.*;
-import com.prj4.reviewer.response.CompanyActiveResponse;
-import com.prj4.reviewer.response.ReviewerActiveResponse;
+import com.prj4.reviewer.response.*;
 import com.prj4.reviewer.service.AdminService;
 import com.prj4.reviewer.service.GenerateId;
-import com.prj4.reviewer.response.CommentReported;
-import com.prj4.reviewer.response.PostResponse;
 import com.prj4.reviewer.service.*;
 import jdk.nashorn.internal.runtime.events.RecompilationEvent;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -48,6 +45,8 @@ public class AdminRestController {
     CommentService commentService;
     @Autowired
     public JavaMailSender emailSender;
+    @Autowired
+    public ChartService chartService;
 
     @PostMapping(BASE_POST_LINK + "createAdmin")
     public JsonResponse<String> createAdmin(@RequestBody @Valid AdminRequest adminRequest) {
@@ -206,8 +205,20 @@ public class AdminRestController {
         return JsonResponse.accept("");
     }
 
+    @GetMapping(BASE_POST_LINK + "getColumnChart")
+    public List<ChartResponse> getColumnChart() {
+        return chartService.getColumnChartInfor();
+    }
 
+    @GetMapping(BASE_POST_LINK + "getCircleChart")
+    public List<ChartResponse> getCircleChart() {
+        return chartService.getCircleChartInfo();
+    }
 
+    @GetMapping(BASE_POST_LINK + "getAllCounts")
+    public List<ChartResponse> getAllCounts() {
+        return chartService.getReportNumber();
+    }
 
 
 
