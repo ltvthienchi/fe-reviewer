@@ -76,6 +76,9 @@ import { AdvertismentComponent } from './component/advertisment/advertisment.com
 import { ReviewCompanyComponent } from './component/company/review-company/review-company.component';
 import { NgbModule, NgbRating, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReviewListCompanyComponent } from './component/company/review-list-company/review-list-company.component';
+import { UpdateProfileComponent } from './component/company/update-profile/update-profile.component';
+import { ChangePasswordComponent } from './component/company/change-password/change-password.component';
+import { TableReviewComponent } from './component/company/table-review/table-review.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -196,8 +199,10 @@ export function tokenGetter() {
     SubcriptionsComponent,
     AdvertismentComponent,
     ReviewCompanyComponent,
-    ReviewListCompanyComponent
-
+    ReviewListCompanyComponent,
+    UpdateProfileComponent,
+    ChangePasswordComponent,
+    TableReviewComponent,
   ],
   imports: [
     HttpClientModule,

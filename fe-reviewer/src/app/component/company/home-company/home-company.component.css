@@ -217,25 +217,3 @@
 .paddingleft{
   padding-left: 0px;
 }
-
-ngb-rating:focus {
-  outline: none;
-}
-
-.star {
-  position: relative;
-  display: inline-block;
-  font-size: 2.5rem;
-  color: #d3d3d3;
-  border: none;
-}
-.full {
-  color: red;
-  border: none;
-}
-.half {
-  position: absolute;
-  display: inline-block;
-  overflow: hidden;
-  color: red;
-}

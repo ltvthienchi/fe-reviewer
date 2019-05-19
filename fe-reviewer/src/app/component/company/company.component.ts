@@ -34,7 +34,7 @@ export class CompanyComponent implements OnInit {
   isPostProduct = false;
   isViewReview = false;
   txtPostProduct = 'Post Product';
-  txtViewReview = ' History Review Company';
+  txtViewReview = ' History Review';
 
   constructor(private authGuard: AuthGuardService, private http: HttpService, private activatedRoute: ActivatedRoute,
               private idUserSer: IdUserService, private router: Router, private route: ActivatedRoute) { }
@@ -51,11 +51,20 @@ export class CompanyComponent implements OnInit {
 
   initialiseState() {
     const self = this;
+    this.isPostProduct = false;
+    this.isViewReview = false;
+    this.txtPostProduct = 'Post Product';
+    this.txtViewReview = ' History Review';
     this.getData();
     this.checkIsFollow(this.idCompany);
     $(document).ready(function () {
       $('html,body').animate({ scrollTop: 0 }, 'normal');
-      if(self.idProduct) $('#changeCreateProduct').click();
+      if(self.idProduct) {
+        $('.menucpn').find('.active').removeClass('active');
+        $('#timeline').removeClass('active show');
+        $('#createAndEdit').addClass('active show');
+        $('#changeCreateProduct').addClass('active');
+      }
     });
   }
 
@@ -87,7 +96,7 @@ export class CompanyComponent implements OnInit {
   changeIsPostProduct() {
     if (!this.isPostProduct) {
       this.isPostProduct = true;
-      this.txtPostProduct = 'Show timeline';
+      this.txtPostProduct = 'Show Timeline';
     } else {
       this.router.navigateByUrl('/company/'+this.idCompany);
       this.isPostProduct = false;
@@ -97,8 +106,10 @@ export class CompanyComponent implements OnInit {
   }
 
   changeViewReviewer() {
+    this.isPostProduct = false;
+    this.txtPostProduct = 'Post Product';
     this.isViewReview = !this.isViewReview;
-    this.isViewReview ? this.txtViewReview = ' View Product' : this.txtViewReview = ' History Review Company';
+    this.isViewReview ? this.txtViewReview = ' Show Timeline' : this.txtViewReview = ' History Review';
   }
 
   checkIsFollow(idCompany) {
@@ -135,6 +146,13 @@ export class CompanyComponent implements OnInit {
   checkEventAction(e) {
     if(e.code === 'delete') this.getData();
     if(e.code === 'update') this.getData();
+  }
+
+  resetButton(e) {
+    if(this.idProduct) {
+      this.router.navigateByUrl('/company/'+this.idCompany);
+    }
+    this.getData();
   }
 
 }

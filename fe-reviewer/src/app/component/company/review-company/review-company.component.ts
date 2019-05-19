@@ -34,12 +34,11 @@ export class ReviewCompanyComponent implements OnInit {
 
   getData() {
     let data = {
-      idUser: this.idUser,
+      idReviewer: this.idUser,
       idCompany: this.data.idCompany,
     };
     this.http.getReviewCompByIdReviewer(data).subscribe(res => {
       if(res) {
-        console.log(res);
         this.dataReview.ratingComp = res.ratingComp;
         this.dataReview.contentComment = res.commentContent;
         this.dtCreated = res.dtCreated;
@@ -52,6 +51,7 @@ export class ReviewCompanyComponent implements OnInit {
   }
 
   saveModal() {
+    console.log('here!');
     this.http.postReviewCompany(this.dataReview).subscribe(res => {
       if(res.status === 'SUCCESS') {
         this.dialogRef.close(true);

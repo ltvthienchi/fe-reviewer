@@ -1,5 +1,4 @@
 <div class="row">
-
   <div class="col-8">
     <div class="boderbody-mid scroll-bar-hidden">
       <div *ngFor="let item of lstPro">
@@ -8,44 +7,7 @@
     </div>
   </div>
   <div class="col-4 sticky-top" style="z-index: 999;">
-    <div class="bodercpn text-center">
-
-      <h4 class="pt-3 mb-0">
-        <span class="pt-1">Rating Review</span>
-      </h4>
-
-      <div *ngIf="curTotalReview !== 0">
-        <p class="text-center mt-3 m-0">
-          <span class="mr-1 badge badge-info">({{currentRate}}/5)</span> in {{curTotalReview}} review
-        </p>
-
-        <ng-template #t let-fill="fill">
-        <span class="star" [class.full]="fill === 100">
-          <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
-        </span>
-        </ng-template>
-        <ngb-rating [(rate)]="currentRate" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
-      </div>
-
-      <div *ngIf="curTotalReview === 0">
-        <h4 class="text-center mt-3 mb-3">This company has no reviews</h4>
-      </div>
-
-      <div *ngIf="checkAuthGuard() && !isCompanyRole()">
-        <button class="btn btn-outline-info" (click)="showReview()">
-          Review this Company
-        </button>
-      </div>
-
-    </div>
-
-
-<!--    <div class="bodercpn margintop">-->
-<!--      <h4 class="text-center">Address</h4>-->
-<!--      <iframe-->
-<!--        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3257176556144!2d106.66413881462262!3d10.786346192314788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed23ca5d8db%3A0x24d414f45e5a523!2zNTkwIEPDoWNoIE3huqFuZyBUaMOhbmcgOCwgUGjGsOG7nW5nIDExLCBRdeG6rW4gMywgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1555667078797!5m2!1svi!2s"-->
-<!--        frameborder="0" style="border:0" allowfullscreen></iframe>-->
-<!--    </div>-->
+    <app-table-review [idCompany]="idCompany" (eventAction)="checkEventAction($event)" ></app-table-review>
   </div>
 </div>
 

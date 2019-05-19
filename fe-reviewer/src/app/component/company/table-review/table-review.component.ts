@@ -1,19 +1,17 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AuthGuardService} from '../../../services/auth/auth-guard.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {IdUserService} from '../../../services/data-global/id-user.service';
-import {ReviewCompanyComponent} from '../review-company/review-company.component';
 import {MatDialog} from '@angular/material';
 import {HttpService} from '../../../services/http/http.service';
+import {ReviewCompanyComponent} from '../review-company/review-company.component';
 
 @Component({
-  selector: 'app-home-company',
-  templateUrl: './home-company.component.html',
-  styleUrls: ['./home-company.component.css']
+  selector: 'app-table-review',
+  templateUrl: './table-review.component.html',
+  styleUrls: ['./table-review.component.css']
 })
-export class HomeCompanyComponent implements OnInit {
-
-  @Input('items') lstPro: any;
+export class TableReviewComponent implements OnInit {
   @Input() idCompany: any;
   @Output() eventAction: EventEmitter<any> = new EventEmitter();
   idUser;
@@ -45,20 +43,9 @@ export class HomeCompanyComponent implements OnInit {
     return this.authGuard.checkLogin();
   }
 
-  isCompanyAccount() {
-    return localStorage.getItem('role') === 'ROLE_COMPANY' && this.idCompany === this.idUser;
-  }
-
   isCompanyRole() {
     return localStorage.getItem('role') === 'ROLE_COMPANY';
   }
-
-
-  checkEventAction(e) {
-    if(e.code === 'delete') { this.eventAction.emit({code: 'delete', data: null}) }
-    if(e.code === 'edit') this.router.navigateByUrl('company/' + e.data.idCompany + '/' + e.data.idProduct);
-  }
-
 
   showReview() {
     const data = {
@@ -76,4 +63,5 @@ export class HomeCompanyComponent implements OnInit {
       }
     })
   }
+
 }
