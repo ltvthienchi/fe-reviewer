@@ -62,6 +62,6 @@ public class FollowCompanyService {
     }
 
     public int getCountSubscribe(String idCompany) {
-        return followCompanyRepository.countAllByIdCompany(idCompany);
+        return followCompanyRepository.countAllByIdCompanyAndIsFollow(idCompany, true);
     }
 }

@@ -16,5 +16,5 @@ public interface FollowCompanyRepository extends CrudRepository<FollowCompany, S
     List<FollowCompany> getListCompanyIsFollowed(String idReviewer);
 
 
-    int countAllByIdCompany(String idCompany);
+    int countAllByIdCompanyAndIsFollow(String idCompany, Boolean isFollow);
 }
