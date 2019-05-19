@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface FeedbackAdminRepository extends CrudRepository<FeedbackAdmin, String> {
     List<FeedbackAdmin> findAllByOrderByDtCreatedDesc();
+    FeedbackAdmin findByidFeedbackAdmin(String id);
 
 }

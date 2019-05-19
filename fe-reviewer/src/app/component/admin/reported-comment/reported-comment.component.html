@@ -7,6 +7,7 @@
             <h2>Manage Reported Comment</h2>
           </div>
           <div class="col-sm-6">
+              <input class="form-control" type="text" (click)="search()" [formControl]="queryField" placeholder="Search"  autofocus>
           </div>
         </div>
       </div>
@@ -16,6 +17,7 @@
           <th>Reviewer Comment</th>
           <th>Content Comment</th>
           <th>Comment Date</th>
+          <th *ngIf="check">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -25,7 +27,7 @@
           <td>{{reported.reviewerComment}}</td>
           <td>{{reported.contentComment}}</td>
           <td>{{reported.dateComment |  date:'dd/MM/yyyy'}}</td>
-          <td>
+          <td *ngIf="check">
             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" (click)="saveCommentToModal(reported.idComment)">
               <i class="fas fa-trash-alt" data-toggle="tooltip" title="Delete"></i>
             </a>

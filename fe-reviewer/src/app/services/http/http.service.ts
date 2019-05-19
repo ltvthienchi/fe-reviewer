@@ -274,4 +274,9 @@ export class HttpService {
     });
     return this.http.post(URL_SERVER.token_unAu + 'google-generate-token', id, { headers: reqHeader });
   }
+
+  public sendMail(data): Observable<any> {
+    return this.http.post(URL_SERVER.admin + 'sendMail', data, getHeader());
+
+  }
 }

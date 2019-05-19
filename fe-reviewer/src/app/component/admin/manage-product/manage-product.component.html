@@ -6,6 +6,9 @@
           <div class="col-sm-6">
             <h2>Manage Feedback</h2>
           </div>
+          <div class="col-sm-6">
+              <input class="form-control" type="text" (click)="search()" [formControl]="queryField" placeholder="Search"  autofocus>
+          </div>
         </div>
       </div>
       <div class="container-confirm">
@@ -18,7 +21,7 @@
             <th class="w-1 text-center">Rating</th>
             <th class="w-1 text-center">Comment</th>
             <th class="w-1-2 text-center">Date Create</th>
-            <th class="w-0-8">Options</th>
+            <th class="w-0-8" *ngIf="check" >Action</th>
           </tr>
           </thead>
           <tbody>
@@ -29,7 +32,7 @@
             <td class="text-center" (click)="detailProduct(item)">{{(item.avgBattery + item.avgCamera + item.avgDesign + item.avgDisplay + item.avgPerformance) / 5 | floatFixed}}</td>
             <td class="text-center" (click)="detailProduct(item)">{{item.totalComment}}</td>
             <td class="text-center" (click)="detailProduct(item)">{{item.dtCreated | ddmmyyyy}}</td>
-            <td>
+            <td *ngIf="check">
               <a (click)="changeActive(item.idProduct, item.active, $event)" [class]="item.active ? 'accept' : 'delete'" style="margin:0 auto;width: 33px;display: block;">
                 <i [class]="item.active ? 'fas fa-unlock' : 'fas fa-lock'"></i>
               </a>
