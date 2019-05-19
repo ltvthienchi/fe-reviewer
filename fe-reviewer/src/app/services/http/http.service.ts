@@ -314,4 +314,8 @@ export class HttpService {
   public getActivityHistory(id): Observable<any> {
     return this.http.post(URL_SERVER.infoReviewer + 'getHistoryActivity', id, getHeader());
   }
+  public sendMail(data): Observable<any> {
+    return this.http.post(URL_SERVER.admin + 'sendMail', data, getHeader());
+
+  }
 }

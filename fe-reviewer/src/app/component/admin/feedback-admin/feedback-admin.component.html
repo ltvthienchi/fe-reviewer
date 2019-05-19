@@ -6,6 +6,9 @@
           <div class="col-sm-6">
             <h2>Manage Feedback</h2>
           </div>
+          <div class="col-sm-6">
+              <input class="form-control" type="text" (click)="search()" [formControl]="queryField" placeholder="Search"  autofocus>
+          </div>
         </div>
       </div>
       <div class="container-confirm">
@@ -13,10 +16,12 @@
           <thead>
           <tr>
             <th class="w-0-5">#</th>
-            <th class="w-2">titleFeedback</th>
-            <th class="w-5">contentFeedback</th>
-            <th class="w-1">dtCreated</th>
-            <th class="w-1-5">emailFeedback</th>
+            <th class="w-2">Title</th>
+            <th class="w-3">Content</th>
+            <th class="w-1">Date Created</th>
+            <th class="w-1-5">Email User</th>
+            <th class="w-1">Replied</th>
+            <th class="w-1" *ngIf="check">Send Mail</th>
           </tr>
           </thead>
           <tbody>
@@ -25,7 +30,16 @@
             <td>{{item.titleFeedback}}</td>
             <td>{{item.contentFeedback}}</td>
             <td>{{item.dtCreated | ddmmyyyy}}</td>
-            <td>{{item.emailFeedback}}</td>
+            <td >{{item.emailFeedback}}</td>
+            <td >
+                <div [class]="item.isReply ? 'btn btn-outline-success' : 'btn btn-outline-secondary'" style="font-size: 15px">
+                    <i [class]="item.isReply ? 'fas fa-check' : 'fas fa-times'" ></i>
+                  </div>
+            </td>
+            <td *ngIf="check">
+                <a href="#sendMail" class="accept" data-toggle="modal" (click)="sendMail(item)">
+                    <i class="fas fa-reply" data-toggle="tooltip" title="Send Mail"></i></a>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -46,5 +60,35 @@
       </div>
     </div>
   </div>
+<!-- send mail model -->
+  <div id="sendMail" class="modal fade">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form [formGroup]="sendForm">
+            <div class="modal-header">
+              <h4 class="modal-title" style="align-content:center;">Reply Feedback</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+              <input formControlName="idFeedback" type="hidden" class="form-control">
+              <input formControlName="Email" type="hidden" class="form-control">
+              <div class="form-group">
+                <textarea formControlName="Content" type="text" class="form-control" rows="4"></textarea>
+                <app-text-alert [field]="'Content'" [invalidField]="'Content'" style="width: 100%" [form]="sendForm"
+                  [invalidForm]="validatorForm.sendForm"></app-text-alert>
+  
+              </div>
+              
+  
+            </div>
+            <div class="modal-footer">
+              <input type="button" id="close-button-edit" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+              <input type="submit" class="btn btn-info" (click)="submitMail()" value="Send">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
 </div>
 

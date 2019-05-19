@@ -20,4 +20,9 @@ public class FeedbackAdminService {
     public List<FeedbackAdmin> getAll(){
        return feedbackAdminRepository.findAllByOrderByDtCreatedDesc();
     }
+
+    public FeedbackAdmin findByIdFeedbackAdmin (String id){return feedbackAdminRepository.findByidFeedbackAdmin(id);}
+    public void save(FeedbackAdmin feedbackAdmin){
+        feedbackAdminRepository.save(feedbackAdmin);
+    }
 }

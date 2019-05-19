@@ -25,12 +25,14 @@ public class AdminRequest {
 
     private String phoneAdmin;
 
+    private String role;
+
 
 
     public AdminRequest() {
     }
 
-    public AdminRequest(String idAdmin, String fullNameAdmin, String emailAdmin, String passAdmin, Date dobAdmin, Date dtCreated, boolean isActive, String addressAdmin, String phoneAdmin) {
+    public AdminRequest(String idAdmin, String fullNameAdmin, String emailAdmin, String passAdmin, Date dobAdmin, Date dtCreated, boolean isActive, String addressAdmin, String phoneAdmin, String role) {
         this.idAdmin = idAdmin;
         this.fullNameAdmin = fullNameAdmin;
         this.emailAdmin = emailAdmin;
@@ -40,6 +42,7 @@ public class AdminRequest {
         this.isActive = isActive;
         this.addressAdmin = addressAdmin;
         this.phoneAdmin = phoneAdmin;
+        this.role = role;
     }
 
     public Date getDtCreated() {
@@ -112,5 +115,13 @@ public class AdminRequest {
 
     public void setPhoneAdmin(String phoneAdmin) {
         this.phoneAdmin = phoneAdmin;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
