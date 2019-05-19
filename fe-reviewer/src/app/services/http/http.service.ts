@@ -63,6 +63,30 @@ export class HttpService {
     return this.http.post(URL_SERVER.infoReviewer + 'getReviewCompByIdReviewer', data, getHeader());
   }
 
+  public updateInfoCompany(data) {
+    let input = new FormData();
+    input.append('idCompany', data.idCompany);
+    input.append('nameCompany', data.nameCompany);
+    input.append('webCompany', data.webCompany);
+    input.append('telCompany', data.telCompany);
+    if (data.avaCompany) {
+      input.append('avaCompany', data.avaCompany, data.avaCompany.name);
+    } else {
+      input.append('avaCompany', null);
+    }
+    if (data.panelCompany) {
+      input.append('panelCompany', data.panelCompany, data.panelCompany.name);
+    } else {
+      input.append('panelCompany', null);
+    }
+    const auth_token = localStorage.getItem('userToken');
+    const reqHeader = new HttpHeaders({
+      'Authorization': 'Bearer ' + auth_token
+    });
+    console.log('====> here!', data);
+    return this.http.post(URL_SERVER.company + 'updateComp', input, { headers: reqHeader });
+  }
+
   // PRODUCT
 
   public getAllProduct(): Observable<any> {

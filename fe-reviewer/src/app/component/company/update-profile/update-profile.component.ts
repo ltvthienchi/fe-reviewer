@@ -42,6 +42,18 @@ export class UpdateProfileComponent implements OnInit {
 
   updateProfile() {
     if(this.formUpdateCompany.valid) {
+      let data = {
+        idCompany: this.idUser,
+        nameCompany: this.formUpdateCompany.controls['name'].value,
+        webCompany: this.formUpdateCompany.controls['website'].value,
+        telCompany: this.formUpdateCompany.controls['phone'].value,
+        addrCompany: this.formUpdateCompany.controls['address'].value,
+        avaCompany: null,
+        panelCompany: null,
+      };
+      this.http.updateInfoCompany(data).subscribe(res => {
+        console.log(res);
+      });
       console.log('save!!!');
     }
   }
