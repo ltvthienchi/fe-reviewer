@@ -63,6 +63,7 @@ export class CommentPostComponent implements OnInit {
   }
 
   cancelReply(item) {
+    this.valueComment = '';
     const id = '#reply-'+item.idComment;
     $(id).hide();
   }
