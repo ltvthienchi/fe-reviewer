@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -127,12 +126,14 @@ public class CompanyRestController {
             @RequestParam("nameCompany") String nameCompany,
             @RequestParam("webCompany") String webCompany,
             @RequestParam("telCompany") String telCompany,
+            @RequestParam("addrCompany") String addrCompany,
             @RequestParam(value = "avaCompany", required = false) MultipartFile avaCompany,
             @RequestParam(value = "panelCompany", required = false) MultipartFile panelCompany
     ) {
 
         try {
-            companyService.updateInfo(idCompany, nameCompany, webCompany, telCompany, avaCompany, panelCompany);
+            companyService.updateInfo(idCompany, nameCompany, webCompany, telCompany,
+                    avaCompany, panelCompany, addrCompany);
             return JsonResponse.accept("Success");
         } catch (Exception ex) {
             return JsonResponse.reject(ex.getMessage());

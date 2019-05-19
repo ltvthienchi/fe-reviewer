@@ -68,12 +68,22 @@ public class CompanyService {
         return companyRepository.findByIdCompany(idCompany);
     }
 
-    public void updateInfo(String idCompany, String nameCompany,String webCompany,String telCompany,
-                           MultipartFile avaCompany,MultipartFile panelCompany) {
+    public void updateInfo(String idCompany, String nameCompany, String webCompany, String telCompany,
+                           MultipartFile avaCompany, MultipartFile panelCompany, String addrCompany) {
         Company company = companyRepository.findByIdCompany(idCompany);
-        company.setNameCompany(nameCompany);
-        company.setWebCompany(webCompany);
-        company.setTelCompany(telCompany);
+        if (nameCompany != null) {
+            company.setNameCompany(nameCompany);
+        }
+
+        if (webCompany != null) {
+            company.setWebCompany(webCompany);
+        }
+        if (telCompany != null) {
+            company.setTelCompany(telCompany);
+        }
+        if (addrCompany != null) {
+            company.setAddrCompany(addrCompany);
+        }
         //company.setE(emailCompany);
         if (avaCompany != null) {
             Images images = imageRepository.findByIdImage(company.getImgAvatarCompany());
