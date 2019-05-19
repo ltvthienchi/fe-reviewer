@@ -90,4 +90,8 @@ public class CommentService {
         comment.setReport(true);
         commentRepository.save(comment);
     }
+
+    public Comment getCommentByIdComment(String idComment) {
+        return commentRepository.findByIdComment(idComment);
+    }
 }

@@ -21,5 +21,14 @@ public class Constants {
     public static final int COMPANY_IMAGE_TYPE = 1;
     public static final int REVIEWER_IMAGE_TYPE = 2;
 
+    // Type History
+    public static final String RATING_ACTIVITY = "RATE";
+    public static final String COMMENT_ACTIVITY = "COMMENT";
+    public static final String REVIEWCOMP_ACTIVITY = "REVIEW";
+    public static final String FOLLOW_ACTIVITY = "FOLLOW";
+    public static final String UN_FOLLOW_ACTIVITY = "UNFOLLOW";
+    public static final String UPDATE_IMGAVA_ACTIVITY = "AVA";
+    public static final String UPDATE_IMGPANEL_ACTIVITY = "PANEL";
+
 }
 

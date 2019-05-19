@@ -15,8 +15,10 @@ import com.prj4.reviewer.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -92,10 +94,11 @@ public class CompanyRestController {
         Company company = companyService.getCompanyById(idCompany);
         String imgAvatarCompany = imageService.getImagePathById(company.getImgAvatarCompany());
         String imgPanelCompany = imageService.getImagePathById(company.getImgPanelCompany());
+        int numbSubscribed = followCompanyService.getCountSubscribe(idCompany);
         CompanyResponse companyResponse = new CompanyResponse(company.getIdCompany(),company.getNameCompany(),
                 company.getAddrCompany(), company.getWebCompany(), company.getTelCompany(),
                 imgAvatarCompany, imgPanelCompany,
-                company.getEmailCompany(), company.getAvgRatingComp());
+                company.getEmailCompany(), company.getAvgRatingComp(), numbSubscribed);
         List<Post> lstPostOrigin = postService.getAllPostByComId(idCompany);
         List<PostResponse> lstPost = createPostResponseService.createListPostReponse(lstPostOrigin);
         DetailCompanyReponse detailCompanyReponse = new DetailCompanyReponse(companyResponse, lstPost);
@@ -118,7 +121,23 @@ public class CompanyRestController {
 
     }
 
+    @PostMapping(BASE_POST_LINK + "updateComp")
+    public JsonResponse<String> updateComp(
+            @RequestParam("idCompany") String idCompany,
+            @RequestParam("nameCompany") String nameCompany,
+            @RequestParam("webCompany") String webCompany,
+            @RequestParam("telCompany") String telCompany,
+            @RequestParam(value = "avaCompany", required = false) MultipartFile avaCompany,
+            @RequestParam(value = "panelCompany", required = false) MultipartFile panelCompany
+    ) {
 
+        try {
+            companyService.updateInfo(idCompany, nameCompany, webCompany, telCompany, avaCompany, panelCompany);
+            return JsonResponse.accept("Success");
+        } catch (Exception ex) {
+            return JsonResponse.reject(ex.getMessage());
+        }
+    }
 
 
 }

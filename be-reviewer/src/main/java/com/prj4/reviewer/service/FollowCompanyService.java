@@ -18,6 +18,9 @@ public class FollowCompanyService {
     @Autowired
     GenerateId generateId;
 
+    @Autowired
+    HistoryService historyService;
+
     public boolean checkIsFollow(RequestCheckFollow requestCheckFollow) {
         FollowCompany followCompany = followCompanyRepository.findByIdCompanyAndIdReviewer(requestCheckFollow.getIdCompany(),
                 requestCheckFollow.getIdUser());
@@ -29,16 +32,24 @@ public class FollowCompanyService {
     }
 
     public void followCompany(FollowCompanyRequest followCompanyRequest) {
+        int type = 0;
         FollowCompany followCompany = followCompanyRepository.findByIdCompanyAndIdReviewer(followCompanyRequest.getIdCompany(),
                 followCompanyRequest.getIdFollower());
         if (followCompany != null) {
             followCompany.setFollow(followCompanyRequest.isFollow());
+            if (followCompanyRequest.isFollow() == true) {
+                type = 2;
+            } else {
+                type = 3;
+            }
         } else {
             String idFollowComp = generateId.generateId("FOLLOW_", new Date());
             followCompany = new FollowCompany(idFollowComp, followCompanyRequest.getIdFollower(),
                     followCompanyRequest.getIdCompany(), followCompanyRequest.isFollow());
+            type = 2;
         }
         followCompanyRepository.save(followCompany);
+        historyService.createReviewCompHistory(followCompanyRequest.getIdFollower(), followCompany.getIdCompany(), type);
     }
 
     public List<String> getListCompanyIsFollowed(String idReviewer) {
@@ -48,5 +59,9 @@ public class FollowCompanyService {
             lstIdCompany.add(c.getIdCompany());
         }
         return lstIdCompany;
+    }
+
+    public int getCountSubscribe(String idCompany) {
+        return followCompanyRepository.countAllByIdCompany(idCompany);
     }
 }

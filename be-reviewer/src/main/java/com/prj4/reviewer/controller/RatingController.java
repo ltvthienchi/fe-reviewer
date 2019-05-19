@@ -1,5 +1,6 @@
 package com.prj4.reviewer.controller;
 
+import com.google.gson.JsonObject;
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.Product;
 import com.prj4.reviewer.entity.RatingPost;
@@ -27,6 +28,9 @@ public class RatingController {
 
     @Autowired
     GenerateId generateId;
+
+    @Autowired
+    HistoryService historyService;
 
     @GetMapping(BASE_POST_LINK + "getAll")
     public List<RatingPost> getAll() {
@@ -93,6 +97,8 @@ public class RatingController {
             curProduct.setAvgCamera((avgCamera + curCamera) / curNumRating);
             curProduct.setNumRating(curNumRating);
             productService.saveProduct(curProduct);
+
+            historyService.createRatingHistory(idReviewer, idProduct);
 
         } catch (Exception ex) {
             return JsonResponse.reject(ex.getMessage());

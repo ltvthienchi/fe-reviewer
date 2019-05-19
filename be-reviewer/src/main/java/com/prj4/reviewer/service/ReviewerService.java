@@ -58,6 +58,10 @@ public class ReviewerService {
     @Autowired
     CompanyService companyService;
 
+    @Autowired
+    HistoryService historyService;
+
+
     public FeedbackCompanyResponse feedbackCompany(FeedbackCompanyRequest feedbackCompanyRequest) {
         return null;
     }
@@ -129,13 +133,18 @@ public class ReviewerService {
             String fileName =  fileStorageService.storeFile(avaReviewer, images.getIdImage(), Constants.IMAGE_AVA);
             String fileDownloadUri = "http://localhost/img/reviewer/" + fileName;
             images.setImgPath(fileDownloadUri);
+            imageService.saveImage(images);
+            historyService.createUpdateInfoHistory(idReviewer, fileDownloadUri, 1);
         }
         if (panelReviewer != null) {
             Images images = imageRepository.findByIdImage(reviewer.getImgPanel());
             String fileName =  fileStorageService.storeFile(panelReviewer, images.getIdImage(), Constants.IMAGE_PANEL);
             String fileDownloadUri = "http://localhost/img/reviewer/" + fileName;
             images.setImgPath(fileDownloadUri);
+            imageService.saveImage(images);
+            historyService.createUpdateInfoHistory(idReviewer, fileDownloadUri, 2);
         }
+
         reviewerRepository.save(reviewer);
     }
 

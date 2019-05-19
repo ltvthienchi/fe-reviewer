@@ -1,0 +1,109 @@
+<div class="timeline" *ngIf="listActivity.length > 0;else elseBlock">
+  <!-- Timeline header -->
+
+    <div class="timeline-header">
+      <div class=" mb-1 text-white timeline-header-title bg-success">Now</div>
+    </div>
+
+    <div *ngFor="let activity of listActivity">
+      <div class="timeline-entry" *ngIf="activity.typeActivity === 1">
+        <div class="timeline-stat">
+          <div class="timeline-icon"><img src="{{imageAva}}"
+                                          alt="Profile picture">
+          </div>
+          <div class="timeline-time">{{activity.dtCreated | timeAgo }}</div>
+        </div>
+        <div class="timeline-label">
+          <p class="mar-no pad-btm">{{activity.reviewerName}} was rated at
+            <a [routerLink]="'/detail-product/' + activity.idProduct"
+               class="btn-link text-semibold">{{activity.productName}}</a>
+          </p>
+        </div>
+      </div>
+      <div class="timeline-entry" *ngIf="activity.typeActivity === 2">
+        <div class="timeline-stat">
+          <div class="timeline-icon"><img src="{{imageAva}}"
+                                          alt="Profile picture">
+          </div>
+          <div class="timeline-time">{{activity.dtCreated | timeAgo }}</div>
+        </div>
+        <div class="timeline-label">
+          <p class="mar-no pad-btm">{{activity.reviewerName}} was commented at
+            <a [routerLink]="'/detail-product/' + activity.idProduct"
+               class="btn-link text-semibold">{{activity.productName}}</a>
+          </p>
+        </div>
+      </div>
+      <div class="timeline-entry" *ngIf="activity.typeActivity === 3">
+        <div class="timeline-stat">
+          <div class="timeline-icon"><img src="{{imageAva}}"
+                                          alt="Profile picture">
+          </div>
+          <div class="timeline-time">{{activity.dtCreated | timeAgo }}</div>
+        </div>
+        <div class="timeline-label">
+          <p class="mar-no pad-btm">{{activity.reviewerName}} uploaded avatar</p>
+          <div class="img-holder">
+            <img src="{{activity.imgAva}}" alt="Image">
+          </div>
+        </div>
+      </div>
+      <div class="timeline-entry" *ngIf="activity.typeActivity === 4">
+        <div class="timeline-stat">
+          <div class="timeline-icon"><img src="{{imageAva}}"
+                                          alt="Profile picture">
+          </div>
+          <div class="timeline-time">{{activity.dtCreated | timeAgo }}</div>
+        </div>
+        <div class="timeline-label">
+          <p class="mar-no pad-btm">{{activity.reviewerName}} uploaded panel</p>
+          <div class="img-holder">
+            <img src="{{activity.imgPanel}}" alt="Image">
+          </div>
+        </div>
+      </div>
+      <div class="timeline-entry" *ngIf="activity.typeActivity === 5">
+        <div class="timeline-stat">
+          <div class="timeline-icon"><img src="{{imageAva}}"
+                                          alt="Profile picture">
+          </div>
+          <div class="timeline-time">{{activity.dtCreated | timeAgo }}</div>
+        </div>
+        <div class="timeline-label">
+          <p class="mar-no pad-btm">{{activity.reviewerName}} was reviewed at
+            <a [routerLink]="'/company/' + activity.idCompany"
+               class="btn-link text-semibold">{{activity.nameCompany}}</a>
+          </p>
+        </div>
+      </div>
+      <div class="timeline-entry" *ngIf="activity.typeActivity === 6">
+        <div class="timeline-stat">
+          <div class="timeline-icon"><img src="{{imageAva}}"
+                                          alt="Profile picture">
+          </div>
+          <div class="timeline-time">{{activity.dtCreated | timeAgo }}</div>
+        </div>
+        <div class="timeline-label">
+          <p class="mar-no pad-btm">{{activity.reviewerName}} was subscribed at
+            <a [routerLink]="'/company/' + activity.idCompany"
+               class="btn-link text-semibold">{{activity.nameCompany}}</a>
+          </p>
+        </div>
+      </div>
+      <div class="timeline-entry" *ngIf="activity.typeActivity === 7">
+        <div class="timeline-stat">
+          <div class="timeline-icon"><img src="{{imageAva}}"
+                                          alt="Profile picture">
+          </div>
+          <div class="timeline-time">{{activity.dtCreated | timeAgo }}</div>
+        </div>
+        <div class="timeline-label">
+          <p class="mar-no pad-btm">{{activity.reviewerName}} was unsubscribed at
+            <a [routerLink]="'/company/' + activity.idCompany"
+               class="btn-link text-semibold">{{activity.nameCompany}}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+<ng-template #elseBlock><h4>No Activity at this time</h4></ng-template>

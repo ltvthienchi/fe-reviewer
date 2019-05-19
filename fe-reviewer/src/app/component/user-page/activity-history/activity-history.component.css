@@ -550,7 +550,6 @@ body{
 .timeline {
   position: relative;
   padding-bottom: 40px;
-  background-color: #ebeef0;
   color: #5f5f5f
 }
 
@@ -600,7 +599,8 @@ body{
   width: 100px;
   float: left;
   text-align: center;
-  padding-bottom: 15px
+  padding-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .timeline-entry {
@@ -626,7 +626,7 @@ body{
 
 .timeline-icon {
   border-radius: 50%;
-  box-shadow: 0 0 0 7px #ebeef0;
+  box-shadow: 0 0 0 1px;
   display: block;
   margin: 0 auto;
   height: 46px;
@@ -653,7 +653,7 @@ body{
   width: 100%;
   background-color: #fff;
   border-radius: 0;
-  margin-left: 90px;
+  margin-left: 100px;
   padding: 10px;
   position: relative;
   min-height: 50px;

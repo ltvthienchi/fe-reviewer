@@ -14,4 +14,7 @@ public interface FollowCompanyRepository extends CrudRepository<FollowCompany, S
 
     @Query("Select c from FollowCompany c where c.idReviewer = :idReviewer AND c.isFollow = 'true'")
     List<FollowCompany> getListCompanyIsFollowed(String idReviewer);
+
+
+    int countAllByIdCompany(String idCompany);
 }

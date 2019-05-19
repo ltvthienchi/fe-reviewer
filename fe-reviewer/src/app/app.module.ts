@@ -63,7 +63,7 @@ import {TopRatingService} from './services/data-global/top-rating.service';
 import { CommentPostComponent } from './component/home/comment-post/comment-post.component';
 import {AvatarService} from './services/avatar-service/avatar.service';
 import { DetailProductComponent } from './component/detail-product/detail-product.component';
-import { ActivityHistoryComponent } from './component/activity-history/activity-history.component';
+import { ActivityHistoryComponent } from './component/user-page/activity-history/activity-history.component';
 import { ReportedCommentComponent } from './component/admin/reported-comment/reported-comment.component';
 import { ManageProductComponent } from './component/admin/manage-product/manage-product.component';
 import { ModalDetailComponent } from './component/admin/manage-product/modal-detail/modal-detail.component';
@@ -203,7 +203,6 @@ export function tokenGetter() {
     UpdateProfileComponent,
     ChangePasswordComponent,
     TableReviewComponent,
-
   ],
   imports: [
     HttpClientModule,

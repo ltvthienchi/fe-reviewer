@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpService} from '../../services/http/http.service';
 import * as $ from 'jquery';
 import {
@@ -15,6 +15,7 @@ import {AvatarService} from '../../services/avatar-service/avatar.service';
 import {ActivatedRoute} from '@angular/router';
 import {IdUserService} from '../../services/data-global/id-user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {ActivityHistoryComponent} from './activity-history/activity-history.component';
 
 
 
@@ -25,12 +26,14 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 })
 export class UserPageComponent implements OnInit {
 
+  @ViewChild('appChild') appChild: ActivityHistoryComponent;
   private notifier: NotifierService;
   updateInfoProfile: FormGroup;
   ChangePassForm: FormGroup;
   userInfo;
   idReviewer;
   localId;
+  avatarHistory;
   private emailReviewer: string;
   private firstName: string;
   private fullName: string;
@@ -88,6 +91,7 @@ export class UserPageComponent implements OnInit {
       this.updateInfoProfile.controls['dobReviewer'].setValue(parseDob);
       this.updateInfoProfile.controls['genderReviewer'].setValue(gender);
       this.typeReviewer = data.typeReviewer;
+      this.avatarHistory = this.userInfo.imgAvatar;
     });
   }
 
@@ -100,6 +104,7 @@ export class UserPageComponent implements OnInit {
       const date = dob.getDate() <= 9 ? `0${dob.getDate()}` : dob.getDate();
       const parseDob = `${year}-${month}-${date}`;
       this.dobReviewer = parseDob;
+      this.avatarHistory = this.userInfo.imgAvatar;
     });  }
 
   submitUpdateInfo() {
@@ -124,6 +129,7 @@ export class UserPageComponent implements OnInit {
           if (updateInPro.avaReviewer != null) {
             const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
             this.avatarService.changeAvaImage(avatar);
+            this.avatarHistory = avatar;
           }
           this.showNotification( 'success', 'Update Profile successfully' );
         } else {
@@ -172,11 +178,24 @@ export class UserPageComponent implements OnInit {
   public showNotification(type: string, message: string): void {
     this.notifier.notify(type, message);
   }
-  checkGender() {
-    if (this.genderReviewer === 1) {
-      return true;
+
+  changeView(type) {
+    if (type === 'profile') {
+      this.appChild.reload();
+      $('#profile').show();
+      $('#edit').hide();
+      $('#changepassword').hide();
+    } else if (type === 'edit') {
+      this.reloadData();
+      $('#profile').hide();
+      $('#edit').show();
+      $('#changepassword').hide();
+    } else {
+      $('#profile').hide();
+      $('#edit').hide();
+      $('#changepassword').show();
     }
-    return false;
+
   }
 
 }
