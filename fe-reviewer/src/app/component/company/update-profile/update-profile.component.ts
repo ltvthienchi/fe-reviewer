@@ -17,21 +17,40 @@ export class UpdateProfileComponent implements OnInit {
   validatorForm = {
     formUpdateCompany: true
   };
+  detailCompany: any;
   constructor(private userSer: IdUserService, private formBuilder: FormBuilder, notifier: NotifierService,
-              private http: HttpService) { }
+              private http: HttpService) {
 
-  ngOnInit() {
     this.idUser = this.userSer.getId();
     this.formUpdateCompany = this.formBuilder.group({
       address: ['', [validatorRequired, validatorName]],
       website: ['', [validatorRequired, validatorWebsite]],
-      email: ['', [validatorRequired, validatorEmail]],
-      tel: ['', [validatorRequired, validatorPhone]],
+      name: ['', [validatorRequired, validatorName]],
+      phone: ['', [validatorRequired, validatorPhone]],
     })
   }
 
-  updateProfile() {
+  ngOnInit() {
+    this.http.getDetailCompany(this.idUser).subscribe( (data: any) => {
+      if (data) {
+        console.log(data);
+        this.detailCompany = data.company;
+        this.clearProfile();
+      }
+    });
+  }
 
+  updateProfile() {
+    if(this.formUpdateCompany.valid) {
+      console.log('save!!!');
+    }
+  }
+
+  clearProfile() {
+    this.formUpdateCompany.controls['name'].setValue(this.detailCompany.nameCompany);
+    this.formUpdateCompany.controls['website'].setValue(this.detailCompany.webCompany);
+    this.formUpdateCompany.controls['address'].setValue(this.detailCompany.addrCompany);
+    this.formUpdateCompany.controls['phone'].setValue(this.detailCompany.telCompany);
   }
 
 }
