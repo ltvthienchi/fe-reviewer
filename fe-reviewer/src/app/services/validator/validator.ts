@@ -8,9 +8,14 @@ export function validatorEmail(c: AbstractControl) {
 }
 
 export function validatorRequired(c: AbstractControl) {
-  const check = c.value.split()[0] === ' ';
+  const checkOne = c.value.replace(/  +/g, ' ');
+  const checkTwo = checkOne.split('')[0] === ' ';
+  const temp = checkOne.split('');
+  const checkThree = checkOne.split('')[temp.length - 1] === ' ';
+  // console.log(checkOne.split('')[0]);
   if (!c.value) return { required: 'Field is required' };
-  if (check) return { required: 'Please do not press white space in first!' };
+  if (checkTwo) return { required: 'Please do not press multiple space, or space in first!' };
+  if (checkThree) return { required: 'Please do not press multiple space, or space in last!' };
   return null;
 }
 

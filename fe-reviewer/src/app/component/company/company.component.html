@@ -1,6 +1,6 @@
 <div class="p-main margintop">
   <div class="row">
-    <div class="col-3">
+    <div class="col-3 frame-avt">
       <!-- avatar -->
       <div class="border-avt">
         <img src="{{detailCompany.imgAvatarCompany}}" class="" alt="">
@@ -10,14 +10,21 @@
             <i class="fas fa-check-circle txt-main"></i>
           </h4>
         </div>
+        <div class="upload" (click)="uploadAvt()" *ngIf="isCompanyAccount()">
+          <p><i class="fa fa-camera"></i> Update</p>
+        </div>
       </div>
+
     </div>
-    <div class="col-9 ">
+    <div class="col-9 frame-avt">
       <!-- backgroud -->
       <div class="boderbg rounded">
         <img
           src="{{detailCompany.imgPanelCompany}}"
           class="" alt="">
+      </div>
+      <div class="boderbg rounded upload" (click)="uploadPanel()" *ngIf="isCompanyAccount()">
+        <p><i class="fa fa-camera"></i> Update</p>
       </div>
     </div>
   </div>
@@ -85,7 +92,7 @@
                 </div>
                 <div class="list-details">
                   <div  class="mb-1">
-                    <span>10</span>
+                    <span>{{detailCompany.numbSubscribed}}</span>
                   </div>
                   <small>Follower</small>
                 </div>
@@ -164,7 +171,7 @@
           <app-review-list-company (eventAction)="checkEventAction($event)" [idCompany]="idCompany"></app-review-list-company>
         </div>
         <div class="tab-pane fade" id="updateProfile" role="tabpanel">
-          <app-update-profile></app-update-profile>
+          <app-update-profile (eventAction)="checkEventAction($event)" ></app-update-profile>
         </div>
         <div class="tab-pane fade" id="changePassword" role="tabpanel">
           <app-change-password></app-change-password>

@@ -8,6 +8,8 @@ import {IdUserService} from '../../services/data-global/id-user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {MatDialog} from '@angular/material';
 import {ReviewCompanyComponent} from './review-company/review-company.component';
+import {ModalUploadAvtComponent} from './modal-upload-avt/modal-upload-avt.component';
+import {ModalUploadPanelComponent} from './modal-upload-panel/modal-upload-panel.component';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -37,7 +39,7 @@ export class CompanyComponent implements OnInit {
   txtViewReview = ' History Review';
 
   constructor(private authGuard: AuthGuardService, private http: HttpService, private activatedRoute: ActivatedRoute,
-              private idUserSer: IdUserService, private router: Router, private route: ActivatedRoute) { }
+              private idUserSer: IdUserService, private router: Router, private route: ActivatedRoute, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -153,6 +155,32 @@ export class CompanyComponent implements OnInit {
       this.router.navigateByUrl('/company/'+this.idCompany);
     }
     this.getData();
+  }
+
+  uploadAvt() {
+    const myDialog = this.dialog.open(ModalUploadAvtComponent, {
+      width: '650px',
+      data: this.detailCompany
+    });
+
+    myDialog.afterClosed().subscribe(res => {
+      if(res) {
+        this.getData();
+      }
+    })
+  }
+
+  uploadPanel() {
+    const myDialog = this.dialog.open(ModalUploadPanelComponent, {
+      width: '950px',
+      data: this.detailCompany
+    });
+
+    myDialog.afterClosed().subscribe(res => {
+      if(res) {
+        this.getData();
+      }
+    })
   }
 
 }

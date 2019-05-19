@@ -82,6 +82,16 @@
   box-shadow: none;
 }
 
+.btn-esc {
+  font-size: 10px !important;
+  color: #90949c;
+}
+
+.btn-esc span {
+  cursor: pointer;
+  font-size: 10px !important;
+}
+
 .reply-comment {
   display: none;
 }
@@ -141,4 +151,9 @@ button:focus {
 
 .time-ago span {
   font-size: 12px;
+}
+
+
+.input-comment.sub-2.edit {
+  display: none;
 }

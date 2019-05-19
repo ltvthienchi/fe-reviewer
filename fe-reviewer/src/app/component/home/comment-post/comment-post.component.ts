@@ -17,6 +17,7 @@ export class CommentPostComponent implements OnInit {
   arrTest:any = [];
   dataComment:any = [];
   valueComment:any;
+  valueCommentEdit: any;
   userInfo:any;
   idUser;
   userRole = localStorage.getItem('role');
@@ -61,6 +62,24 @@ export class CommentPostComponent implements OnInit {
     $(id).css('display', 'block');
   }
 
+  editComment(item) {
+    $('.input-comment.sub-2.edit').hide();
+    $('.input-comment.content').css('display', 'block');
+    const id = '#editComment_'+item.idComment;
+    const idRoot = '#rootEditComment_' + item.idComment;
+    $(idRoot).hide();
+    $(id).css('display', 'block').children(1).focus();
+    this.valueCommentEdit = item.content;
+  }
+
+  cancelComment(item) {
+    const id = '#editComment_'+item.idComment;
+    const idRoot = '#rootEditComment_' + item.idComment;
+    $(idRoot).css('display', 'block');
+    $(id).hide();
+    this.valueCommentEdit = '';
+  }
+
   postComment(item) {
     if (this.valueComment) {
       let newComment = {
@@ -72,13 +91,22 @@ export class CommentPostComponent implements OnInit {
         content: this.valueComment,
         dateCreate: new Date()
       };
-      console.log(newComment);
       this.http.createComment(newComment).subscribe(res => {
         this.valueComment = '';
         $('.reply-comment').hide();
         this.getData();
       });
     }
+  }
+
+  editAndPostComment(item) {
+    let data = {
+      idComment: item.idComment,
+      contentComment: this.valueCommentEdit
+    };
+    this.http.editComment(data).subscribe(res => {
+      this.getData();
+    })
   }
 
   showAllComment() {

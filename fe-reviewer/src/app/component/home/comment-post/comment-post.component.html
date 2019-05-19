@@ -9,7 +9,7 @@
           </div>
         </div>
 
-        <div class="input-comment">
+        <div class="input-comment content" [id]="'rootEditComment_'+item.idComment">
           <div class="clearfix">
             <p class="mb-0 content-comment">
               <span class="username">
@@ -26,7 +26,7 @@
                 <a class="dropdown-item" *ngIf="item.idReviewer !== idUser" (click)="reportComment(item.idComment)">
                   Report this comment
                 </a>
-                <a class="dropdown-item" *ngIf="item.idReviewer === idUser">Edit</a>
+                <a class="dropdown-item" *ngIf="item.idReviewer === idUser" (click)="editComment(item)">Edit</a>
               </div>
             </div>
           </div>
@@ -35,17 +35,27 @@
             <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span> · <span> {{item.dateCreate | timeAgo }} </span>
           </p>
         </div>
+
+        <div class="input-comment sub-2 edit" [id]="'editComment_'+item.idComment">
+          <input  class="form-control" type="text" [(ngModel)]="valueCommentEdit" (keydown.enter)="editAndPostComment(item)"
+          (keydown.escape)="cancelComment(item)" />
+          <p class="m-0 mt-1 time-ago">
+            <span class="mb-1 ml-3 btn-esc">Press Esc to <span class="txt-main" (click)="cancelComment(item)">cancel</span></span>
+          </p>
+        </div>
       </div>
 
       <div *ngIf="item.children.length > 0">
         <div class="view-comment" style="padding-left: 50px; margin-top: 15px"  *ngFor="let itemTwo of item.children">
           <div class="clearfix">
+
             <div class="avatar-comment">
               <div class="m-0 item-avatar">
                 <img [src]="itemTwo.imgAvatar" alt="image"/>
               </div>
             </div>
-            <div class="input-comment sub">
+
+            <div class="input-comment content sub" [id]="'rootEditComment_'+itemTwo.idComment">
               <div class="clearfix">
                 <p class="mb-0 content-comment sub">
                   <span class="username">
@@ -62,7 +72,7 @@
                     <a class="dropdown-item" *ngIf="itemTwo.idReviewer !== idUser" (click)="reportComment(itemTwo.idComment)">
                       Report this comment
                     </a>
-                    <a class="dropdown-item" *ngIf="itemTwo.idReviewer === idUser">Edit</a>
+                    <a class="dropdown-item" *ngIf="itemTwo.idReviewer === idUser" (click)="editComment(itemTwo)">Edit</a>
                   </div>
                 </div>
               </div>
@@ -70,11 +80,16 @@
                 <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span> · <span> {{itemTwo.dateCreate | timeAgo }} </span>
               </p>
             </div>
+
+            <div class="input-comment sub-2 edit" [id]="'editComment_'+itemTwo.idComment">
+              <input  class="form-control" type="text" [(ngModel)]="valueCommentEdit" (keydown.enter)="editAndPostComment(itemTwo)"
+                      (keydown.escape)="cancelComment(itemTwo)" />
+              <p class="m-0 mt-1 time-ago">
+                <span class="mb-1 ml-3 btn-esc">Press Esc to <span class="txt-main" (click)="cancelComment(itemTwo)">cancel</span></span>
+              </p>
+            </div>
+
           </div>
-
-
-
-
         </div>
       </div>
 

@@ -23,6 +23,10 @@ export class HttpService {
     return this.http.post(URL_SERVER.user + 'createComment', data, getHeader());
   }
 
+  public editComment(data) {
+    return this.http.post(URL_SERVER.user + 'editComment', data, getHeader());
+  }
+
   public getCommentByProduct(data) {
     return this.http.post(URL_SERVER.user + 'getCommentByProductId', data, getHeader());
   }
@@ -69,6 +73,7 @@ export class HttpService {
     input.append('nameCompany', data.nameCompany);
     input.append('webCompany', data.webCompany);
     input.append('telCompany', data.telCompany);
+    input.append('addrCompany', data.addrCompany);
     if (data.avaCompany) {
       input.append('avaCompany', data.avaCompany, data.avaCompany.name);
     } else {

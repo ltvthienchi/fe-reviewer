@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="modal-header col-12 pt-0 pb-3">
+    <h5 class="modal-title" id="exampleModalLabel">Update Avatar</h5>
+    <button type="button" class="close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="col-12">
+    <div class="image-demo">
+      <img src="{{this.data.imgAvatarCompany}}" alt="demo" id="imgDemo" class="mb-3 mt-2"
+           style="width: 230px; height: 230px; margin: 0 auto; display: block; border: 1px solid silver"/>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="border-upload" >
+      <file-drop id="enterUpload" (onFileDrop)="dropped($event)" style="border-radius: 1px; width: 100%; border: none"
+                 (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)" (click)="selectFile()">
+        <p style="color: black">Click to select or drag here</p>
+      </file-drop>
+      <input type="file" id="inputFile" style="display: none"
+             (change)="handleFileInput($event.target['files'], $event)">
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="clearfix mt-4">
+      <button type="button" class="btn btn-warning float-right ml-3" (click)="closeModal()" >Cancel</button>
+      <button type="button" class="btn btn-info float-right" (click)="saveModal()">Save</button>
+    </div>
+  </div>
+</div>
+<script></script>

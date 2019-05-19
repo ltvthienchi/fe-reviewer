@@ -3,6 +3,12 @@
   /*font-size: 14px;*/
 }
 
+
+
+.drop-zone {
+  border: none!important;
+}
+
 .dropdown-item {
   cursor: pointer;
 }

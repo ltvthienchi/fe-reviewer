@@ -79,6 +79,9 @@ import { ReviewListCompanyComponent } from './component/company/review-list-comp
 import { UpdateProfileComponent } from './component/company/update-profile/update-profile.component';
 import { ChangePasswordComponent } from './component/company/change-password/change-password.component';
 import { TableReviewComponent } from './component/company/table-review/table-review.component';
+import { ModalUploadAvtComponent } from './component/company/modal-upload-avt/modal-upload-avt.component';
+import { ModalUploadPanelComponent } from './component/company/modal-upload-panel/modal-upload-panel.component';
+import { FileDropModule } from 'ngx-file-drop';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -203,6 +206,8 @@ export function tokenGetter() {
     UpdateProfileComponent,
     ChangePasswordComponent,
     TableReviewComponent,
+    ModalUploadAvtComponent,
+    ModalUploadPanelComponent,
   ],
   imports: [
     HttpClientModule,
@@ -220,13 +225,14 @@ export function tokenGetter() {
     MatDialogModule,
     NgbModule.forRoot(),
     NgbRatingModule,
-    SocialLoginModule
+    SocialLoginModule,
+    FileDropModule
   ],
   exports: [
     MatSliderModule,
   ],
   entryComponents: [ModalRatingComponent, ModalDetailComponent, PostDetailProductComponent, AlertMessageComponent,
-  ReviewCompanyComponent
+  ReviewCompanyComponent, ModalUploadAvtComponent, ModalUploadPanelComponent
   ],
   providers: [
     Broadcaster,
