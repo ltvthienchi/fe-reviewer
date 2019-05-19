@@ -150,6 +150,7 @@ public class UserRestController {
         try {
             Comment comment = commentService.getCommentByIdComment(editCommentRequest.getIdComment());
             comment.setContent(editCommentRequest.getContentComment());
+            comment.setDateUpdate(new Date());
             commentService.createComment(comment);
             return JsonResponse.accept("success");
         } catch(Exception ex) {

@@ -58,7 +58,7 @@ public class CommentService {
                 imgAvar = "http://localhost/img/reviewer/avar-pay.png";
             }
             CommentResponse commentResponse = new CommentResponse(c.getContent(), c.getDateCreate(), c.getIdComment(),
-                    idProduct, c.getIdReply(), c.getIdReviewer(), c.getReply(), imgAvar, fullName);
+                    idProduct, c.getIdReply(), c.getIdReviewer(), c.getReply(), imgAvar, fullName, c.getDateUpdate());
             lstResult.add(commentResponse);
         }
         return lstResult;

@@ -13,9 +13,11 @@ public class CommentResponse implements Serializable {
     private boolean reply;
     private String imgAvatar;
     private String fullName;
+    private Date dateUpdate;
 
-    public CommentResponse(String content, Date dateCreate, String idComment, String idProduct, String idReply,
-                           String idReviewer, boolean reply, String imgAvatar, String fullName) {
+    public CommentResponse() {}
+
+    public CommentResponse(String content, Date dateCreate, String idComment, String idProduct, String idReply, String idReviewer, boolean reply, String imgAvatar, String fullName, Date dateUpdate) {
         this.content = content;
         this.dateCreate = dateCreate;
         this.idComment = idComment;
@@ -25,6 +27,7 @@ public class CommentResponse implements Serializable {
         this.reply = reply;
         this.imgAvatar = imgAvatar;
         this.fullName = fullName;
+        this.dateUpdate = dateUpdate;
     }
 
     public String getContent() {
@@ -97,5 +100,13 @@ public class CommentResponse implements Serializable {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public Date getDateUpdate() {
+        return dateUpdate;
+    }
+
+    public void setDateUpdate(Date dateUpdate) {
+        this.dateUpdate = dateUpdate;
     }
 }

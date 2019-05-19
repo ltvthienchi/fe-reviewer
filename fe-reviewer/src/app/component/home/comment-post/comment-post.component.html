@@ -32,7 +32,9 @@
           </div>
 
           <p class="m-0 mt-1 time-ago">
-            <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span> · <span> {{item.dateCreate | timeAgo }} </span>
+            <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span> ·
+            <span *ngIf="item.dateUpdate">{{item.dateUpdate | timeAgo }} · Edited</span>
+            <span *ngIf="!item.dateUpdate"> {{item.dateCreate | timeAgo }} </span>
           </p>
         </div>
 
@@ -77,7 +79,9 @@
                 </div>
               </div>
               <p class="mt-1 ml-0 mb-0 mr-0 time-ago">
-                <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span> · <span> {{itemTwo.dateCreate | timeAgo }} </span>
+                <span class="btn-reply txt-main" (click)="replyComment(itemTwo)" >Reply</span> ·
+                <span *ngIf="itemTwo.dateUpdate">{{itemTwo.dateUpdate | timeAgo }} · Edited</span>
+                <span *ngIf="!itemTwo.dateUpdate"> {{itemTwo.dateCreate | timeAgo }} </span>
               </p>
             </div>
 
