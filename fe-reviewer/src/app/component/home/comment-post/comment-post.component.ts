@@ -59,7 +59,12 @@ export class CommentPostComponent implements OnInit {
   replyComment(item) {
     const id = '#reply-'+item.idComment;
     $('.reply-comment').hide();
-    $(id).css('display', 'block');
+    $(id).css('display', 'block').find('input').focus();
+  }
+
+  cancelReply(item) {
+    const id = '#reply-'+item.idComment;
+    $(id).hide();
   }
 
   editComment(item) {

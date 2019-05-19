@@ -79,7 +79,7 @@
                 </div>
               </div>
               <p class="mt-1 ml-0 mb-0 mr-0 time-ago">
-                <span class="btn-reply txt-main" (click)="replyComment(itemTwo)" >Reply</span> ·
+                <span class="btn-reply txt-main" (click)="replyComment(item)" >Reply</span> ·
                 <span *ngIf="itemTwo.dateUpdate">{{itemTwo.dateUpdate | timeAgo }} · Edited</span>
                 <span *ngIf="!itemTwo.dateUpdate"> {{itemTwo.dateCreate | timeAgo }} </span>
               </p>
@@ -99,14 +99,27 @@
 
       <div class="view-comment reply-comment" style="padding-left: 50px; margin-top: 15px" [id]="'reply-'+item.idComment">
         <div class="clearfix">
+
           <div class="avatar-comment">
             <div class="m-0 item-avatar">
               <img *ngIf="userInfo" [src]="userInfo.imgAvatar" alt="avatar image"/>
             </div>
           </div>
+
           <div class="input-comment sub-2">
-            <input [id]="'inputComment'+item.idProduct" class="form-control" type="text" [(ngModel)]="valueComment" (keydown.enter)="postComment(item)"/>
+            <input [id]="'inputComment'+item.idProduct" class="form-control" type="text"
+                   [(ngModel)]="valueComment" (keydown.enter)="postComment(item)" (keydown.escape)="cancelReply(item)" />
+            <p class="m-0 mt-1 time-ago">
+              <span class="mb-1 ml-3 btn-esc">Press Esc to <span class="txt-main" (click)="cancelReply(item)">cancel</span></span>
+            </p>
           </div>
+
+<!--          <div class="input-comment sub-2 edit" [id]="'editComment_'+item.idComment">-->
+<!--            <p class="m-0 mt-1 time-ago">-->
+<!--              <span class="mb-1 ml-3 btn-esc">Press Esc to <span class="txt-main" (click)="cancelComment(itemTwo)">cancel</span></span>-->
+<!--            </p>-->
+<!--          </div>-->
+
         </div>
       </div>
 
