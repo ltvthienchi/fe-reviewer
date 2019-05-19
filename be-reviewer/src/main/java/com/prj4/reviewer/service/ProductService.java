@@ -78,4 +78,7 @@ public class ProductService {
     public void updateProduct(Product product) {
         productReporsitory.save(product);
     }
+
+    public int getCountProducts() { return productReporsitory.getCountProducts();}
+
 }

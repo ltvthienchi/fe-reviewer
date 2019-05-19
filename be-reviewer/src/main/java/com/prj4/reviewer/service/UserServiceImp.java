@@ -100,4 +100,9 @@ public class UserServiceImp implements UserDetailsService, UserService {
     public void save(User newUser) {
         userRepository.save(newUser);
     }
+
+    @Override
+    public int getCountUsers() {
+        return userRepository.getCountUsers();
+    }
 }

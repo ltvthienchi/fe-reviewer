@@ -19,4 +19,8 @@ public interface ProductReporsitory extends CrudRepository<Product, String> {
 
     @Transactional
     void removeByIdProduct(String idProduct);
+
+    @Query("Select count(c) from Product c")
+    int getCountProducts();
+
 }

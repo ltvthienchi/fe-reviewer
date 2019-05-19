@@ -17,4 +17,6 @@ public interface PostRepository extends CrudRepository<Post, String>{
 
     @Transactional
     void removeByIdProduct(String idProduct);
+
+    int countAllByIdCompany(String idCompany);
 }

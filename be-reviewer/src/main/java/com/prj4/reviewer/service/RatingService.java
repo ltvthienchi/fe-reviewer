@@ -38,4 +38,8 @@ public class RatingService {
         return ratingPostRepository.findByIdProductAndIdReviewer(idProduct, idReviewer);
     }
 
+    public int getCountRatingPosts() {
+        return ratingPostRepository.getCountRatingPosts();
+    }
+
 }

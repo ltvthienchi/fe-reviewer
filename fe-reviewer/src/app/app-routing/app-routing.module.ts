@@ -32,6 +32,7 @@ import {ReportAdminComponent} from '../component/admin/report-admin/report-admin
 import {ReportedCommentComponent} from '../component/admin/reported-comment/reported-comment.component';
 import {ManageProductComponent} from '../component/admin/manage-product/manage-product.component';
 import {SubcriptionsComponent} from '../component/subcriptions/subcriptions.component';
+import {HomeAdminComponent} from '../component/admin/home-admin/home-admin.component';
 
 
 const routes: Routes = [
@@ -74,7 +75,8 @@ const routes: Routes = [
       { path: 'admin/verify', component: ComfirmCompanyComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/manage-user/:userType', component: LockReviewerComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/feedback', component: FeedbackAdminComponent, canActivate: [AuthGuardAdmin] },
-      { path: 'admin/reported-comment', component: ReportedCommentComponent, canActivate: [AuthGuardAdmin] }
+      { path: 'admin/reported-comment', component: ReportedCommentComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'admin/home', component: HomeAdminComponent, canActivate: [AuthGuardAdmin] }
     ]
   },
   { path: 'admin/login', component: LoginAdminComponent },

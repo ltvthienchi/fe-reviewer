@@ -23,4 +23,5 @@ public interface UserService {
     List<User> getAll();
 
     void changActive(String idAccount, Boolean active);
+    int getCountUsers();
 }
