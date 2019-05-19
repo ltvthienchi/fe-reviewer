@@ -18,44 +18,44 @@ export class CreateProductComponent implements OnInit {
   @Input() idProduct;
   newPost:any = {
     fileImage: null,
-    nameProduct: 'My test',
-    contentPost: 'My test',
-    emailCompany: 'My test',
+    nameProduct: '',
+    contentPost: '',
+    emailCompany: '',
     infoBattery: {
-      capacity: 'My test',
-      type: 'My test'
+      capacity: '',
+      type: ''
     },
     infoDisplay: {
-      type: 'My test',
-      size: 'My test',
-      resolution: 'My test',
+      type: '',
+      size: '',
+      resolution: '',
     },
     infoPerformance: {
       platform: {
-        os: 'My test',
-        chip: 'My test',
-        cpu: 'My test',
-        gpu: 'My test'
+        os: '',
+        chip: '',
+        cpu: '',
+        gpu: ''
       },
       memory: {
-        card: 'My test',
-        internal: 'My test'
+        card: '',
+        internal: ''
       }
     },
     infoDesign: {
-      dimensions: 'My test',
-      weight: 'My test',
+      dimensions: '',
+      weight: '',
     },
     infoCamera: {
       main: {
-        modules: 'My test',
-        features: 'My test',
-        video: 'My test'
+        modules: '',
+        features: '',
+        video: ''
       },
       self: {
-        modules: 'My test',
-        features: 'My test',
-        video: 'My test'
+        modules: '',
+        features: '',
+        video: ''
       }
     }
   };
@@ -88,9 +88,13 @@ export class CreateProductComponent implements OnInit {
     this.newPost.fileImage = this.fileToUpload;
     this.http.uploadImage(this.newPost).subscribe((data: any) => {
       if (data.status === 'SUCCESS') {
-        $('#changeCreateProduct').click();
+        $('#btn-timeline').addClass('active');
+        $('#timeline').addClass('active show');
+        $('#changeCreateProduct').removeClass('active');
+        $('#createAndEdit').removeClass('active show');
         this.notifier.notify('success', 'New product create success');
-        // this.router.navigate(['/company/' + this.idUser]);
+      } else {
+        this.notifier.notify('error', 'New product create error');
       }
     });
   }
@@ -99,9 +103,11 @@ export class CreateProductComponent implements OnInit {
     this.newPost.fileImage = this.fileToUpload;
     this.http.uploadProduct(this.newPost).subscribe((data:any) => {
       if (data.status === 'SUCCESS') {
-        $('#changeCreateProduct').click();
+        $('#btn-timeline').addClass('active');
+        $('#timeline').addClass('active show');
+        $('#changeCreateProduct').removeClass('active');
+        $('#createAndEdit').removeClass('active show');
         this.notifier.notify('success', 'Edit product success');
-        // this.router.navigateByUrl('/company/' + this.idUser);
       }
     })
   }

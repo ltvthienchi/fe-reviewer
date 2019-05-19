@@ -165,7 +165,7 @@ public class ReviewerService {
     }
 
     public void createRatingComp(ReviewCompRequest reviewCompRequest) {
-        ReviewCompany reviewCompany = reviewCompanyRepository.findByIdReviewer(reviewCompRequest.getIdReviewer());
+        ReviewCompany reviewCompany = reviewCompanyRepository.findByIdReviewerAndIdCompany(reviewCompRequest.getIdReviewer(), reviewCompRequest.getIdCompany());
         Company company = companyService.getCompanyById(reviewCompRequest.getIdCompany());
         int numbRating = company.getNumbRating();
         if (reviewCompany != null) {

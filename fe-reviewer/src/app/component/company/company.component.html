@@ -24,47 +24,153 @@
   <div class="row">
     <div class="col-3">
       <!-- menu left -->
+
+      <div class="profile-card-4 z-depth-3">
+        <div class="card my-profile">
+
+          <div class="card-body" style="background-color: transparent;">
+            <ul class="list-group shadow-none">
+
+              <li class="list-group-item">
+                <div class="list-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="list-details">
+                  <div class="mb-1">
+                    <span>{{detailCompany.addrCompany}}</span>
+                  </div>
+                  <small>Address</small>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <div class="list-icon">
+                  <i class="fa fa-envelope"></i>
+                </div>
+                <div class="list-details">
+                  <div  class="mb-1">
+                    <span>{{detailCompany.emailCompany}}</span>
+                  </div>
+                  <small>Email Address</small>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <div class="list-icon">
+                  <i class="fas fa-globe-asia"></i>
+                </div>
+                <div class="list-details">
+                  <div  class="mb-1">
+                    <span>{{detailCompany.webCompany}}</span>
+                  </div>
+                  <small>Website</small>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <div class="list-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="list-details">
+                  <div  class="mb-1">
+                    <span>{{detailCompany.telCompany}}</span>
+                  </div>
+                  <small>Phone</small>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <div class="list-icon">
+                  <i class="fas fa-user-plus"></i>
+                </div>
+                <div class="list-details">
+                  <div  class="mb-1">
+                    <span>10</span>
+                  </div>
+                  <small>Follower</small>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
     </div>
-    <div class="col-9 ">
+    <div class="col-9 accordion" id="accordionExample">
       <!-- menu company -->
       <div class="menucpn">
         <div class="row" style="padding-left: 5px">
-          <div *ngIf="checkAuthGuard() && !isCompanyRole()">
-            <div *ngIf="!isFollowed; else elseBlock">
-              <button class="btn btn-outline-info btnmargin margin-left"
-                      (click)="followCompany(detailCompany.idCompany, 'follow')">
-                Subscribe
-              </button>
+          <div *ngIf="checkAuthGuard() && !isCompanyRole()" class="nav nav-tabs">
+            <div>
+              <div *ngIf="!isFollowed; else elseBlock">
+                <button class="btn btn-outline-warning btnmargin margin-left"
+                        (click)="followCompany(detailCompany.idCompany, 'follow')">
+                  Subscribe
+                </button>
+              </div>
+              <ng-template #elseBlock>
+                <button class="btn btn-warning btnmargin margin-left" style="font-weight: normal"
+                        (click)="followCompany(detailCompany.idCompany, 'unfollow')">
+                  <i class="fas fa-check"></i> Subscribed
+                </button>
+              </ng-template>
             </div>
-            <ng-template #elseBlock>
-              <button class="btn btn-info btnmargin margin-left" style="font-weight: normal"
-                      (click)="followCompany(detailCompany.idCompany, 'unfollow')">
-                <i class="fas fa-check"> Subscribed</i>
-              </button>
-            </ng-template>
+            <a class="my-btn btn btn-outline-info ml-2 active" id="btn-user-timeline"
+               data-toggle="tab" href="#timeline" role="tab" (click)="resetButton('timeline')">
+              Time Line
+            </a>
+            <a class="my-btn btn btn-outline-success ml-2" id="btn-user-historyReview"
+               data-toggle="tab" href="#historyReview" role="tab" (click)="resetButton('review')">
+              History Review
+            </a>
           </div>
-          <div *ngIf="checkAuthGuard() && isCompanyAccount()">
-            <button class="btn btn-outline-info btnmargin margin-left" id="changeCreateProduct" (click)="changeIsPostProduct()">
-              <i class="fas fa-edit"></i>
-              <span style="padding-right: 8px">{{txtPostProduct}}</span>
-            </button>
-          </div>
-          <div style="padding-left: 5px" *ngIf="checkAuthGuard() && !isCompanyRole()">
-            <button class="btn btn-outline-success btnmargin margin-right" (click)="changeViewReviewer()">
-              <i class="fas fa-star">{{txtViewReview}}</i>
-            </button>
+          <div *ngIf="checkAuthGuard() && isCompanyAccount()" class="nav nav-tabs" id="btn-group">
+            <a class="my-btn btn btn-outline-info ml-3 active" id="btn-timeline"
+                     data-toggle="tab" href="#timeline" role="tab" (click)="resetButton('timeline')">
+              TimeLine
+            </a>
+            <a class="my-btn btn btn-outline-info ml-2" id="changeCreateProduct"
+                    data-toggle="tab" href="#createAndEdit" role="tab">
+              Post Product
+            </a>
+            <a class="my-btn btn btn-outline-success ml-2" id="btn-historyReview"
+                    data-toggle="tab" href="#historyReview" role="tab" (click)="resetButton('review')">
+              History Review
+            </a>
+
+            <a class="my-btn btn btn-outline-success ml-2" id="btn-updateProfile"
+               data-toggle="tab" href="#updateProfile" role="tab" (click)="resetButton('review')">
+              Update Profile
+            </a>
+
+            <a class="my-btn btn btn-outline-success ml-2" id="btn-changePassword"
+               data-toggle="tab" href="#changePassword" role="tab" (click)="resetButton('review')">
+              Change Password
+            </a>
           </div>
         </div>
       </div>
 
       <!--Content-->
-      <div>
-        <app-create-product [idProduct]="idProduct" *ngIf="isPostProduct"></app-create-product>
-        <app-home-company (eventAction)="checkEventAction($event)" [items]="lstPost"
-                          [idCompany]="idCompany"  *ngIf="!isPostProduct && !isViewReview"></app-home-company>
-        <app-review-list-company (eventAction)="checkEventAction($event)"
-                                 [idCompany]="idCompany" *ngIf="!isPostProduct && isViewReview"></app-review-list-company>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="timeline" role="tabpanel">
+          <app-home-company (eventAction)="checkEventAction($event)" [items]="lstPost" [idCompany]="idCompany"></app-home-company>
+        </div>
+        <div class="tab-pane fade" id="createAndEdit" role="tabpanel">
+          <app-create-product [idProduct]="idProduct"></app-create-product>
+        </div>
+        <div class="tab-pane fade" id="historyReview" role="tabpanel">
+          <app-review-list-company (eventAction)="checkEventAction($event)" [idCompany]="idCompany"></app-review-list-company>
+        </div>
+        <div class="tab-pane fade" id="updateProfile" role="tabpanel">
+          <app-update-profile></app-update-profile>
+        </div>
+        <div class="tab-pane fade" id="changePassword" role="tabpanel">
+          <app-change-password></app-change-password>
+        </div>
       </div>
+
     </div>
   </div>
 </div>

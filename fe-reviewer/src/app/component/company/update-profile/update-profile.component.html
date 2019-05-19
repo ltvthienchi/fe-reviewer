@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-8">
+    <div class="boderbody-mid scroll-bar-hidden">
+      <form style="background: white; padding: 20px" [formGroup]="formUpdateCompany">
+        <div class="form-group">
+          <label for="EditAddressCompany">Address</label>
+          <input type="text" class="form-control" id="EditAddressCompany" formControlName="address" />
+          <app-text-alert [field]="'address'" [invalidField]="'address'" style="width: 100%"
+                          [form]="formUpdateCompany"
+                          [invalidForm]="validatorForm.formUpdateCompany"></app-text-alert>
+        </div>
+
+        <div class="form-group">
+          <label for="EditCompany_Email">Email</label>
+          <input type="text" class="form-control" id="EditCompany_Email" formControlName="email" />
+          <app-text-alert [field]="'email'" [invalidField]="'email'" style="width: 100%"
+                          [form]="formUpdateCompany"
+                          [invalidForm]="validatorForm.formUpdateCompany"></app-text-alert>
+        </div>
+
+        <div class="form-group">
+          <label for="EditCompany_Website">Website</label>
+          <input type="text" class="form-control" id="EditCompany_Website" formControlName="website" />
+          <app-text-alert [field]="'website'" [invalidField]="'website'" style="width: 100%"
+                          [form]="formUpdateCompany"
+                          [invalidForm]="validatorForm.formUpdateCompany"></app-text-alert>
+        </div>
+
+        <div class="form-group">
+          <label for="EditCompany_Tel">Phone</label>
+          <input type="text" class="form-control" id="EditCompany_Tel" formControlName="tel" />
+          <app-text-alert [field]="'tel'" [invalidField]="'tel'" style="width: 100%"
+                          [form]="formUpdateCompany"
+                          [invalidForm]="validatorForm.formUpdateCompany"></app-text-alert>
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="updateProfile()" >Save</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-4 sticky-top" style="z-index: 999;">
+    <app-table-review [idCompany]="idUser" ></app-table-review>
+  </div>
+</div>
+
