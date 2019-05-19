@@ -29,16 +29,20 @@ public class FeedbackAdmin {
     @Column(name = "EMAIL_FEEDBACK")
     private String emailFeedback;
 
+    @Column(name = "ISREPLY")
+    private boolean isReply;
+
     public FeedbackAdmin() {
     }
 
-    public FeedbackAdmin(String idFeedbackAdmin, String idReviewer, String contentFeedback, String titleFeedback, Date dtCreated, String emailFeedback) {
+    public FeedbackAdmin(String idFeedbackAdmin, String idReviewer, String contentFeedback, String titleFeedback, Date dtCreated, String emailFeedback, boolean isReply) {
         this.idFeedbackAdmin = idFeedbackAdmin;
         this.idReviewer = idReviewer;
         this.contentFeedback = contentFeedback;
         this.titleFeedback = titleFeedback;
         this.dtCreated = dtCreated;
         this.emailFeedback = emailFeedback;
+        this.isReply = isReply;
     }
 
     public String getEmailFeedback() {
@@ -87,5 +91,13 @@ public class FeedbackAdmin {
 
     public void setDtCreated(Date dtCreated) {
         this.dtCreated = dtCreated;
+    }
+
+    public boolean getIsReply() {
+        return isReply;
+    }
+
+    public void setIsReply(boolean isReply) {
+        this.isReply = isReply;
     }
 }

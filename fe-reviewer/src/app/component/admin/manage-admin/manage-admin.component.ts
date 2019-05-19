@@ -15,6 +15,7 @@ import { error } from 'protractor';
 import { AdminBlock } from '../../../model/AdminBlock.model';
 import * as $ from 'jquery';
 import { ResetPassAdmin } from '../../../model/ResetPassAdmin.model';
+import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-manage-admin',
   templateUrl: './manage-admin.component.html',
@@ -25,11 +26,26 @@ export class ManageAdminComponent implements OnInit {
  
 
   listAdmin: Admin[];
+  arr: Admin[];
   adminForm: FormGroup;
   passForm:FormGroup;
   role;
   check:boolean;
+  queryField: FormControl = new FormControl();
   name;
+  typeRole = [{
+    id: '1',
+    name: 'Manage User',
+   },
+   {
+    id: '2',
+    name: 'Manage Product',
+   },
+   {
+    id: '3',
+    name: 'Manage Feedback-Comment',
+   }];
+
   validatorForm = {
     passForm: true,
     adminForm: true
@@ -47,6 +63,7 @@ export class ManageAdminComponent implements OnInit {
       idAdmin: [],
       dtCreated: [],
       active: [],
+      role: [],
       name: ['', [validatorRequired, validatorName]],
       dobAdmin: ['', [validatorRequired]],
       email: ['', [validatorRequired, validatorEmail]],
@@ -68,8 +85,9 @@ export class ManageAdminComponent implements OnInit {
     }
     this.httpService.getRoleAdmin(item).subscribe((data: any) => {
      // console.log(data);
+      //this.role = data;
+      if(data == '0') this.check=true; else this.check=false;
       this.role = data;
-      if(this.role == '0') this.check=true; else this.check=false;
       
     });
    // console.log(this.role);
@@ -100,6 +118,9 @@ export class ManageAdminComponent implements OnInit {
     this.adminForm.controls['addressAdmin'].setValue(admin.addressAdmin);
     this.adminForm.controls['phone'].setValue(admin.phoneAdmin);
     this.adminForm.controls['dobAdmin'].setValue(parseDob);
+    this.adminForm.controls['role'].setValue(admin.roleAdmin);
+
+   // console.log(admin.roleAdmin);
 
     // console.log("parseDob");
     //  console.log(this.adminForm.value['dobAdmin']);
@@ -109,10 +130,11 @@ export class ManageAdminComponent implements OnInit {
   }
 
   submitEdit() {
+    // console.log(this.adminForm.controls);
     if (this.adminForm.status === 'INVALID') {
       this.validatorForm.adminForm = false;
     } else {
-      const item: Admin = {
+      const item = {
         idAdmin: this.adminForm.value.idAdmin,
         dtCreated: this.adminForm.value.dtCreated,
         isActive: this.adminForm.value.active,
@@ -121,7 +143,8 @@ export class ManageAdminComponent implements OnInit {
         emailAdmin: this.adminForm.value.email,
         addressAdmin: this.adminForm.value.addressAdmin,
         phoneAdmin: this.adminForm.value.phone,
-        dobAdmin: this.adminForm.value.dobAdmin
+        dobAdmin: this.adminForm.value.dobAdmin,
+        role: this.adminForm.value.role
       }
       // console.log(item);
       this.httpService.editAdmin(item).subscribe((data: any) => {
@@ -140,16 +163,19 @@ export class ManageAdminComponent implements OnInit {
     this.httpService.getAllAdmin().subscribe((data: any) => {
 
       // console.log(data);
-      const arr = data;
-     // console.log(arr);
-      this.listAdmin = arr.filter(item => item.roleAdmin == 1);
-     //console.log(this.listAdmin);
+      const item = data;
+      this.arr = item.filter(item => item.roleAdmin != '0');;
+     // console.log(this.arr);
+      this.listAdmin = this.arr;
+     // this.listAdmin = this.arr.filter(item => (item.fullNameAdmin.includes('') || item.emailAdmin.includes('')));
+    // console.log(this.listAdmin);
       // console.log(this.listAdmin);
 
     });
   }
 
    addAdmin() {
+     
     this.adminForm = this.formBuilder.group({
       idAdmin: [],
       dtCreated: [],
@@ -159,7 +185,9 @@ export class ManageAdminComponent implements OnInit {
       email: ['', [validatorRequired, validatorEmail]],
       addressAdmin: ['', [validatorRequired]],
       phone: ['', [validatorRequired, validatorPhone]],
-      password: ['', [validatorRequired, validatorPassword]]
+      password: ['', [validatorRequired, validatorPassword]],
+      role: [this.typeRole[0]]
+      
     });
     
   }
@@ -169,8 +197,9 @@ export class ManageAdminComponent implements OnInit {
       //console.log(this.adminForm);
       this.validatorForm.adminForm = false;
     } else {
-     // console.log(this.adminForm);
-      const item: Admin = {
+      //.log(this.adminForm);
+     //console.log(this.role);
+      const item = {
         idAdmin: this.adminForm.value.idAdmin,
         dtCreated: this.adminForm.value.dtCreated,
         isActive: this.adminForm.value.active,
@@ -179,7 +208,8 @@ export class ManageAdminComponent implements OnInit {
         emailAdmin: this.adminForm.value.email,
         addressAdmin: this.adminForm.value.addressAdmin,
         phoneAdmin: this.adminForm.value.phone,
-        dobAdmin: this.adminForm.value.dobAdmin
+        dobAdmin: this.adminForm.value.dobAdmin,
+        role:this.adminForm.value.role.id
       }
       // console.log(item);
       this.httpService.addAdmin(item).subscribe((data: any) => {
@@ -244,6 +274,25 @@ export class ManageAdminComponent implements OnInit {
     });
 
   }
+  search() { 
+
+    this.queryField.valueChanges
+        .debounceTime(200)
+        .distinctUntilChanged()
+        .subscribe((item: any) => {
+          const result = item.toUpperCase();
+          this.listAdmin = this.arr.filter(item => (item.fullNameAdmin.toUpperCase().includes(result) || item.emailAdmin.toUpperCase().includes(result)))
+        });
+    // do something
+    // console.log(event.target.value) ;
+    // const key = event.target.value;
+    // this.listAdmin = this.arr.filter(item => (item.fullNameAdmin.includes(key) || item.emailAdmin.includes(key)));
+
+  }
+  // onEnter(event){
+  //   const key = event.target.value;
+  //   this.listAdmin = this.arr.filter(item => (item.fullNameAdmin.includes(key) || item.emailAdmin.includes(key)));
+  // }
 
 
 

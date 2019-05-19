@@ -2,10 +2,7 @@ package com.prj4.reviewer.controller;
 
 import com.prj4.reviewer.core.JsonResponse;
 import com.prj4.reviewer.entity.*;
-import com.prj4.reviewer.request.AdminBlockRequest;
-import com.prj4.reviewer.request.AdminRequest;
-import com.prj4.reviewer.request.AdminResetPass;
-import com.prj4.reviewer.request.UserActiveRequest;
+import com.prj4.reviewer.request.*;
 import com.prj4.reviewer.response.CompanyActiveResponse;
 import com.prj4.reviewer.response.ReviewerActiveResponse;
 import com.prj4.reviewer.service.AdminService;
@@ -14,10 +11,14 @@ import com.prj4.reviewer.response.CommentReported;
 import com.prj4.reviewer.response.PostResponse;
 import com.prj4.reviewer.service.*;
 import jdk.nashorn.internal.runtime.events.RecompilationEvent;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,6 +37,8 @@ public class AdminRestController {
     @Autowired
     ReviewerService reviewerService;
     @Autowired
+    FeedbackAdminService feedbackAdminService;
+    @Autowired
     GenerateId generateId;
     @Autowired
     PostService postService;
@@ -43,6 +46,8 @@ public class AdminRestController {
     CreatePostResponseService createPostResponseService;
     @Autowired
     CommentService commentService;
+    @Autowired
+    public JavaMailSender emailSender;
 
     @PostMapping(BASE_POST_LINK + "createAdmin")
     public JsonResponse<String> createAdmin(@RequestBody @Valid AdminRequest adminRequest) {
@@ -50,7 +55,7 @@ public class AdminRestController {
         String idAdmin = generateId.generateId("ADMIN_", new Date());
         String encodedPass = new BCryptPasswordEncoder().encode(adminRequest.getPassAdmin());
         Admin admin = new Admin(idAdmin, adminRequest.getFullNameAdmin() ,adminRequest.getEmailAdmin(),encodedPass,adminRequest.getDobAdmin(),
-                new Date(),true,adminRequest.getAddressAdmin(),adminRequest.getPhoneAdmin(), "1");
+                new Date(),true,adminRequest.getAddressAdmin(),adminRequest.getPhoneAdmin(), adminRequest.getRole());
         adminService.save(admin);
         return JsonResponse.accept("");
     }
@@ -73,6 +78,7 @@ public class AdminRestController {
        // admin.setPassAdmin(encodedPass);
         admin.setAddressAdmin(adminRequest.getAddressAdmin());
         admin.setPhoneAdmin(adminRequest.getPhoneAdmin());
+        admin.setRoleAdmin(adminRequest.getRole());
         adminService.editAdmin(admin);
 
 
@@ -171,6 +177,36 @@ public class AdminRestController {
         userService.changActive(userActiveRequest.getIdUser(),userActiveRequest.getIsActive());
         return JsonResponse.accept("");
     }
+
+    @PostMapping(BASE_POST_LINK + "sendMail")
+    public JsonResponse sendMail(@RequestBody FeedbackSendMailRequest feedbackSendMailRequest) throws MessagingException {
+
+
+        MimeMessage message = emailSender.createMimeMessage();
+
+        boolean multipart = true;
+
+        MimeMessageHelper helper = new MimeMessageHelper(message, multipart, "utf-8");
+
+        String htmlMsg = "<h3>"+feedbackSendMailRequest.getContent()+"</h3>";
+
+
+        message.setContent(htmlMsg, "text/html");
+
+        helper.setTo(feedbackSendMailRequest.getEmail());
+
+        helper.setSubject("Reply feedback Reviewer website");
+
+        this.emailSender.send(message);
+
+        FeedbackAdmin feedbackAdmin = feedbackAdminService.findByIdFeedbackAdmin(feedbackSendMailRequest.getIdFeedback());
+        feedbackAdmin.setIsReply(true);
+        feedbackAdminService.save(feedbackAdmin);
+
+        return JsonResponse.accept("");
+    }
+
+
 
 
 

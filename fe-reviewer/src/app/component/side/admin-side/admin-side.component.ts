@@ -24,7 +24,7 @@ export class AdminSideComponent implements OnInit {
     localStorage.removeItem('isActive');
     localStorage.removeItem('idUser');
     localStorage.removeItem('email');
-    this.router.navigate(['/']);
+    this.router.navigate(['/admin/login']);
   }
 
 }

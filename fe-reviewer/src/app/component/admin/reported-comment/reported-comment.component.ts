@@ -12,6 +12,9 @@ import * as $ from 'jquery';
 export class ReportedCommentComponent implements OnInit {
 
   listReported: any;
+  check: boolean;
+  list:any;
+  queryField: FormControl = new FormControl();
   private notifier: NotifierService;
   private isOpen = true;
   constructor(private httpService: HttpService, notifier: NotifierService) {
@@ -21,12 +24,23 @@ export class ReportedCommentComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
+    const item = {
+      idAdmin: localStorage.getItem('idUser'),
+      isActive: 'true'
+
+    }
+    this.httpService.getRoleAdmin(item).subscribe((data: any) => {
+      // console.log(data);
+      if (data == '0' || data == '3') this.check = true; else this.check = false;
+
+    });
   }
 
   loadData() {
     this.httpService.getAllReported().subscribe((data: any) => {
       if (data) {
         this.listReported = data;
+        this.list=data;
       }
     });
   }
@@ -51,4 +65,25 @@ export class ReportedCommentComponent implements OnInit {
   public showNotification(type: string, message: string): void {
     this.notifier.notify(type, message);
   }
+  search() { 
+
+    this.queryField.valueChanges
+        .debounceTime(200)
+        .distinctUntilChanged()
+        .subscribe((item: any) => {
+          const result = item.toUpperCase();
+          this.listReported = this.list.filter(item => 
+            (item.reviewerComment.toUpperCase().includes(result) || item.contentComment.toUpperCase().includes(result)));
+            //  console.log(this.listCompany);
+            //  console.log(result);
+             
+
+        });
+    // do something
+    // console.log(event.target.value) ;
+    // const key = event.target.value;
+    // this.listAdmin = this.arr.filter(item => (item.fullNameAdmin.includes(key) || item.emailAdmin.includes(key)));
+
+  }
+
 }
