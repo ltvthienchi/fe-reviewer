@@ -40,6 +40,9 @@ public class Comment {
 	@Column(name="IS_REPORT")
 	private boolean isReport;
 
+	@Column(name="DT_UPDATE")
+	private Date dateUpdate;
+
 	public Comment(){}
 
 	public Comment(String idComment, String idProduct, String idReviewer, String idReply, Boolean isReply,
@@ -65,6 +68,19 @@ public class Comment {
 		this.dateCreate = dateCreate;
 		this.roleUser = roleUser;
 		this.isReport = isReport;
+	}
+
+	public Comment(String idComment, String idProduct, String idReviewer, String idReply, Boolean isReply, String content, Date dateCreate, String roleUser, boolean isReport, Date dateUpdate) {
+		this.idComment = idComment;
+		this.idProduct = idProduct;
+		this.idReviewer = idReviewer;
+		this.idReply = idReply;
+		this.isReply = isReply;
+		this.content = content;
+		this.dateCreate = dateCreate;
+		this.roleUser = roleUser;
+		this.isReport = isReport;
+		this.dateUpdate = dateUpdate;
 	}
 
 	public String getIdComment() {
@@ -137,6 +153,14 @@ public class Comment {
 
 	public void setReport(boolean report) {
 		isReport = report;
+	}
+
+	public Date getDateUpdate() {
+		return dateUpdate;
+	}
+
+	public void setDateUpdate(Date dateUpdate) {
+		this.dateUpdate = dateUpdate;
 	}
 
 	@Override
