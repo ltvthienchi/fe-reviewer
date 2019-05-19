@@ -34,6 +34,8 @@ export class UserPageComponent implements OnInit {
   idReviewer;
   localId;
   avatarHistory;
+  avaImg: File;
+  avaPanel: File;
   private emailReviewer: string;
   private firstName: string;
   private fullName: string;
@@ -130,6 +132,8 @@ export class UserPageComponent implements OnInit {
             const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
             this.avatarService.changeAvaImage(avatar);
             this.avatarHistory = avatar;
+            this.avaImg = null;
+            this.avaPanel = null;
           }
           this.showNotification( 'success', 'Update Profile successfully' );
         } else {
@@ -167,6 +171,11 @@ export class UserPageComponent implements OnInit {
       };
       this.httpService.changePass(changePass).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
+          this.ChangePassForm = this.formBuilder.group({
+            oldPass: ['', [validatorOldPassword]],
+            password: ['', [validatorPassword]],
+            confirmPassword: ['', [validatorConfirmPassword]],
+          });
           this.showNotification( 'success', 'Update Password successfully!!!' );
         } else {
           this.showNotification( 'error', data.result );
@@ -186,7 +195,6 @@ export class UserPageComponent implements OnInit {
       $('#edit').hide();
       $('#changepassword').hide();
     } else if (type === 'edit') {
-      this.reloadData();
       $('#profile').hide();
       $('#edit').show();
       $('#changepassword').hide();
