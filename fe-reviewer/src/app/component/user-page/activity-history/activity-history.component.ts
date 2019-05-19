@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HttpService} from '../../services/http/http.service';
+import {HttpService} from '../../../services/http/http.service';
 
 @Component({
   selector: 'app-activity-history',
@@ -15,8 +15,14 @@ export class ActivityHistoryComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.idReviewer);
+    this.reload();
+  }
+
+  reload() {
+    const listActivityConstruct = [];
     if (this.idReviewer) {
       this.http.getActivityHistory(this.idReviewer).subscribe((data: any) => {
+
         // console.log(data);
         for (let i = 0; i < data.length; i++) {
           const obj = JSON.parse(data[i].contentActivity);
@@ -74,11 +80,13 @@ export class ActivityHistoryComponent implements OnInit {
             activity.typeActivity = 7;
             activity.dtCreated = data[i].dtCreated;
           }
-          this.listActivity.push(activity);
+          listActivityConstruct.push(activity);
         }
-        console.log(this.listActivity);
+        // console.log(this.listActivity);
       });
     }
+    this.listActivity = listActivityConstruct;
+    console.log(this.listActivity);
   }
 
 }

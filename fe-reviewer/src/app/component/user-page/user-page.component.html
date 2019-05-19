@@ -67,16 +67,16 @@
         <div class="card-body">
           <ul class="nav nav-pills nav-pills-primary nav-justified">
             <li class="nav-item">
-              <a href="#" data-target="#profile" data-toggle="pill" class="nav-link active show"><i
+              <a href="#" data-toggle="pill" class="nav-link active show" (click)="changeView('profile')"><i
                 class="icon-user"></i> <span class="hidden-xs">Activity History</span></a>
             </li>
 
             <li class="nav-item" *ngIf="idReviewer === localId">
-              <a href="#" data-target="#edit" data-toggle="pill" class="nav-link"><i
+              <a href="#" data-toggle="pill" class="nav-link" (click)="changeView('edit')"><i
                 class="icon-note"></i> <span class="hidden-xs">Edit Profile</span></a>
             </li>
             <li class="nav-item" *ngIf="idReviewer === localId && (typeReviewer === 1)">
-              <a href="#" data-target="#changepassword" data-toggle="pill" class="nav-link"><i
+              <a href="#" data-toggle="pill" class="nav-link" (click)="changeView('changepassword')"><i
                 class="icon-note"></i> <span class="hidden-xs">Change Password</span></a>
             </li>
           </ul>
@@ -88,7 +88,7 @@
                     <div class="panel panel-body">
                       <!-- Timeline -->
                       <!--===================================================-->
-                      <app-activity-history [idReviewer]="idReviewer" [imageAva]="avatarHistory"></app-activity-history>
+                      <app-activity-history [idReviewer]="idReviewer" [imageAva]="avatarHistory" #appChild></app-activity-history>
                       <!--===================================================-->
                       <!-- End Timeline -->
                     </div>
