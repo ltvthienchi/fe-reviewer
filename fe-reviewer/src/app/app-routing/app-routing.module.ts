@@ -49,7 +49,7 @@ const routes: Routes = [
       { path: 'feedback', component: FeedbackReviewerComponent, canActivate: [AuthGuard]},
       { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard]},
       { path: 'compare', component: CompareComponent, canActivate: [AuthGuard]},
-      { path: 'register-confirmation', component: RegisterConfirmationComponent, canActivate: [AuthGuard]},
+      { path: 'register-confirmation', component: RegisterConfirmationComponent},
       { path: 'detail-product/:id', component: DetailProductComponent, canActivate: [AuthGuard]},
       { path: 'subscriptions', component: SubcriptionsComponent, canActivate: [AuthGuard]}
     ]

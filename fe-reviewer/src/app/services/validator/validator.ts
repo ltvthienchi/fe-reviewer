@@ -56,9 +56,9 @@ export function validatorName(c: AbstractControl) {
 }
 
 export function validatorPhone(c: AbstractControl) {
-  const regex = /(09|03|07|08|05)+([0-9]{8})\b/;
+  const regex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
   const myRe = regex.exec(c.value);
-  if (c.value.length > 10) return { phone: 'Phone number must be 10 number' };
+  // if (c.value.length > 11) return { phone: 'Phone number must be 11 number' };
   if (!myRe) return { phone: 'Invalid phone number' };
   return null;
 }

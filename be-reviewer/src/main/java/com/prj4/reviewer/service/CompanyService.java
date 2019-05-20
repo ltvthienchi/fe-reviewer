@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +27,9 @@ public class CompanyService {
 
     @Autowired
     ImageService imageService;
+
+    @Autowired
+    GenerateId generateId;
 
     public List<Company> getAll() {
         return (List<Company>) companyRepository.findAll();
@@ -86,18 +90,21 @@ public class CompanyService {
         }
         //company.setE(emailCompany);
         if (avaCompany != null) {
-            Images images = imageRepository.findByIdImage(company.getImgAvatarCompany());
-            String fileName =  fileStorageService.storeFile(avaCompany, images.getIdImage(), Constants.IMAGE_AVA);
+            String idImage = generateId.generateId("IMAGE_", new Date());
+            String fileName =  fileStorageService.storeFile(avaCompany, idImage, Constants.IMAGE_AVA);
             String fileDownloadUri = "http://localhost/img/reviewer/" + fileName;
-            images.setImgPath(fileDownloadUri);
+            Images images = new Images(idImage, fileDownloadUri, Constants.IMAGE_AVA);
             imageService.saveImage(images);
+            company.setImgAvatarCompany(idImage);
+
         }
         if (panelCompany != null) {
-            Images images = imageRepository.findByIdImage(company.getImgPanelCompany());
-            String fileName =  fileStorageService.storeFile(panelCompany, images.getIdImage(), Constants.IMAGE_PANEL);
+            String idImage = generateId.generateId("IMAGE_", new Date());
+            String fileName =  fileStorageService.storeFile(panelCompany, idImage, Constants.IMAGE_PANEL);
             String fileDownloadUri = "http://localhost/img/reviewer/" + fileName;
-            images.setImgPath(fileDownloadUri);
+            Images images = new Images(idImage, fileDownloadUri, Constants.IMAGE_PANEL);
             imageService.saveImage(images);
+            company.setImgPanelCompany(idImage);
         }
         companyRepository.save(company);
     }
