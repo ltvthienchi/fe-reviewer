@@ -157,6 +157,7 @@ public class PostRestController {
             images.setImgPath(fileDownloadUri);
         }
         try {
+            post.setDtCreated(new Date());
             postService.updatePost(post);
             productService.updateProduct(product);
             imageService.saveImage(images);

@@ -62,7 +62,7 @@ if (data.status === 'SUCCESS') {
           this.clearPass();
           this.notifier.notify('success', 'Update password success');
         } else {
-          this.notifier.notify('success', 'Update password error');
+          this.notifier.notify('error', data.result);
         }
       });
     }

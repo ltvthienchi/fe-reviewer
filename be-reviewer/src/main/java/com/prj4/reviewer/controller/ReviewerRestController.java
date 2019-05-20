@@ -101,7 +101,7 @@ public class ReviewerRestController {
                 return JsonResponse.reject(ex.getMessage());
             }
         } else {
-            return JsonResponse.reject("Old password is wrong!!");
+            return JsonResponse.reject("Current password is wrong!!");
         }
     }
 
