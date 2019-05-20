@@ -130,11 +130,10 @@ export class UserPageComponent implements OnInit {
       this.lastName = this.updateInfoProfile.value.lastName;
       this.httpService.updateInfoPro(updateInPro).subscribe((data: any) => {
         if (data.status === 'SUCCESS') {
+          this.nameService.fire(this.firstName + ' ' + this.lastName);
           this.reloadData();
           if (updateInPro.avaReviewer != null) {
-            // const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
             this.avatarService.fire(this.localImg);
-            this.nameService.fire(this.firstName + ' ' + this.lastName);
             this.avatarHistory = this.localImg;
             this.avaImg = null;
             this.avaPanel = null;
