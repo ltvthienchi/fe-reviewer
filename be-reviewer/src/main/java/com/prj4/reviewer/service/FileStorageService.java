@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Date;
 
 @Service
 public class FileStorageService {
@@ -35,7 +36,8 @@ public class FileStorageService {
 
     public String storeFile(MultipartFile file,String idImage, String typeImage) {
         // Normalize file name
-        String fileName = StringUtils.cleanPath(idImage + '_' + file.getOriginalFilename());
+        long miliseconds = new Date().getTime();
+        String fileName = StringUtils.cleanPath(String.valueOf(miliseconds) + '_' + file.getOriginalFilename());
         //String fileName = StringUtils.cleanPath(idImage + "_" + typeImage);
 
         try {
