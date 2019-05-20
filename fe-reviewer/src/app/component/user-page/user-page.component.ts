@@ -127,7 +127,7 @@ export class UserPageComponent implements OnInit {
       this.lastName = this.updateInfoProfile.value.lastName;
       this.httpService.updateInfoPro(updateInPro).subscribe((data: any) => {
         console.log('data', data);
-if (data.status === 'SUCCESS') {
+        if (data.status === 'SUCCESS') {
           this.reloadData();
           if (updateInPro.avaReviewer != null) {
             const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
@@ -145,12 +145,23 @@ if (data.status === 'SUCCESS') {
   }
 
   handleFileInput(files: FileList, type) {
+    const tempImg = files[0].name.split('.');
+    const exFile = tempImg[tempImg.length - 1];
     if (type === 'avatar') {
-      this.changeAvar = files.item(0);
+      if(exFile.toLocaleLowerCase() === 'png' || exFile.toLocaleLowerCase() === 'jpg') {
+        this.changeAvar = files.item(0);
+      } else {
+        this.avaImg = null;
+        this.notifier.notify('error', 'Please chose image has .png or .jpg');
+      }
     } else {
-      this.changeBackground = files.item(0);
+      if(exFile.toLocaleLowerCase() === 'png' || exFile.toLocaleLowerCase() === 'jpg') {
+        this.changeBackground = files.item(0);
+      } else {
+        this.avaPanel = null;
+        this.notifier.notify('error', 'Please chose image has .png or .jpg');
+      }
     }
-    // this.fileToUpload = files.item(0);
   }
 
   test() {
