@@ -6,7 +6,7 @@ public class Constants {
     public static final String SIGNING_KEY = "devglan123r";
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String HEADER_STRING = "Authorization";
-    public static final boolean IS_TEST_MODE = true;
+    public static final boolean IS_TEST_MODE = false;
 
     // Replace with your email here:
     public static final String MY_EMAIL = "bestchoicesmartcmp@gmail.com";
