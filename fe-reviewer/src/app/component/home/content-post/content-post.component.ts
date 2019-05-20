@@ -225,24 +225,44 @@ export class ContentPostComponent implements OnInit {
   }
 
   postComment(e) {
-      if (this.valueComment) {
-        let newComment = {
-          idProduct: this.item.idProduct,
-          idReviewer: localStorage.getItem('idUser'),
-          idReply: null,
-          isReply: false,
-          role_user: localStorage.getItem('role'),
-          content: this.valueComment,
-          dateCreate: new Date()
-        };
-        console.log(newComment);
-        this.http.createComment(newComment).subscribe(res => {
-          console.log(res);
-          const id = '#reload_'+this.item.idProduct;
-          $(id).click();
-          this.valueComment = '';
-        });
-      }
+    if (this.validatorComment()) {
+      let newComment = {
+        idProduct: this.item.idProduct,
+        idReviewer: localStorage.getItem('idUser'),
+        idReply: null,
+        isReply: false,
+        role_user: localStorage.getItem('role'),
+        content: this.valueComment,
+        dateCreate: new Date()
+      };
+      console.log(newComment);
+      this.http.createComment(newComment).subscribe(res => {
+        console.log(res);
+        const id = '#reload_'+this.item.idProduct;
+        $(id).click();
+        this.valueComment = '';
+      });
+    }
+  }
+
+  validatorComment() {
+    const checkOne = this.valueComment.replace(/  +/g, ' ');
+    const checkTwo = checkOne.split('')[0] === ' ';
+    const temp = checkOne.split('');
+    const checkThree = checkOne.split('')[temp.length - 1] === ' ';
+    if (checkOne === ' ') return false;
+    if (checkTwo) {
+      let temp2 = checkOne.split('');
+      temp2[0] = '';
+      this.valueComment = temp2.join('');
+    }
+    if (checkThree) {
+      let curTemp = this.valueComment.replace(/  +/g, ' ');
+      let curTempTwo = curTemp.split('');
+      curTempTwo[curTempTwo.length - 1] = '';
+      this.valueComment = curTempTwo.join('');
+    }
+    return true;
   }
 
   showComment(idProduct) {

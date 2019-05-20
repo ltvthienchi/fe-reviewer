@@ -87,7 +87,7 @@ export class CommentPostComponent implements OnInit {
   }
 
   postComment(item) {
-    if (this.valueComment) {
+    if (this.validatorCommentPost()) {
       let newComment = {
         idProduct: item.idProduct,
         idReviewer: this.idUser,
@@ -106,13 +106,55 @@ export class CommentPostComponent implements OnInit {
   }
 
   editAndPostComment(item) {
-    let data = {
-      idComment: item.idComment,
-      contentComment: this.valueCommentEdit
-    };
-    this.http.editComment(data).subscribe(res => {
-      this.getData();
-    })
+    if (this.validatorCommentEdit()) {
+      let data = {
+        idComment: item.idComment,
+        contentComment: this.valueCommentEdit
+      };
+      this.http.editComment(data).subscribe(res => {
+        this.getData();
+      })
+    }
+  }
+
+  validatorCommentPost() {
+    const checkOne = this.valueComment.replace(/  +/g, ' ');
+    const checkTwo = checkOne.split('')[0] === ' ';
+    const temp = checkOne.split('');
+    const checkThree = checkOne.split('')[temp.length - 1] === ' ';
+    if (checkOne === ' ') return false;
+    if (checkTwo) {
+      let temp2 = checkOne.split('');
+      temp2[0] = '';
+      this.valueComment = temp2.join('');
+    }
+    if (checkThree) {
+      let curTemp = this.valueComment.replace(/  +/g, ' ');
+      let curTempTwo = curTemp.split('');
+      curTempTwo[curTempTwo.length - 1] = '';
+      this.valueComment = curTempTwo.join('');
+    }
+    return true;
+  }
+
+  validatorCommentEdit() {
+    const checkOne = this.valueCommentEdit.replace(/  +/g, ' ');
+    const checkTwo = checkOne.split('')[0] === ' ';
+    const temp = checkOne.split('');
+    const checkThree = checkOne.split('')[temp.length - 1] === ' ';
+    if (checkOne === ' ') return false;
+    if (checkTwo) {
+      let temp2 = checkOne.split('');
+      temp2[0] = '';
+      this.valueCommentEdit = temp2.join('');
+    }
+    if (checkThree) {
+      let curTemp = this.valueCommentEdit.replace(/  +/g, ' ');
+      let curTempTwo = curTemp.split('');
+      curTempTwo[curTempTwo.length - 1] = '';
+      this.valueCommentEdit = curTempTwo.join('');
+    }
+    return true;
   }
 
   showAllComment() {
