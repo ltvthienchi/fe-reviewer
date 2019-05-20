@@ -6,6 +6,7 @@ import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry 
 
 import * as $ from 'jquery';
 import {NotifierService} from 'angular-notifier';
+import {AvatarService} from '../../../services/avatar-service/avatar.service';
 
 @Component({
   selector: 'app-modal-upload-avt',
@@ -16,9 +17,11 @@ export class ModalUploadAvtComponent implements OnInit {
 
   fileAvt;
   files: UploadFile[] = [];
+  localImg;
 
   constructor(private dialogRef: MatDialogRef<ModalUploadAvtComponent>, @Inject(MAT_DIALOG_DATA) public data,
-              private http: HttpService, private userSer: IdUserService, private notifier: NotifierService) {
+              private http: HttpService, private userSer: IdUserService, private notifier: NotifierService,
+              private avatarService: AvatarService) {
     // this.idUser = this.userSer.getId();
     // this.dataReview.idCompany = data.idCompany;
     // this.dataReview.idReviewer = this.idUser;
@@ -33,10 +36,12 @@ export class ModalUploadAvtComponent implements OnInit {
   }
 
   dropped(event: UploadEvent) {
-    this.files = event.files
+    this.files = event.files;
+    const self = this;
     const tempImg = event.files[0].relativePath.split('.');
     const exFile = tempImg[tempImg.length - 1];
     if(exFile.toLocaleLowerCase() === 'png' || exFile.toLocaleLowerCase() === 'jpg') {
+      this.fileAvt = true;
       for (const droppedFile of event.files) {
         if (droppedFile.fileEntry.isFile) {
           const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
@@ -46,6 +51,7 @@ export class ModalUploadAvtComponent implements OnInit {
             var preview = document.querySelector("#imgDemo");
             reader.addEventListener("load", function () {
               preview['src'] = reader.result;
+              self.localImg = reader.result;
             }, false);
             reader.readAsDataURL(file);
           });
@@ -75,6 +81,7 @@ export class ModalUploadAvtComponent implements OnInit {
     };
     this.http.updateInfoCompany(data).subscribe((res:any) => {
       if(res.status === 'SUCCESS') {
+        this.avatarService.fire(this.localImg);
         this.dialogRef.close(true);
       }
     })
@@ -85,6 +92,7 @@ export class ModalUploadAvtComponent implements OnInit {
   }
 
   handleFileInput(files: FileList, event) {
+    const self = this;
     const tempImg = files[0].name.split('.');
     const exFile = tempImg[tempImg.length - 1];
     if(exFile.toLocaleLowerCase() === 'png' || exFile.toLocaleLowerCase() === 'jpg') {
@@ -96,6 +104,7 @@ export class ModalUploadAvtComponent implements OnInit {
           var preview = document.querySelector("#imgDemo");
           reader.addEventListener("load", function () {
             preview['src'] = reader.result;
+            self.localImg = reader.result;
           }, false);
           reader.readAsDataURL(file);
         }, 0)

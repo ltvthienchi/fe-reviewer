@@ -152,7 +152,6 @@ export class HttpService {
     const reqHeader = new HttpHeaders({
       'Authorization': 'Bearer ' + auth_token
     });
-    console.log('====> here!', data);
     return this.http.post(URL_SERVER.infoReviewer + 'updateReview', input, { headers: reqHeader });
   }
 

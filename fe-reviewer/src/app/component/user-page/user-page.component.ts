@@ -36,6 +36,7 @@ export class UserPageComponent implements OnInit {
   avatarHistory;
   avaImg: File;
   avaPanel: File;
+  localImg;
   private emailReviewer: string;
   private firstName: string;
   private fullName: string;
@@ -126,13 +127,12 @@ export class UserPageComponent implements OnInit {
       this.firstName = this.updateInfoProfile.value.firstName;
       this.lastName = this.updateInfoProfile.value.lastName;
       this.httpService.updateInfoPro(updateInPro).subscribe((data: any) => {
-        console.log('data', data);
         if (data.status === 'SUCCESS') {
           this.reloadData();
           if (updateInPro.avaReviewer != null) {
-            const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
-            this.avatarService.changeAvaImage(avatar);
-            this.avatarHistory = avatar;
+            // const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
+            this.avatarService.fire(this.localImg);
+            this.avatarHistory = this.localImg;
             this.avaImg = null;
             this.avaPanel = null;
           }
@@ -145,11 +145,20 @@ export class UserPageComponent implements OnInit {
   }
 
   handleFileInput(files: FileList, type) {
+    const self = this;
     const tempImg = files[0].name.split('.');
     const exFile = tempImg[tempImg.length - 1];
     if (type === 'avatar') {
       if(exFile.toLocaleLowerCase() === 'png' || exFile.toLocaleLowerCase() === 'jpg') {
         this.changeAvar = files.item(0);
+        setTimeout(function () {
+          const file = files[0];
+          var reader = new FileReader();
+          reader.addEventListener("load", function () {
+            self.localImg = reader.result;
+          }, false);
+          reader.readAsDataURL(file);
+        }, 0)
       } else {
         this.avaImg = null;
         this.notifier.notify('error', 'Please chose image has .png or .jpg');

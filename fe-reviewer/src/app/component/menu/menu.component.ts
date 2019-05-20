@@ -38,6 +38,9 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.avatarService.on().subscribe(res => {
+      this.avatar = res;
+    });
     this.idUser = this.idUserSer.getId();
     if (this.idUser != null && this.idUser !== '') {
       const loginRequest = {

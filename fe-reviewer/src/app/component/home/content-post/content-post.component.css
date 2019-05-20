@@ -25,7 +25,8 @@
 }
 
 .header .avatar img {
-  width: 100%;
+  width: 46px;
+  height: 46px;
   border-radius: 90px;
   border: 1px solid silver;
 }
@@ -270,6 +271,7 @@
 
 .comment .avatar-comment img {
   height: 38px;
+  width: 38px;
   border-radius: 90px;
   border: 1px solid silver;
   margin: 0 auto;

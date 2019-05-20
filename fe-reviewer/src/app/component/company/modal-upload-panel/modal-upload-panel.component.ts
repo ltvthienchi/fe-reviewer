@@ -28,6 +28,7 @@ export class ModalUploadPanelComponent implements OnInit {
     const tempImg = event.files[0].relativePath.split('.');
     const exFile = tempImg[tempImg.length - 1];
     if(exFile.toLocaleLowerCase() === 'png' || exFile.toLocaleLowerCase() === 'jpg') {
+      this.filePanel = true;
       for (const droppedFile of event.files) {
         if (droppedFile.fileEntry.isFile) {
           const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
