@@ -126,7 +126,8 @@ export class UserPageComponent implements OnInit {
       this.firstName = this.updateInfoProfile.value.firstName;
       this.lastName = this.updateInfoProfile.value.lastName;
       this.httpService.updateInfoPro(updateInPro).subscribe((data: any) => {
-        if (data.status === 'SUCCESS') {
+        console.log('data', data);
+if (data.status === 'SUCCESS') {
           this.reloadData();
           if (updateInPro.avaReviewer != null) {
             const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
@@ -170,7 +171,8 @@ export class UserPageComponent implements OnInit {
 
       };
       this.httpService.changePass(changePass).subscribe((data: any) => {
-        if (data.status === 'SUCCESS') {
+        console.log('data', data);
+if (data.status === 'SUCCESS') {
           this.ChangePassForm = this.formBuilder.group({
             oldPass: ['', [validatorOldPassword]],
             password: ['', [validatorPassword]],

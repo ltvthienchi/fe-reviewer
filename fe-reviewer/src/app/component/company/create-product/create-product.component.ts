@@ -87,7 +87,8 @@ export class CreateProductComponent implements OnInit {
   uploadContent(): void {
     this.newPost.fileImage = this.fileToUpload;
     this.http.uploadImage(this.newPost).subscribe((data: any) => {
-      if (data.status === 'SUCCESS') {
+      console.log('data', data);
+if (data.status === 'SUCCESS') {
         $('#btn-timeline').addClass('active');
         $('#timeline').addClass('active show');
         $('#changeCreateProduct').removeClass('active');
@@ -102,7 +103,8 @@ export class CreateProductComponent implements OnInit {
   editContent(): void {
     this.newPost.fileImage = this.fileToUpload;
     this.http.uploadProduct(this.newPost).subscribe((data:any) => {
-      if (data.status === 'SUCCESS') {
+      console.log('data', data);
+if (data.status === 'SUCCESS') {
         $('#btn-timeline').addClass('active');
         $('#timeline').addClass('active show');
         $('#changeCreateProduct').removeClass('active');

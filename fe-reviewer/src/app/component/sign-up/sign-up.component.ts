@@ -69,7 +69,8 @@ export class SignUpComponent implements OnInit {
         lastName: this.normalUserForm.value.lastName,
       };
       this.userService.registerUser(user).subscribe((data: any) => {
-        if (data.status === 'SUCCESS') {
+        console.log('data', data);
+if (data.status === 'SUCCESS') {
           // this.showNotification( 'success', 'Create Successfully!! Please check your mail box to Active Account!' );
         } else {
           this.showNotification( 'error', data.result );
@@ -96,7 +97,8 @@ export class SignUpComponent implements OnInit {
         typeAccount: 1
       };
       this.companyService.createCompany(company).subscribe((data: any) => {
-        if (data.status === 'SUCCESS') {
+        console.log('data', data);
+if (data.status === 'SUCCESS') {
         } else {
           this.showNotification( 'error', data.result );
         }

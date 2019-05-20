@@ -140,6 +140,7 @@ export class CompanyComponent implements OnInit {
     const requestString = JSON.stringify(requestData);
     this.http.followCompany(requestString).subscribe( (data: any) => {
       console.log('====> data', data);
+      // console.log('data', data);
       // if (data.status === 'SUCCESS') {
         this.isFollowed = isFollow;
         this.getData();
