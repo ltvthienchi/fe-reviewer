@@ -45,7 +45,6 @@ export class UpdateProfileComponent implements OnInit {
   getData() {
     this.http.getDetailCompany(this.idUser).subscribe( (data: any) => {
       if (data) {
-        console.log(data);
         this.detailCompany = data.company;
         this.clearProfile();
       }

@@ -15,7 +15,7 @@
       <div class="col-sm-6">
         <div class="form-group my-form">
           <label for="image">Image Product</label>
-          <input class="col-sm-10" type="file" id="image" style="padding: 0;"
+          <input class="col-sm-10" type="file" id="image" style="padding: 0;" [(ngModel)]="valueImg"
                   name="file" (change)="handleFileInput($event.target.files)">
         </div>
       </div>

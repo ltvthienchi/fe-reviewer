@@ -62,6 +62,7 @@ export class CreateProductComponent implements OnInit {
   };
   fileToUpload: File = null;
   idUser;
+  valueImg;
   checkValidator = false;
   constructor(private authGuard: AuthGuardService, private http: HttpService, private idUserSer: IdUserService,
               private notifier: NotifierService, private router: Router) { }
@@ -150,6 +151,7 @@ export class CreateProductComponent implements OnInit {
       }
     };
     this.fileToUpload = null;
+    this.valueImg = null;
     setTimeout(function () {
       $('#btn-reset-data-company').click();
     }, 0);
