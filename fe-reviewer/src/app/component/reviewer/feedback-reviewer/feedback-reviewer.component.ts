@@ -47,7 +47,8 @@ export class FeedbackReviewerComponent implements OnInit {
 
       };
       this.httpService.feedbackWebsite(feedback).subscribe((data: any) => {
-        if (data.status === 'SUCCESS') {
+        console.log('data', data);
+if (data.status === 'SUCCESS') {
           this.showNotification('success', 'Send feedback successfully');
           this.feedbackForm = this.formBuilder.group({
             titleFeedback: ['', [validatorRequired]],

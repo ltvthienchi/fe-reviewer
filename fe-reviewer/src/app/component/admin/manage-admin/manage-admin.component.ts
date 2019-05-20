@@ -148,7 +148,8 @@ export class ManageAdminComponent implements OnInit {
       }
       // console.log(item);
       this.httpService.editAdmin(item).subscribe((data: any) => {
-        if (data.status === 'SUCCESS') {
+        console.log('data', data);
+if (data.status === 'SUCCESS') {
           this.showNotification('success', 'Update Admin successfully');
           this.loadData();
           $('#close-button-edit').click();
@@ -213,7 +214,8 @@ export class ManageAdminComponent implements OnInit {
       }
       // console.log(item);
       this.httpService.addAdmin(item).subscribe((data: any) => {
-        if (data.status === 'SUCCESS') {
+        console.log('data', data);
+if (data.status === 'SUCCESS') {
           this.showNotification('success', 'Add Admin successfully');
           this.loadData();
           $('#close-button-add').click();
@@ -251,7 +253,8 @@ export class ManageAdminComponent implements OnInit {
 
       // console.log(item);
       this.httpService.resetPassAdmin(item).subscribe((data: any) => {
-        if (data.status === 'SUCCESS') {
+        console.log('data', data);
+if (data.status === 'SUCCESS') {
           this.showNotification('success', 'Change pass successfully');
           this.loadData();
           $('#close-button-reset').click();

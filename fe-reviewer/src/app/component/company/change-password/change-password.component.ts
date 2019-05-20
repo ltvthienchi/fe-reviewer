@@ -53,7 +53,8 @@ export class ChangePasswordComponent implements OnInit {
       };
       console.log(changePass);
       this.httpService.changePass(changePass).subscribe((data: any) => {
-        if (data.status === 'SUCCESS') {
+        console.log('data', data);
+if (data.status === 'SUCCESS') {
           // $('#btn-timeline').addClass('active');
           // $('#timeline').addClass('active show');
           // $('#btn-changePassword').removeClass('active');

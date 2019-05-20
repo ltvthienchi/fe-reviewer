@@ -54,7 +54,8 @@ export class ReportedCommentComponent implements OnInit {
   deleteComment(idComment: any) {
     console.log(idComment);
     this.httpService.deleteComment(idComment).subscribe((data: any) => {
-      if (data.status === 'SUCCESS') {
+      console.log('data', data);
+if (data.status === 'SUCCESS') {
         this.showNotification('success', 'Delete Comment Successfully!!');
         $('#deleteEmployeeModal').click();
         this.loadData();

@@ -22,7 +22,8 @@ export class RegisterConfirmationComponent implements OnInit {
 
   confirmRegister() {
     this.userService.confirmationAccount(this.idAccount).subscribe((data: any) => {
-      if (data.status === 'SUCCESS') {
+      console.log('data', data);
+if (data.status === 'SUCCESS') {
         this.router.navigate(['/login']);
       }
     });

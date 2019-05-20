@@ -126,6 +126,7 @@ export class UserPageComponent implements OnInit {
       this.firstName = this.updateInfoProfile.value.firstName;
       this.lastName = this.updateInfoProfile.value.lastName;
       this.httpService.updateInfoPro(updateInPro).subscribe((data: any) => {
+        console.log('data', data);
         if (data.status === 'SUCCESS') {
           this.reloadData();
           if (updateInPro.avaReviewer != null) {
@@ -144,12 +145,23 @@ export class UserPageComponent implements OnInit {
   }
 
   handleFileInput(files: FileList, type) {
+    const tempImg = files[0].name.split('.');
+    const exFile = tempImg[tempImg.length - 1];
     if (type === 'avatar') {
-      this.changeAvar = files.item(0);
+      if(exFile.toLocaleLowerCase() === 'png' || exFile.toLocaleLowerCase() === 'jpg') {
+        this.changeAvar = files.item(0);
+      } else {
+        this.avaImg = null;
+        this.notifier.notify('error', 'Please chose image has .png or .jpg');
+      }
     } else {
-      this.changeBackground = files.item(0);
+      if(exFile.toLocaleLowerCase() === 'png' || exFile.toLocaleLowerCase() === 'jpg') {
+        this.changeBackground = files.item(0);
+      } else {
+        this.avaPanel = null;
+        this.notifier.notify('error', 'Please chose image has .png or .jpg');
+      }
     }
-    // this.fileToUpload = files.item(0);
   }
 
   test() {
@@ -170,7 +182,8 @@ export class UserPageComponent implements OnInit {
 
       };
       this.httpService.changePass(changePass).subscribe((data: any) => {
-        if (data.status === 'SUCCESS') {
+        console.log('data', data);
+if (data.status === 'SUCCESS') {
           this.ChangePassForm = this.formBuilder.group({
             oldPass: ['', [validatorOldPassword]],
             password: ['', [validatorPassword]],

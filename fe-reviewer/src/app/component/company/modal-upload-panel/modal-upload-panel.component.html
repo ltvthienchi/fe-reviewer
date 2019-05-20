@@ -13,8 +13,7 @@
   </div>
   <div class="col-12">
     <div class="border-upload" >
-      <file-drop id="enterUpload" (onFileDrop)="dropped($event)" style="border-radius: 1px; width: 100%; border: none"
-                 (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)" (click)="selectFile()">
+      <file-drop id="enterUpload" (onFileDrop)="dropped($event)" style="border-radius: 1px; width: 100%; border: none" (click)="selectFile()">
         <p style="color: black">Click to select or drag here</p>
       </file-drop>
       <input type="file" id="inputFile" style="display: none"
@@ -23,8 +22,8 @@
   </div>
   <div class="col-12">
     <div class="clearfix mt-4">
-      <button type="button" class="btn btn-warning float-right ml-3" (click)="closeModal()" >Cancel</button>
-      <button type="button" class="btn btn-info float-right" (click)="saveModal()">Save</button>
+      <button type="button" class="btn btn-warning float-right ml-3" (click)="closeModal()">Cancel</button>
+      <button type="button" class="btn btn-info float-right" (click)="saveModal()" [disabled]="!filePanel">Save</button>
     </div>
   </div>
 </div>
