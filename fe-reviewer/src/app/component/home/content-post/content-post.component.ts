@@ -277,6 +277,7 @@ export class ContentPostComponent implements OnInit {
   editProduct(item) {
     this.eventAction.emit({code: 'edit', data: item});
   }
+
   getDataInfo() {
     const data = {
       email: localStorage.getItem('email'),
@@ -288,5 +289,9 @@ export class ContentPostComponent implements OnInit {
         this.userInfo = res;
       });
     }
+  }
+
+  isCompanyRole() {
+    return localStorage.getItem('role') === 'ROLE_COMPANY';
   }
 }

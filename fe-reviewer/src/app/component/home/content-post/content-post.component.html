@@ -79,16 +79,16 @@
     <div class="footer">
       <div class="group-button">
         <div class="row">
-          <div [class]="!item.status ? 'col-3' : 'col-4'">
+          <div [class]="!item.status ? (!isCompanyRole() ? 'col-3' : 'col-0') : 'col-4'">
             <p class="btn-post" (click)="toggleRatings(item.idProduct, item.idReviewer)">Ratings</p>
           </div>
-          <div [class]="!item.status ? 'col-3' : 'col-4'">
+          <div [class]="!item.status ? (!isCompanyRole() ? 'col-3' : 'col-4') : 'col-4'">
             <p class="btn-post" (click)="showComment(item.idProduct)" [id]="'btnShowAllComment'+item.idProduct">Comments</p>
           </div>
-          <div [class]="!item.status ? 'col-3' : 'col-0'">
+          <div [class]="!item.status ? (!isCompanyRole() ? 'col-3' : 'col-4') : 'col-0'">
             <p class="btn-post" *ngIf="item.status !== 'detail'" (click)="compareProduct(item)">Compare</p>
           </div>
-          <div [class]="!item.status ? 'col-3' : 'col-4'">
+          <div [class]="!item.status ? (!isCompanyRole() ? 'col-3' : 'col-4') : 'col-4'">
             <p class="btn-post" (click)="detailProduct(item)">Detail</p>
           </div>
         </div>

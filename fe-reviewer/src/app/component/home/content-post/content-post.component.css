@@ -1,3 +1,7 @@
+.col-0 {
+  display: none;
+}
+
 .w-80 {
   width: 80%;
   margin: 0 auto;
