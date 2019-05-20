@@ -6,6 +6,7 @@ import {HttpService} from '../../../services/http/http.service';
 import {validatorName, validatorRequired, validatorWebsite, validatorEmail, validatorPhone} from '../../../services/validator/validator';
 import * as $ from 'jquery';
 import {ActivatedRoute} from '@angular/router';
+import {NameService} from '../../../services/name-service/name.service';
 
 @Component({
   selector: 'app-update-profile',
@@ -22,7 +23,7 @@ export class UpdateProfileComponent implements OnInit {
   };
   detailCompany: any;
   constructor(private userSer: IdUserService, private formBuilder: FormBuilder,private notifier: NotifierService,
-              private http: HttpService, private route: ActivatedRoute) {
+              private http: HttpService, private route: ActivatedRoute, private nameService: NameService) {
 
     this.formUpdateCompany = this.formBuilder.group({
       address: ['', [validatorRequired]],
@@ -66,6 +67,7 @@ export class UpdateProfileComponent implements OnInit {
       console.log(data);
       this.http.updateInfoCompany(data).subscribe(res => {
         if(res['status'] === 'SUCCESS') {
+          this.nameService.fire(data.nameCompany);
           this.eventAction.emit({code: 'update'});
           // $('#btn-timeline').addClass('active');
           // $('#timeline').addClass('active show');

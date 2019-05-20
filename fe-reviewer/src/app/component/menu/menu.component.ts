@@ -11,6 +11,7 @@ import {AvatarService} from '../../services/avatar-service/avatar.service';
 import * as $ from 'jquery';
 import {IdUserService} from '../../services/data-global/id-user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {NameService} from '../../services/name-service/name.service';
 
 @Component({
   selector: 'app-menu',
@@ -31,7 +32,7 @@ export class MenuComponent implements OnInit {
   firstClick = true;
   constructor(private authGuard: AuthGuardService, private router: Router,
               private data: DataService, private http: HttpService,private avatarService: AvatarService,
-              private elementRef: ElementRef,private idUserSer: IdUserService) {
+              private elementRef: ElementRef,private idUserSer: IdUserService, private nameService: NameService) {
       const localCount = JSON.parse(JSON.stringify(sessionStorage.getItem('numbProduct')));
       if (localCount) { this.count = localCount; }
       this.role_user = localStorage.getItem('role');
@@ -40,6 +41,9 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.avatarService.on().subscribe(res => {
       this.avatar = res;
+    });
+    this.nameService.on().subscribe(res => {
+      this.fullName = res;
     });
     this.idUser = this.idUserSer.getId();
     if (this.idUser != null && this.idUser !== '') {

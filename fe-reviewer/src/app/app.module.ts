@@ -84,6 +84,7 @@ import { ChartHomeComponent } from './component/admin/home-admin/chart-home/char
 import { ModalUploadAvtComponent } from './component/company/modal-upload-avt/modal-upload-avt.component';
 import { ModalUploadPanelComponent } from './component/company/modal-upload-panel/modal-upload-panel.component';
 import { FileDropModule } from 'ngx-file-drop';
+import {NameService} from './services/name-service/name.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -253,6 +254,7 @@ export function tokenGetter() {
     TopRatingService,
     AvatarService,
     IdUserService,
+    NameService,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

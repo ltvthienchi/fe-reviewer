@@ -16,6 +16,7 @@ import {ActivatedRoute} from '@angular/router';
 import {IdUserService} from '../../services/data-global/id-user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {ActivityHistoryComponent} from './activity-history/activity-history.component';
+import {NameService} from '../../services/name-service/name.service';
 
 
 
@@ -52,7 +53,8 @@ export class UserPageComponent implements OnInit {
   };
 
   constructor(private formBuilder: FormBuilder, notifier: NotifierService, private httpService: HttpService,
-              private avatarService: AvatarService, private activatedRoute: ActivatedRoute, private idUserSer: IdUserService) {
+              private avatarService: AvatarService, private activatedRoute: ActivatedRoute, private idUserSer: IdUserService,
+              private nameService: NameService) {
     $(document).ready(function () {
       $('html,body').animate({ scrollTop: 0 }, 'normal');
     });
@@ -132,6 +134,7 @@ export class UserPageComponent implements OnInit {
           if (updateInPro.avaReviewer != null) {
             // const avatar = 'http://localhost/img/reviewer/' + updateInPro.avaReviewer.name;
             this.avatarService.fire(this.localImg);
+            this.nameService.fire(this.firstName + ' ' + this.lastName);
             this.avatarHistory = this.localImg;
             this.avaImg = null;
             this.avaPanel = null;
