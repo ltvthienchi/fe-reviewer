@@ -218,6 +218,7 @@ if (data.status === 'SUCCESS') {
       $('#profile').show();
       $('#edit').hide();
       $('#changepassword').hide();
+      $('html,body').animate({ scrollTop: 0 }, 'normal');
     } else if (type === 'edit') {
       $('#profile').hide();
       $('#edit').show();

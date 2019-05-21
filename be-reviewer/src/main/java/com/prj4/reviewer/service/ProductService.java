@@ -61,7 +61,7 @@ public class ProductService {
     public List<SearchResponse> searchAllProduct() {
         List<Product> lstProduct = productReporsitory.findAllByOrderByDtCreatedDesc();
         List<SearchResponse> lstSearch = new ArrayList<>();
-        int length = lstProduct.size() < 4 ? lstProduct.size(): 4 ;
+        int length = lstProduct.size();
         for (int i = 0; i < length; i++ ) {
             String imgProduct = postService.getImagePostFromIdProduct(lstProduct.get(i).getIdProduct());
             String nameProduct = lstProduct.get(i).getNameProduct();
