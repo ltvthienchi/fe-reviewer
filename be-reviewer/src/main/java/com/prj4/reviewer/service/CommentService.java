@@ -71,8 +71,10 @@ public class CommentService {
         for (Comment c: lstComment) {
             if (reviewerService.getReviewerInfoById(c.getIdReviewer()) != null) {
                 fullName = reviewerService.getReviewerInfoById(c.getIdReviewer()).getFullName();
-            } else {
+            } else if (companyService.getCompanyById(c.getIdReviewer()) != null) {
                 fullName = companyService.getNameCompanyById(c.getIdReviewer());
+            } else{
+                fullName = adminRepository.findByIdAdmin(c.getIdReviewer()).getFullNameAdmin();
             }
 
             CommentReported cmt = new CommentReported(c.getIdComment(), fullName, c.getContent(), c.getDateCreate());

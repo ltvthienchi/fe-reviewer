@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.validation.Valid;
+import java.sql.SQLDataException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -51,11 +53,15 @@ public class AdminRestController {
     @PostMapping(BASE_POST_LINK + "createAdmin")
     public JsonResponse<String> createAdmin(@RequestBody @Valid AdminRequest adminRequest) {
 
-        String idAdmin = generateId.generateId("ADMIN_", new Date());
-        String encodedPass = new BCryptPasswordEncoder().encode(adminRequest.getPassAdmin());
-        Admin admin = new Admin(idAdmin, adminRequest.getFullNameAdmin() ,adminRequest.getEmailAdmin(),encodedPass,adminRequest.getDobAdmin(),
-                new Date(),true,adminRequest.getAddressAdmin(),adminRequest.getPhoneAdmin(), adminRequest.getRole());
-        adminService.save(admin);
+
+            String idAdmin = generateId.generateId("ADMIN_", new Date());
+            String encodedPass = new BCryptPasswordEncoder().encode(adminRequest.getPassAdmin());
+            Admin admin = new Admin(idAdmin, adminRequest.getFullNameAdmin() ,adminRequest.getEmailAdmin(),encodedPass,adminRequest.getDobAdmin(),
+                    new Date(),true,adminRequest.getAddressAdmin(),adminRequest.getPhoneAdmin(), adminRequest.getRole());
+            adminService.save(admin);
+
+
+
         return JsonResponse.accept("");
     }
 

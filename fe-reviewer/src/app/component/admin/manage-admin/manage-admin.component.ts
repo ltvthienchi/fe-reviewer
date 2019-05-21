@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   validatorConfirmPassword,
   validatorEmail,
@@ -6,16 +6,17 @@ import {
   validatorPassword,
   validatorName, validatorPhone, validatorWebsite
 } from '../../../services/validator/validator';
-import { NotifierService } from 'angular-notifier';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { HttpService } from '../../../services/http/http.service';
-import { Admin } from '../../../model/admin.model';
-import { parse } from 'url';
-import { error } from 'protractor';
-import { AdminBlock } from '../../../model/AdminBlock.model';
+import {NotifierService} from 'angular-notifier';
+import {FormGroup, FormBuilder} from '@angular/forms';
+import {HttpService} from '../../../services/http/http.service';
+import {Admin} from '../../../model/admin.model';
+import {parse} from 'url';
+import {error} from 'protractor';
+import {AdminBlock} from '../../../model/AdminBlock.model';
 import * as $ from 'jquery';
-import { ResetPassAdmin } from '../../../model/ResetPassAdmin.model';
-import { FormControl } from '@angular/forms';
+import {ResetPassAdmin} from '../../../model/ResetPassAdmin.model';
+import {FormControl} from '@angular/forms';
+
 @Component({
   selector: 'app-manage-admin',
   templateUrl: './manage-admin.component.html',
@@ -23,28 +24,26 @@ import { FormControl } from '@angular/forms';
 })
 export class ManageAdminComponent implements OnInit {
   private notifier: NotifierService;
- 
-
   listAdmin: Admin[];
   arr: Admin[];
   adminForm: FormGroup;
-  passForm:FormGroup;
+  passForm: FormGroup;
   role;
-  check:boolean;
+  check: boolean;
   queryField: FormControl = new FormControl();
   name;
   typeRole = [{
     id: '1',
     name: 'Manage User',
-   },
-   {
-    id: '2',
-    name: 'Manage Product',
-   },
-   {
-    id: '3',
-    name: 'Manage Feedback-Comment',
-   }];
+  },
+    {
+      id: '2',
+      name: 'Manage Product',
+    },
+    {
+      id: '3',
+      name: 'Manage Feedback-Comment',
+    }];
 
   validatorForm = {
     passForm: true,
@@ -58,7 +57,7 @@ export class ManageAdminComponent implements OnInit {
   ngOnInit() {
 
 
-    this.check=false;
+    this.check = false;
     this.adminForm = this.formBuilder.group({
       idAdmin: [],
       dtCreated: [],
@@ -73,42 +72,45 @@ export class ManageAdminComponent implements OnInit {
 
     });
     this.passForm = this.formBuilder.group({
-      idAdmin:[],
+      idAdmin: [],
       password: ['', [validatorPassword]],
       confirmPassword: ['', [validatorConfirmPassword]],
     });
-    
-    const item:AdminBlock={
-      idAdmin:localStorage.getItem('idUser'),
-      isActive:'true'
-  
-    }
+
+    const item: AdminBlock = {
+      idAdmin: localStorage.getItem('idUser'),
+      isActive: 'true'
+
+    };
     this.httpService.getRoleAdmin(item).subscribe((data: any) => {
-     // console.log(data);
-      //this.role = data;
-      if(data == '0') this.check=true; else this.check=false;
+      if (data == '0') {
+        this.check = true;
+      } else {
+        this.check = false;
+      }
       this.role = data;
-      
+
     });
-   // console.log(this.role);
+    // console.log(this.role);
     this.loadData();
-    
+    console.log(this.check);
+
 
   }
 
-   showNotification(type: string, message: string): void {
+  showNotification(type: string, message: string): void {
     this.notifier.notify(type, message);
   }
 
-   editAdmin(admin: any) {
+  editAdmin(admin: any) {
 
     const dob = new Date(admin.dobAdmin);
     const year = dob.getFullYear();
+
     const month = dob.getMonth() + 1 <= 9 ? `0${dob.getMonth() + 1}` : dob.getMonth() + 1;
     const date = dob.getDate() <= 9 ? `0${dob.getDate()}` : dob.getDate();
     const parseDob = `${year}-${month}-${date}`;
-
-    //this.adminForm.setValue(admin);
+    // this.adminForm.setValue(admin);
     this.adminForm.controls['idAdmin'].setValue(admin.idAdmin);
     this.adminForm.controls['dtCreated'].setValue(admin.dtCreated);
     this.adminForm.controls['active'].setValue(admin.active);
@@ -120,7 +122,7 @@ export class ManageAdminComponent implements OnInit {
     this.adminForm.controls['dobAdmin'].setValue(parseDob);
     this.adminForm.controls['role'].setValue(admin.roleAdmin);
 
-   // console.log(admin.roleAdmin);
+    // console.log(admin.roleAdmin);
 
     // console.log("parseDob");
     //  console.log(this.adminForm.value['dobAdmin']);
@@ -131,8 +133,12 @@ export class ManageAdminComponent implements OnInit {
 
   submitEdit() {
     // console.log(this.adminForm.controls);
+    const dob = new Date(this.adminForm.value.dobAdmin);
+    const year = dob.getFullYear();
     if (this.adminForm.status === 'INVALID') {
       this.validatorForm.adminForm = false;
+    } else if (year < 1990) {
+      this.showNotification('error', 'please enter year > 1990');
     } else {
       const item = {
         idAdmin: this.adminForm.value.idAdmin,
@@ -145,38 +151,42 @@ export class ManageAdminComponent implements OnInit {
         phoneAdmin: this.adminForm.value.phone,
         dobAdmin: this.adminForm.value.dobAdmin,
         role: this.adminForm.value.role
-      }
+      };
       // console.log(item);
       this.httpService.editAdmin(item).subscribe((data: any) => {
         console.log('data', data);
-if (data.status === 'SUCCESS') {
+        if (data.status === 'SUCCESS') {
           this.showNotification('success', 'Update Admin successfully');
           this.loadData();
           $('#close-button-edit').click();
         } else {
           this.showNotification('error', data.result);
-        };
+        }
+        ;
       });
-    };
+    }
+    ;
 
   }
-   loadData() {
+
+  loadData() {
     this.httpService.getAllAdmin().subscribe((data: any) => {
 
       // console.log(data);
       const item = data;
-      this.arr = item.filter(item => item.roleAdmin != '0');;
-     // console.log(this.arr);
+      this.arr = item.filter(item => item.roleAdmin != '0');
+      ;
+      // console.log(this.arr);
       this.listAdmin = this.arr;
-     // this.listAdmin = this.arr.filter(item => (item.fullNameAdmin.includes('') || item.emailAdmin.includes('')));
-    // console.log(this.listAdmin);
+      // this.listAdmin = this.arr.filter(item => (item.fullNameAdmin.includes('') || item.emailAdmin.includes('')));
+      // console.log(this.listAdmin);
       // console.log(this.listAdmin);
 
     });
   }
 
-   addAdmin() {
-     
+  addAdmin() {
+
     this.adminForm = this.formBuilder.group({
       idAdmin: [],
       dtCreated: [],
@@ -188,18 +198,22 @@ if (data.status === 'SUCCESS') {
       phone: ['', [validatorRequired, validatorPhone]],
       password: ['', [validatorRequired, validatorPassword]],
       role: [this.typeRole[0]]
-      
+
     });
-    
+
   }
 
   submitAdd() {
+    const dob = new Date(this.adminForm.value.dobAdmin);
+    const year = dob.getFullYear();
     if (this.adminForm.status === 'INVALID') {
       //console.log(this.adminForm);
       this.validatorForm.adminForm = false;
+    } else if (year < 1900) {
+      this.showNotification('error', 'please enter year > 1900');
     } else {
       //.log(this.adminForm);
-     //console.log(this.role);
+      //console.log(this.role);
       const item = {
         idAdmin: this.adminForm.value.idAdmin,
         dtCreated: this.adminForm.value.dtCreated,
@@ -210,95 +224,98 @@ if (data.status === 'SUCCESS') {
         addressAdmin: this.adminForm.value.addressAdmin,
         phoneAdmin: this.adminForm.value.phone,
         dobAdmin: this.adminForm.value.dobAdmin,
-        role:this.adminForm.value.role.id
-      }
+        role: this.adminForm.value.role.id
+      };
       // console.log(item);
       this.httpService.addAdmin(item).subscribe((data: any) => {
         console.log('data', data);
-if (data.status === 'SUCCESS') {
+        if (data.status === 'SUCCESS') {
           this.showNotification('success', 'Add Admin successfully');
           this.loadData();
           $('#close-button-add').click();
         } else {
           this.showNotification('error', data.result);
-        };
+        }
+        ;
       });
-    };
+    }
+    ;
   }
 
-  resetPassword(admin :any){
+  resetPassword(admin: any) {
     this.passForm = this.formBuilder.group({
-      idAdmin:[],
+      idAdmin: [],
       password: ['', [validatorPassword]],
       confirmPassword: ['', [validatorConfirmPassword]],
     });
-    this.name =admin.fullNameAdmin;
+    this.name = admin.fullNameAdmin;
     const id = admin.idAdmin;
     this.passForm.controls['idAdmin'].setValue(admin.idAdmin);
     //this.adminForm.setValue(admin);
 
   }
-    
-  submitResetPass(){
+
+  submitResetPass() {
 
     if (this.passForm.status === 'INVALID') {
       //console.log(this.adminForm);
       this.validatorForm.passForm = false;
     } else {
-     // console.log(this.adminForm);
+      // console.log(this.adminForm);
       const item: ResetPassAdmin = {
         idAdmin: this.passForm.value.idAdmin,
         passAdmin: this.passForm.value.password
-      }
+      };
 
       // console.log(item);
       this.httpService.resetPassAdmin(item).subscribe((data: any) => {
         console.log('data', data);
-if (data.status === 'SUCCESS') {
+        if (data.status === 'SUCCESS') {
           this.showNotification('success', 'Change pass successfully');
           this.loadData();
           $('#close-button-reset').click();
         } else {
           this.showNotification('error', data.result);
-        };
+        }
+        ;
       });
-    };
+    }
+    ;
 
   }
 
-  lockAdmin(admin){
+  lockAdmin(admin) {
     let item = {
       idAdmin: admin.idAdmin,
       isActive: admin.active
     };
-   // console.log(item);
+    // console.log(item);
     this.httpService.lockAdmin(item).subscribe((data: any) => {
       this.loadData();
     });
 
   }
-  search() { 
+
+  search() {
 
     this.queryField.valueChanges
-        .debounceTime(200)
-        .distinctUntilChanged()
-        .subscribe((item: any) => {
-          const result = item.toUpperCase();
-          this.listAdmin = this.arr.filter(item => (item.fullNameAdmin.toUpperCase().includes(result) || item.emailAdmin.toUpperCase().includes(result)))
-        });
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .subscribe((item: any) => {
+        const result = item.toUpperCase();
+        this.listAdmin = this.arr.filter(item => (item.fullNameAdmin.toUpperCase().includes(result) || item.emailAdmin.toUpperCase().includes(result)));
+      });
     // do something
     // console.log(event.target.value) ;
     // const key = event.target.value;
     // this.listAdmin = this.arr.filter(item => (item.fullNameAdmin.includes(key) || item.emailAdmin.includes(key)));
 
   }
+
   // onEnter(event){
   //   const key = event.target.value;
   //   this.listAdmin = this.arr.filter(item => (item.fullNameAdmin.includes(key) || item.emailAdmin.includes(key)));
   // }
-
-
-
 
 
 }

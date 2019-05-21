@@ -114,8 +114,12 @@ export class UserPageComponent implements OnInit {
 
   submitUpdateInfo() {
     console.log(this.updateInfoProfile);
+    const dob = new Date(this.updateInfoProfile.value.dobReviewer);
+    const year = dob.getFullYear();
     if (this.updateInfoProfile.status === 'INVALID') {
       this.validatorForm.updateInfoProfile = false;
+    } else if (year < 1900) {
+      this.showNotification('error', 'please enter year > 1900');
     } else {
       this.validatorForm.updateInfoProfile = true;
       const updateInPro: UpdateInfoProfile = {
