@@ -80,16 +80,28 @@
       <div class="group-button">
         <div class="row">
           <div [class]="!item.status ? (!isCompanyRole() ? 'col-3' : 'col-0') : 'col-4'">
-            <p class="btn-post" (click)="toggleRatings(item.idProduct, item.idReviewer)">Ratings</p>
+            <p class="btn-post" (click)="toggleRatings(item.idProduct, item.idReviewer)">
+              <img src="../../../../assets/image/icon/rating/2x/outline_assistant_black_48dp.png" alt="rating">
+              <span>Rating</span>
+            </p>
           </div>
           <div [class]="!item.status ? (!isCompanyRole() ? 'col-3' : 'col-4') : 'col-4'">
-            <p class="btn-post" (click)="showComment(item.idProduct)" [id]="'btnShowAllComment'+item.idProduct">Comments</p>
+            <p class="btn-post" (click)="showComment(item.idProduct)" [id]="'btnShowAllComment'+item.idProduct">
+              <img src="../../../../assets/image/icon/comment/2x/outline_mode_comment_black_48dp.png" alt="rating">
+              <span>Comments</span>
+            </p>
           </div>
           <div [class]="!item.status ? (!isCompanyRole() ? 'col-3' : 'col-4') : 'col-0'">
-            <p class="btn-post" *ngIf="item.status !== 'detail'" (click)="compareProduct(item)">Compare</p>
+            <p class="btn-post" *ngIf="item.status !== 'detail'" (click)="compareProduct(item)">
+              <img src="../../../../assets/image/icon/compare/2x/outline_compare_black_48dp.png" alt="rating">
+              <span>Compare</span>
+            </p>
           </div>
           <div [class]="!item.status ? (!isCompanyRole() ? 'col-3' : 'col-4') : 'col-4'">
-            <p class="btn-post" (click)="detailProduct(item)">Detail</p>
+            <p class="btn-post" (click)="detailProduct(item)">
+              <img src="../../../../assets/image/icon/info/2x/outline_info_black_48dp.png" alt="rating">
+              <span>Detail</span>
+            </p>
           </div>
         </div>
       </div>

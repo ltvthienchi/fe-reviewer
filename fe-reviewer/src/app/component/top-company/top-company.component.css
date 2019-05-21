@@ -46,3 +46,63 @@
   padding: 10px;
   cursor: pointer;
 }
+
+.my-rank {
+  /*padding: 5px 5px 5px 10px;*/
+  min-height: 28px;
+  /*border: none;*/
+  border-bottom: 1px solid silver;
+  border-top: none;
+  border-right: none;
+  display: flex;
+  padding: 7px 10px;
+}
+
+.my-rank .fa-mobile {
+  font-size: 24px;
+}
+
+.my-rank:hover {
+  background: mediumaquamarine;
+  cursor: pointer;
+}
+
+.material-icons {
+  font-size: 24px;
+}
+
+.no-1 {
+  /*font-size: 26px;*/
+  color: gold;
+  /*margin-left: 1px;*/
+}
+
+.no-2 {
+  /*font-size: 22px;*/
+  color: #929090;
+  /*margin-left: 1px;*/
+}
+
+.no-3 {
+  /*font-size: 18px;*/
+  /*margin-left: 3.5px;*/
+  color: #b94f04;
+  /*margin-right: 4px;*/
+}
+
+.no-4 {
+  color: #2e8ee2
+  /*font-size: 18px;*/
+  /*margin-left: 4px;*/
+  /*margin-right: 6px;*/
+}
+
+.name-rank {
+  text-decoration: none;
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+.numb-table-rate {
+  /*padding-bottom: 10px;*/
+}

@@ -1,11 +1,18 @@
 
-  <div class="container-rank">
+  <div class="container-rank sticky-top">
     <div class="top-company">
-      <p class="title">Top Rating</p>
-      <p class="content" *ngFor="let product of lstData; let i = index">
-        <span class="stt">{{i + 1}}</span>
-        <a [routerLink]="'/detail-product/' + product.idProduct"><span class="name">{{product.nameProduct}}</span></a>
-        <span class="">{{product.numberRating}} rates</span>
-      </p>
+      <p class="title">Most Products Rated</p>
+      <ul class="list-group" >
+        <li class="list-group-item my-rank"
+            [routerLink]="'/detail-product/' + product.idProduct"
+            *ngFor="let product of lstData; let i = index">
+          <i [class]="checkClass(i + 1)" style="width: 10%">{{checkIcon(i + 1)}}</i>
+          <a class="name-rank" style="width: 64%">{{product.nameProduct}}</a>
+          <span class="numb-table-rate clearfix" style="width: 25%">
+            <img class="float-right" style="width: 26px" src="../../../assets/image/icon/rating/2x/outline_assistant_black_48dp.png" alt="rating">
+            <span class="float-right">{{product.numberRating}}</span>
+          </span>
+        </li>
+      </ul>
     </div>
   </div>

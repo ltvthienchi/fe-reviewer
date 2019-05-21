@@ -153,6 +153,14 @@
   user-select: none;
 }
 
+.group-button .btn-post img {
+  width: 26px;
+}
+
+.group-button .btn-post span {
+  padding-top: 5px;
+}
+
 .group-button .btn-post:hover {
   background: #f8f8f8;
   cursor: pointer;

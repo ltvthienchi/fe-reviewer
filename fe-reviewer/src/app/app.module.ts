@@ -36,7 +36,15 @@ import { LoginSideComponent } from './component/side/login-side/login-side.compo
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UserUpdatePageComponent } from './component/home/user-update-page/user-update-page.component';
 import { MenuLoginComponent } from './component/menu-login/menu-login.component';
-import {MatSliderModule, MatFormFieldModule, MatCardModule, MatCheckboxModule, MatDialogModule} from '@angular/material';
+import {
+  MatSliderModule,
+  MatFormFieldModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatIconModule,
+  MatListIconCssMatStyler
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ManageAdminComponent } from './component/admin/manage-admin/manage-admin.component';
@@ -231,10 +239,12 @@ export function tokenGetter() {
     NgbModule.forRoot(),
     NgbRatingModule,
     SocialLoginModule,
-    FileDropModule
+    FileDropModule,
+    MatIconModule
   ],
   exports: [
     MatSliderModule,
+    MatIconModule
   ],
   entryComponents: [ModalRatingComponent, ModalDetailComponent, PostDetailProductComponent, AlertMessageComponent,
   ReviewCompanyComponent, ModalUploadAvtComponent, ModalUploadPanelComponent

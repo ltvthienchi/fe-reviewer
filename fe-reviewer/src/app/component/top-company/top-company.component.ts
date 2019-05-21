@@ -23,4 +23,16 @@ export class TopCompanyComponent implements OnInit {
     });
   }
 
+  checkClass(index) {
+    if (index === 1) return 'material-icons no-1';
+    if (index === 2) return 'material-icons no-2';
+    if (index === 3) return 'material-icons no-3';
+    if (index >= 4) return 'material-icons no-4';
+  }
+
+  checkIcon(index) {
+    if (index > 3) return 'filter_4';
+    else return 'filter_'+index;
+  }
+
 }
