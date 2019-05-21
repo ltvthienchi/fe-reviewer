@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, Input} from '@angular/core';
 import {IdUserService} from '../../../services/data-global/id-user.service';
 import {EmailValidator, FormBuilder, FormGroup} from '@angular/forms';
 import {NotifierService} from 'angular-notifier';
@@ -15,6 +15,7 @@ import {NameService} from '../../../services/name-service/name.service';
 })
 export class UpdateProfileComponent implements OnInit {
 
+  @Input() idCompany;
   @Output() eventAction:EventEmitter<any> = new EventEmitter();
   idUser;
   formUpdateCompany: FormGroup;
@@ -38,7 +39,9 @@ export class UpdateProfileComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.idUser = this.userSer.getId();
-      this.getData();
+      if (this.idCompany === this.idUser) {
+        this.getData();
+      }
     });
   }
 

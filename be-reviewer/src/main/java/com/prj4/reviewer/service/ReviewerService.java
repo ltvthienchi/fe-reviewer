@@ -200,8 +200,16 @@ public class ReviewerService {
         for (ReviewCompany re : lstReviewComp) {
             String idReviewer = re.getIdReviewer();
             Reviewer reviewer = reviewerRepository.findByIdReviewer(idReviewer);
-            String imgAva = imageService.getImagePathById(reviewer.getImgAvatar());
-            ReviewCompanyResponse reviewCompanyResponse = new ReviewCompanyResponse(reviewer.getFullName(), idReviewer,
+            String imgAva = null;
+            String fullName = null;
+            if(reviewer != null) {
+                imgAva  = imageService.getImagePathById(reviewer.getImgAvatar());
+                fullName = reviewer.getFullName();
+            } else {
+                imgAva = "http://localhost/img/reviewer/avar-pay.png";
+                fullName = adminRepository.findByIdAdmin(idReviewer).getFullNameAdmin();
+            }
+            ReviewCompanyResponse reviewCompanyResponse = new ReviewCompanyResponse(fullName, idReviewer,
                     imgAva, re.getRatingComp(), re.getCommentContent(), re.getDtCreated());
             lstResult.add(reviewCompanyResponse);
         }

@@ -25,6 +25,8 @@ public class RatingController {
 
     @Autowired
     ProductService productService;
+    @Autowired
+    ReviewerService reviewerService;
 
     @Autowired
     GenerateId generateId;
@@ -97,8 +99,9 @@ public class RatingController {
             curProduct.setAvgCamera((avgCamera + curCamera) / curNumRating);
             curProduct.setNumRating(curNumRating);
             productService.saveProduct(curProduct);
-
-            historyService.createRatingHistory(idReviewer, idProduct);
+            if(reviewerService.getReviewerByIdReviewer(idReviewer) != null) {
+                historyService.createRatingHistory(idReviewer, idProduct);
+            }
 
         } catch (Exception ex) {
             return JsonResponse.reject(ex.getMessage());
