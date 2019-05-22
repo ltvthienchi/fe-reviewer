@@ -2,6 +2,7 @@ import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {HttpService} from '../../../services/http/http.service';
 import {IdUserService} from '../../../services/data-global/id-user.service';
+import {ReviewService} from '../../../services/review-service/review.service';
 
 @Component({
   selector: 'app-review-company',
@@ -22,7 +23,7 @@ export class ReviewCompanyComponent implements OnInit {
   idUser;
 
   constructor(private dialogRef: MatDialogRef<ReviewCompanyComponent>, @Inject(MAT_DIALOG_DATA) public data,
-              private http: HttpService, private userSer: IdUserService) {
+              private http: HttpService, private userSer: IdUserService, private reviewService: ReviewService) {
     this.idUser = this.userSer.getId();
     this.dataReview.idCompany = data.idCompany;
     this.dataReview.idReviewer = this.idUser;
@@ -54,6 +55,7 @@ export class ReviewCompanyComponent implements OnInit {
     console.log('here!');
     this.http.postReviewCompany(this.dataReview).subscribe(res => {
       if(res.status === 'SUCCESS') {
+        this.reviewService.fire(true);
         this.dialogRef.close(true);
       }
     });

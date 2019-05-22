@@ -5,6 +5,7 @@ import {IdUserService} from '../../../services/data-global/id-user.service';
 import {MatDialog} from '@angular/material';
 import {HttpService} from '../../../services/http/http.service';
 import {ReviewCompanyComponent} from '../review-company/review-company.component';
+import {ReviewService} from '../../../services/review-service/review.service';
 
 @Component({
   selector: 'app-review-list-company',
@@ -21,11 +22,14 @@ export class ReviewListCompanyComponent implements OnInit {
   curTotalReview: number = 0;
 
   constructor(private authGuard: AuthGuardService, private router: Router, private userService: IdUserService,
-              public dialog: MatDialog, private http: HttpService) { }
+              public dialog: MatDialog, private http: HttpService, private reviewService: ReviewService) { }
 
   ngOnInit() {
     this.idUser = this.userService.getId();
     this.getData();
+    this.reviewService.on().subscribe(res => {
+      this.getData();
+    })
   }
 
   getData() {

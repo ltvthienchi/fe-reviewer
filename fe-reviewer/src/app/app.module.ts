@@ -93,6 +93,7 @@ import { ModalUploadAvtComponent } from './component/company/modal-upload-avt/mo
 import { ModalUploadPanelComponent } from './component/company/modal-upload-panel/modal-upload-panel.component';
 import { FileDropModule } from 'ngx-file-drop';
 import {NameService} from './services/name-service/name.service';
+import {ReviewService} from './services/review-service/review.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -267,6 +268,7 @@ export function tokenGetter() {
     AvatarService,
     IdUserService,
     NameService,
+    ReviewService,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

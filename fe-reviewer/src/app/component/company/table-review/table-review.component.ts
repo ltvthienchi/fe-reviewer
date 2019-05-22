@@ -1,10 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AuthGuardService} from '../../../services/auth/auth-guard.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {IdUserService} from '../../../services/data-global/id-user.service';
 import {MatDialog} from '@angular/material';
 import {HttpService} from '../../../services/http/http.service';
 import {ReviewCompanyComponent} from '../review-company/review-company.component';
+import {ReviewService} from '../../../services/review-service/review.service';
 
 @Component({
   selector: 'app-table-review',
@@ -19,11 +20,14 @@ export class TableReviewComponent implements OnInit {
   curTotalReview: number = 0;
 
   constructor(private authGuard: AuthGuardService, private router: Router, private userService: IdUserService,
-              public dialog: MatDialog, private http: HttpService) { }
+              public dialog: MatDialog, private http: HttpService, private route: ActivatedRoute, private reviewService: ReviewService) { }
 
   ngOnInit() {
     this.idUser = this.userService.getId();
     this.getData();
+    this.reviewService.on().subscribe(res => {
+      this.getData();
+    })
   }
 
   getData() {
