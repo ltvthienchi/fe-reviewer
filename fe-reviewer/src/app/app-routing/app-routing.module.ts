@@ -69,6 +69,7 @@ const routes: Routes = [
     canActivate: [AuthGuardAdmin],
     children: [
       { path: '', redirectTo: '/admin/home', pathMatch: 'full'},
+      { path: 'admin', component: HomeAdminComponent, canActivate: [AuthGuardAdmin]  },
       { path: 'admin/manage-admin', component: ManageAdminComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/manage-product', component: ManageProductComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/verify', component: ComfirmCompanyComponent, canActivate: [AuthGuardAdmin] },
