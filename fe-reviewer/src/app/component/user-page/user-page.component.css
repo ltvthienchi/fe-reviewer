@@ -439,6 +439,10 @@ body{
     overflow: hidden;
     text-align: center;
     border: 5px solid #FFF;
+    background-position-x: 100%;
+    background-position-y: center;
+    background-size: 100% auto;
+    height: 300px;
   }
 
   .profile .user {

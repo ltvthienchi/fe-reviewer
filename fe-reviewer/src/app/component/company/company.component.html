@@ -18,10 +18,10 @@
     </div>
     <div class="col-9 frame-avt">
       <!-- backgroud -->
-      <div class="boderbg rounded">
-        <img
-          src="{{detailCompany.imgPanelCompany}}"
-          class="" alt="">
+      <div class="boderbg rounded" [ngStyle]="{backgroundImage: 'url(' + detailCompany.imgPanelCompany + ')'}">
+<!--        <img-->
+<!--          src="{{detailCompany.imgPanelCompany}}"-->
+<!--          class="" alt="">-->
       </div>
       <div class="boderbg rounded upload" (click)="uploadPanel()" *ngIf="isCompanyAccount()">
         <p><i class="fa fa-camera"></i> Update</p>

@@ -8,15 +8,18 @@ export function validatorEmail(c: AbstractControl) {
 }
 
 export function validatorRequired(c: AbstractControl) {
-  const checkOne = c.value.replace(/  +/g, ' ');
-  const checkTwo = checkOne.split('')[0] === ' ';
-  const temp = checkOne.split('');
-  const checkThree = checkOne.split('')[temp.length - 1] === ' ';
-  // console.log(checkOne.split('')[0]);
-  if (!c.value) return { required: 'Field is required' };
-  if (checkTwo) return { required: 'Please do not press multiple space, or space in first!' };
-  if (checkThree) return { required: 'Please do not press multiple space, or space in last!' };
-  return null;
+  if(c.value) {
+    const checkOne = c.value.replace(/  +/g, ' ');
+    const checkTwo = checkOne.split('')[0] === ' ';
+    const temp = checkOne.split('');
+    const checkThree = checkOne.split('')[temp.length - 1] === ' ';
+    // console.log(checkOne.split('')[0]);
+    if (!c.value) return { required: 'Field is required' };
+    if (checkTwo) return { required: 'Please do not press multiple space, or space in first!' };
+    if (checkThree) return { required: 'Please do not press multiple space, or space in last!' };
+    return null;
+  }
+  return { required: 'Field is required' };
 }
 
 export function validatorOldPassword(c: AbstractControl) {
@@ -48,11 +51,14 @@ export function validatorConfirmPassword(c: AbstractControl) {
 }
 
 export function validatorName(c: AbstractControl) {
-  const regex = /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ 0-9]+$/;
-  const myRe = regex.exec(c.value);
-  if (c.value.length > 50) return { name: 'Field must be greater 50' };
-  if (!myRe) return { name: 'Please no enter special character' };
-  return null;
+  if (c.value) {
+    const regex = /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ 0-9]+$/;
+    const myRe = regex.exec(c.value);
+    if (c.value.length > 50) return { name: 'Field must be greater 50' };
+    if (!myRe) return { name: 'Please no enter special character' };
+    return null;
+  }
+  return { name: 'Field must be greater 50' };
 }
 
 export function validatorPhone(c: AbstractControl) {

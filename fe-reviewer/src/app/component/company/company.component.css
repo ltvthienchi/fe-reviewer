@@ -44,6 +44,9 @@
 .boderbg{
   height: 300px;
   background-color: #fff;
+  background-position-x: 100%;
+  background-position-y: top;
+  background-size: 100% auto;
 }
 
 .boderbg img{
