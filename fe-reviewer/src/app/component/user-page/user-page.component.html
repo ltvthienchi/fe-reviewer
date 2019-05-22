@@ -1,7 +1,6 @@
 <div class="row p-main">
   <div class="profile clearfix">
-    <div class="image">
-      <img *ngIf="userInfo" [src]="userInfo.imgPanel" class="img-cover">
+    <div class="image" *ngIf="userInfo" [ngStyle]="{backgroundImage: 'url(' + userInfo.imgPanel + ')'}">
     </div>
     <div class="user clearfix">
       <div class="avatar">

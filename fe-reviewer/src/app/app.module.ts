@@ -43,7 +43,7 @@ import {
   MatCheckboxModule,
   MatDialogModule,
   MatIconModule,
-  MatListIconCssMatStyler
+  MatListIconCssMatStyler, MatProgressSpinnerModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -240,11 +240,13 @@ export function tokenGetter() {
     NgbRatingModule,
     SocialLoginModule,
     FileDropModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatSliderModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [ModalRatingComponent, ModalDetailComponent, PostDetailProductComponent, AlertMessageComponent,
   ReviewCompanyComponent, ModalUploadAvtComponent, ModalUploadPanelComponent

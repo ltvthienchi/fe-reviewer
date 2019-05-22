@@ -69,14 +69,13 @@ const routes: Routes = [
     canActivate: [AuthGuardAdmin],
     children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full'},
-      { path: 'admin', component: ManageAdminComponent, canActivate: [AuthGuardAdmin]  },
       { path: 'admin/manage-admin', component: ManageAdminComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/manage-product', component: ManageProductComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/verify', component: ComfirmCompanyComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/manage-user/:userType', component: LockReviewerComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/feedback', component: FeedbackAdminComponent, canActivate: [AuthGuardAdmin] },
       { path: 'admin/reported-comment', component: ReportedCommentComponent, canActivate: [AuthGuardAdmin] },
-      { path: 'admin/home', component: HomeAdminComponent, canActivate: [AuthGuardAdmin] }
+      { path: 'admin', component: HomeAdminComponent, canActivate: [AuthGuardAdmin] }
     ]
   },
   { path: 'admin/login', component: LoginAdminComponent },
