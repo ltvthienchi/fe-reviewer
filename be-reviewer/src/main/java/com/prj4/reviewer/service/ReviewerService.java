@@ -129,19 +129,21 @@ public class ReviewerService {
         reviewer.setLastName(lastName);
         reviewer.setFullName(firstName + " " + lastName);
         if (avaReviewer != null) {
-            Images images = imageRepository.findByIdImage(reviewer.getImgAvatar());
-            String fileName =  fileStorageService.storeFile(avaReviewer, images.getIdImage(), Constants.IMAGE_AVA);
+            String idImage = generateId.generateId("IMAGE_", new Date());
+            String fileName =  fileStorageService.storeFile(avaReviewer, idImage, Constants.IMAGE_AVA);
             String fileDownloadUri = "http://localhost/img/reviewer/" + fileName;
-            images.setImgPath(fileDownloadUri);
+            Images images = new Images(idImage, fileDownloadUri, Constants.IMAGE_AVA);
             imageService.saveImage(images);
+            reviewer.setImgAvatar(idImage);
             historyService.createUpdateInfoHistory(idReviewer, fileDownloadUri, 1);
         }
         if (panelReviewer != null) {
-            Images images = imageRepository.findByIdImage(reviewer.getImgPanel());
-            String fileName =  fileStorageService.storeFile(panelReviewer, images.getIdImage(), Constants.IMAGE_PANEL);
+            String idImage = generateId.generateId("IMAGE_", new Date());
+            String fileName =  fileStorageService.storeFile(panelReviewer, idImage, Constants.IMAGE_PANEL);
             String fileDownloadUri = "http://localhost/img/reviewer/" + fileName;
-            images.setImgPath(fileDownloadUri);
+            Images images = new Images(idImage, fileDownloadUri, Constants.IMAGE_PANEL);
             imageService.saveImage(images);
+            reviewer.setImgPanel(idImage);
             historyService.createUpdateInfoHistory(idReviewer, fileDownloadUri, 2);
         }
 
